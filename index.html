@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    
+
     <title>Nicolas Teixeira Web Portfolio</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -186,92 +188,43 @@
                     <!-- This is what your users will see when there is-->
                     <!-- an error submitting the form-->
                     <!--<div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div> -->
-                    </form>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Contact-->
-    <section class="contact-section bg-black">
-        <form action="https://www.SnapHost.com/captcha/send.aspx" id="ContactUsCaptchaWebForm" method="post"
-            onsubmit="return ValidateForm(this);" target="_top">
-            <input name="skip_WhereToSend" type="hidden" value="nicolasnk_teixeira@hotmail.com" />
-            <input name="skip_SnapHostID" type="hidden" value="8WQL2ACJ3FKW" />
-            <input name="skip_WhereToReturn" type="hidden" value="http://127.0.0.1:5500/index.html" />
-            <input name="skip_Subject" type="hidden" value="Contact Us Form" />
-            <input name="skip_ShowUsersIp" type="hidden" value="1" />
-            <input name="skip_SendCopyToUser" type="hidden" value="1" />
-            <script type="text/javascript">
-                function ValidateForm(frm) {
-                    if (frm.Name.value == "") { alert('Name is required.'); frm.Name.focus(); return false; }
-                    if (frm.FromEmailAddress.value == "") { alert('Email address is required.'); frm.FromEmailAddress.focus(); return false; }
-                    if (frm.FromEmailAddress.value.indexOf("@") < 1 || frm.FromEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.FromEmailAddress.focus(); return false; }
-                    if (frm.Comments.value == "") { alert('Please enter comments or questions.'); frm.Comments.focus(); return false; }
-                    if (frm.skip_CaptchaCode.value == "") { alert('Enter web form code.'); frm.skip_CaptchaCode.focus(); return false; }
-                    return true;
-                }
-                function ReloadCaptchaImage(captchaImageId) {
-                    var obj = document.getElementById(captchaImageId);
-                    var src = '' + obj.src;
-                    obj.src = '';
-                    var date = new Date();
-                    var pos = src.indexOf('&rad=');
-                    if (pos >= 0) { src = src.substr(0, pos); }
-                    obj.src = src + '&rad=' + date.getTime();
-                    return false;
-                }
-            </script>
-            <table border="0" cellpadding="5" cellspacing="0" width="600">
-                <tr>
-                    <td><b>Name*:</b></td>
-                    <td><input name="Name" type="text" maxlength="60" style="width:350px;" /></td>
-                </tr>
-                <tr>
-                    <td><b>Phone number:</b></td>
-                    <td><input name="PhoneNumber" type="text" maxlength="43" style="width:350px;" /></td>
-                </tr>
-                <tr>
-                    <td><b>Email address*:</b></td>
-                    <td><input name="FromEmailAddress" type="text" maxlength="60" style="width:350px;" /></td>
-                </tr>
-                <tr>
-                    <td><b>Comments and questions*:</b></td>
-                    <td><textarea name="Comments" rows="7" cols="40" style="width:350px;"></textarea></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center"> <br />
-                        <table border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                                <td colspan="2" style="padding-bottom:18px;">
-                                    <!-- Please check our ProCaptcha service which is ad-free:
-                https://www.SnapHost.com/captcha/ProCaptchaOverview.aspx -->
-                                    <a href="http://www.snaphost.com/captcha/" alt="captcha email form"
-                                        title="captcha email form">
-                                        captcha email form</a>
-                                </td>
-                            </tr>
-                            <tr valign="top">
-                                <td> <i>Enter web form code*:</i>
-                                    <input name="skip_CaptchaCode" type="text" style="width:80px;" maxlength="6" />
-                                </td>
-                                <td>
-                                    <a href="https://www.snaphost.com/captcha/ReadyForms/ContactUsForm.aspx"><img
-                                            id="CaptchaImage" alt="Contact Us form"
-                                            title="HTML code for Contact Us form" style="margin-left:20px;"
-                                            src="https://www.SnapHost.com/captcha/CaptchaImage.aspx?id=8WQL2ACJ3FKW&ImgType=2" /></a><br />
-                                    <a href="#" onclick="return ReloadCaptchaImage('CaptchaImage');"><span
-                                            style="font-size:12px;">reload image</span></a>
-                                </td>
-                            </tr>
-                        </table> <br />
-                        * - required fields. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        <input name="skip_Submit" type="submit" value="Submit" />
-                    </td>
-                </tr>
-            </table><br />
-        </form>
-        
-    </section>
+    <!-- Contact me-->
+
+    <div class="row input-container">
+        <div class="col-xs-12">
+            <div class="styled-input wide">
+                <input type="text" required />
+                <label>Name</label> 
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="styled-input">
+                <input type="text" required />
+                <label>Email</label> 
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="styled-input" style="float:right;">
+                <input type="text" required />
+                <label>Phone Number</label> 
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="styled-input wide">
+                <textarea required></textarea>
+                <label>Message</label>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="btn-lrg submit-btn">Send Message</div>
+        </div>
+</div>
+</div>
+   
     <!-- Footer-->
     <footer class="footer bg-black small text-center text-white-50">
         <div class="container px-4 px-lg-5">Copyright &copy; Nicolas Teixeira 2022</div>
