@@ -3,10 +3,7 @@ This is my ongoing project in which I am building my Portfolio to show some of m
 
 Todo:
 
-- Center contact me form
-- Make contact me responsive
-- Add Social Media links
-- Work on "About me" description
-- Upload professional picture
-- Add slides for projects with direct links
+- Add animations and effects
+- Add more projects
+- Change projects style.
 
