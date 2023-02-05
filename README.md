@@ -3,7 +3,7 @@ This is my ongoing project in which I am building my Portfolio to show some of m
 
 Todo:
 
--Add animations and effects
--Add more projects
--Change projects style.
+- Add animations and effects
+- Add more projects
+- Change projects style.
 
