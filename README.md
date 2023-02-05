@@ -5,5 +5,6 @@ Todo:
 
 - Add animations and effects
 - Add more projects
-- Change projects style.
+- Change projects style
+- Add my learning achievements and plans for the future.
 
