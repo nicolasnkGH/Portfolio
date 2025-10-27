@@ -33,6 +33,8 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
+  --bs-dark-section: #111111; /* Very dark gray for section backgrounds */
+  --bs-card-bg: #212529;      /* Deep dark gray for Cards/Terminal (Same as gray-900) */
   --bs-primary: #64a19d;
   --bs-secondary: #7464a1;
   --bs-success: #67c29c;
@@ -81,16 +83,24 @@
 }
 
 body {
-  margin: 0;
-  font-family: var(--bs-body-font-family);
-  font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
-  line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
-  text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    /* 🚀 CRITICAL FIX: Set a consistent dark background for the entire page. */
+    /* We use a very deep gray that all your sections will blend into. */
+    background-color: #0a0a0a !important; 
+    
+    /* 🚀 NEW: Set default text color for the whole body to white. */
+    color: #fff; 
+    
+    /* Remove or override Bootstrap variables that interfere */
+    /* Deleting the original background-color and color properties is the key */
+    
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    text-align: var(--bs-body-text-align);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 hr {
@@ -11590,7 +11600,7 @@ body {
 }
 @media (min-width: 992px) {
   .masthead {
-    height: 100vh;
+    height: 75vh;
     padding: 0;
   }
   .masthead h1, .masthead .h1 {
@@ -11604,50 +11614,31 @@ body {
   }
 }
 
+/* --- ENHANCED ABOUT SECTION STYLES --- */
 .about-section {
-  padding-top: 10rem;
-  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+    padding-top: 10rem;
+    padding-bottom: 10rem; 
+    /* Change background to a very dark gray to ensure black border is visible */
+    background-color: #0a0a0a !important; 
 }
+
+/* Increase the bottom margin on the paragraph for more vertical space below the text block */
 .about-section p {
   margin-bottom: 5rem;
+  font-size: 1.1rem; /* Slightly increase font size for better readability on this dark background */
+}
+
+/* Target the H2 (About title) to give it a little more emphasis */
+.about-section h2 {
+    /* Add a bit more spacing below the title */
+    margin-bottom: 2rem !important; 
+    /* Optional: Slight shadow or border for more visual pop if desired */
 }
 
 
   .img-fluid:hover {
     opacity: 0.7;
   }
-
-.projects-section {
-  padding: 10rem 0;
-}
-.projects-section .featured-text {
-  padding: 2rem;
-}
-@media (min-width: 992px) {
-  .projects-section .featured-text {
-    padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
-  }
-}
-.projects-section .project-text {
-  padding: 3rem;
-  font-size: 90%;
-}
-@media (min-width: 992px) {
-  .projects-section .project-text {
-    padding: 5rem;
-  }
-  .projects-section .project-text hr {
-    border-color: #64a19d;
-    border-width: 0.25rem;
-    width: 30%;
-  }
-}
-
-.footer {
-  padding: 5rem 0;
-  background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
-}
 
 /* ///// inputs for Contact me  ///// */ 
 
@@ -11674,3 +11665,412 @@ body {
 }
 
 
+/* --- Custom Project Card Styling for Grid Layout --- */
+
+/* Style the main card wrapper */
+.project-card {
+  /* Animation for the lift and shadow effect */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 0.5rem; /* Smoother corners, common in modern design */
+  overflow: hidden; /* Ensures the top image follows the card's border-radius */
+}
+
+/* Hover Effect: Lifts the card and increases the shadow */
+.project-card:hover {
+  transform: translateY(-5px); /* Moves the card up 5px */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25) !important; /* Stronger shadow */
+}
+
+/* Ensures the clickable image link wrapper takes up space */
+.card-img-link {
+  display: block; 
+}
+
+/* Styles the project image within the card */
+.project-card .card-img-top {
+  /* Give the image a fixed, consistent height */
+  height: 200px; 
+  /* Ensures the image covers the area without being stretched, cropping if necessary */
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Subtle image opacity change on card hover */
+.project-card:hover .card-img-top {
+    opacity: 0.8;
+}
+
+/* Styling for the technology badges container */
+.tech-badges {
+    line-height: 1.8; /* Improves vertical spacing */
+}
+
+/* Styling for the individual technology badges */
+.tech-badges .badge {
+  font-size: 0.75rem; /* Smaller, neat text */
+  font-weight: 600;
+  text-transform: none;
+  /* Use your existing theme colors. These are hints for better visibility: */
+  /* For example, use your theme's defined Bootstrap variables (like var(--bs-primary)) 
+     or just hardcoded colors that fit your existing palette. */
+}
+
+/* Customizing the card text colors to be clean and dark on the 'bg-light' section */
+.project-card .card-title {
+    font-family: "Playfair Display", serif; /* Uses one of the custom fonts you imported */
+    font-weight: 600;
+    color: #212529 !important; /* Forces the text to be black, overriding potentially faint Bootstrap defaults */
+}
+
+.project-card .card-text {
+    color: #6c757d !important; /* A darker gray for readability */
+    font-size: 0.9rem;
+}
+
+/* Customizing the footer background to match the project section for a cleaner look */
+.project-card .card-footer {
+    padding-top: 0.75rem;
+    padding-bottom: 1rem;
+    border-top: none !important; /* Remove the distracting top border */
+}
+
+/* --- Contact Section Styles --- */
+
+/* Ensures the entire section has comfortable padding */
+.contact-section {
+    /* Change from #000 to the unified dark gray */
+    background-color: #0a0a0a !important; 
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* Style for the main card containing contact info */
+.contact-section .card {
+    border-radius: 0.5rem;
+    border: 1px solid #333; /* A slight dark border for definition */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); /* Stronger shadow on the black background */
+}
+
+/* Style the top header text */
+.contact-section h2 {
+    /* Uses the theme's default white color */
+    color: #fff !important; 
+}
+
+/* Style the paragraph text below the header */
+.contact-section p {
+    /* Ensure the white-50 class renders clearly */
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Styles for the main email link text and icon */
+.card-body .h5 a {
+    /* Set the text color to black for high contrast on the white card */
+    color: #212529 !important; 
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+/* Hover effect for the email address */
+.card-body .h5 a:hover {
+    color: #64a19d !important; /* Your primary color on hover */
+    text-decoration: underline;
+}
+
+/* Styles the icon next to the email address (fa-envelope) */
+.card-body .fa-envelope {
+    color: #64a19d !important; /* Use your primary theme color (teal) */
+}
+
+/* Style the "OR CONNECT" divider text */
+.card-body .small {
+    font-weight: 700;
+    color: #adb5bd !important; /* A light gray for a subtle divider */
+}
+
+/* Style the Social Icons (GitHub, LinkedIn, PDF) */
+.social-icons a {
+    color: #6c757d; /* Default gray for subtlety */
+    transition: color 0.15s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: #64a19d; /* Your primary theme color on hover */
+}
+
+/* Styling for Bootstrap Form Floating Inputs */
+.form-floating > label {
+    color: #adb5bd; /* Light gray label color for contrast on dark section */
+}
+
+.form-control {
+    background-color: #343a40 !important; /* Dark background for the input fields */
+    border-color: #495057 !important; /* Slightly visible border */
+    color: #fff !important; /* White text for input content */
+}
+
+.form-control:focus {
+    background-color: #343a40 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.25rem rgba(100, 161, 157, 0.5) !important; /* Teal glow on focus */
+}
+
+/* --- PROJECTS SECTION DARK THEME OVERRIDES --- */
+
+/* ABOUT CLI Wrapper - This creates the blend with the section */
+.about-section .about-cli-wrapper {
+    /* Uses the same background color as the projects section for continuity */
+    background-color: var(--bs-dark-section); 
+    padding: 4rem 2rem;
+    margin-top: 3rem; 
+    border-radius: 12px;
+    border: 1px solid #333; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* 1. PROJECTS SECTION BACKGROUND (Lighter Dark Gray: #111111) */
+.projects-section {
+    background-color: var(--bs-dark-section) !important; /* #111111 */
+    padding-top: 10rem;     
+    padding-bottom: 5rem; /* Ensure bottom padding is sufficient too */
+    color: #fff; /* Ensures text is white */
+}
+
+/* 2. HEADER TEXT VISIBILITY (Forces black text/text-black-50 to white) */
+.projects-section p.text-black-50, 
+.projects-section p.small,
+.projects-section h2,
+.projects-section .text-black {
+    color: #fff !important; 
+}
+
+/* 3. CARD AND FORM BACKGROUNDS (Deeper Dark Gray: #212529) */
+/* This single rule applies the dark background to all layered components */
+.project-card, 
+.project-card .card-footer,
+.cli-terminal-container,
+.contact-section form {
+    background-color: var(--bs-card-bg) !important; /* #212529 */
+    border-color: #343a40 !important; /* Subtle card border */
+}
+
+/* 4. CARD TEXT (Ensures text on the #212529 card is white/light) */
+.project-card .card-title {
+    color: #fff !important; 
+}
+
+.project-card .card-text {
+    color: var(--bs-gray-500) !important; /* Light gray for readability */
+}
+
+/* --- CONTACT FORM DARK THEME OVERRIDE --- */
+
+/* Targets the form container itself (since we removed the bg-white class) */
+.contact-section form {
+    /* Use the same dark gray as your project cards */
+    background-color: #212529 !important; 
+    border: 1px solid #343a40 !important; /* Subtle border for definition */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important; /* Nice dark shadow */
+}
+
+/* Override the white text color on the input labels inside the dark form */
+.contact-section form .form-floating > label {
+    /* Set label color to a light gray for visibility */
+    color: #adb5bd !important; 
+}
+
+/* --- CLI TERMINAL STYLING --- */
+
+.cli-terminal-container {
+    background-color: #212529; /* Dark gray body */
+    border-radius: 8px;
+    overflow: hidden; 
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 90%; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cli-header {
+    background-color: #343a40; /* Slightly lighter gray for the header bar */
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #495057;
+}
+
+.cli-dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.cli-dot.red {
+    background-color: #ff5f56;
+}
+
+.cli-dot.yellow {
+    background-color: #ffbd2e;
+}
+
+.cli-dot.green {
+    background-color: #27c93f;
+}
+
+.cli-title {
+    font-family: monospace;
+    font-size: 14px;
+    color: #adb5bd; 
+    margin-left: 10px;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.cli-content {
+    background-color: #212529;
+    color: #fff;
+    padding: 20px;
+    margin: 0; 
+    white-space: pre-wrap; 
+    font-family: monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-bottom: 30px; /* For cursor space */
+}
+
+/* --- HIGHLIGHT CLASSES --- */
+
+/* Style the text-info for the blue expertise summary highlight */
+.cli-content .text-info {
+    color: var(--bs-info) !important; 
+}
+
+/* Highlight for major categories (Yellow/Warning) */
+.cli-content .cli-highlight {
+    color: var(--bs-warning) !important; 
+    font-weight: 700;
+}
+
+/* Highlight for Linux distributions (Green/Success) */
+.cli-content .linux-distro {
+    color: var(--bs-success) !important; 
+    font-weight: 700;
+}
+
+/* --- TYPING CURSOR --- */
+
+#cli-output::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+  display: inline-block;
+  color: #fff;
+  font-weight: 700;
+}
+
+@keyframes blink {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+/* Hide the cursor after typing is done */
+.typing-done::after {
+    content: '' !important;
+}
+
+/* --- ABOUT CLI INTEGRATION --- */
+
+/* 🚀 NEW RULE: Creates a slightly lighter, defined background area for the CLI box to sit on. */
+.about-section .about-cli-wrapper {
+    background-color: #111111; /* A shade lighter than #0a0a0a or #000 */
+    padding: 4rem 2rem; /* Add padding inside this new wrapper */
+    margin-top: 3rem; /* Push it down from the main "About" title */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333; /* Subtle separation line */
+}
+
+/* Adjust the CLI container itself to reduce internal margins */
+.cli-terminal-container {
+    /* Remove excess vertical margin since the wrapper now provides spacing */
+    margin-top: 0;
+    margin-bottom: 0;
+    /* Add a subtle dark glow/shadow to lift the terminal off the wrapper background */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* --- MASTHEAD TYPING EFFECT STYLING --- */
+
+/* Base style for the output container */
+.typing-masthead-output {
+    min-height: 2.5rem; /* Ensures space while typing */
+    display: block;
+    white-space: pre-wrap; /* Allows text to wrap if necessary */
+    text-align: center !important;
+}
+
+/* Style the blinking cursor ONLY for the masthead output */
+.typing-masthead-output::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+    display: inline-block;
+    /* Use the same gradient text styling as the original H1 for the cursor */
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+            background-clip: text;
+    font-weight: 700;
+}
+
+/* Hide the cursor when typing is done in the masthead */
+.masthead-typing-done::after {
+    content: '' !important;
+}
+
+/* Style the subtitle cursor (if we want it to blink too) */
+#masthead-subtitle::after {
+    content: '_'; /* Use a less distracting cursor for the subtitle */
+    animation: blink 0.7s infinite;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 700;
+}
+
+/* Hide the subtitle cursor when typing is done */
+.subtitle-typing-done::after {
+    content: '' !important;
+}
+
+/* --- NEW CLASS: Applies the gradient and bold styling once typing is finished --- */
+.masthead-typing-done.typing-finished-style {
+    font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* Apply the gradient styling from the original .masthead h1 rule */
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+            background-clip: text;
+}
+
+.footer {
+    /* Change from bg-black to a deep gray */
+    background-color: #111111 !important; 
+}
+
+/* --- MOBILE READABILITY FIX for CLI --- */
+
+@media (max-width: 576px) {
+    /* Target the CLI text block on small screens */
+    .cli-content {
+        /* Reduce the font size for comfortable reading on a phone */
+        font-size: 0.85rem !important; 
+        line-height: 1.4 !important;
+    }
+    
+    /* Ensure the CLI box itself takes up almost the full width */
+    .cli-terminal-container {
+        max-width: 98%; 
+    }
+}
