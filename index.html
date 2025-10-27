@@ -50,23 +50,23 @@
   <!-- Master head-->
   <header class="masthead">
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-        <div class="d-flex justify-content-center">
-            <div class="text-center masthead-typing-box">
-                <h1 class="mx-auto my-0 text-uppercase text-white" id="masthead-typing-output">
-                    </h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5" id="masthead-subtitle"></h2>
-            </div>
+      <div class="d-flex justify-content-center">
+        <div class="text-center masthead-typing-box">
+          <h1 class="mx-auto my-0 text-uppercase text-white" id="masthead-typing-output">
+          </h1>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5" id="masthead-subtitle"></h2>
         </div>
+      </div>
     </div>
-</header>
+  </header>
 
-<script>
+  <script>
     // Simplified text for H1: only the parts we want to see typed
     const mastheadText = '>>> HELLO WORLD!';
-    
+
     // Simplifed text for the subtitle
     const subtitleText = 'Welcome to my Web Portfolio.';
-    
+
     // The FULL CLI About Me content
     const cliText = `
 $ whoami 
@@ -96,272 +96,294 @@ $ get_track_record
 
 $ exit
 `;
-</script>
+  </script>
 
   <!-- About-->
-<section class="about-section text-center" id="about">
+  <section class="about-section text-center" id="about">
     <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8">
-                
-                <h2 class="text-white mb-4">About</h2>
-                
-                <div class="about-cli-wrapper"> 
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-8">
 
-                    <div class="cli-terminal-container shadow-lg">
-                        
-                        <div class="cli-header">
-                            <span class="cli-dot red"></span>
-                            <span class="cli-dot yellow"></span>
-                            <span class="cli-dot green"></span>
-                            <span class="cli-title">nicolas@teixeira-systems: ~</span>
-                        </div>
-                        
-                        <pre class="cli-content text-start">
+          <h2 class="text-white mb-4">About</h2>
+
+          <div class="about-cli-wrapper">
+
+            <div class="cli-terminal-container shadow-lg">
+
+              <div class="cli-header">
+                <span class="cli-dot red"></span>
+                <span class="cli-dot yellow"></span>
+                <span class="cli-dot green"></span>
+                <span class="cli-title">nicolas@teixeira-systems: ~</span>
+              </div>
+
+              <pre class="cli-content text-start">
 <code class="text-white" id="cli-output">
 </code>
 </pre>
-                    </div>
-                </div>
-
             </div>
+          </div>
+
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
 
-          <!-- Projects-->
+  <!-- Projects-->
 
-          <section class="projects-section bg-dark" id="projects">
-            <div class="container px-4 px-lg-5">
+  <section class="projects-section bg-dark" id="projects">
+    <div class="container px-4 px-lg-5">
 
-              <div class="row gx-0 mb-5 mb-lg-5 align-items-center justify-content-center">
-                <div class="col-lg-10 col-xl-8 text-center">
-                  <h2 class="text-black mb-4">DevOps, Automation, & Infrastructure Case Studies</h2>
-                  <p class="text-black-50 mb-0">
-                    Explore real-world solutions that combine <strong>Enterprise Networking (VLANs/Security)</strong>,
-                    <strong>Container Orchestration (Docker/Proxmox)</strong>, and <strong>Cross-Platform Automation
-                      (PowerShell/Python)</strong>. Each case study details the technical challenge, the specific tools
-                    used,
-                    and the delivered business solution.
-                  </p>
-                  <div class="mt-4">
-                    <p class="text-black-50 small">
-                      *More detailed projects are added regularly.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-                <div class="col">
-                  <div class="card h-100 shadow border-0 project-card">
-                    <a href="https://github.com/nicolasnkGH/powershell-Scripting" target="_blank" class="card-img-link">
-                      <img class="card-img-top" src="assets/img/demo-image-01.png"
-                        alt="PowerShell Scripting Code Snippet" />
-                    </a>
-                    <div class="card-body">
-                      <div class="tech-badges mb-3">
-                        <span class="badge bg-info me-1">PowerShell</span>
-                        <span class="badge bg-primary me-1">Automation</span>
-                        <span class="badge bg-dark">Windows/Azure</span>
-                      </div>
-
-                      <h5 class="card-title text-black">Windows Automation Scripts</h5>
-                      <p class="card-text text-muted">A repository of reusable PowerShell scripts for routine IT and
-                        system
-                        administration tasks, demonstrating efficient automation and system management.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-center">
-                      <a class="btn btn-sm btn-outline-light w-100"
-                        href="https://github.com/nicolasnkGH/powershell-Scripting" target="_blank">
-                        <i class="fab fa-github me-2"></i> View Repository
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card h-100 shadow border-0 project-card">
-                    <a href="https://github.com/nicolasnkGH/proxmox-automation" target="_blank" class="card-img-link">
-                      <img class="card-img-top" src="assets/img/demo-image-02.jpg"
-                        alt="Proxmox Server Automation Screenshot" />
-                    </a>
-                    <div class="card-body">
-                      <div class="tech-badges mb-3">
-                        <span class="badge bg-danger me-1">Proxmox VE</span>
-                        <span class="badge bg-dark me-1">Virtualization</span>
-                        <span class="badge bg-success">Bash/Linux</span>
-                        <span class="badge bg-primary">Infrastructure</span>
-                      </div>
-
-                      <h5 class="card-title text-black">Proxmox Automation Scripts</h5>
-                      <p class="card-text text-muted">A collection of scripts designed to automate deployment and
-                        maintenance
-                        tasks in a Proxmox VE environment, showcasing infrastructure-as-code principles.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-center">
-                      <a class="btn btn-sm btn-outline-light w-100"
-                        href="https://github.com/nicolasnkGH/proxmox-automation" target="_blank">
-                        <i class="fab fa-github me-2"></i> View Repository
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card h-100 shadow border-0 project-card">
-                    <a href="https://github.com/nicolasnkGH/media-download" target="_blank" class="card-img-link">
-                      <img class="card-img-top" src="assets/img/demo-image-03.jpg"
-                        alt="Media Server Application Dashboard" />
-                    </a>
-                    <div class="card-body">
-                      <div class="tech-badges mb-3">
-                        <span class="badge bg-primary me-1">Docker</span>
-                        <span class="badge bg-secondary me-1">Docker Compose</span>
-                        <span class="badge bg-info">Containerization</span>
-                        <span class="badge bg-success">Media Server</span>
-                      </div>
-
-                      <h5 class="card-title text-black">Containerized Media Downloader</h5>
-                      <p class="card-text text-muted">A project using Docker Compose to deploy and manage a suite of
-                        media
-                        applications, focusing on robust container networking and configuration management.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-center">
-                      <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/media-download"
-                        target="_blank">
-                        <i class="fab fa-github me-2"></i> View Repository
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card h-100 shadow border-0 project-card">
-                    <a href="https://github.com/nicolasnkGH/nextcloud-aio-setup" target="_blank" class="card-img-link">
-                      <img class="card-img-top" src="assets/img/demo-image-04.png"
-                        alt="Nextcloud All-in-One Dashboard Screenshot" />
-                    </a>
-                    <div class="card-body">
-                      <div class="tech-badges mb-3">
-                        <span class="badge bg-primary me-1">Docker AIO</span>
-                        <span class="badge bg-danger me-1">PostgreSQL</span>
-                        <span class="badge bg-info">Reverse Proxy</span>
-                        <span class="badge bg-dark">Containerization</span>
-                      </div>
-
-                      <h5 class="card-title text-black">Secure Nextcloud Deployment</h5>
-                      <p class="card-text text-muted">A fully containerized solution using Nextcloud AIO and Docker
-                        Compose to
-                        manage an entire self-hosted cloud platform, showcasing secure, scalable data storage and
-                        service
-                        orchestration.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-center">
-                      <a class="btn btn-sm btn-outline-light w-100"
-                        href="https://github.com/nicolasnkGH/nextcloud-aio-setup" target="_blank">
-                        <i class="fab fa-github me-2"></i> View Repository
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card h-100 shadow border-0 project-card">
-                    <a href="https://github.com/nicolasnkGH/home-networking-setup" target="_blank"
-                      class="card-img-link">
-                      <img class="card-img-top" src="assets/img/demo-image-05.png" alt="Network Topology Diagram" />
-                    </a>
-                    <div class="card-body">
-                      <div class="tech-badges mb-3">
-                        <span class="badge bg-danger me-1">Networking</span>
-                        <span class="badge bg-info me-1">Linux</span>
-                        <span class="badge bg-dark me-1">Security</span>
-                        <span class="badge bg-primary">Routing/DNS</span>
-                      </div>
-
-                      <h5 class="card-title text-black">Advanced Home Networking Setup</h5>
-                      <p class="card-text text-muted">Documentation and configuration files for a robust home network
-                        utilizing
-                        custom routing, VLAN segregation, and firewall policies to ensure security and performance.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-center">
-                      <a class="btn btn-sm btn-outline-light w-100"
-                        href="https://github.com/nicolasnkGH/home-networking-setup" target="_blank">
-                        <i class="fab fa-github me-2"></i> View Repository
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card h-100 shadow border-0 project-card">
-                    <a href="https://github.com/nicolasnkGH/PythonProjects" target="_blank" class="card-img-link">
-                      <img class="card-img-top" src="assets/img/demo-image-006.jpg"
-                        alt="Python Collaborative Project Code" />
-                    </a>
-                    <div class="card-body">
-                      <div class="tech-badges mb-3">
-                        <span class="badge bg-success me-1">Python</span>
-                        <span class="badge bg-secondary me-1">Academic</span>
-                        <span class="badge bg-info">Collaboration</span>
-                      </div>
-
-                      <h5 class="card-title text-black">Collaborative Academic Python</h5>
-                      <p class="card-text text-muted">A collection of early-stage Python scripts developed during my
-                        bachelor's
-                        program in collaboration with a peer, demonstrating foundational programming logic and version
-                        control
-                        principles.</p>
-
-                      <p class="card-text small text-muted mt-2">Focus on: *Foundational programming and source control
-                        (Git).
-                      </p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-center">
-                      <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/PythonProjects"
-                        target="_blank">
-                        <i class="fab fa-github me-2"></i> View Repository
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="card h-100 shadow border-0 project-card">
-                    <a href="https://github.com/nicolasnkGH/Simple-GUI-Chat" target="_blank" class="card-img-link">
-                      <img class="card-img-top" src="assets/img/demo-image-07.jpg"
-                        alt="Python Tkinter Chat Application UI" />
-                    </a>
-                    <div class="card-body">
-                      <div class="tech-badges mb-3">
-                        <span class="badge bg-success me-1">Python</span>
-                        <span class="badge bg-danger me-1">Networking</span>
-                        <span class="badge bg-info">Multi-Threading</span>
-                        <span class="badge bg-warning">Tkinter GUI</span>
-                      </div>
-
-                      <h5 class="card-title text-black">Multi-Threaded Chat Server</h5>
-                      <p class="card-text text-muted">A fully functional TCP client-server chat application built from
-                        scratch,
-                        demonstrating core programming concepts: concurrent processing with Python's threading, and
-                        socket-level
-                        network communication.</p>
-                    </div>
-                    <div class="card-footer bg-white border-0 d-flex justify-content-center">
-                      <a class="btn btn-sm btn-outline-light w-100"
-                        href="https://github.com/nicolasnkGH/Simple-GUI-Chat" target="_blank">
-                        <i class="fab fa-github me-2"></i> View Code
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+      <div class="row gx-0 mb-5 mb-lg-5 align-items-center justify-content-center">
+        <div class="col-lg-10 col-xl-8 text-center">
+          <h2 class="text-black mb-4">DevOps, Automation, & Infrastructure Case Studies</h2>
+          <p class="text-black-50 mb-0">
+            Explore real-world solutions that combine <strong>Enterprise Networking (VLANs/Security)</strong>,
+            <strong>Container Orchestration (Docker/Proxmox)</strong>, and <strong>Cross-Platform Automation
+              (PowerShell/Python)</strong>. Each case study details the technical challenge, the specific tools
+            used,
+            and the delivered business solution.
+          </p>
+          <div class="mt-4">
+            <p class="text-black-50 small">
+              *More detailed projects are added regularly.
+            </p>
+          </div>
         </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/powershell-Scripting" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-01.png" alt="PowerShell Scripting Code Snippet" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-info me-1">PowerShell</span>
+                <span class="badge bg-primary me-1">Automation</span>
+                <span class="badge bg-dark">Windows/Azure</span>
+              </div>
+
+              <h5 class="card-title text-black">Windows Automation Scripts</h5>
+              <p class="card-text text-muted">A repository of reusable PowerShell scripts for routine IT and
+                system
+                administration tasks, demonstrating efficient automation and system management.</p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/powershell-Scripting"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/proxmox-automation" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-02.jpg" alt="Proxmox Server Automation Screenshot" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-danger me-1">Proxmox VE</span>
+                <span class="badge bg-dark me-1">Virtualization</span>
+                <span class="badge bg-success">Bash/Linux</span>
+                <span class="badge bg-primary">Infrastructure</span>
+              </div>
+
+              <h5 class="card-title text-black">Proxmox Automation Scripts</h5>
+              <p class="card-text text-muted">A collection of scripts designed to automate deployment and
+                maintenance
+                tasks in a Proxmox VE environment, showcasing infrastructure-as-code principles.</p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/proxmox-automation"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/media-download" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-03.jpg" alt="Media Server Application Dashboard" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-primary me-1">Docker</span>
+                <span class="badge bg-secondary me-1">Docker Compose</span>
+                <span class="badge bg-info">Containerization</span>
+                <span class="badge bg-success">Media Server</span>
+              </div>
+
+              <h5 class="card-title text-black">Containerized Media Downloader</h5>
+              <p class="card-text text-muted">A project using Docker Compose to deploy and manage a suite of
+                media
+                applications, focusing on robust container networking and configuration management.</p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/media-download"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/nextcloud-aio-setup" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-04.png"
+                alt="Nextcloud All-in-One Dashboard Screenshot" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-primary me-1">Docker AIO</span>
+                <span class="badge bg-danger me-1">PostgreSQL</span>
+                <span class="badge bg-info">Reverse Proxy</span>
+                <span class="badge bg-dark">Containerization</span>
+              </div>
+
+              <h5 class="card-title text-black">Secure Nextcloud Deployment</h5>
+              <p class="card-text text-muted">A fully containerized solution using Nextcloud AIO and Docker
+                Compose to
+                manage an entire self-hosted cloud platform, showcasing secure, scalable data storage and
+                service
+                orchestration.</p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/nextcloud-aio-setup"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/home-networking-setup" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-05.png" alt="Network Topology Diagram" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-danger me-1">Networking</span>
+                <span class="badge bg-info me-1">Linux</span>
+                <span class="badge bg-dark me-1">Security</span>
+                <span class="badge bg-primary">Routing/DNS</span>
+              </div>
+
+              <h5 class="card-title text-black">Advanced Home Networking Setup</h5>
+              <p class="card-text text-muted">Documentation and configuration files for a robust home network
+                utilizing
+                custom routing, VLAN segregation, and firewall policies to ensure security and performance.</p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/home-networking-setup"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/PythonProjects" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-006.jpg" alt="Python Collaborative Project Code" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-success me-1">Python</span>
+                <span class="badge bg-secondary me-1">Academic</span>
+                <span class="badge bg-info">Collaboration</span>
+              </div>
+
+              <h5 class="card-title text-black">Collaborative Academic Python</h5>
+              <p class="card-text text-muted">A collection of early-stage Python scripts developed during my
+                bachelor's
+                program in collaboration with a peer, demonstrating foundational programming logic and version
+                control
+                principles.</p>
+
+              <p class="card-text small text-muted mt-2">Focus on: *Foundational programming and source control
+                (Git).
+              </p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/PythonProjects"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/Simple-GUI-Chat" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-07.jpg" alt="Python Tkinter Chat Application UI" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-success me-1">Python</span>
+                <span class="badge bg-danger me-1">Networking</span>
+                <span class="badge bg-info">Multi-Threading</span>
+                <span class="badge bg-warning">Tkinter GUI</span>
+              </div>
+
+              <h5 class="card-title text-black">Multi-Threaded Chat Server</h5>
+              <p class="card-text text-muted">A fully functional TCP client-server chat application built from
+                scratch,
+                demonstrating core programming concepts: concurrent processing with Python's threading, and
+                socket-level
+                network communication.</p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/Simple-GUI-Chat"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 shadow border-0 project-card">
+            <a href="https://github.com/nicolasnkGH/Portfolio" target="_blank" class="card-img-link">
+              <img class="card-img-top" src="assets/img/demo-image-06.png"
+                alt="Portfolio Website Frontend Screenshot" />
+            </a>
+            <div class="card-body">
+              <div class="tech-badges mb-3">
+                <span class="badge bg-info me-1">HTML/CSS</span>
+                <span class="badge bg-warning me-1">JavaScript</span>
+                <span class="badge bg-primary me-1">Bootstrap 5</span>
+                <span class="badge bg-dark">Front-End Dev</span>
+              </div>
+
+              <h5 class="card-title text-black">Interactive Portfolio Development</h5>
+              <p class="card-text text-muted">The source repository for this website, demonstrating <strong>front-end
+                  development, responsive design (UX/UI),</strong> and client-side scripting for synchronized typing
+                effects.</p>
+            </div>
+            <div class="card-footer bg-white border-0 d-flex justify-content-center">
+              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/Portfolio"
+                target="_blank">
+                <i class="fab fa-github me-2"></i> View Repository
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
   </section>
 
   <!-- Add more projects below -->
