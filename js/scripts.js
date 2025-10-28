@@ -55,7 +55,12 @@ window.addEventListener('DOMContentLoaded', event => {
         
         // 3. Green highlight for Linux distros 
         finalContent = finalContent.replace('Debian, Ubuntu, RHEL', '<span class="linux-distro">Debian, Ubuntu, RHEL</span>');
-        
+
+        // 🚀 NEW: Highlight Scripting Languages (Using cli-highlight for high contrast)
+        finalContent = finalContent.replace('- Python (Scripting, Networking)', '- <span class="cli-highlight">Python</span> (Scripting, Networking)');
+        finalContent = finalContent.replace('- PowerShell (Windows/Azure Automation)', '- <span class="cli-highlight">PowerShell</span> (Windows/Azure Automation)');
+        finalContent = finalContent.replace('- Bash (Linux System Management)', '- <span class="cli-highlight">Bash</span> (Linux System Management)');
+            
         // CRITICAL: Replace raw newlines with HTML breaks to preserve spacing 
         finalContent = finalContent.replace(/\n/g, '<br>');
 

@@ -39,10 +39,12 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+
+          <li class="nav-item"><a class="nav-link" href="#work-experience">Experience</a></li>
+
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact-container">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="assets/Resume/NT-resume-web-portfolio2025.pdf" target="_blank"
-              </a>Resume</a></li>
+
         </ul>
       </div>
     </div>
@@ -69,32 +71,44 @@
 
     // The FULL CLI About Me content
     const cliText = `
-$ whoami 
-Nicolas Teixeira - Senior Systems and DevOps Engineer
 
-$ get_expertise_summary
+root@nt-systems:~# ping nick-t.net 
+Pinging nick-t.net [192.0.2.1] with 32 bytes of data:
+Reply from 104.21.23.160: bytes=32 time=12ms TTL=56 
+Reply from 104.21.23.160: bytes=32 time=13ms TTL=56 
+Reply from 104.21.23.160: bytes=32 time=12ms TTL=56 
+Reply from 104.21.23.160: bytes=32 time=12ms TTL=56 
+Ping statistics for 192.0.2.1: 
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss), 
+Approximate round trip times in milli-seconds: 
+    Minimum = 12ms, Maximum = 13ms, Average = 12ms 
+
+root@nt-systems:~# whoami 
+Nicolas Teixeira - Senior Systems and DevOps Engineer 
+
+root@nt-systems:~# get_expertise_summary 
 Deploying, securing, and automating mission-critical infrastructure across cloud and virtualization platforms.
 
-$ show_full_stack_focus
-> Cloud & CI/CD: Azure DevOps, AWS Migration, CI/CD Pipeline Development
-> Infrastructure as Code: Terraform, Ansible
+root@nt-systems:~# show_full_stack_focus
+> Cloud & CI/CD: Azure DevOps, AWS Migration, CI/CD Pipeline Development 
+> Infrastructure as Code: Terraform, Ansible 
 > Container Orchestration: Docker, Kubernetes
 > Networking & Security: VLAN Segmentation, Firewalls, SSO/IAM, Keycloak
 
-$ list_core_automation_languages
+root@nt-systems:~# list_core_automation_languages
 - Python (Scripting, Networking)
 - PowerShell (Windows/Azure Automation)
 - Bash (Linux System Management)
 
-$ get_systems_admin_focus
+root@nt-systems:~# get_systems_admin_focus
 - Linux (Debian, Ubuntu, RHEL) & Windows Server Administration
 - Proxmox and VMware Virtualization
 
-$ get_track_record
-- Led a $30M program for United Airlines.
+root@nt-systems:~# get_track_record 
+- Led a root@nt-systems:~#30M program for United Airlines.
 - Managed a critical AWS migration for Delta Airlines.
 
-$ exit
+root@nt-systems:~# exit
 `;
   </script>
 
@@ -129,6 +143,206 @@ $ exit
     </div>
   </section>
 
+  <!-- Work Experience-->
+  <section class="work-experience-section bg-dark" id="work-experience">
+    <div class="container px-4 px-lg-5">
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h2 class="text-white mb-5">Work Experience</h2>
+        </div>
+      </div>
+
+      <div class="timeline-container">
+
+        <div class="timeline-item timeline-left">
+          <div class="timeline-dot bg-info"></div>
+          <div class="timeline-content timeline-content-left">
+            <h3>System Engineer</h3>
+            <h4>ADB Safegate | April 2023 – Present</h4>
+            <ul class="responsibilities">
+              <li>Designed and deployed secure, scalable infrastructure for <strong>mission-critical airport
+                  systems</strong>.</li>
+              <li>Built and managed <strong>CI/CD pipelines with Azure DevOps</strong>, streamlining deployments.</li>
+              <li>Configured <strong>HA clusters for databases</strong> and identity management systems (IAM, SSO, SSL).
+              </li>
+              <li><strong>Led AWS migration for Delta Airlines</strong>, ensuring continuity of a critical on-premise
+                system.</li>
+              <li>Directed a <strong>$30M United Airlines project</strong>, managing cross-functional teams end-to-end.
+              </li>
+              <li>Deployed and maintained <strong>Windows, Linux, and Kubernetes</strong> environments (bare-metal, VM,
+                cloud).</li>
+              <li>Developed a new wireless system, <strong>saving 1 hour/day in setup time</strong> and enabling remote
+                troubleshooting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-right">
+          <div class="timeline-dot bg-secondary"></div>
+          <div class="timeline-content timeline-content-right">
+            <h3>Product Support Specialist</h3>
+            <h4>LPL Financial | San Diego, CA</h4>
+            <p class="timeline-date">August 2021 – April 2023</p>
+            <ul class="responsibilities">
+              <li>Supported 4 proprietary financial systems, ensuring high reliability for <strong>hundreds of
+                  advisors</strong>.</li>
+              <li>Partnered with escalation teams to resolve <strong>high-priority issues under tight SLAs</strong>.
+              </li>
+              <li>Maintained service records for <strong>compliance and transparency</strong>.</li>
+              <li>Improved advisor experience by <strong>reducing recurring support issues</strong> through process
+                refinements.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-left">
+          <div class="timeline-dot bg-secondary"></div>
+          <div class="timeline-content timeline-content-left">
+            <h3>Technical Support Specialist II</h3>
+            <h4>Express Hospitality Inc. | San Diego, CA</h4>
+            <p class="timeline-date">July 2018 – July 2021</p>
+            <ul class="responsibilities">
+              <li>Managed provisioning, installation, and maintenance of <strong>hardware/software systems</strong>.
+              </li>
+              <li>Configured desktops and <strong>streamlined onboarding</strong> for new hires.</li>
+              <li>Ensured <strong>uptime through proactive system monitoring</strong> and LAN/WAN maintenance.</li>
+              <li>Delivered on-site and remote troubleshooting, <strong>reducing downtime and support delays</strong>.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Certifications-->
+  <section class="education-cert-section bg-dark-section" id="education">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+        <div class="col-lg-10 text-center">
+          <h2 class="text-white">Education & Credentials</h2>
+        </div>
+      </div>
+
+      <div class="row gx-4 gx-lg-5 justify-content-center text-white">
+
+        <div class="col-md-6 mb-5">
+          <h4 class="text-info mb-4 text-center">Education</h4>
+
+          <div class="education-card p-4 mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-graduation-cap text-warning fa-2x me-3"></i>
+              <div>
+                <h5 class="text-white mb-0">M.S. in Software Engineering and DevOps Engineering</h5>
+                <p class="text-white-50 small mb-0">Western Governors University</p>
+              </div>
+            </div>
+            <p class="text-muted small ms-5 ps-3 mb-0">Expected Graduation June 2026</p>
+            <p class="text-muted small ms-5 ps-3 mb-0">(Accelerated program, on track for early completion)</p>
+          </div>
+
+          <div class="education-card p-4 mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-microchip text-warning fa-2x me-3"></i>
+              <div>
+                <h5 class="text-white mb-0">B.S. in Computer Science</h5>
+                <p class="text-white-50 small mb-0">University of the People</p>
+              </div>
+            </div>
+            <p class="text-muted small ms-5 ps-3 mb-0">Graduated August 2024</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-5">
+          <h4 class="text-info mb-4 text-center">Certifications & Licenses</h4>
+
+          <div class="education-card p-4 mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-award text-warning fa-2x me-3"></i>
+              <h5 class="text-white mb-0">Introduction to Cybersecurity</h5>
+            </div>
+            <p class="text-muted small ms-5 ps-3 mb-0">Issued: February 2023</p>
+          </div>
+
+          <div class="education-card p-4 mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-award text-warning fa-2x me-3"></i>
+              <h5 class="text-white mb-0">Cybersecurity for Business</h5>
+            </div>
+            <p class="text-muted small ms-5 ps-3 mb-0">Issued: March 2023</p>
+          </div>
+
+          <div class="education-card p-4 mb-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-award text-warning fa-2x me-3"></i>
+              <h5 class="text-white mb-0">CS50 Introduction to Computer Science</h5>
+            </div>
+            <p class="text-muted small ms-5 ps-3 mb-0">Issued: December 2021</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix-->
+  <section class="skills-matrix-section bg-card-bg" id="skills">
+    <div class="container px-4 px-lg-5 py-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h2 class="text-white mb-4">Technical Proficiency Matrix</h2>
+        </div>
+      </div>
+
+      <div class="row justify-content-center text-center">
+
+        <div class="col-md-4 mb-4 skills-group">
+    <h4 class="text-info mb-3">DEVOPS & IaC</h4>
+    <div class="skill-badges-container">
+        
+        <span class="badge bg-primary me-2 mb-2">Terraform</span>
+        <span class="badge bg-primary me-2 mb-2">Ansible</span>
+        
+        <span class="badge bg-info me-2 mb-2">Azure DevOps</span>
+        <span class="badge bg-info me-2 mb-2">CI/CD Pipelines</span>
+        
+        <span class="badge bg-success me-2 mb-2">Docker</span>
+        <span class="badge bg-success me-2 mb-2">Kubernetes (k9s)</span>
+        
+    </div>
+</div>
+
+            <div class="col-md-4 mb-4 skills-group">
+                <h4 class="text-info mb-3">SCRIPTING & CLOUD</h4>
+                <div class="skill-badges-container">
+                    <span class="badge bg-dark me-2 mb-2">Python</span>
+                    <span class="badge bg-dark me-2 mb-2">PowerShell</span>
+                    <span class="badge bg-dark me-2 mb-2">Bash</span>
+                    <span class="badge bg-dark me-2 mb-2">AWS</span>
+                    <span class="badge bg-dark me-2 mb-2">Azure</span>
+                    <span class="badge bg-secondary me-2 mb-2">Proxmox</span>
+                    <span class="badge bg-secondary me-2 mb-2">VMware / Hyper-V</span>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 skills-group">
+                <h4 class="text-info mb-3">SYSTEMS & NETWORKING</h4>
+                <div class="skill-badges-container">
+                    <span class="badge bg-dark me-2 mb-2">Linux (RHEL/Debian)</span>
+                    <span class="badge bg-dark me-2 mb-2">Windows Server</span>
+                    <span class="badge bg-secondary me-2 mb-2">VLANs / Firewalls</span>
+                    <span class="badge bg-secondary me-2 mb-2">Keycloak (SSO/IAM)</span>
+                    <span class="badge bg-secondary me-2 mb-2">Wireshark / SIEM</span>
+                    <span class="badge bg-secondary me-2 mb-2">JIRA / Support Tools</span>
+                </div>
+            </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Projects-->
 
@@ -440,9 +654,6 @@ $ exit
               </a>
               <a class="mx-2" href="https://github.com/nicolasnkgh" target="_blank">
                 <i class="fab fa-github fa-2x"></i>
-              </a>
-              <a class="mx-2" href="assets/Resume/NT-resume-web-portfolio2025.pdf" target="_blank">
-                <i class="far fa-file-pdf fa-2x"></i>
               </a>
             </div>
           </div>
