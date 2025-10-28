@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded', event => {
     if (cliOutputElement) {
         setTimeout(() => {
             // Pass true for the isCliOutput flag
-            startTyping(cliText, cliOutputElement, 'typing-done', 35, true); 
+            startTyping(cliText, cliOutputElement, 'typing-done', 10, true); 
         }, 3500); // 3.5 second delay (runs after header is fully done)
     }
 });
