@@ -11831,10 +11831,10 @@ body {
 
 /* 1. PROJECTS SECTION BACKGROUND (Lighter Dark Gray: #111111) */
 .projects-section {
-    clear: both; /* Required to start below the timeline's floats */
+    /* CRITICAL: Set to the LIGHTER dark gray (#111111) to contrast with the Work Experience above */
     background-color: var(--bs-dark-section) !important; 
     padding-top: 10rem !important; 
-    padding-bottom: 5rem; 
+    padding-bottom: 5rem;
     color: #fff;
 }
 
@@ -12091,25 +12091,30 @@ body {
     padding-bottom: 5rem;
 }
 
+/* --- FINAL INTEGRATED WORK EXPERIENCE TIMELINE STYLING (Dark Theme) --- */
+
+/* Base Section Styling */
+.work-experience-section {
+    /* Set to PURE BLACK (or your preferred darkest shade) for max contrast */
+    background-color: #000 !important; 
+    padding: 5rem 0; 
+}
+
+/* Timeline Container (Draws the central line) */
 .timeline-container {
-    position: relative;
-    max-width: 900px;
+    max-width: 1000px; /* Max width to contain items */
     margin: 0 auto;
+    position: relative;
     padding: 0;
 }
 
-.timeline-container::after {
-    content: "";
-    display: table;
-    clear: both; /* This forces the Projects section below */
-}
-
-/* 1. The Central Vertical Line */
+/* 1. The Vertical Line */
 .timeline-container::before {
     content: '';
     position: absolute;
     width: 2px;
-    background-color: #495057; /* Darker line color for subtle contrast */
+    /* Use a visible dark gray for the line */
+    background-color: var(--bs-gray-dark); 
     top: 0;
     bottom: 0;
     left: 50%;
@@ -12117,115 +12122,116 @@ body {
     z-index: 0;
 }
 
-/* 2. Timeline Items (Overall Structure) */
+/* 2. Timeline Items (Alternating Positioning - Keep this original logic) */
 .timeline-item {
-    margin-bottom: 30px;
+    padding: 10px 40px;
     position: relative;
-    width: 50%; /* Each item takes half the container width */
+    width: 50%;
     box-sizing: border-box;
-    padding: 0 40px; /* Space for the dot and line */
+    margin-bottom: 30px;
 }
 
-/* Items on the LEFT */
 .timeline-item:nth-child(odd) {
-    left: 0; /* Stays on the left */
-    padding-right: 50px; /* Creates space for the content on the left */
-    text-align: right;
+    left: 0;
 }
 
-/* Items on the RIGHT */
 .timeline-item:nth-child(even) {
-    left: 50%; /* Shifts item to the right half */
-    padding-left: 50px; /* Creates space for the content on the right */
-    text-align: left;
+    left: 50%;
 }
 
 /* 3. The Dot/Marker */
 .timeline-dot {
-    position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
+    /* Uses your primary accent color */
+    background-color: var(--bs-primary); 
     border-radius: 50%;
-    background-color: var(--bs-info); /* Default accent color */
-    border: 3px solid var(--bs-dark-section); /* Border matches the section color to stand out */
-    top: 20px;
+    position: absolute;
+    /* Positions dot on the center line for left-side item */
+    right: -10px;
+    top: 15px;
     z-index: 10;
 }
 
-/* Dot Position on LEFT Item */
-.timeline-item:nth-child(odd) .timeline-dot {
-    right: -7px; /* Aligns dot to the center line */
-}
-
-/* Dot Position on RIGHT Item */
 .timeline-item:nth-child(even) .timeline-dot {
-    left: -7px; /* Aligns dot to the center line */
+    /* Positions dot on the center line for right-side item */
+    left: -10px;
+    right: auto;
 }
 
 /* 4. Content Panel Styling (The Job Box) */
-.timeline-content-left, .timeline-content-right {
-    /* Set background to the DARKER shade (#212529) for contrast */
-    background-color: var(--bs-card-bg) !important; /* #212529 */
+.timeline-content {
     padding: 20px;
-    border-radius: 8px;
-    /* Ensure a light shadow to lift it off the black background */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* 5. Content Text */
-.timeline-content-left h3, .timeline-content-right h3 {
-    color: var(--bs-info) !important; /* Teal accent color */
-}
-.timeline-content-left h4, .timeline-content-right h4, .timeline-period {
-    color: var(--bs-gray-500) !important; /* Light gray for readability */
-}
-.responsibilities li {
-    color: #adb5bd !important; /* Light gray text */
-}
-
-/* List Styling (Bullet Points) */
-.responsibilities {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 15px;
-}
-.responsibilities li {
-    color: #adb5bd !important;
-    margin-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1.2em;
-    text-align: left; /* Ensure bullet points align left regardless of item position */
-}
-.responsibilities li::before {
-    content: "•";
-    color: var(--bs-primary);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-    width: 1em;
-}
-
-/* --- TIMELINE HOVER EFFECT --- */
-
-/* Targets the content panel (the job box) */
-.timeline-content-left, .timeline-content-right {
-    /* Enable transitions for smooth effect */
+    /* Use your dark card background color */
+    background-color: var(--bs-card-bg); 
+    border-radius: 10px;
+    /* Subtle shadow for depth */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    /* Enable hover effects if you had them */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
-/* On hover, lift the box and apply a shadow */
-.timeline-content-left:hover, 
-.timeline-content-right:hover {
-    transform: translateY(-5px); /* Lifts the element up 5 pixels */
-    /* Use a shadow for a subtle glow */
-    box-shadow: 0 1rem 1.5rem rgba(100, 161, 157, 0.15), /* Lighter teal glow */
-                0 0.5rem 1rem rgba(0, 0, 0, 0.3); /* Stronger dark base shadow */
+.timeline-content:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Optional: Make the bullet point slightly bigger on hover for emphasis */
-.responsibilities li:hover::before {
-    font-size: 1.1em;
-    transition: font-size 0.2s;
+
+/* 5. Text Styling (Inverting Colors for Dark Theme) */
+.timeline-content h3 {
+    /* Use your accent color for the title */
+    color: var(--bs-info); 
+}
+
+.timeline-content h4 {
+    /* Use light gray for company name */
+    color: var(--bs-gray-500); 
+}
+
+.timeline-date {
+    font-style: italic;
+    /* Use lighter gray for dates */
+    color: var(--bs-gray-600); 
+}
+
+/* Responsibilities List */
+.responsibilities {
+    padding-left: 20px;
+}
+
+.responsibilities li {
+    color: #adb5bd; /* Light text color */
+}
+
+.responsibilities li::before {
+    /* Use your accent color for the bullet point */
+    color: var(--bs-primary); 
+}
+
+
+/* --- CRITICAL MOBILE STACKING FIX --- */
+/* You need to ensure this logic is applied for mobile devices */
+@media (max-width: 992px) {
+    .timeline-container::before {
+        left: 40px; /* Shift line to the side */
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px; /* Increase space for content */
+        padding-right: 0;
+        left: 0; /* Align all items to the left */
+        text-align: left !important; /* Force text left for readability */
+    }
+    .timeline-item:nth-child(even) {
+        left: 0; /* Override the right-side positioning */
+        padding-left: 80px;
+    }
+    .timeline-dot {
+        left: 30px; /* Position dot near the new left line */
+        right: auto;
+    }
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 30px;
+    }
 }
 
 /* --- EDUCATION & CERTIFICATION CARD STYLING --- */
@@ -12291,4 +12297,78 @@ body {
 /* Ensure the light/white badge stays legible with dark text */
 .skill-badges-container .badge.bg-light {
     color: #212529 !important; /* Forces black text on the light background */
+}
+
+/* --- CRITICAL MOBILE FIX: CLI Output Wrapping --- */
+
+@media (max-width: 576px) { 
+    /* Target the pre and code block specifically */
+    .cli-terminal-container pre.cli-content code {
+        /* CRITICAL: Force wrapping of text content */
+        white-space: pre-wrap !important; 
+        
+        /* Reduce font size slightly for readability on tiny screens */
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+    }
+}
+
+/* --- CRITICAL MOBILE FIX: Timeline Content Wrapping and Alignment --- */
+
+@media (max-width: 992px) {
+    /* Revert text alignment for all timeline content on mobile */
+    .timeline-item {
+        /* CRITICAL: Ensure text is left-aligned and not forced right */
+        text-align: left !important;
+        /* Increase padding slightly for comfortable reading */
+        padding-left: 50px !important; 
+        padding-right: 10px !important; 
+    }
+
+    /* Fix the text within the content panel */
+    .timeline-panel h3,
+    .timeline-panel h4,
+    .timeline-panel p {
+        text-align: left !important; 
+    }
+
+    /* Ensure list bullets (responsibilities) align correctly */
+    .responsibilities li {
+        text-align: left !important;
+        /* Fix the bullet symbol position relative to the new padding */
+        padding-left: 1.5em; 
+    }
+    .responsibilities li::before {
+        left: 0; 
+    }
+
+    /* Ensure job titles are not excessively large on small screens */
+    .timeline-title {
+        font-size: 1.25rem !important;
+        line-height: 1.2;
+    }
+}
+
+/* --- FINAL MOBILE TIMELINE AESTHETICS (Tuning) --- */
+
+@media (max-width: 992px) {
+    /* Target the text box wrapper */
+    .timeline-content-left, .timeline-content-right {
+        padding: 15px !important; 
+        box-sizing: border-box; 
+    }
+    
+    /* Target the main job title for visual prominence */
+    .timeline-content-left h3, .timeline-content-right h3 {
+        /* Increase font size on mobile to make the role stand out */
+        font-size: 1.3rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Target the individual item container */
+    .timeline-item {
+        /* Adjust padding to pull content slightly away from the center line */
+        padding-left: 55px !important; 
+        padding-right: 15px !important;
+    }
 }
