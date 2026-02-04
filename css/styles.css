@@ -11566,18 +11566,191 @@ body {
   border: 0;
 }
 
+.masthead .btn {
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 10px 20px;
+}
+
+.masthead .btn-primary {
+  background-color: #4f9d9d;
+  border: none;
+}
+
+.masthead .btn-primary:hover {
+  background-color: #3f7f7f;
+}
+
+.masthead .btn-outline-light {
+  border: 1px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.85);
+}
+
+.masthead .btn-outline-light:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.6);
+  color: white;
+}
+
+.masthead .btn-link {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.masthead .btn-link:hover {
+  text-decoration: underline;
+}
+
+
+/* Masthead CTA alignment: same height, consistent look */
+.masthead .masthead-typing-box .btn {
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Primary */
+.masthead .masthead-typing-box .btn-primary {
+  background: #4f9d9d;
+  border: 0;
+}
+.masthead .masthead-typing-box .btn-primary:hover {
+  background: #3f7f7f;
+}
+
+/* Outline */
+.masthead .masthead-typing-box .btn-outline-light {
+  border-color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.15);
+}
+.masthead .masthead-typing-box .btn-outline-light:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.55);
+  color: #fff;
+}
+
+/* “Contact” should not look like a random link */
+.masthead .masthead-typing-box .btn-link {
+  text-decoration: none;
+  padding: 10px 12px;
+  color: rgba(255,255,255,0.7);
+}
+.masthead .masthead-typing-box .btn-link:hover {
+  color: rgba(255,255,255,0.95);
+  text-decoration: underline;
+}
+
+/* Masthead CTA “glass” container */
+.masthead-cta-glass {
+  display: inline-block;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.30);
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+}
+
+/* Make CTA buttons feel consistent */
+.masthead .masthead-typing-box .btn {
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Optional: slightly nicer outline buttons */
+.masthead .masthead-typing-box .btn-outline-light {
+  border-color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.18);
+}
+.masthead .masthead-typing-box .btn-outline-light:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.55);
+  color: #fff;
+}
+
+.masthead-cta-glass {
+  margin-top: 1.25rem; /* instead of relying on mt-2 */
+}
+
+#masthead-subtitle {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  font-size: 1rem;
+  opacity: 0.85;
+  letter-spacing: 0.4px;
+}
+
+#mainNav .nav-link {
+  opacity: 0.75;
+}
+#mainNav .nav-link:hover {
+  opacity: 1;
+}
+
+
 .masthead {
   position: relative;
   width: 100%;
   height: auto;
-  min-height: 35rem;
-  padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/header.jpg");
+  min-height: 100vh;
+  padding: 10rem 0 8rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.85) 80%, #000 100%), url("../assets/img/header.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
+
+
+.masthead {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.masthead::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65); /* increase contrast */
+  z-index: 0;
+}
+
+
+.masthead {
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(6px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.masthead .container {
+  position: relative;
+  z-index: 2;
+}
+
+
 .masthead h1, .masthead .h1 {
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
@@ -11612,21 +11785,53 @@ body {
     max-width: 30rem;
     font-size: 1.25rem;
   }
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.hero-cta .btn {
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+}
+
+.hero-cta .btn-outline-light {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-cta .btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.hero-cta .btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+
 }
 
 /* --- ENHANCED ABOUT SECTION STYLES --- */
 .about-section {
-    padding-top: 10rem;
-    padding-bottom: 10rem; 
-    /* Change background to a very dark gray to ensure black border is visible */
-    background-color: var(--bs-dark-section) !important;  
+  padding-top: 6rem;     /* was 10rem */
+  padding-bottom: 7rem;  /* was 10rem */
+  background-color: var(--bs-dark-section) !important;
 }
+
 
 /* Increase the bottom margin on the paragraph for more vertical space below the text block */
 .about-section p {
-  margin-bottom: 5rem;
-  font-size: 1.1rem; /* Slightly increase font size for better readability on this dark background */
+  margin-bottom: 1.5rem;   /* was 5rem */
+  font-size: 1.1rem;
 }
+
 
 /* Target the H2 (About title) to give it a little more emphasis */
 .about-section h2 {
@@ -11639,6 +11844,10 @@ body {
   .img-fluid:hover {
     opacity: 0.7;
   }
+
+.about-section {
+  background: linear-gradient(to bottom, #000 0%, var(--bs-dark-section) 35%, #000 100%) !important;
+}
 
 /* ///// inputs for Contact me  ///// */ 
 
