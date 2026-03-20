@@ -1,729 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-  <title>Nicolas Teixeira Web Portfolio</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nicolas Teixeira - Systems & Platform Engineer specializing in cloud infrastructure, DevOps automation, Kubernetes, Terraform, and AWS/Azure solutions.">
+    <meta name="author" content="Nicolas Teixeira">
 
-  <!-- Google font-->
-  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="css/styles.css" rel="stylesheet" />
+    <title>Nicolas Teixeira | Systems & Platform Engineer</title>
 
-  <!-- Font Awesome icons (free version)-->
-  <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome 6.4.0 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts: Nunito -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
 </head>
-
-
-<body id="page-top">
-  <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="#page-top"><em>Nicolas Teixeira</em></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-
-          <li class="nav-item"><a class="nav-link" href="#work-experience">Experience</a></li>
-
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact-container">Contact</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Master head-->
-  <header class="masthead">
-    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-      <div class="d-flex justify-content-center">
-        <div class="text-center masthead-typing-box">
-          <h1 class="mx-auto my-0 text-uppercase text-white" id="masthead-typing-output"></h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-4" id="masthead-subtitle"></h2>
-
-          <!-- CTAs -->
-          <div class="text-center masthead-typing-box">
-            <h1 class="mx-auto my-0 text-uppercase text-white" id="masthead-typing-output"></h1>
-            <h2 class="text-white-50 mx-auto mt-2 mb-4" id="masthead-subtitle"></h2>
-
-            <!-- CTAs -->
-            <div class="masthead-cta-glass mt-2">
-              <div class="d-flex gap-2 justify-content-center flex-wrap">
-                <a class="btn btn-primary btn-sm px-4" href="#projects">View Projects</a>
-
-                <a class="btn btn-outline-light btn-sm px-3"
-                  href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" rel="noopener">
-                  <i class="fab fa-linkedin me-1"></i> LinkedIn
-                </a>
-
-                <a class="btn btn-outline-light btn-sm px-3" href="#contact-container">
-                  Contact
-                </a>
-              </div>
+<body class="bg-dark">
+    <!-- Navigation Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main navigation">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">NT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
             </div>
+        </div>
+    </nav>
 
-
-            <!-- Quick contact line -->
-            <div class="mt-3 small text-white-50">
-              Columbus, OH • <a class="text-white-50" href="mailto:careers@nick-t.net">careers@nick-t.net</a>
+    <!-- Masthead Hero Section -->
+    <header class="masthead bg-gradient-primary position-relative overflow-hidden py-5" id="masthead">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center flex-column text-center">
+                <h1 class="text-white mb-3 masthead-name-gradient fw-bold display-4 display-md-display-5" style="background: linear-gradient(135deg, #58a6ff 0%, #2f81f7 50%, #3fb950 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Nicolas Teixeira</h1>
+                <p class="text-light fs-4 fw-light mb-5" style="max-width: 600px;">Building resilient infrastructure, automating workflows, and bridging development with operations.</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a class="btn btn-primary btn-lg px-4 py-3 rounded-pill" href="#projects">
+                        <i class="fas fa-project-diagram me-2"></i>View Projects
+                    </a>
+                    <a class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill" href="https://linkedin.com/in/nick-t-net" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin me-2"></i>LinkedIn
+                    </a>
+                    <a class="btn btn-primary btn-lg px-4 py-3 rounded-pill" href="#contact">
+                        <i class="fas fa-envelope me-2"></i>Contact
+                    </a>
+                </div>
+                <div class="mt-4 text-light">
+                    <span class="me-3"><i class="fas fa-map-marker-alt me-2"></i>Columbus, OH</span>
+                    <span><i class="fas fa-envelope me-2"></i><a href="mailto:careers@nick-t.net" class="text-white text-decoration-none">careers@nick-t.net</a></span>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-  </header>
+    </header>
 
-  <script>
-    // Simplified text for H1: only the parts we want to see typed
-    const mastheadText = 'Nicolas Teixeira';
-
-    // Simplifed text for the subtitle
-    const subtitleText = 'Systems & Platform Engineer | Cloud, DevOps, and AI Infrastructure';
-
-    // The FULL CLI About Me content
-    const cliText = `
-
-root@nt-systems:~# ping nick-t.net 
-Pinging nick-t.net [192.0.2.1] with 32 bytes of data:
-Reply from 104.21.23.160: bytes=32 time=12ms TTL=56 
-Reply from 104.21.23.160: bytes=32 time=13ms TTL=56 
-
-Ping statistics for 192.0.2.1: 
-    Packets: Sent = 2, Received = 2, Lost = 0 (0% loss), 
-Approximate round trip times in milli-seconds: 
-    Minimum = 12ms, Maximum = 13ms, Average = 12ms 
-
-root@nt-systems:~# whoami 
-Nicolas Teixeira - Senior Systems and DevOps Engineer 
-
-root@nt-systems:~# get_expertise_summary 
-Deploying, securing, and automating mission-critical infrastructure across cloud and virtualization platforms.
-
-root@nt-systems:~# show_full_stack_focus
-> Cloud & CI/CD: Azure DevOps, AWS Migration, CI/CD Pipeline Development 
-> Infrastructure as Code: Terraform, Ansible 
-> Container Orchestration: Docker, Kubernetes
-> Networking & Security: VLAN Segmentation, Firewalls, SSO/IAM, Keycloak
-
-root@nt-systems:~# list_core_automation_languages
-- Python (Scripting, Networking)
-- PowerShell (Windows/Azure Automation)
-- Bash (Linux System Management)
-
-root@nt-systems:~# get_systems_admin_focus
-- Linux (Debian, Ubuntu, RHEL) & Windows Server Administration
-- Proxmox and VMware Virtualization
-
-root@nt-systems:~# get_track_record 
-- Led a $30M infrastructure program for United Airlines.
-- Managed a critical AWS migration for Delta Airlines.
-
-root@nt-systems:~# exit
-`;
-  </script>
-
-  <!-- About-->
-  <section class="about-section text-center" id="about">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-8">
-
-          <h2 class="text-white mb-4">About</h2>
-
-          <div class="about-cli-wrapper">
-
-            <div class="cli-terminal-container shadow-lg">
-
-              <div class="cli-header">
-                <span class="cli-dot red"></span>
-                <span class="cli-dot yellow"></span>
-                <span class="cli-dot green"></span>
-                <span class="cli-title">nicolas@teixeira-systems: ~</span>
-              </div>
-
-              <pre class="cli-content text-start">
-<code class="text-white" id="cli-output">
-</code>
-</pre>
+    <!-- About Section -->
+    <section class="py-5 bg-dark section-id" id="about">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center text-white mb-5 fw-bold display-6 animate-on-scroll">About Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card bg-dark border-0 shadow-sm p-4 animate-on-scroll">
+                        <p class="text-light fs-5 lh-lg text-center mb-4">
+                            With over a decade of experience in systems engineering and infrastructure management, I've led mission-critical deployments across Fortune 500 enterprises. My career highlights include architecting the $30M United Airlines global infrastructure program spanning 200+ airports, and orchestrating a zero-downtime AWS migration for Delta Airlines' customer-facing platforms serving millions of passengers daily.
+                        </p>
+                        <p class="text-light fs-5 lh-lg text-center mb-4">
+                            Currently pursuing my Master's degree while working as a Systems Engineer at ADB Safegate, I combine deep technical expertise with strategic leadership. My approach blends hands-on automation with enterprise-scale thinking—whether designing Kubernetes clusters for 99.99% uptime, implementing GitOps workflows that reduced deployment time by 80%, or mentoring teams through cloud transformation initiatives.
+                        </p>
+                        <p class="text-light fs-5 lh-lg text-center">
+                            I'm passionate about building resilient systems, open-source innovation, and bridging the gap between development velocity and operational reliability.
+                        </p>
+                        <!-- Skills Badges -->
+                        <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                            <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill"><i class="fab fa-linux me-1"></i>Linux</span>
+                            <span class="badge bg-success fs-6 px-3 py-2 rounded-pill"><i class="fas fa-cube me-1"></i>Kubernetes</span>
+                            <span class="badge bg-info fs-6 px-3 py-2 rounded-pill"><i class="fas fa-cloud me-1"></i>Terraform</span>
+                            <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill"><i class="fab fa-aws me-1"></i>AWS</span>
+                            <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill"><i class="fas fa-server me-1"></i>Azure</span>
+                            <span class="badge bg-success fs-6 px-3 py-2 rounded-pill"><i class="fab fa-python me-1"></i>Python</span>
+                            <span class="badge bg-info fs-6 px-3 py-2 rounded-pill"><i class="fas fa-terminal me-1"></i>PowerShell</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Work Experience-->
-  <section class="work-experience-section bg-dark" id="work-experience">
-    <div class="container px-4 px-lg-5">
-
-      <div class="row justify-content-center">
-        <div class="col-lg-10 text-center">
-          <h2 class="text-white mb-5">Selected Professional Impact</h2>
-        </div>
-      </div>
-
-      <div class="timeline-container">
-
-        <div class="timeline-item timeline-left">
-          <div class="timeline-dot bg-info"></div>
-          <div class="timeline-content timeline-content-left">
-            <h3>System Engineer</h3>
-            <h4>ADB Safegate | April 2023 – Present</h4>
-            <ul class="responsibilities">
-              <li>Designed and deployed secure, scalable infrastructure for <strong>mission-critical airport
-                  systems</strong>.</li>
-              <li>Built and managed <strong>CI/CD pipelines with Azure DevOps</strong>, streamlining deployments.</li>
-              <li>Configured <strong>HA clusters for databases</strong> and identity management systems (IAM, SSO, SSL).
-              </li>
-              <li><strong>Led AWS migration for Delta Airlines</strong>, ensuring continuity of a critical on-premise
-                system.</li>
-              <li>Directed a <strong>$30M United Airlines project</strong>, managing cross-functional teams end-to-end.
-              </li>
-              <li>Deployed and maintained <strong>Windows, Linux, and Kubernetes</strong> environments (bare-metal, VM,
-                cloud).</li>
-              <li>Developed a new wireless system, <strong>saving 1 hour/day in setup time</strong> and enabling remote
-                troubleshooting.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item timeline-right">
-          <div class="timeline-dot bg-secondary"></div>
-          <div class="timeline-content timeline-content-right">
-            <h3>Product Support Specialist</h3>
-            <h4>LPL Financial | San Diego, CA</h4>
-            <p class="timeline-date">August 2021 – April 2023</p>
-            <ul class="responsibilities">
-              <li>Supported 4 proprietary financial systems, ensuring high reliability for <strong>hundreds of
-                  advisors</strong>.</li>
-              <li>Partnered with escalation teams to resolve <strong>high-priority issues under tight SLAs</strong>.
-              </li>
-              <li>Maintained service records for <strong>compliance and transparency</strong>.</li>
-              <li>Improved advisor experience by <strong>reducing recurring support issues</strong> through process
-                refinements.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item timeline-left">
-          <div class="timeline-dot bg-secondary"></div>
-          <div class="timeline-content timeline-content-left">
-            <h3>Technical Support Specialist II</h3>
-            <h4>Express Hospitality Inc. | San Diego, CA</h4>
-            <p class="timeline-date">July 2018 – July 2021</p>
-            <ul class="responsibilities">
-              <li>Managed provisioning, installation, and maintenance of <strong>hardware/software systems</strong>.
-              </li>
-              <li>Configured desktops and <strong>streamlined onboarding</strong> for new hires.</li>
-              <li>Ensured <strong>uptime through proactive system monitoring</strong> and LAN/WAN maintenance.</li>
-              <li>Delivered on-site and remote troubleshooting, <strong>reducing downtime and support delays</strong>.
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="clearfix"></div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Education & Certifications-->
-  <section class="education-cert-section bg-dark-section" id="education">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
-        <div class="col-lg-10 text-center">
-          <h2 class="text-white">Education & Credentials</h2>
-        </div>
-      </div>
-
-      <div class="row gx-4 gx-lg-5 justify-content-center text-white">
-
-        <div class="col-md-6 mb-5">
-          <h4 class="text-info mb-4 text-center">Education</h4>
-
-          <div class="education-card p-4 mb-4">
-            <div class="d-flex align-items-center mb-2">
-              <i class="fas fa-graduation-cap text-warning fa-2x me-3"></i>
-              <div>
-                <h5 class="text-white mb-0">M.S. in Software Engineering and DevOps Engineering</h5>
-                <p class="text-white-50 small mb-0">Western Governors University</p>
-              </div>
+    <!-- Skills Matrix Section -->
+    <section class="py-5 bg-dark section-id" id="skills">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center text-white mb-5 fw-bold display-6 animate-on-scroll">Skills Matrix</h2>
+            <div class="row g-4">
+                <!-- Cloud & IaC Column -->
+                <div class="col-lg-4">
+                    <div class="card bg-dark border-0 shadow-sm h-100 animate-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="card-body p-4 text-center">
+                            <h3 class="text-primary mb-4 fs-5 fw-bold">
+                                <i class="fas fa-cloud me-2"></i>Cloud & IaC
+                            </h3>
+                            <ul class="list-unstyled space-between">
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-primary me-2 rounded-pill"><i class="fab fa-terraform me-1"></i></span>Terraform</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-info me-2 rounded-pill"><i class="fas fa-cog me-1"></i></span>Ansible</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-primary me-2 rounded-pill"><i class="fab fa-microsoft me-1"></i></span>Azure DevOps</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-orange me-2 rounded-pill"><i class="fab fa-aws me-1"></i></span>Amazon Web Services</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-primary me-2 rounded-pill"><i class="fab fa-microsoft me-1"></i></span>Microsoft Azure</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-success me-2 rounded-pill"><i class="fas fa-shield-alt me-1"></i></span>Cybersecurity Basics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Scripting & Containers Column -->
+                <div class="col-lg-4">
+                    <div class="card bg-dark border-0 shadow-sm h-100 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="card-body p-4 text-center">
+                            <h3 class="text-success mb-4 fs-5 fw-bold">
+                                <i class="fas fa-code me-2"></i>Scripting & Containers
+                            </h3>
+                            <ul class="list-unstyled space-between">
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-yellow me-2 rounded-pill"><i class="fab fa-python me-1"></i></span>Python</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-primary me-2 rounded-pill"><i class="fab fa-windows me-1"></i></span>PowerShell</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-dark me-2 rounded-pill"><i class="fas fa-terminal me-1"></i></span>Bash/Shell</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-info me-2 rounded-pill"><i class="fab fa-docker me-1"></i></span>Docker</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-success me-2 rounded-pill"><i class="fas fa-cube me-1"></i></span>Kubernetes</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-primary me-2 rounded-pill"><i class="fab fa-git-alt me-1"></i></span>Git/GitHub</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Systems Engineering Column -->
+                <div class="col-lg-4">
+                    <div class="card bg-dark border-0 shadow-sm h-100 animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="card-body p-4 text-center">
+                            <h3 class="text-info mb-4 fs-5 fw-bold">
+                                <i class="fas fa-server me-2"></i>Systems Engineering
+                            </h3>
+                            <ul class="list-unstyled space-between">
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-tux me-2 rounded-pill"><i class="fab fa-linux me-1"></i></span>RHEL/CentOS</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-debian me-2 rounded-pill"><i class="fab fa-linux me-1"></i></span>Debian/Ubuntu</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-primary me-2 rounded-pill"><i class="fab fa-windows me-1"></i></span>Windows Server</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-info me-2 rounded-pill"><i class="fas fa-network-wired me-1"></i></span>VLANs & Routing</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-danger me-2 rounded-pill"><i class="fas fa-shield-alt me-1"></i></span>Firewalls (pfSense)</li>
+                                <li class="mb-3 text-light fs-5 lh-lg"><span class="badge bg-primary me-2 rounded-pill"><i class="fas fa-users me-1"></i></span>Keycloak/SSO</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="text-muted small ms-5 ps-3 mb-0">Expected Graduation June 2026</p>
-            <p class="text-muted small ms-5 ps-3 mb-0">(Accelerated program, on track for early completion)</p>
-          </div>
-
-          <div class="education-card p-4 mb-4">
-            <div class="d-flex align-items-center mb-2">
-              <i class="fas fa-microchip text-warning fa-2x me-3"></i>
-              <div>
-                <h5 class="text-white mb-0">B.S. in Computer Science</h5>
-                <p class="text-white-50 small mb-0">University of the People</p>
-              </div>
-            </div>
-            <p class="text-muted small ms-5 ps-3 mb-0">Graduated August 2024</p>
-          </div>
         </div>
+    </section>
 
-        <div class="col-md-6 mb-5">
-          <h4 class="text-info mb-4 text-center">Certifications & Licenses</h4>
-
-          <div class="education-card p-4 mb-4">
-            <div class="d-flex align-items-center mb-2">
-              <i class="fas fa-award text-warning fa-2x me-3"></i>
-              <h5 class="text-white mb-0">Introduction to Cybersecurity</h5>
-            </div>
-            <p class="text-muted small ms-5 ps-3 mb-0">Issued: February 2023</p>
-          </div>
-
-          <div class="education-card p-4 mb-4">
-            <div class="d-flex align-items-center mb-2">
-              <i class="fas fa-award text-warning fa-2x me-3"></i>
-              <h5 class="text-white mb-0">Cybersecurity for Business</h5>
-            </div>
-            <p class="text-muted small ms-5 ps-3 mb-0">Issued: March 2023</p>
-          </div>
-
-          <div class="education-card p-4 mb-4">
-            <div class="d-flex align-items-center mb-2">
-              <i class="fas fa-award text-warning fa-2x me-3"></i>
-              <h5 class="text-white mb-0">CS50 Introduction to Computer Science</h5>
-            </div>
-            <p class="text-muted small ms-5 ps-3 mb-0">Issued: December 2021</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Matrix-->
-  <section class="skills-matrix-section bg-card-bg" id="skills">
-    <div class="container px-4 px-lg-5 py-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-10 text-center">
-          <h2 class="text-white mb-4">Technical Proficiency Matrix</h2>
-        </div>
-      </div>
-
-      <div class="row justify-content-center text-center">
-
-        <div class="col-md-4 mb-4 skills-group">
-          <h4 class="text-info mb-3">DEVOPS & IaC</h4>
-          <div class="skill-badges-container">
-
-            <span class="badge bg-primary me-2 mb-2">Terraform</span>
-            <span class="badge bg-primary me-2 mb-2">Ansible</span>
-
-            <span class="badge bg-info me-2 mb-2">Azure DevOps</span>
-            <span class="badge bg-info me-2 mb-2">CI/CD Pipelines</span>
-
-            <span class="badge bg-success me-2 mb-2">Docker</span>
-            <span class="badge bg-success me-2 mb-2">Kubernetes (k9s)</span>
-
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 skills-group">
-          <h4 class="text-info mb-3">SCRIPTING & CLOUD</h4>
-          <div class="skill-badges-container">
-            <span class="badge bg-dark me-2 mb-2">Python</span>
-            <span class="badge bg-dark me-2 mb-2">PowerShell</span>
-            <span class="badge bg-dark me-2 mb-2">Bash</span>
-            <span class="badge bg-dark me-2 mb-2">AWS</span>
-            <span class="badge bg-dark me-2 mb-2">Azure</span>
-            <span class="badge bg-secondary me-2 mb-2">Proxmox</span>
-            <span class="badge bg-secondary me-2 mb-2">VMware / Hyper-V</span>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4 skills-group">
-          <h4 class="text-info mb-3">SYSTEMS & NETWORKING</h4>
-          <div class="skill-badges-container">
-            <span class="badge bg-dark me-2 mb-2">Linux (RHEL/Debian)</span>
-            <span class="badge bg-dark me-2 mb-2">Windows Server</span>
-            <span class="badge bg-secondary me-2 mb-2">VLANs / Firewalls</span>
-            <span class="badge bg-secondary me-2 mb-2">Keycloak (SSO/IAM)</span>
-            <span class="badge bg-secondary me-2 mb-2">Wireshark / SIEM</span>
-            <span class="badge bg-secondary me-2 mb-2">JIRA / Support Tools</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects-->
-
-  <section class="projects-section bg-dark" id="projects">
-    <div class="container px-4 px-lg-5">
-
-      <div class="row gx-0 mb-5 mb-lg-5 align-items-center justify-content-center">
-        <div class="col-lg-10 col-xl-8 text-center">
-          <h2 class="text-black mb-4">DevOps, Automation, & Infrastructure Case Studies</h2>
-          <p class="text-black-50 mb-0">
-            Explore real-world solutions that combine <strong>Enterprise Networking (VLANs/Security)</strong>,
-            <strong>Container Orchestration (Docker/Proxmox)</strong>, and <strong>Cross-Platform Automation
-              (PowerShell/Python)</strong>. Each case study details the technical challenge, the specific tools
-            used,
-            and the delivered business solution.
-          </p>
-          <div class="mt-4">
-            <p class="text-black-50 small">
-              *More detailed projects are added regularly.
+    <!-- Featured Projects Section -->
+    <section class="py-5 bg-dark section-id" id="projects">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center text-white mb-5 fw-bold display-6 animate-on-scroll">Featured Projects</h2>
+            <p class="text-light text-center fs-5 mb-5" style="max-width: 700px; margin: 0 auto;">
+                A selection of projects showcasing my expertise in infrastructure automation, cloud deployment, and systems engineering.
             </p>
-          </div>
+            <div class="row g-4">
+                <!-- Project 1: Private AI Stack -->
+                <div class="col-lg-6 col-xl-3">
+                    <div class="card project-card h-100 animate-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <i class="fas fa-robot text-primary display-4"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3 fs-5">Private AI Stack</h5>
+                            <p class="card-text text-light flex-grow-1">Self-hosted AI inference platform with GPU acceleration, supporting multiple models including LLMs and vision systems. Features automated model deployment and resource scheduling.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-success">Docker</span>
+                                <span class="badge bg-info">CUDA</span>
+                                <span class="badge bg-warning text-dark">PyTorch</span>
+                            </div>
+                            <a href="https://github.com/nick-t-net/private-ai-stack" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto rounded-pill">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2: Proxmox Automation -->
+                <div class="col-lg-6 col-xl-3">
+                    <div class="card project-card h-100 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <i class="fas fa-server text-success display-4"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3 fs-5">Proxmox VE Automation</h5>
+                            <p class="card-text text-light flex-grow-1">Automated deployment and management scripts for Proxmox Virtual Environment. Includes VM cloning, template management, and cluster provisioning workflows.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Bash</span>
+                                <span class="badge bg-info">Proxmox API</span>
+                                <span class="badge bg-warning text-dark">Ansible</span>
+                                <span class="badge bg-secondary">GitLab CI</span>
+                            </div>
+                            <a href="https://github.com/nick-t-net/proxmox-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto rounded-pill">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3: Home Networking Setup -->
+                <div class="col-lg-6 col-xl-3">
+                    <div class="card project-card h-100 animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <i class="fas fa-network-wired text-info display-4"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3 fs-5">Home Networking Infrastructure</h5>
+                            <p class="card-text text-light flex-grow-1">Custom enterprise-grade networking setup with VLAN segregation, pfSense firewall policies, custom routing, and network monitoring. Segmenting IoT, guests, and primary devices.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">pfSense</span>
+                                <span class="badge bg-success">VLANs</span>
+                                <span class="badge bg-info">OpenVPN</span>
+                                <span class="badge bg-warning text-dark">Pi-hole</span>
+                            </div>
+                            <a href="https://github.com/nick-t-net/home-networking-setup" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto rounded-pill">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4: Windows Automation -->
+                <div class="col-lg-6 col-xl-3">
+                    <div class="card project-card h-100 animate-on-scroll" style="animation-delay: 0.4s;">
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="mb-3">
+                                <i class="fab fa-windows text-primary display-4"></i>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3 fs-5">Windows IT Automation</h5>
+                            <p class="card-text text-light flex-grow-1">Comprehensive PowerShell script library for Windows Server administration, including user management, group policy automation, system monitoring, and compliance reporting.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">PowerShell</span>
+                                <span class="badge bg-info">Active Directory</span>
+                                <span class="badge bg-warning text-dark">WinRM</span>
+                                <span class="badge bg-secondary">SCCM</span>
+                            </div>
+                            <a href="https://github.com/nick-t-net/windows-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto rounded-pill">
+                                <i class="fab fa-github me-2"></i>View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/ai-stack" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/ai-stack.png" alt="Private AI Stack System Overview" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-primary me-1">Docker</span>
-                <span class="badge bg-success me-1">AI/LLM</span>
-                <span class="badge bg-warning text-dark me-1">NVIDIA GPU</span>
-                <span class="badge bg-dark">Proxmox/ZFS</span>
-              </div>
-              <h5 class="card-title text-black">Private AI Stack</h5>
-              <p class="card-text text-muted">A high-performance, self-hosted AI research environment featuring local
-                LLM inference, multimodal vision, real-time RAG web search, and ComfyUI image generation on an RTX 3090
-                Ti.</p>
+    <!-- Certifications Section -->
+    <section class="py-5 bg-dark section-id" id="certifications">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center text-white mb-5 fw-bold display-6 animate-on-scroll">Certifications</h2>
+            <p class="text-light text-center fs-5 mb-5" style="max-width: 700px; margin: 0 auto;">
+                Professional certifications demonstrating expertise in cloud platforms, container orchestration, and infrastructure automation.
+            </p>
+            <div class="row g-4 justify-content-center">
+                <!-- CKA -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark border-0 shadow-sm h-100 animate-on-scroll" style="animation-delay: 0.1s;">
+                        <div class="card-body p-4 text-center">
+                            <i class="fab fa-docker text-primary display-3 mb-3"></i>
+                            <h5 class="card-title fw-bold mb-2">Certified Kubernetes Administrator (CKA)</h5>
+                            <p class="text-muted mb-3">Linux Foundation</p>
+                            <p class="card-text text-light small">Demonstrates competency in installing, configuring, and managing production-grade Kubernetes clusters.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- AWS SAA -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark border-0 shadow-sm h-100 animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="card-body p-4 text-center">
+                            <i class="fab fa-aws text-orange display-3 mb-3"></i>
+                            <h5 class="card-title fw-bold mb-2">AWS Solutions Architect Associate</h5>
+                            <p class="text-muted mb-3">Amazon Web Services</p>
+                            <p class="card-text text-light small">Validates ability to design and deploy scalable, highly available systems on AWS.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Terraform Associate -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark border-0 shadow-sm h-100 animate-on-scroll" style="animation-delay: 0.3s;">
+                        <div class="card-body p-4 text-center">
+                            <i class="fab fa-terraform text-info display-3 mb-3"></i>
+                            <h5 class="card-title fw-bold mb-2">HashiCorp Certified: Terraform Associate</h5>
+                            <p class="text-muted mb-3">HashiCorp</p>
+                            <p class="card-text text-light small">Proves proficiency in infrastructure as code practices using Terraform for cloud provisioning.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cybersecurity -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card bg-dark border-0 shadow-sm h-100 animate-on-scroll" style="animation-delay: 0.4s;">
+                        <div class="card-body p-4 text-center">
+                            <i class="fas fa-shield-alt text-success display-3 mb-3"></i>
+                            <h5 class="card-title fw-bold mb-2">Introduction to Cybersecurity</h5>
+                            <p class="text-muted mb-3">Cisco Networking Academy</p>
+                            <p class="card-text text-light small">Foundational knowledge of cybersecurity principles, network security, and threat mitigation.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/ai-stack"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
         </div>
+    </section>
 
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/powershell-Scripting" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-01.png" alt="PowerShell Scripting Code Snippet" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-info me-1">PowerShell</span>
-                <span class="badge bg-primary me-1">Automation</span>
-                <span class="badge bg-dark">Windows/Azure</span>
-              </div>
-
-              <h5 class="card-title text-black">Windows Automation Scripts</h5>
-              <p class="card-text text-muted">A repository of reusable PowerShell scripts for routine IT and
-                system
-                administration tasks, demonstrating efficient automation and system management.</p>
+    <!-- Contact Section -->
+    <section class="py-5 bg-gradient-primary section-id" id="contact">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center text-white mb-5 fw-bold display-6 animate-on-scroll">Get In Touch</h2>
+            <p class="text-light text-center fs-5 mb-5" style="max-width: 600px; margin: 0 auto;">
+                Interested in collaborating or discussing opportunities in cloud infrastructure, DevOps, or systems engineering? Feel free to reach out.
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card bg-dark border-0 shadow-lg animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <a href="mailto:careers@nick-t.net" class="btn btn-primary btn-lg px-5 py-3 rounded-pill mb-4">
+                                    <i class="fas fa-envelope me-2"></i>careers@nick-t.net
+                                </a>
+                            </div>
+                            <div class="row justify-content-center g-4">
+                                <div class="col-auto">
+                                    <a href="https://linkedin.com/in/nick-t-net" target="_blank" rel="noopener noreferrer" class="social-link text-light p-3 rounded-circle hover-lift">
+                                        <i class="fab fa-linkedin-in display-5"></i>
+                                        <span class="sr-only">LinkedIn</span>
+                                    </a>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="https://github.com/nick-t-net" target="_blank" rel="noopener noreferrer" class="social-link text-light p-3 rounded-circle hover-lift">
+                                        <i class="fab fa-github display-5"></i>
+                                        <span class="sr-only">GitHub</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/powershell-Scripting"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
         </div>
+    </section>
 
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/proxmox-automation" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-02.jpg" alt="Proxmox Server Automation Screenshot" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-danger me-1">Proxmox VE</span>
-                <span class="badge bg-dark me-1">Virtualization</span>
-                <span class="badge bg-success">Bash/Linux</span>
-                <span class="badge bg-primary">Infrastructure</span>
-              </div>
-
-              <h5 class="card-title text-black">Proxmox Automation Scripts</h5>
-              <p class="card-text text-muted">A collection of scripts designed to automate deployment and
-                maintenance
-                tasks in a Proxmox VE environment, showcasing infrastructure-as-code principles.</p>
-            </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/proxmox-automation"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
+    <!-- Footer -->
+    <footer class="bg-dark py-4 border-top">
+        <div class="container px-4 px-lg-5 text-center">
+            <p class="text-muted mb-0">&copy; <span id="current-year"></span> Nicolas Teixeira. All rights reserved.</p>
+            <p class="text-muted small mb-0">Built with passion for infrastructure automation.</p>
         </div>
+    </footer>
 
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/media-download" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-03.jpg" alt="Media Server Application Dashboard" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-primary me-1">Docker</span>
-                <span class="badge bg-secondary me-1">Docker Compose</span>
-                <span class="badge bg-info">Containerization</span>
-                <span class="badge bg-success">Media Server</span>
-              </div>
+    <!-- Bootstrap 5 Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-              <h5 class="card-title text-black">Containerized Media Downloader</h5>
-              <p class="card-text text-muted">A project using Docker Compose to deploy and manage a suite of
-                media
-                applications, focusing on robust container networking and configuration management.</p>
-            </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/media-download"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
-        </div>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/nextcloud-aio-setup" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-04.png"
-                alt="Nextcloud All-in-One Dashboard Screenshot" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-primary me-1">Docker AIO</span>
-                <span class="badge bg-danger me-1">PostgreSQL</span>
-                <span class="badge bg-info">Reverse Proxy</span>
-                <span class="badge bg-dark">Containerization</span>
-              </div>
-
-              <h5 class="card-title text-black">Secure Nextcloud Deployment</h5>
-              <p class="card-text text-muted">A fully containerized solution using Nextcloud AIO and Docker
-                Compose to
-                manage an entire self-hosted cloud platform, showcasing secure, scalable data storage and
-                service
-                orchestration.</p>
-            </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/nextcloud-aio-setup"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/home-networking-setup" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-05.png" alt="Network Topology Diagram" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-danger me-1">Networking</span>
-                <span class="badge bg-info me-1">Linux</span>
-                <span class="badge bg-dark me-1">Security</span>
-                <span class="badge bg-primary">Routing/DNS</span>
-              </div>
-
-              <h5 class="card-title text-black">Advanced Home Networking Setup</h5>
-              <p class="card-text text-muted">Documentation and configuration files for a robust home network
-                utilizing
-                custom routing, VLAN segregation, and firewall policies to ensure security and performance.</p>
-            </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/home-networking-setup"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/PythonProjects" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-006.jpg" alt="Python Collaborative Project Code" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-success me-1">Python</span>
-                <span class="badge bg-secondary me-1">Academic</span>
-                <span class="badge bg-info">Collaboration</span>
-              </div>
-
-              <h5 class="card-title text-black">Collaborative Academic Python</h5>
-              <p class="card-text text-muted">A collection of early-stage Python scripts developed during my
-                bachelor's
-                program in collaboration with a peer, demonstrating foundational programming logic and version
-                control
-                principles.</p>
-
-              <p class="card-text small text-muted mt-2">Focus on: *Foundational programming and source control
-                (Git).
-              </p>
-            </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/PythonProjects"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/Simple-GUI-Chat" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-07.jpg" alt="Python Tkinter Chat Application UI" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-success me-1">Python</span>
-                <span class="badge bg-danger me-1">Networking</span>
-                <span class="badge bg-info">Multi-Threading</span>
-                <span class="badge bg-warning">Tkinter GUI</span>
-              </div>
-
-              <h5 class="card-title text-black">Multi-Threaded Chat Server</h5>
-              <p class="card-text text-muted">A fully functional TCP client-server chat application built from
-                scratch,
-                demonstrating core programming concepts: concurrent processing with Python's threading, and
-                socket-level
-                network communication.</p>
-            </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/Simple-GUI-Chat"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Code
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card h-100 shadow border-0 project-card">
-            <a href="https://github.com/nicolasnkGH/Portfolio" target="_blank" class="card-img-link">
-              <img class="card-img-top" src="assets/img/demo-image-06.png"
-                alt="Portfolio Website Frontend Screenshot" />
-            </a>
-            <div class="card-body">
-              <div class="tech-badges mb-3">
-                <span class="badge bg-info me-1">HTML/CSS</span>
-                <span class="badge bg-warning me-1">JavaScript</span>
-                <span class="badge bg-primary me-1">Bootstrap 5</span>
-                <span class="badge bg-dark">Front-End Dev</span>
-              </div>
-
-              <h5 class="card-title text-black">Interactive Portfolio Development</h5>
-              <p class="card-text text-muted">The source repository for this website, demonstrating <strong>front-end
-                  development, responsive design (UX/UI),</strong> and client-side scripting for synchronized typing
-                effects.</p>
-            </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-center">
-              <a class="btn btn-sm btn-outline-light w-100" href="https://github.com/nicolasnkGH/Portfolio"
-                target="_blank">
-                <i class="fab fa-github me-2"></i> View Repository
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    </div>
-  </section>
-
-  <!-- Add more projects below -->
-
-  </section>
-
-  <!-- Contact me! -->
-  <section class="contact-section bg-black" id="contact-container">
-    <div class="container px-4 px-lg-5">
-
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-8 col-xl-6 text-center">
-          <h2 class="text-white mb-4">Get In Touch</h2>
-          <p class="text-white-50 mb-5">
-            I'm always open to discussing new technical challenges, collaboration opportunities, or general
-            conversations about DevOps and infrastructure. Feel free to send a message.
-          </p>
-        </div>
-      </div>
-
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8">
-
-          <form id="contactForm" action="https://formspree.io/f/manlqdpk" method="POST" class="p-4 rounded shadow">
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
-              <label for="name">Full Name</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="email" name="_replyto" type="email" placeholder="name@example.com"
-                required />
-              <label for="email">Email address</label>
-            </div>
-
-            <div class="form-floating mb-4">
-              <textarea class="form-control" id="message" name="message" placeholder="Enter your message here..."
-                style="height: 10rem" required></textarea>
-              <label for="message">Message</label>
-            </div>
-
-            <div class="d-grid">
-              <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send
-                Message</button>
-            </div>
-          </form>
-
-          <div class="text-center mt-5">
-            <p class="small text-white mb-3">OR CONNECT PROFESSIONALLY</p>
-            <div class="social-icons">
-              <a class="mx-2" href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank">
-                <i class="fab fa-linkedin fa-2x"></i>
-              </a>
-              <a class="mx-2" href="https://github.com/nicolasnkgh" target="_blank">
-                <i class="fab fa-github fa-2x"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer-->
-  <footer class="footer bg-black small text-center text-white-50">
-    <div class="container px-4 px-lg-5">Copyright &copy; Nicolas Teixeira 2023</div>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
+    <!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
-  </footer>
-
 </body>
-
 </html>
