@@ -657,7 +657,7 @@ a:hover {
    ========================================================================== */
 
 #contact {
-    background: linear-gradient(180deg, var(--bg-dark) 0%, #161b22 100%);
+    background: #0B0E14;
 }
 
 /* Terminal Window Container */
@@ -688,7 +688,7 @@ a:hover {
 
 /* Terminal Content Area */
 .terminal-content {
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 /* Terminal Links with Arrow */
@@ -704,7 +704,12 @@ a:hover {
 
 .terminal-link:hover .fa-arrow-right {
     transform: translateX(4px);
-    color: var(--tech-blue) !important;
+    color: var(--tech-cyan) !important;
+}
+
+/* Terminal Footer */
+.terminal-footer {
+    padding-top: 1rem !important;
 }
 
 /* ==========================================================================
@@ -761,6 +766,11 @@ footer {
     background: linear-gradient(135deg, var(--tech-cyan) 0%, var(--tech-emerald) 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(88, 166, 255, 0.3);
+}
+
+/* Footer Padding */
+footer {
+    padding-top: 4rem !important;
 }
 
 /* ==========================================================================
