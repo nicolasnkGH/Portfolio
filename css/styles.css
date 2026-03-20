@@ -274,36 +274,78 @@ a:hover {
    ========================================================================== */
 
 #about {
-    background-color: #161b22;
+    background: linear-gradient(180deg, #161b22 0%, var(--bg-dark) 100%);
+    position: relative;
 }
 
-#about .card {
-    background-color: var(--bg-dark);
+/* Fade-out overlay at bottom */
+#about::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-dark) 100%);
+    pointer-events: none;
+}
+
+.about-card {
+    background: rgba(22, 27, 34, 0.6);
     border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
-#about .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(88, 166, 255, 0.1);
+.about-card:hover {
     border-color: var(--tech-blue);
+    box-shadow: 0 8px 40px rgba(88, 166, 255, 0.1), 0 0 30px rgba(88, 166, 255, 0.05);
 }
 
-#about .card-body {
-    background: transparent;
+/* Typing text effect for About paragraph */
+#about-text span {
+    display: inline;
 }
 
-/* Skills Badges in About */
-.badge.bg-dark {
-    background-color: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    color: var(--text-white);
-    font-weight: 500;
+.cursor-blink-about {
+    animation: blink 1s step-end infinite;
+    color: var(--tech-blue);
 }
 
-.badge.bg-dark:hover {
-    background-color: var(--tech-blue) !important;
-    border-color: var(--tech-blue) !important;
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Impact cards */
+.impact-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.impact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.impact-card i {
+    transition: all 0.3s ease;
+}
+
+.impact-card:hover i {
+    transform: scale(1.2);
+}
+
+/* Education badge */
+.education-badge {
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.education-badge:hover {
+    box-shadow: 0 4px 20px rgba(63, 185, 80, 0.3);
+    transform: translateY(-2px);
 }
 
 /* ==========================================================================

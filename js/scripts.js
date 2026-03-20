@@ -87,4 +87,52 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeSpecialtyItem, 1500);
     }
 
+    // Typing effect for About section text
+    const aboutText = document.getElementById('about-text');
+    if (aboutText) {
+        const aboutContent = [
+            "Systems and Platform Engineer with strong experience designing,",
+            "deploying, and operating cloud-native infrastructure for data-intensive",
+            "and event-driven systems. Recently focused on enabling AI and ML workloads",
+            "through self-hosted inference platforms, GPU acceleration, observability,",
+            "and performance optimization."
+        ];
+
+        let lineIndex = 0;
+        let charIndex = 0;
+        let currentLine = "";
+
+        function typeAboutLine() {
+            if (lineIndex < aboutContent.length) {
+                if (charIndex === 0) {
+                    // Start new line
+                    const span = document.createElement('span');
+                    span.style.display = 'block';
+                    span.style.minHeight = '1.8em';
+                    aboutText.appendChild(span);
+                }
+
+                if (charIndex < aboutContent[lineIndex].length) {
+                    currentLine += aboutContent[lineIndex].charAt(charIndex);
+                    aboutText.lastChild.textContent = currentLine;
+                    charIndex++;
+                    setTimeout(typeAboutLine, 35); // Typing speed per character
+                } else {
+                    currentLine = "";
+                    lineIndex++;
+                    charIndex = 0;
+                    setTimeout(typeAboutLine, 200); // Pause between lines
+                }
+            } else {
+                // Add final cursor
+                const cursorSpan = document.createElement('span');
+                cursorSpan.className = 'cursor-blink-about';
+                aboutText.appendChild(cursorSpan);
+            }
+        }
+
+        // Start typing after specialties complete
+        setTimeout(typeAboutLine, 2500);
+    }
+
 });
