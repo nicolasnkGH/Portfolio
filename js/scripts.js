@@ -227,4 +227,44 @@ document.addEventListener('DOMContentLoaded', function() {
         projectObserver.observe(card);
     });
 
+    // Animate education cards on scroll
+    const educationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('#education .education-card-modern').forEach(card => {
+        educationObserver.observe(card);
+    });
+
+    // Animate certification cards on scroll
+    const certObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('#certifications .cert-card').forEach(card => {
+        certObserver.observe(card);
+    });
+
+    // Animate contact card on scroll
+    const contactObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+    const contactCard = document.querySelector('#contact .contact-card');
+    if (contactCard) {
+        contactObserver.observe(contactCard);
+    }
+
 });

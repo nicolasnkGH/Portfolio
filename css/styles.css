@@ -578,73 +578,115 @@ a:hover {
    ========================================================================== */
 
 #education {
-    background-color: #1c2128;
-}
-
-.education-card {
     background-color: var(--bg-dark);
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
 }
 
-.education-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3), 0 0 25px rgba(88, 166, 255, 0.15);
+.education-card-modern {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.education-card-modern:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Color-specific borders on hover */
+.education-card-modern.blue:hover {
     border-color: var(--tech-blue);
+    box-shadow: 0 8px 30px rgba(88, 166, 255, 0.15);
+}
+
+.education-card-modern.emerald:hover {
+    border-color: var(--tech-emerald);
+    box-shadow: 0 8px 30px rgba(63, 185, 80, 0.15);
 }
 
 /* ==========================================================================
    Certifications Section
    ========================================================================== */
 
-#certifications .card {
-    background-color: var(--bg-dark);
-    border: 1px solid var(--border-color);
+.cert-card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.cert-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Color-specific hover effects */
+.cert-card.blue:hover {
+    border-color: var(--tech-blue);
+    box-shadow: 0 8px 30px rgba(88, 166, 255, 0.2);
+}
+
+.cert-card.emerald:hover {
+    border-color: var(--tech-emerald);
+    box-shadow: 0 8px 30px rgba(63, 185, 80, 0.2);
+}
+
+.cert-card.gold:hover {
+    border-color: #ffc646;
+    box-shadow: 0 8px 30px rgba(255, 198, 70, 0.2);
+}
+
+/* Cert icon hover effect */
+.cert-icon {
     transition: all 0.3s ease;
 }
 
-#certifications .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3), 0 0 25px rgba(47, 129, 247, 0.2);
-    border-color: var(--tech-cyan);
+.cert-card:hover .cert-icon {
+    transform: scale(1.1) rotate(5deg);
 }
+
+/* Animation stagger for certification cards */
+.cert-card.animate-in {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.cert-card.animate-in:nth-child(1) { animation-delay: 0.1s; }
+.cert-card.animate-in:nth-child(2) { animation-delay: 0.2s; }
+.cert-card.animate-in:nth-child(3) { animation-delay: 0.3s; }
 
 /* ==========================================================================
    Contact Section
    ========================================================================== */
 
 #contact {
-    background-color: var(--bg-dark);
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #161b22 100%);
     border-top: 1px solid var(--border-color);
 }
 
-#contact .card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-}
-
-.social-link {
-    display: inline-block;
+.contact-card {
     transition: all 0.3s ease;
+    border-radius: 12px;
 }
 
-.social-link:hover {
-    transform: scale(1.2);
-    color: var(--tech-blue);
+.contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(88, 166, 255, 0.1);
+    border-color: var(--tech-blue);
 }
 
-.social-link::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: var(--tech-blue);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    transition: all 0.3s ease;
+/* Social link hover effects */
+#contact .hover-social:hover {
+    transform: translateY(-4px) scale(1.1);
+    color: var(--tech-blue) !important;
+    text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+}
+
+/* Email link styling */
+#contact a {
+    transition: all 0.2s ease;
+}
+
+#contact a:hover {
+    color: var(--tech-blue) !important;
+    text-decoration: none;
 }
 
 /* ==========================================================================
