@@ -214,21 +214,16 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(item);
     });
 
-    // Animate project cards on scroll
+   // Animate project cards on scroll
     const projectObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                entry.target.classList.add('animated');
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+            if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+                entry.target.classList.add('animate-in');
             }
         });
     }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('#projects .project-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease';
         projectObserver.observe(card);
     });
 
