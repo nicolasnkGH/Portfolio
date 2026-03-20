@@ -477,52 +477,100 @@ a:hover {
    ========================================================================== */
 
 #projects {
-    background-color: var(--bg-dark);
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #1c2128 100%);
+    position: relative;
 }
 
+/* Project Cards - Modern card design with image header */
 .project-card {
-    background-color: var(--bg-dark);
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--tech-blue), var(--tech-cyan), var(--tech-emerald));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.project-card:hover::before {
-    opacity: 1;
+    transition: all 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(88, 166, 255, 0.25);
-    border-color: var(--tech-blue);
+    transform: translateY(-10px);
 }
 
-.project-card .card-title {
-    font-size: 1.2rem;
-    color: var(--text-white);
+/* Project image/header container */
+.project-image-container {
+    transition: all 0.4s ease;
 }
 
-.project-card .btn-primary {
-    background: var(--gradient-primary);
-    border: none;
-    font-weight: 600;
+.project-card:hover .project-image-container {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Project content area */
+.project-content {
     transition: all 0.3s ease;
 }
 
-.project-card .btn-primary:hover {
-    box-shadow: 0 4px 20px rgba(88, 166, 255, 0.4);
+.project-card:hover .project-content {
+    border-color: var(--tech-blue);
+    box-shadow: 0 -5px 20px rgba(88, 166, 255, 0.1);
+}
+
+/* Project badges */
+.project-badge {
+    font-weight: 500;
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.project-badge:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Project button */
+#projects .btn-primary {
+    background: linear-gradient(135deg, var(--tech-blue), var(--tech-cyan));
+    border: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#projects .btn-primary:hover {
+    background: linear-gradient(135deg, var(--tech-cyan), var(--tech-emerald));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(88, 166, 255, 0.4);
+}
+
+/* Staggered animation for project cards */
+.project-card:nth-child(1) {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    animation-delay: 0.1s;
+}
+
+.project-card:nth-child(2) {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+}
+
+.project-card:nth-child(3) {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    animation-delay: 0.3s;
+}
+
+.project-card:nth-child(4) {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    animation-delay: 0.4s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .project-card:nth-child(2),
+    .project-card:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+    .project-card:nth-child(4) {
+        animation-delay: 0.3s;
+    }
 }
 
 /* ==========================================================================

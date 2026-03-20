@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '201, 209, 217';
     }
 
-    // Animate progress bars on scroll
+     // Animate progress bars on scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -212,6 +212,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.skill-progress-item').forEach(item => {
         observer.observe(item);
+    });
+
+    // Animate project cards on scroll
+    const projectObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('#projects .project-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease';
+        projectObserver.observe(card);
     });
 
 });

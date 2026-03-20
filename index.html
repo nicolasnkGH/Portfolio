@@ -241,57 +241,93 @@
     </section>
 
     <!-- Featured Projects Section -->
-    <section class="py-5 bg-dark section-id" id="projects">
+    <section class="py-5 section-id" id="projects">
         <div class="container px-4 px-lg-5">
-            <h2 class="text-center text-white mb-5 fw-bold display-6">Featured Projects</h2>
+            <h2 class="text-center text-white mb-3 fw-bold display-6">Featured Projects</h2>
+            <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+                A selection of projects showcasing expertise in infrastructure automation, cloud deployment, and systems engineering
+            </p>
+
             <div class="row g-4">
-                <!-- Project 1: Private AI Stack -->
+                <!-- Project 1: AI Stack -->
                 <div class="col-lg-6 col-xl-4">
-                    <div class="card project-card h-100">
-                        <div class="card-body p-4 d-flex flex-column">
-                            <h5 class="card-title fw-bold mb-2 fs-5">AI Stack</h5>
-                            <p class="text-white-75 small mb-3">Self-hosted AI inference platform with GPU acceleration, local LLMs, and secure remote access.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-3">
-                                <span class="badge bg-primary">Docker</span>
-                                <span class="badge bg-success">AI/LLM</span>
-                                <span class="badge bg-warning text-dark">NVIDIA GPU</span>
+                    <div class="project-card h-100" style="position: relative; overflow: visible;">
+                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(47, 129, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-robot" style="font-size: 4rem; color: var(--tech-blue); opacity: 0.8;"></i>
+                        </div>
+                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
+                            <h5 class="text-white fw-bold mb-2 fs-5">Private AI Stack</h5>
+                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Self-hosted AI inference platform with GPU acceleration, local LLMs, and secure remote access.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge project-badge" style="background: rgba(88, 166, 255, 0.15); border: 1px solid var(--tech-blue); color: var(--tech-blue);">Docker</span>
+                                <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">AI/LLM</span>
+                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">NVIDIA GPU</span>
                             </div>
-                            <a href="https://github.com/nick-t-net/private-ai-stack" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm mt-auto">
-                                <i class="fab fa-github me-1"></i> View Repository
+                            <a href="https://github.com/nick-t-net/private-ai-stack" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                                <i class="fab fa-github me-2"></i>View Repository
                             </a>
                         </div>
                     </div>
                 </div>
+
                 <!-- Project 2: Proxmox Automation -->
                 <div class="col-lg-6 col-xl-4">
-                    <div class="card project-card h-100">
-                        <div class="card-body p-4 d-flex flex-column">
-                            <h5 class="card-title fw-bold mb-2 fs-5">Proxmox Automation</h5>
-                            <p class="text-white-75 small mb-3">Automated deployment and maintenance scripts for Proxmox VE environments.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-3">
-                                <span class="badge bg-danger">Proxmox VE</span>
-                                <span class="badge bg-dark">Virtualization</span>
-                                <span class="badge bg-success">Bash</span>
+                    <div class="project-card h-100" style="position: relative; overflow: visible;">
+                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(63, 185, 80, 0.1), rgba(47, 129, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-server" style="font-size: 4rem; color: var(--tech-emerald); opacity: 0.8;"></i>
+                        </div>
+                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
+                            <h5 class="text-white fw-bold mb-2 fs-5">Proxmox Automation</h5>
+                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Automated deployment and maintenance scripts for Proxmox VE environments with cluster provisioning.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge project-badge" style="background: rgba(255, 71, 87, 0.15); border: 1px solid #ff4757; color: #ff4757;">Proxmox VE</span>
+                                <span class="badge project-badge" style="background: rgba(139, 152, 241, 0.15); border: 1px solid #8b98f1; color: #8b98f1;">Virtualization</span>
+                                <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">Bash</span>
                             </div>
-                            <a href="https://github.com/nick-t-net/proxmox-automation" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm mt-auto">
-                                <i class="fab fa-github me-1"></i> View Repository
+                            <a href="https://github.com/nick-t-net/proxmox-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                                <i class="fab fa-github me-2"></i>View Repository
                             </a>
                         </div>
                     </div>
                 </div>
-                <!-- Project 3: Home Networking Setup -->
+
+                <!-- Project 3: Home Lab Networking -->
                 <div class="col-lg-6 col-xl-4">
-                    <div class="card project-card h-100">
-                        <div class="card-body p-4 d-flex flex-column">
-                            <h5 class="card-title fw-bold mb-2 fs-5">Home Lab Networking</h5>
-                            <p class="text-white-75 small mb-3">Custom routing, VLAN segregation, and firewall policies for secure home network.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-3">
-                                <span class="badge bg-info">Linux</span>
-                                <span class="badge bg-secondary">Networking</span>
-                                <span class="badge bg-dark">Security</span>
+                    <div class="project-card h-100" style="position: relative; overflow: visible;">
+                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(47, 129, 247, 0.1), rgba(63, 185, 80, 0.1)); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-network-wired" style="font-size: 4rem; color: var(--tech-cyan); opacity: 0.8;"></i>
+                        </div>
+                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
+                            <h5 class="text-white fw-bold mb-2 fs-5">Enterprise Lab Networking</h5>
+                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Custom routing, VLAN segregation, pfSense firewall policies, and network monitoring infrastructure.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge project-badge" style="background: rgba(52, 152, 219, 0.15); border: 1px solid #3498db; color: #3498db;">Linux</span>
+                                <span class="badge project-badge" style="background: rgba(139, 152, 241, 0.15); border: 1px solid #8b98f1; color: #8b98f1;">VLANs</span>
+                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Security</span>
                             </div>
-                            <a href="https://github.com/nick-t-net/home-networking-setup" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm mt-auto">
-                                <i class="fab fa-github me-1"></i> View Repository
+                            <a href="https://github.com/nick-t-net/home-networking-setup" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                                <i class="fab fa-github me-2"></i>View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Windows Automation -->
+                <div class="col-lg-6 col-xl-4 mx-auto">
+                    <div class="project-card h-100" style="position: relative; overflow: visible;">
+                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(47, 129, 247, 0.1), rgba(139, 152, 241, 0.1)); display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-windows" style="font-size: 4rem; color: var(--tech-cyan); opacity: 0.8;"></i>
+                        </div>
+                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
+                            <h5 class="text-white fw-bold mb-2 fs-5">Windows Automation</h5>
+                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Reusable PowerShell library for Windows Server administration, AD management, and compliance reporting.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge project-badge" style="background: rgba(47, 129, 247, 0.15); border: 1px solid var(--tech-cyan); color: var(--tech-cyan);">PowerShell</span>
+                                <span class="badge project-badge" style="background: rgba(139, 152, 241, 0.15); border: 1px solid #8b98f1; color: #8b98f1;">Active Directory</span>
+                                <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">Automation</span>
+                            </div>
+                            <a href="https://github.com/nick-t-net/windows-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                                <i class="fab fa-github me-2"></i>View Repository
                             </a>
                         </div>
                     </div>
