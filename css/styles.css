@@ -543,6 +543,16 @@ a:hover {
     flex-direction: column;
 }
 
+/* Centered single card in row (for Project 4) */
+.row.g-4.mt-2 {
+    justify-content: center;
+}
+
+.project-card.justify-content-center {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 /* Staggered animation for project cards - using class-based targeting */
 .project-card.animate-in {
     animation: fadeInUp 0.6s ease forwards;
