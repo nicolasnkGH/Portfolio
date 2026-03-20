@@ -44,17 +44,27 @@
     <!-- Masthead Hero Section -->
     <header class="masthead position-relative overflow-hidden" id="masthead">
         <div class="container px-4 px-lg-5 d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 8rem; padding-bottom: 6rem;">
-            <div class="text-center">
+            <div class="text-center position-relative z-index-1">
                 <h1 class="masthead-name-gradient fw-bold display-3 mb-2">Nicolas Teixeira</h1>
-                <p class="mb-4" style="max-width: 500px; font-size: 1.2rem;">Systems & Platform Engineer</p>
-               <div class="d-flex gap-2 justify-content-center flex-wrap mb-4">
+                <p class="mb-4" id="subtitle-typing" style="max-width: 600px; font-size: 1.3rem; color: var(--text-muted); min-height: 3rem;"></p>
+
+                <div class="d-flex gap-2 justify-content-center flex-wrap mb-5">
                     <a class="btn btn-primary" href="#projects">View Projects</a>
                     <a class="btn btn-outline-light" href="https://linkedin.com/in/nick-t-net" target="_blank">
                         <i class="fab fa-linkedin me-1"></i> LinkedIn
                     </a>
                     <a class="btn btn-outline-light" href="#contact">Contact</a>
                 </div>
-              <p class="text-white-50 small mb-0">Columbus, OH • <a href="mailto:careers@nick-t.net" class="text-white-50">careers@nick-t.net</a></p>
+
+                <!-- Specializing in section -->
+                <div class="text-white-75 small mt-4" style="max-width: 600px; margin: 0 auto;">
+                    <p class="fw-bold mb-2 text-muted">Specializing in:</p>
+                    <ul id="specialty-list" class="list-unstyled text-start d-inline-block" style="font-size: 0.95rem;">
+                        <!-- Items will be typed dynamically -->
+                    </ul>
+                </div>
+
+                <p class="text-white-50 small mt-4 mb-0">Columbus, OH</p>
             </div>
         </div>
     </header>
