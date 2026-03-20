@@ -135,4 +135,83 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeAboutLine, 2500);
     }
 
+    // Skills population and animation
+    const skillsData = {
+        infrastructure: ['Kubernetes', 'Docker', 'Terraform', 'Ansible', 'Git'],
+        cloud: ['AWS', 'Azure', 'Proxmox', 'VMware/Hyper-V', 'Hybrid/on-prem'],
+        languages: ['Python', 'PowerShell', 'Bash', 'SQL'],
+        security: ['IAM/SSO', 'Keycloak', 'TLS/SSL', 'VPNs', 'VLANs', 'Firewalls', 'Wireshark', 'SIEM'],
+        ai: ['MLOps', 'GPU Acceleration', 'Inference Platforms', 'Model Deployment', 'MLflow', 'Observability'],
+        containers: ['Docker Compose', 'Kubernetes', 'Helm', 'Istio', 'Container Registry']
+    };
+
+    // Populate skills with dynamic styling based on category
+    const categoryColors = {
+        infrastructure: '#58a6ff',
+        cloud: '#2f81f7',
+        languages: '#3fb950',
+        security: '#ffc646',
+        ai: '#eb4470',
+        containers: '#8b98f1'
+    };
+
+    for (const [category, skills] of Object.entries(skillsData)) {
+        const container = document.getElementById(`skills-${category}`);
+        if (container) {
+            skills.forEach((skill, index) => {
+                const badge = document.createElement('span');
+                badge.className = 'badge';
+                badge.textContent = skill;
+                badge.style.background = `rgba(${getRGB(categoryColors[category])}, 0.2)`;
+                badge.style.border = `1px solid ${categoryColors[category]}`;
+                badge.style.color = '#c9d1d9';
+                badge.style.transition = 'all 0.3s ease';
+
+                badge.addEventListener('mouseenter', () => {
+                    badge.style.background = categoryColors[category];
+                    badge.style.color = '#fff';
+                    badge.style.transform = 'scale(1.1)';
+                });
+
+                badge.addEventListener('mouseleave', () => {
+                    badge.style.background = `rgba(${getRGB(categoryColors[category])}, 0.2)`;
+                    badge.style.border = `1px solid ${categoryColors[category]}`;
+                    badge.style.color = '#c9d1d9';
+                    badge.style.transform = 'scale(1)';
+                });
+
+                // Staggered animation for each skill
+                setTimeout(() => {
+                    badge.style.opacity = '0';
+                    badge.style.transform = 'translateY(10px)';
+                    container.appendChild(badge);
+                    setTimeout(() => {
+                        badge.style.transition = 'all 0.4s ease';
+                        badge.style.opacity = '1';
+                        badge.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+        }
+    }
+
+    // Helper function to convert hex to RGB
+    function getRGB(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '201, 209, 217';
+    }
+
+    // Animate progress bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.skill-progress-item').forEach(item => {
+        observer.observe(item);
+    });
+
 });

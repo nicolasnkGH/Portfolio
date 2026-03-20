@@ -353,39 +353,123 @@ a:hover {
    ========================================================================== */
 
 #skills {
-    background-color: #161b22;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #161b22 100%);
+    position: relative;
 }
 
-#skills h3.text-primary,
-#skills h3.text-success,
-#skills h3.text-info {
-    font-size: 1.25rem;
+#skills h2 {
+    margin-bottom: 1rem !important;
 }
 
-#skills .card {
-    background-color: var(--bg-dark);
-    border: 1px solid var(--border-color);
+/* Skills Category Cards */
+.skills-category {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.skills-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.skills-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+/* Skills List styling */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.skills-list .badge {
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skills-list .badge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Skill Progress Bars */
+.skill-progress-item {
     transition: all 0.3s ease;
 }
 
-#skills .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(88, 166, 255, 0.2);
-    border-color: var(--tech-blue);
+.skill-progress-item:hover {
+    transform: scale(1.02);
 }
 
-#skills .card-body {
-    background: transparent;
+.progress {
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-#skills li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+/* Animation for skills on scroll */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-.space-between li {
-    margin-bottom: 1rem;
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.skills-category:nth-child(1),
+.skills-category:nth-child(4) {
+    animation: slideInLeft 0.6s ease forwards;
+    opacity: 0;
+}
+
+.skills-category:nth-child(2),
+.skills-category:nth-child(5) {
+    animation: slideInRight 0.6s ease forwards;
+    opacity: 0;
+}
+
+.skills-category:nth-child(3),
+.skills-category:nth-child(6) {
+    animation: slideInLeft 0.6s ease forwards;
+    opacity: 0;
+}
+
+.skills-category:nth-child(1) { animation-delay: 0.1s; }
+.skills-category:nth-child(2) { animation-delay: 0.2s; }
+.skills-category:nth-child(3) { animation-delay: 0.3s; }
+.skills-category:nth-child(4) { animation-delay: 0.4s; }
+.skills-category:nth-child(5) { animation-delay: 0.5s; }
+.skills-category:nth-child(6) { animation-delay: 0.6s; }
+
+.skill-progress-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+}
+
+.skill-progress-item.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ==========================================================================

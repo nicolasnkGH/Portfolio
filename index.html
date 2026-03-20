@@ -122,55 +122,116 @@
         </div>
     </section>
 
-    <!-- Skills Matrix Section -->
-    <section class="py-5 bg-dark section-id" id="skills">
+    <!-- Technical Skills Section -->
+    <section class="py-5 section-id" id="skills">
         <div class="container px-4 px-lg-5">
-            <h2 class="text-center text-white mb-5 fw-bold display-6">Technical Proficiency</h2>
+            <h2 class="text-center text-white mb-3 fw-bold display-6">Technical Skills</h2>
+            <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+                Comprehensive expertise across infrastructure, cloud platforms, and modern development practices
+            </p>
+
+            <!-- Skills Grid with Categories -->
             <div class="row g-4">
-                <!-- Cloud & IaC Column -->
-                <div class="col-lg-4">
-                    <div class="card bg-dark border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center">
-                            <h4 class="text-white mb-3 fs-5 fw-bold">
-                                <i class="fas fa-cloud me-2"></i>Cloud & IaC
-                            </h4>
-                            <div class="d-flex flex-wrap gap-2 justify-content-center">
-                                <span class="badge bg-secondary">Terraform</span>
-                                <span class="badge bg-secondary">Ansible</span>
-                                <span class="badge bg-secondary">Azure DevOps</span>
-                                <span class="badge bg-secondary">AWS</span>
+                <!-- Infrastructure Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="skills-category p-4 h-100" style="background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.15);">
+                        <div class="skills-header mb-4 d-flex align-items-center">
+                            <i class="fas fa-server me-3" style="color: var(--tech-blue); font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">Infrastructure</h4>
+                        </div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-infrastructure"></div>
+                    </div>
+                </div>
+
+                <!-- Cloud & Platforms Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="skills-category p-4 h-100" style="background: rgba(47, 129, 247, 0.03); border: 1px solid rgba(47, 129, 247, 0.15);">
+                        <div class="skills-header mb-4 d-flex align-items-center">
+                            <i class="fas fa-cloud me-3" style="color: var(--tech-cyan); font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">Cloud & Platforms</h4>
+                        </div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-cloud"></div>
+                    </div>
+                </div>
+
+                <!-- Languages Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="skills-category p-4 h-100" style="background: rgba(63, 185, 80, 0.03); border: 1px solid rgba(63, 185, 80, 0.15);">
+                        <div class="skills-header mb-4 d-flex align-items-center">
+                            <i class="fas fa-code me-3" style="color: var(--tech-emerald); font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">Languages</h4>
+                        </div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-languages"></div>
+                    </div>
+                </div>
+
+                <!-- Security & Networking Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="skills-category p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
+                        <div class="skills-header mb-4 d-flex align-items-center">
+                            <i class="fas fa-shield-halved me-3" style="color: #ffc646; font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">Security & Networking</h4>
+                        </div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-security"></div>
+                    </div>
+                </div>
+
+                <!-- AI/MLOps Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="skills-category p-4 h-100" style="background: rgba(235, 68, 112, 0.03); border: 1px solid rgba(235, 68, 112, 0.15);">
+                        <div class="skills-header mb-4 d-flex align-items-center">
+                            <i class="fas fa-brain me-3" style="color: #eb4470; font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">AI / MLOps</h4>
+                        </div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-ai"></div>
+                    </div>
+                </div>
+
+                <!-- Container Orchestration Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="skills-category p-4 h-100" style="background: rgba(139, 152, 241, 0.03); border: 1px solid rgba(139, 152, 241, 0.15);">
+                        <div class="skills-header mb-4 d-flex align-items-center">
+                            <i class="fas fa-cube me-3" style="color: #8b98f1; font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">Container Orchestration</h4>
+                        </div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-containers"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress visualization bar at bottom -->
+            <div class="mt-5 pt-4" style="border-top: 1px solid var(--border-color);">
+                <div class="row g-3 justify-content-center">
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <div class="skill-progress-item mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-white-75 small">Infrastructure</span>
+                                <span class="text-white small fw-bold">95%</span>
+                            </div>
+                            <div class="progress" style="height: 4px; background: rgba(88, 166, 255, 0.2);">
+                                <div class="progress-bar" role="progressbar" style="width: 95%; background: var(--tech-blue);"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Scripting & Containers Column -->
-                <div class="col-lg-4">
-                    <div class="card bg-dark border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center">
-                            <h4 class="text-white mb-3 fs-5 fw-bold">
-                                <i class="fas fa-terminal me-2"></i>Scripting & Sys
-                            </h4>
-                            <div class="d-flex flex-wrap gap-2 justify-content-center">
-                                <span class="badge bg-secondary">Python</span>
-                                <span class="badge bg-secondary">PowerShell</span>
-                                <span class="badge bg-secondary">Bash</span>
-                                <span class="badge bg-secondary">Docker/K8s</span>
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <div class="skill-progress-item mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-white-75 small">Cloud & Platforms</span>
+                                <span class="text-white small fw-bold">90%</span>
+                            </div>
+                            <div class="progress" style="height: 4px; background: rgba(47, 129, 247, 0.2);">
+                                <div class="progress-bar" role="progressbar" style="width: 90%; background: var(--tech-cyan);"></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Systems Engineering Column -->
-                <div class="col-lg-4">
-                    <div class="card bg-dark border-0 shadow-sm h-100">
-                        <div class="card-body p-4 text-center">
-                            <h4 class="text-white mb-3 fs-5 fw-bold">
-                                <i class="fas fa-network-wired me-2"></i>Systems & Network
-                            </h4>
-                            <div class="d-flex flex-wrap gap-2 justify-content-center">
-                                <span class="badge bg-secondary">Linux (RHEL/Debian)</span>
-                                <span class="badge bg-secondary">Windows Server</span>
-                                <span class="badge bg-secondary">VLANs / Firewalls</span>
-                                <span class="badge bg-secondary">Keycloak/SSO</span>
+                    <div class="col-md-6 col-lg-4 text-center">
+                        <div class="skill-progress-item mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-white-75 small">Security & AI</span>
+                                <span class="text-white small fw-bold">85%</span>
+                            </div>
+                            <div class="progress" style="height: 4px; background: rgba(63, 185, 80, 0.2);">
+                                <div class="progress-bar" role="progressbar" style="width: 85%; background: var(--tech-emerald);"></div>
                             </div>
                         </div>
                     </div>
