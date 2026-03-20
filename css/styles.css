@@ -653,49 +653,114 @@ a:hover {
 .cert-card.animate-in:nth-child(3) { animation-delay: 0.3s; }
 
 /* ==========================================================================
-   Contact Section
+   Contact Section - Terminal Style
    ========================================================================== */
 
 #contact {
     background: linear-gradient(180deg, var(--bg-dark) 0%, #161b22 100%);
-    border-top: 1px solid var(--border-color);
 }
 
-.contact-card {
+/* Terminal Window Container */
+.terminal-window {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Terminal Header with Buttons */
+.terminal-header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.terminal-buttons {
+    flex-shrink: 0;
+}
+
+.terminal-btn {
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.terminal-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Terminal Content Area */
+.terminal-content {
+    font-size: 0.95rem;
+}
+
+/* Terminal Links with Arrow */
+.terminal-link {
     transition: all 0.3s ease;
-    border-radius: 12px;
+    border: 1px solid transparent;
 }
 
-.contact-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(88, 166, 255, 0.1);
-    border-color: var(--tech-blue);
+.terminal-link:hover {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: rgba(88, 166, 255, 0.3);
 }
 
-/* Social link hover effects */
-#contact .hover-social:hover {
-    transform: translateY(-4px) scale(1.1);
+.terminal-link:hover .fa-arrow-right {
+    transform: translateX(4px);
     color: var(--tech-blue) !important;
-    text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
-}
-
-/* Email link styling */
-#contact a {
-    transition: all 0.2s ease;
-}
-
-#contact a:hover {
-    color: var(--tech-blue) !important;
-    text-decoration: none;
 }
 
 /* ==========================================================================
-   Footer
+   Footer - 3 Column Layout
    ========================================================================== */
 
 footer {
-    background-color: var(--bg-dark);
-    border-top: 1px solid var(--border-color);
+    background: #0B0E14;
+    border-top: 1px solid #1c2128;
+}
+
+/* Footer Social Icons */
+.footer-social {
+    transition: all 0.3s ease;
+}
+
+.footer-social:hover {
+    color: var(--tech-blue) !important;
+    transform: translateY(-2px);
+}
+
+/* Footer Navigation Links */
+.footer-nav-link {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.footer-nav-link:hover {
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--text-white) !important;
+}
+
+/* Tech Stack Pills */
+.tech-pill {
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+    background: rgba(88, 166, 255, 0.2);
+    border-color: var(--tech-blue);
+    transform: translateY(-2px);
+}
+
+/* Get In Touch Button */
+.btn-primary {
+    background: linear-gradient(135deg, var(--tech-blue) 0%, var(--tech-cyan) 100%);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--tech-cyan) 0%, var(--tech-emerald) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(88, 166, 255, 0.3);
 }
 
 /* ==========================================================================
