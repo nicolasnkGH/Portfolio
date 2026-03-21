@@ -1504,9 +1504,9 @@ footer a:hover, .footer-nav-link:hover {
     }
 
     /* Style remaining icons - 40px at absolute corners with 0.2 opacity */
-    .t1 { top: 2% !important; left: 2% !important; animation: none !important; z-index: 1 !important; }
-    .t3 { top: 2% !important; right: 2% !important; animation: none !important; z-index: 1 !important; }
-    .t5 { bottom: 5% !important; right: 2% !important; left: auto !important; transform: translate(0, 0) !important; animation: none !important; z-index: 1 !important; }
+    .t1 { top: 5% !important; left: 5% !important; animation: none !important; z-index: 1 !important; }
+    .t3 { top: 5% !important; right: 5% !important; animation: none !important; z-index: 1 !important; }
+    .t5 { bottom: 5% !important; right: 5% !important; left: auto !important; transform: translate(0, 0) !important; animation: none !important; z-index: 1 !important; }
 
     /* Reduce icon size to 40px on mobile */
     .floating-tech-icons .icon-container i {
@@ -1621,9 +1621,9 @@ footer a:hover, .footer-nav-link:hover {
         padding: 3rem 0;
     }
 
-    /* Stack buttons better on mobile */
+    /* Stack buttons better on mobile - thumb-friendly spacing */
     .d-flex.gap-3.justify-content-center.flex-wrap {
-        gap: 12px !important;
+        gap: 15px !important;
     }
 
     /* Adjust card padding for mobile */
