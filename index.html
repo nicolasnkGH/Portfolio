@@ -11,8 +11,11 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Font Awesome 6.4.0 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5.1 CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Boxicons CDN for Kubernetes icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Google Fonts: Nunito -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -22,7 +25,7 @@
 </head>
 <body class="bg-dark">
     <!-- Navigation Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="mainNav" aria-label="Main navigation">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="#!">NT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,40 +34,65 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                     <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Masthead Hero Section -->
+ <!-- Masthead Hero Section -->
     <header class="masthead position-relative overflow-hidden" id="masthead">
-        <div class="container px-4 px-lg-5 d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 8rem; padding-bottom: 6rem;">
-            <div class="text-center position-relative z-index-1">
+        <!-- Floating tech icons container -->
+        <div class="floating-tech-icons" id="floating-tech-icons">
+            <div class="icon-container t1"><i class="fab fa-docker" title="Docker"></i></div>
+            <div class="icon-container t2"><i class="fab fa-linux" title="Linux/Proxmox"></i></div>
+            <div class="icon-container t3 k8s-icon"><i class='bx bxl-kubernetes' title="Kubernetes"></i></div>
+            <div class="icon-container t4"><i class="fas fa-project-diagram" title="Terraform/IaC"></i></div>
+            <div class="icon-container t5"><i class="fab fa-aws" title="AWS Cloud"></i></div>
+            <div class="icon-container t6"><i class="fas fa-cogs" title="Ansible Automation"></i></div>
+        </div>
+
+        <div class="masthead-grid"></div>
+        <div class="masthead-orb-secondary"></div>
+
+        <div class="container px-4 px-lg-5 d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 4rem; padding-bottom: 3rem;">
+            <div class="text-center position-relative masthead-content">
                 <h1 class="masthead-name-gradient fw-bold display-3 mb-2">Nicolas Teixeira</h1>
                 <p class="mb-4" id="subtitle-typing" style="max-width: 600px; font-size: 1.3rem; color: var(--text-muted); min-height: 3rem;"></p>
 
                 <div class="d-flex gap-2 justify-content-center flex-wrap mb-5">
                     <a class="btn btn-primary" href="#projects">View Projects</a>
-                    <a class="btn btn-outline-light" href="https://linkedin.com/in/nick-t-net" target="_blank">
+                    <a class="btn btn-outline-light" href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" aria-label="View my LinkedIn profile">
                         <i class="fab fa-linkedin me-1"></i> LinkedIn
+                    </a>
+                    <a class="btn btn-outline-light" href="https://github.com/nicolasnkGH" target="_blank" aria-label="View my GitHub profile">
+                        <i class="fab fa-github me-1"></i> GitHub
                     </a>
                     <a class="btn btn-outline-light" href="#contact">Contact</a>
                 </div>
 
                 <!-- Specializing in section -->
-                <div class="text-white-75 small mt-4" style="max-width: 600px; margin: 0 auto;">
+                <div class="text-white-75 small specialty-section-container" style="max-width: 600px; margin: 0 auto; text-align: center;">
                     <p class="fw-bold mb-2 text-muted">Specializing in:</p>
-                    <ul id="specialty-list" class="list-unstyled text-start d-inline-block" style="font-size: 0.95rem;">
+                    <ul id="specialty-list" class="list-unstyled" style="font-size: 0.95rem; display: inline-block; text-align: left;">
                         <!-- Items will be typed dynamically -->
                     </ul>
                 </div>
 
-                <p class="text-white-50 small mt-4 mb-0">Columbus, OH</p>
+               <!-- Location with animated pin -->
+                <p class="text-white-50 small mt-4 mb-0 location-pin-container" style="display: inline-flex; gap: 8px; align-items: center;">
+                    <i class="fas fa-map-marker-alt location-pin" style="color: #3fb950; animation: pulsePin 2s ease-in-out infinite;"></i>
+                    <span>Columbus, OH</span>
+                </p>
+
+                <!-- Python icon positioned under Columbus -->
+                <div class="columbus-icon-container position-absolute" style="top: 110%; left: 50%; transform: translateX(-50%);">
+                    <div class="icon-container t7 python-under-columbus"><i class="fab fa-python" title="Python"></i></div>
+                </div>
             </div>
         </div>
     </header>
@@ -75,7 +103,7 @@
             <h2 class="text-center text-white mb-4 fw-bold display-6">About</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="about-card p-5">
+                    <div class="about-card-modern p-5" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px;">
                         <!-- Two-column layout for desktop -->
                         <div class="row align-items-center">
                             <div class="col-lg-7 mb-4 mb-lg-0">
@@ -122,6 +150,87 @@
         </div>
     </section>
 
+    <!-- Work Experience Section -->
+    <section class="py-5 section-id" id="experience">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center text-white mb-3 fw-bold display-6">Work Experience</h2>
+            <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+                Professional background in systems engineering, cloud infrastructure, and DevOps automation
+            </p>
+
+            <div class="row g-4">
+                <!-- Job 1 -->
+                <div class="col-12">
+                    <div class="experience-card p-4 h-100" style="background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.15);">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 mb-3 mb-lg-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-briefcase me-3" style="color: var(--tech-blue); font-size: 1.5rem;"></i>
+                                    <h4 class="text-white fw-bold mb-0 fs-5">Systems Engineer</h4>
+                                </div>
+                                <p class="text-muted mb-2"><strong>ADB Safegate</strong> | Columbus, OH</p>
+                                <p class="text-muted small mb-3">April 2023 — Present</p>
+                                <ul class="list-unstyled text-white-75">
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Designed and deployed secure, scalable infrastructure for mission-critical airport systems</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Built and managed CI/CD pipelines with Azure DevOps, streamlining deployments</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Configured HA clusters for databases and identity management systems (IAM, SSO, SSL)</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Led AWS migration for Delta Airlines, ensuring continuity of a critical on-premise system</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Directed a $30M United Airlines project, managing cross-functional teams end-to-end</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Deployed and maintained Windows, Linux, and Kubernetes environments (bare-metal, VM, cloud)</li>
+                                    <li><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Developed a new wireless system, saving 1 hour/day in setup time and enabling remote troubleshooting</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="col-12">
+                    <div class="experience-card p-4 h-100" style="background: rgba(63, 185, 80, 0.03); border: 1px solid rgba(63, 185, 80, 0.15);">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 mb-3 mb-lg-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-briefcase me-3" style="color: var(--tech-emerald); font-size: 1.5rem;"></i>
+                                    <h4 class="text-white fw-bold mb-0 fs-5">Product Support Specialist</h4>
+                                </div>
+                                <p class="text-muted mb-2"><strong>LPL Financial</strong> | San Diego, CA</p>
+                                <p class="text-muted small mb-3">August 2021 — April 2023</p>
+                                <ul class="list-unstyled text-white-75">
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Supported 4 proprietary financial systems, ensuring high reliability for hundreds of advisors</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Partnered with escalation teams to resolve high-priority issues under tight SLAs</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Maintained service records for compliance and transparency</li>
+                                    <li><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Improved advisor experience by reducing recurring support issues through process refinements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="col-12">
+                    <div class="experience-card p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 mb-3 mb-lg-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-briefcase me-3" style="color: #ffc646; font-size: 1.5rem;"></i>
+                                    <h4 class="text-white fw-bold mb-0 fs-5">Technical Support Specialist II</h4>
+                                </div>
+                                <p class="text-muted mb-2"><strong>Express Hospitality Inc.</strong> | San Diego, CA</p>
+                                <p class="text-muted small mb-3">July 2018 — July 2021</p>
+                                <ul class="list-unstyled text-white-75">
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Managed provisioning, installation, and maintenance of hardware/software systems</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Configured desktops and streamlined onboarding for new hires</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Ensured uptime through proactive system monitoring and LAN/WAN maintenance</li>
+                                    <li><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Delivered on-site and remote troubleshooting, reducing downtime and support delays</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Technical Skills Section -->
     <section class="py-5 section-id" id="skills">
         <div class="container px-4 px-lg-5">
@@ -132,14 +241,14 @@
 
             <!-- Skills Grid with Categories -->
             <div class="row g-4">
-                <!-- Infrastructure Column -->
+                <!-- DevOps & Infrastructure Column -->
                 <div class="col-lg-4 col-md-6">
                     <div class="skills-category p-4 h-100" style="background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.15);">
                         <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-server me-3" style="color: var(--tech-blue); font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">Infrastructure</h4>
+                            <i class="fas fa-network-wired me-3" style="color: var(--tech-blue); font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">DevOps & Infrastructure</h4>
                         </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-infrastructure"></div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-devops"></div>
                     </div>
                 </div>
 
@@ -165,11 +274,22 @@
                     </div>
                 </div>
 
+                <!-- Monitoring & Observability Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="skills-category p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
+                        <div class="skills-header mb-4 d-flex align-items-center">
+                            <i class="fas fa-chart-line me-3" style="color: #ffc646; font-size: 1.75rem;"></i>
+                            <h4 class="text-white mb-0 fs-6 fw-bold">Monitoring & Observability</h4>
+                        </div>
+                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-monitoring"></div>
+                    </div>
+                </div>
+
                 <!-- Security & Networking Column -->
                 <div class="col-lg-4 col-md-6">
                     <div class="skills-category p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
                         <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-shield-halved me-3" style="color: #ffc646; font-size: 1.75rem;"></i>
+                            <i class="fas fa-shield-alt me-3" style="color: #ffc646; font-size: 1.75rem;"></i>
                             <h4 class="text-white mb-0 fs-6 fw-bold">Security & Networking</h4>
                         </div>
                         <div class="skills-list d-flex flex-wrap gap-2" id="skills-security"></div>
@@ -184,56 +304,6 @@
                             <h4 class="text-white mb-0 fs-6 fw-bold">AI / MLOps</h4>
                         </div>
                         <div class="skills-list d-flex flex-wrap gap-2" id="skills-ai"></div>
-                    </div>
-                </div>
-
-                <!-- Container Orchestration Column -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="skills-category p-4 h-100" style="background: rgba(139, 152, 241, 0.03); border: 1px solid rgba(139, 152, 241, 0.15);">
-                        <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-cube me-3" style="color: #8b98f1; font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">Container Orchestration</h4>
-                        </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-containers"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Progress visualization bar at bottom -->
-            <div class="mt-5 pt-4" style="border-top: 1px solid var(--border-color);">
-                <div class="row g-3 justify-content-center">
-                    <div class="col-md-6 col-lg-4 text-center">
-                        <div class="skill-progress-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span class="text-white-75 small">Infrastructure</span>
-                                <span class="text-white small fw-bold">95%</span>
-                            </div>
-                            <div class="progress" style="height: 4px; background: rgba(88, 166, 255, 0.2);">
-                                <div class="progress-bar" role="progressbar" style="width: 95%; background: var(--tech-blue);"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 text-center">
-                        <div class="skill-progress-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span class="text-white-75 small">Cloud & Platforms</span>
-                                <span class="text-white small fw-bold">90%</span>
-                            </div>
-                            <div class="progress" style="height: 4px; background: rgba(47, 129, 247, 0.2);">
-                                <div class="progress-bar" role="progressbar" style="width: 90%; background: var(--tech-cyan);"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 text-center">
-                        <div class="skill-progress-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span class="text-white-75 small">Security & AI</span>
-                                <span class="text-white small fw-bold">85%</span>
-                            </div>
-                            <div class="progress" style="height: 4px; background: rgba(63, 185, 80, 0.2);">
-                                <div class="progress-bar" role="progressbar" style="width: 85%; background: var(--tech-emerald);"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -251,7 +321,7 @@
             <!-- Projects Grid -->
             <div class="row g-4 row-eq-height">
                 <!-- Project 1: AI Stack -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-3">
                     <div class="project-card h-100">
                         <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(47, 129, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-robot" style="font-size: 4rem; color: var(--tech-blue); opacity: 0.8;"></i>
@@ -264,7 +334,7 @@
                                 <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">AI/LLM</span>
                                 <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">NVIDIA GPU</span>
                             </div>
-                            <a href="https://github.com/nick-t-net/private-ai-stack" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                            <a href="https://github.com/nicolasnkGH/ai-stack" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View AI Stack repository on GitHub">
                                 <i class="fab fa-github me-2"></i>View Repository
                             </a>
                         </div>
@@ -272,7 +342,7 @@
                 </div>
 
                 <!-- Project 2: Proxmox Automation -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-3">
                     <div class="project-card h-100">
                         <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(63, 185, 80, 0.1), rgba(47, 129, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-server" style="font-size: 4rem; color: var(--tech-emerald); opacity: 0.8;"></i>
@@ -285,7 +355,7 @@
                                 <span class="badge project-badge" style="background: rgba(139, 152, 241, 0.15); border: 1px solid #8b98f1; color: #8b98f1;">Virtualization</span>
                                 <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">Bash</span>
                             </div>
-                            <a href="https://github.com/nick-t-net/proxmox-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                            <a href="https://github.com/nicolasnkGH/proxmox-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View Proxmox Automation repository on GitHub">
                                 <i class="fab fa-github me-2"></i>View Repository
                             </a>
                         </div>
@@ -293,7 +363,7 @@
                 </div>
 
                 <!-- Project 3: Home Lab Networking -->
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-3">
                     <div class="project-card h-100">
                         <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(47, 129, 247, 0.1), rgba(63, 185, 80, 0.1)); display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-network-wired" style="font-size: 4rem; color: var(--tech-cyan); opacity: 0.8;"></i>
@@ -306,7 +376,49 @@
                                 <span class="badge project-badge" style="background: rgba(139, 152, 241, 0.15); border: 1px solid #8b98f1; color: #8b98f1;">VLANs</span>
                                 <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Security</span>
                             </div>
-                            <a href="https://github.com/nick-t-net/home-networking-setup" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill">
+                            <a href="https://github.com/nicolasnkGH/home-networking-setup" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View Home Lab Networking repository on GitHub">
+                                <i class="fab fa-github me-2"></i>View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Windows Automation Scripts -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="project-card h-100">
+                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(0, 164, 239, 0.1), rgba(63, 185, 80, 0.1)); display: flex; align-items: center; justify-content: center;">
+                            <i class="fab fa-windows" style="font-size: 4rem; color: #00a4ef; opacity: 0.8;"></i>
+                        </div>
+                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
+                            <h5 class="text-white fw-bold mb-2 fs-5">Windows Automation Scripts</h5>
+                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">PowerShell automation scripts for Windows administration, Active Directory management, and system deployment.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge project-badge" style="background: rgba(0, 164, 239, 0.15); border: 1px solid #00a4ef; color: #00a4ef;">PowerShell</span>
+                                <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">AD Management</span>
+                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Automation</span>
+                            </div>
+                            <a href="https://github.com/nicolasnkGH/powershell-Scripting" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View PowerShell Scripting repository on GitHub">
+                                <i class="fab fa-github me-2"></i>View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Containerized Media Downloader -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="project-card h-100">
+                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(255, 71, 87, 0.1), rgba(255, 198, 70, 0.1)); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-cloud-download-alt" style="font-size: 4rem; color: #ff4757; opacity: 0.8;"></i>
+                        </div>
+                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
+                            <h5 class="text-white fw-bold mb-2 fs-5">Containerized Media Downloader</h5>
+                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Docker-based media download service with yt-dlp, support for 1000+ sites, queue management, and scheduled downloads.</p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge project-badge" style="background: rgba(88, 166, 255, 0.15); border: 1px solid var(--tech-blue); color: var(--tech-blue);">Docker</span>
+                                <span class="badge project-badge" style="background: rgba(255, 71, 87, 0.15); border: 1px solid #ff4757; color: #ff4757;">yt-dlp</span>
+                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Media</span>
+                            </div>
+                            <a href="https://github.com/nicolasnkGH/media-download" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View Media Download repository on GitHub">
                                 <i class="fab fa-github me-2"></i>View Repository
                             </a>
                         </div>
@@ -324,13 +436,13 @@
                 Advanced degrees in software engineering and computer science with focus on DevOps practices
             </p>
 
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center">
                 <!-- M.S. in Software Engineering -->
                 <div class="col-md-6 col-lg-5">
                     <div class="education-card-modern p-4 h-100" style="background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.15);">
-                        <div class="d-flex align-items-start">
-                            <i class="fas fa-graduation-cap" style="color: var(--tech-blue); font-size: 2rem; margin-right: 1rem;"></i>
-                            <div class="flex-grow-1">
+                        <div class="d-flex align-items-center justify-content-center text-center">
+                            <i class="fas fa-graduation-cap" style="color: var(--tech-blue); font-size: 2rem;"></i>
+                            <div class="ms-3 flex-grow-1">
                                 <h5 class="text-white fw-bold mb-1">M.S. in Software Engineering & DevOps</h5>
                                 <p class="text-muted small mb-0">Western Governors University</p>
                                 <p class="text-muted small text-primary">Expected June 2026</p>
@@ -342,9 +454,9 @@
                 <!-- B.S. in Computer Science -->
                 <div class="col-md-6 col-lg-5">
                     <div class="education-card-modern p-4 h-100" style="background: rgba(63, 185, 80, 0.03); border: 1px solid rgba(63, 185, 80, 0.15);">
-                        <div class="d-flex align-items-start">
-                            <i class="fas fa-graduation-cap" style="color: var(--tech-emerald); font-size: 2rem; margin-right: 1rem;"></i>
-                            <div class="flex-grow-1">
+                        <div class="d-flex align-items-center justify-content-center text-center">
+                            <i class="fas fa-graduation-cap" style="color: var(--tech-emerald); font-size: 2rem;"></i>
+                            <div class="ms-3 flex-grow-1">
                                 <h5 class="text-white fw-bold mb-1">B.S. in Computer Science</h5>
                                 <p class="text-muted small mb-0">University of the People</p>
                                 <p class="text-muted small text-success">Graduated 2024</p>
@@ -352,52 +464,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Certifications Section -->
-    <section class="py-5 section-id" id="certifications">
-        <div class="container px-4 px-lg-5">
-            <h2 class="text-center text-white mb-3 fw-bold display-6">Certifications</h2>
-            <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
-                Industry-recognized certifications demonstrating expertise in cloud infrastructure and DevOps
-            </p>
-
-            <div class="row g-4">
-                <!-- CKA -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="cert-card p-4 h-100 blue" style="background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.15);">
-                        <div class="cert-icon mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: rgba(88, 166, 255, 0.1); border-radius: 12px;">
-                            <i class="fab fa-linux" style="font-size: 2rem; color: var(--tech-blue);"></i>
+                <!-- CS50 -->
+                <div class="col-md-6 col-lg-5">
+                    <div class="education-card-modern p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
+                        <div class="d-flex align-items-center justify-content-center text-center">
+                            <i class="fas fa-certificate" style="color: #ffc646; font-size: 2rem;"></i>
+                            <div class="ms-3 flex-grow-1">
+                                <h5 class="text-white fw-bold mb-1">CS50 Introduction to Computer Science</h5>
+                                <p class="text-muted small mb-0">Harvard University</p>
+                                <p class="text-muted small" style="font-size: 0.8rem;">2021 | Strengthened software engineering fundamentals and algorithmic thinking</p>
+                            </div>
                         </div>
-                        <h5 class="text-white fw-bold mb-2">CKA</h5>
-                        <p class="text-muted small mb-3">Certified Kubernetes Administrator</p>
-                        <span class="badge" style="background: rgba(88, 166, 255, 0.15); border: 1px solid var(--tech-blue); color: var(--tech-blue);">Issued 2024</span>
-                    </div>
-                </div>
-
-                <!-- AWS SAA -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="cert-card p-4 h-100 emerald" style="background: rgba(63, 185, 80, 0.03); border: 1px solid rgba(63, 185, 80, 0.15);">
-                        <div class="cert-icon mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: rgba(63, 185, 80, 0.1); border-radius: 12px;">
-                            <i class="fab fa-aws" style="font-size: 2rem; color: var(--tech-emerald);"></i>
-                        </div>
-                        <h5 class="text-white fw-bold mb-2">AWS Solutions Architect</h5>
-                        <p class="text-muted small mb-3">Associate Level Certification</p>
-                        <span class="badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">Issued 2023</span>
-                    </div>
-                </div>
-
-                <!-- Terraform Associate -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="cert-card p-4 h-100 gold" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
-                        <div class="cert-icon mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: rgba(255, 198, 70, 0.1); border-radius: 12px;">
-                            <i class="fas fa-cube" style="font-size: 2rem; color: #ffc646;"></i>
-                        </div>
-                        <h5 class="text-white fw-bold mb-2">Terraform Associate</h5>
-                        <p class="text-muted small mb-3">HashiCorp Certified - Terraform Associate</p>
-                        <span class="badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Issued 2023</span>
                     </div>
                 </div>
             </div>
@@ -407,24 +485,30 @@
     <!-- Contact Section - Terminal Window Style -->
     <section class="py-5 section-id" id="contact">
         <div class="container px-4 px-lg-5">
-            <!-- Terminal Window -->
-            <div class="terminal-window mx-auto" style="max-width: 900px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);">
+            <h2 class="text-center text-white mb-3 fw-bold display-6">Contact Me</h2>
+            <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
+                Reach out via email or connect on social platforms
+            </p>
+            <!-- Terminal Window - single container, no wrapper -->
+            <div class="terminal-window mx-auto terminal-hover-effect" style="background: #0B0E14; border-radius: 12px; padding: 0; margin-bottom: 3rem;">
                 <!-- Terminal Header with Buttons -->
-                <div class="terminal-header d-flex align-items-center px-3 py-2" style="background: linear-gradient(180deg, #1a1f29 0%, #141820 100%); border-bottom: 1px solid #1c2128;">
+                <div class="terminal-header position-relative d-flex align-items-center px-4 py-3" style="background: linear-gradient(180deg, #1a1f29 0%, #141820 100%); border-bottom: 1px solid #444;">
                     <div class="terminal-buttons d-flex gap-2 me-3">
                         <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ff5f56 0%, #ff3b30 100%); border: 1px solid #c92a20;"></div>
                         <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e 0%, #f7b600 100%); border: 1px solid #d99500;"></div>
                         <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #27c93f 0%, #1aab29 100%); border: 1px solid #168a1d;"></div>
                     </div>
-                    <div class="terminal-title text-muted small" style="flex: 1; text-align: center; font-family: 'Courier New', monospace;">nicolas@nt-systems:~</div>
+                    <span class="terminal-title text-muted small position-absolute top-50 start-50 translate-middle" style="transition: color 0.3s ease, text-shadow 0.3s ease;">nicolas@nt-systems:~</span>
                 </div>
 
                 <!-- Terminal Content -->
-                <div class="terminal-content p-4 p-md-5" style="background: #0B0E14; font-family: 'Courier New', monospace; line-height: 1.9;">
+                <div class="terminal-content p-4 p-md-5" style="font-family: 'Courier New', monospace; line-height: 1.9;">
                     <!-- Information Grid - Two Columns -->
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Email:</span> <span class="text-white">careers@nick-t.net</span></p>
+                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Email:</span> <a href="mailto:careers@nick-t.net" class="badge rounded-pill" style="background: rgba(47, 129, 247, 0.2); border: 1px solid var(--tech-cyan); color: var(--tech-emerald); font-weight: 600; text-decoration: none; padding: 5px 12px; display: inline-block; transition: all 0.3s ease;" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'">
+                                <i class="fas fa-envelope me-1"></i>careers@nick-t.net
+                            </a></p>
                             <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Domain:</span> <span class="text-white">nick-t.net</span></p>
                             <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Location:</span> <span class="text-white">Columbus, OH</span></p>
                             <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Availability:</span>
@@ -444,12 +528,12 @@
                     <div class="terminal-footer mt-4 pt-4 border-top" style="border-color: #1c2128 !important;">
                         <p class="text-muted small mb-3" style="color: var(--text-muted) !important;">Connect with me:</p>
                         <div class="d-flex gap-3 flex-wrap">
-                            <a href="https://linkedin.com/in/nick-t-net" target="_blank" rel="noopener noreferrer" class="terminal-link text-decoration-none d-inline-flex align-items-center gap-2" style="padding: 6px 14px; border-radius: 6px; transition: all 0.3s ease;">
+                            <a href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" rel="noopener noreferrer" class="terminal-link text-decoration-none d-inline-flex align-items-center gap-2" style="padding: 6px 14px; border-radius: 6px; transition: all 0.3s ease;" aria-label="Connect on LinkedIn">
                                 <i class="fab fa-linkedin" style="color: var(--tech-blue); font-size: 1rem;"></i>
                                 <span class="text-white-75">LinkedIn</span>
                                 <i class="fas fa-arrow-right small" style="color: var(--text-muted); transition: transform 0.3s ease;"></i>
                             </a>
-                            <a href="https://github.com/nick-t-net" target="_blank" rel="noopener noreferrer" class="terminal-link text-decoration-none d-inline-flex align-items-center gap-2" style="padding: 6px 14px; border-radius: 6px; transition: all 0.3s ease;">
+                            <a href="https://github.com/nicolasnkGH" target="_blank" rel="noopener noreferrer" class="terminal-link text-decoration-none d-inline-flex align-items-center gap-2" style="padding: 6px 14px; border-radius: 6px; transition: all 0.3s ease;" aria-label="Connect on GitHub">
                                 <i class="fab fa-github" style="color: var(--tech-blue); font-size: 1rem;"></i>
                                 <span class="text-white-75">GitHub</span>
                                 <i class="fas fa-arrow-right small" style="color: var(--text-muted); transition: transform 0.3s ease;"></i>
@@ -466,61 +550,73 @@
         </div>
     </section>
 
-    <!-- Footer - 3 Column Layout -->
-    <footer class="py-5" style="background: #0B0E14; border-top: 1px solid #1c2128;">
-        <div class="container px-4 px-lg-5">
-            <div class="row g-4">
-                <!-- Left Column: Bio -->
-                <div class="col-lg-4 col-md-6">
+    <!-- Footer - 3 Column Layout with CSS Grid -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-columns">
+                <!-- Column 1: Personal Info -->
+                <div class="footer-col personal-info">
                     <h5 class="text-white fw-bold mb-2" style="font-size: 1.1rem;">Nicolas Teixeira</h5>
-                    <p class="text-muted small mb-3" style="line-height: 1.7;">Systems & Platform Engineer | Cloud, Data & AI Infrastructure</p>
+                    <p class="text-muted small mb-3" style="line-height: 1.7;">Systems & Platform Engineer | Cloud, DevOps, and AI Infrastructure</p>
                     <p class="text-muted small mb-3" style="line-height: 1.7;">Passionate about building scalable infrastructure, automation, and self-hosted solutions.</p>
                     <!-- Social Icons -->
-                    <div class="d-flex gap-3">
-                        <a href="https://linkedin.com/in/nick-t-net" target="_blank" rel="noopener noreferrer" class="footer-social text-white-50" style="font-size: 1.25rem; transition: all 0.3s ease;">
+                    <div class="social-icons d-flex gap-3">
+                        <a href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" rel="noopener noreferrer" class="footer-social text-white-50" style="font-size: 1.25rem; transition: all 0.3s ease;" aria-label="LinkedIn profile">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://github.com/nick-t-net" target="_blank" rel="noopener noreferrer" class="footer-social text-white-50" style="font-size: 1.25rem; transition: all 0.3s ease;">
+                        <a href="https://github.com/nicolasnkGH" target="_blank" rel="noopener noreferrer" class="footer-social text-white-50" style="font-size: 1.25rem; transition: all 0.3s ease;" aria-label="GitHub profile">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Middle Column: Navigation -->
-                <div class="col-lg-4 col-md-6">
+                <!-- Column 2: Navigation -->
+                <div class="footer-col navigation">
                     <h5 class="text-white fw-bold mb-3" style="font-size: 1.1rem;">Navigation</h5>
                     <div class="d-flex flex-column gap-1">
-                        <a href="#about" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1" style="transition: all 0.3s ease;"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>About</a>
-                        <a href="#skills" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1" style="transition: all 0.3s ease;"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Skills</a>
-                        <a href="#projects" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1" style="transition: all 0.3s ease;"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Projects</a>
-                        <a href="#education" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1" style="transition: all 0.3s ease;"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Education</a>
-                        <a href="#certifications" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1" style="transition: all 0.3s ease;"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Certifications</a>
+                        <a href="#about" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>About</a>
+                        <a href="#experience" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Experience</a>
+                        <a href="#skills" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Skills</a>
+                        <a href="#projects" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Projects</a>
+                        <a href="#education" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Education</a>
+                        <a href="#contact" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1"><i class="fas fa-angle-right small" style="color: var(--tech-blue);"></i>Contact</a>
                     </div>
                 </div>
 
-                <!-- Right Column: Tech Stack -->
-                <div class="col-lg-4 col-md-12">
+                <!-- Column 3: Quick Links + Tech Stack -->
+                <div class="footer-col quick-links">
+                    <h5 class="text-white fw-bold mb-3" style="font-size: 1.1rem;">Quick Links</h5>
+                    <div class="d-flex flex-column gap-2 mb-4">
+                        <a href="#" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1" id="back-to-top-link"><i class="fas fa-arrow-up small" style="color: var(--tech-blue);"></i>Back to Top</a>
+                        <a href="#site-map-anchor" class="footer-nav-link text-muted text-decoration-none d-inline-flex align-items-center gap-2 py-1"><i class="fas fa-sitemap small" style="color: var(--tech-blue);"></i>Site Map</a>
+                        <p class="text-muted small mb-0 mt-2"><i class="fas fa-calendar-alt me-2" style="color: var(--tech-blue);"></i>Last Updated: <span id="last-updated">March 20, 2026</span></p>
+                    </div>
+                    <!-- Tech Stack -->
                     <h5 class="text-white fw-bold mb-3" style="font-size: 1.1rem;">Tech Stack</h5>
-                    <div class="d-flex flex-wrap gap-2 mb-3">
-                        <span class="tech-pill text-muted" style="background: rgba(88, 166, 255, 0.1); border: 1px solid rgba(88, 166, 255, 0.3); color: var(--text-white); font-size: 0.7rem; padding: 3px 9px; border-radius: 4px;">Bootstrap 5</span>
-                        <span class="tech-pill text-muted" style="background: rgba(63, 185, 80, 0.1); border: 1px solid rgba(63, 185, 80, 0.3); color: var(--text-white); font-size: 0.7rem; padding: 3px 9px; border-radius: 4px;">Chart.js</span>
-                        <span class="tech-pill text-muted" style="background: rgba(255, 198, 70, 0.1); border: 1px solid rgba(255, 198, 70, 0.3); color: var(--text-white); font-size: 0.7rem; padding: 3px 9px; border-radius: 4px;">Font Awesome</span>
-                        <span class="tech-pill text-muted" style="background: rgba(88, 166, 255, 0.1); border: 1px solid rgba(88, 166, 255, 0.3); color: var(--text-white); font-size: 0.7rem; padding: 3px 9px; border-radius: 4px;">Nginx</span>
-                        <span class="tech-pill text-muted" style="background: rgba(63, 185, 80, 0.1); border: 1px solid rgba(63, 185, 80, 0.3); color: var(--text-white); font-size: 0.7rem; padding: 3px 9px; border-radius: 4px;">Docker</span>
+                    <div class="tech-stack d-flex flex-wrap gap-2">
+                        <span class="tech-pill text-muted">Bootstrap 5</span>
+                        <span class="tech-pill text-muted">Chart.js</span>
+                        <span class="tech-pill text-muted">Font Awesome</span>
+                        <span class="tech-pill text-muted">Boxicons</span>
+                        <span class="tech-pill text-muted">Cloudflare Pages</span>
                     </div>
-                    <p class="text-muted small mb-1" style="line-height: 1.6;">Self-hosted on Proxmox VE with Nginx reverse proxy, Let's Encrypt SSL, and Docker Compose.</p>
-                    <p class="text-muted small mb-0" style="line-height: 1.6;">Running on Debian 12 Bookworm infrastructure.</p>
                 </div>
             </div>
 
-            <!-- Copyright Line -->
-            <div class="row mt-4 pt-3 border-top" style="border-color: #1c2128 !important;">
-                <div class="col-12 text-center">
-                    <p class="text-muted small mb-0">&copy; <span id="current-year"></span> Nicolas Teixeira. All rights reserved.</p>
-                </div>
+            <!-- Copyright Footer -->
+            <div class="footer-bottom border-top" style="border-color: #1c2128 !important;">
+                <p class="text-muted small mb-0">&copy; <span id="current-year"></span> Nicolas Teixeira. All rights reserved.</p>
             </div>
+
+            <!-- Site Map Anchor (hidden, only for navigation) -->
+            <div id="site-map-anchor" style="position: absolute; top: -9999px;"></div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top-btn" class="back-to-top d-none" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
     <!-- Bootstrap 5 Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -530,5 +626,62 @@
 
     <!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
+
+    <!-- Back to Top functionality -->
+    <script>
+        // Back to Top button functionality
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('d-none');
+            } else {
+                backToTopBtn.classList.add('d-none');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Back to Top link in footer
+        document.getElementById('back-to-top-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Site Map scroll to top
+        document.getElementById('site-map-anchor').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#site-map' && href !== '#back-to-top') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -2,60 +2,99 @@
 
 ## Overview
 
-This repository hosts the source code for my professional portfolio website, nick-t.net.
+This repository hosts the source code for my professional portfolio website at [nick-t.net](https://nick-t.net/).
 
-The site serves as an interactive resume and technical case study showcase, designed to be fast, responsive, and aesthetically aligned with Systems and DevOps engineering principles.
+The site serves as an interactive resume and technical showcase, designed with a GitHub-inspired dark theme and modern DevOps engineering aesthetics. It demonstrates expertise in Cloud Infrastructure, DevOps Automation, Kubernetes orchestration, and AI/ML infrastructure.
 
-# ✨ Key Technical Highlights
+## ✨ Latest Updates (2026-03-20)
 
-Absolutely! Adding a README.md for the portfolio itself—especially one that frames it as a project—is crucial for a Systems/DevOps Engineer. It demonstrates proficiency in documentation and architectural communication.
+### Visual Redesign
+* **GitHub Dark Theme:** Complete visual overhaul with GitHub-inspired dark color palette (`#0d1117` background, tech blues/cyan/emerald accents)
+* **Floating Tech Icons:** Animated floating technology icons (Docker, Kubernetes, Linux/Proxmox, Terraform, AWS, Ansible, Python) with ghost/spirit effects and soft radial glows
+* **Modern Card Interactions:** Enhanced hover effects with gradient borders, lift animations, and glow shadows matching the tech theme
 
-Here is a comprehensive README.md template for your portfolio website, highlighting the technical implementation details we worked on.
+### Technical Improvements
+* **Boxicons Integration:** Added Boxicons CDN for official Kubernetes branding (since Font Awesome lacks native k8s icons)
+* **Chart.js Radar Chart:** Interactive skills visualization showing proficiency in Cloud Platforms, Container Orchestration, IaC & Automation, Programming, and Security
+* **Enhanced CLI Terminal:** Larger font size (`1.1rem`), blue glow shadows, and improved mobile responsiveness
+* **Footer Updates:** Updated tech stack to reflect actual deployment (Cloudflare Pages instead of Nginx)
 
-## 🚀 Nicolas Teixeira | Professional Portfolio
-Overview
-This repository hosts the source code for my professional portfolio website, nick-t.net.
-
-The site serves as an interactive resume and technical case study showcase, designed to be fast, responsive, and aesthetically aligned with Systems and DevOps engineering principles.
+### Repository Links Updated
+All project repository links have been verified and updated:
+* [ai-stack](https://github.com/nicolasnkGH/ai-stack) – Private AI inference platform with GPU acceleration
+* [proxmox-automation](https://github.com/nicolasnkGH/proxmox-automation) – Proxmox VE automation scripts
+* [powershell-Scripting](https://github.com/nicolasnkGH/powershell-Scripting) – Windows automation and PowerShell scripting
+* [media-download](https://github.com/nicolasnkGH/media-download) – Containerized media downloader
+* [home-networking-setup](https://github.com/nicolasnkGH/home-networking-setup) – Home lab networking configuration
 
 ## ✨ Key Technical Highlights
-This portfolio is not just a collection of links; it is a technical demonstration of core skills, including modern design patterns, client-side scripting, security, and performance optimization.
 
 ### Frontend Architecture & Interactivity
 
-* **Synchronized Typing Effect (Vanilla JS):** Engineered a complex, sequential typing animation using vanilla JavaScript to create a theatrical, on-brand introduction:
-    * **Header:** Types a CLI command and response (e.g., `>>> whoami`).
-    * **About Section:** Types the full professional summary within a stylized terminal window.
-* **Custom Dark Theme & Layering:** Implemented a unified, high-contrast dark theme using **CSS Variables** and custom class layering (e.g., `#111111` section blend vs. `#212529` card color) for visual cohesion across all components.
-* **Responsive Grid:** Utilizes the Bootstrap 5 grid system for a clean, professional, card-based layout that is fully responsive on mobile devices.
+* **GitHub Dark Theme System:** Comprehensive CSS variable-based theming with custom color tokens (`--tech-blue`, `--tech-cyan`, `--tech-emerald`) for consistent visual identity
+* **Synchronized Typing Effects (Vanilla JS):** Sequential typing animations across multiple sections:
+  * **Masthead:** Professional subtitle typing at optimized speed (30ms/char)
+  * **About Section:** CLI-style terminal typing within a stylized terminal window
+* **Intersection Observer Animations:** Scroll-triggered fade-in/slide-up effects for cards, skills sections, and project showcases
+* **Ghost/Spirit Icon Effects:** Custom CSS animations creating translucent ghost layers on floating tech icons with blur filters and wander animations
 
-### Security & DevOps Principles
+### DevOps & Infrastructure Principles
 
-* **Contact Form Security:** Architected a secure contact mechanism using an external service endpoint (Formspree) to eliminate spam and ensure zero email exposure in the client-side code.
-* **Performance Focus:** All styling and logic is handled by consolidated CSS and simple JavaScript, ensuring fast initial page load time and performance consistency across all sections.
+* **Contact Form Security:** Secure contact mechanism using serverless endpoint to eliminate spam and ensure zero email exposure in client-side code
+* **Performance Focus:** Minimal JavaScript, consolidated CSS, and optimized asset loading for fast page load times
+* **Responsive Design:** Mobile-first Bootstrap 5 grid with custom media queries for tablet and desktop breakpoints
 
-## 🛠️ Build & Development
-
-This project is built using standard web technologies and requires no complex runtime dependencies, making it highly portable.
+## 🛠️ Tech Stack
 
 | Component | Technology/Tool | Purpose |
 | :--- | :--- | :--- |
-| **Markup** | HTML5 (Bootstrap 5) | Structural foundation and responsive utility classes. |
-| **Styling** | Custom CSS | Styling the dark theme, hover effects, and CLI terminal appearance. |
-| **Interactivity** | Vanilla JavaScript (ES6) | Handling the sequential, character-by-character typing animations across the header and 'About' CLI. |
-| **Security** | Formspree | Serverless form handling for secure email delivery. |
+| **Framework** | Bootstrap 5 | Responsive grid system, utility classes, and component foundation |
+| **Charts** | Chart.js 4.4.0 | Radar chart visualization for skills proficiency display |
+| **Icons** | Font Awesome 6.5.1 + Boxicons | Brand icons (Docker, Linux, Kubernetes) and UI iconography |
+| **Styling** | Custom CSS3 | GitHub dark theme, animations, hover effects, and modern UI components |
+| **Scripting** | Vanilla JavaScript (ES6) | Typing effects, Intersection Observer animations, smooth scroll |
+| **Deployment** | Cloudflare Pages | Serverless hosting with global CDN distribution |
 
 ## 🚀 Viewing the Portfolio
 
 To view the live portfolio, visit [nick-t.net](https://nick-t.net/).
 
+### Local Development
+
 To run the project locally:
 
-1.  Clone this repository: `git clone https://github.com/nicolasnkGH/Portfolio`
-2.  Navigate to the directory: `cd [repository folder]`
-3.  Open `index.html` in your web browser.
-#
+1.  Clone this repository:
+    ```bash
+    git clone https://github.com/nicolasnkGH/Portfolio
+    ```
 
-Developed and maintained by Nicolas Teixeira.
+2.  Navigate to the directory:
+    ```bash
+    cd Portfolio
+    ```
+
+3.  Open `index.html` in your web browser, or use a local server:
+    ```bash
+    # Using Python 3
+    python3 -m http.server 8080
+
+    # Then visit http://localhost:8080
+    ```
+
+## 📁 Project Structure
+
+```
+Portfolio/
+├── index.html          # Main HTML file with all sections
+├── css/
+│   └── styles.css      # Complete stylesheet (2500+ lines)
+├── js/
+│   └── scripts.js      # JavaScript for animations and interactivity
+└── README.md           # This documentation file
+```
+
+---
+
+**Developed and maintained by Nicolas Teixeira** | Systems & Platform Engineer | Cloud, DevOps, and AI Infrastructure
 
 

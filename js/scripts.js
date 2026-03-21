@@ -1,6 +1,61 @@
 // Portfolio JavaScript - Modern hero with typing effects
 
+// Work experience data synced with HTML
+const workExperience = {
+    current: {
+        company: 'ADB Safegate',
+        title: 'Systems Engineer',
+        location: 'Columbus, OH',
+        dates: 'April 2023 — Present',
+        responsibilities: [
+            'Designed and deployed secure, scalable infrastructure for mission-critical airport systems',
+            'Built and managed CI/CD pipelines with Azure DevOps, streamlining deployments',
+            'Configured HA clusters for databases and identity management systems (IAM, SSO, SSL)',
+            'Led AWS migration for Delta Airlines, ensuring continuity of a critical on-premise system',
+            'Directed a $30M United Airlines project, managing cross-functional teams end-to-end',
+            'Deployed and maintained Windows, Linux, and Kubernetes environments (bare-metal, VM, cloud)',
+            'Developed a new wireless system, saving 1 hour/day in setup time and enabling remote troubleshooting'
+        ]
+    },
+    previous: {
+        company: 'LPL Financial',
+        title: 'Product Support Specialist',
+        location: 'San Diego, CA',
+        dates: 'August 2021 — April 2023',
+        responsibilities: [
+            'Supported 4 proprietary financial systems, ensuring high reliability for hundreds of advisors',
+            'Partnered with escalation teams to resolve high-priority issues under tight SLAs',
+            'Maintained service records for compliance and transparency',
+            'Improved advisor experience by reducing recurring support issues through process refinements'
+        ]
+    },
+    earlier: {
+        company: 'Express Hospitality Inc.',
+        title: 'Technical Support Specialist II',
+        location: 'San Diego, CA',
+        dates: 'July 2018 — July 2021',
+        responsibilities: [
+            'Managed provisioning, installation, and maintenance of hardware/software systems',
+            'Configured desktops and streamlined onboarding for new hires',
+            'Ensured uptime through proactive system monitoring and LAN/WAN maintenance',
+            'Delivered on-site and remote troubleshooting, reducing downtime and support delays'
+        ]
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Navbar background on scroll for better contrast
+    const navbar = document.getElementById('mainNav');
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+    }
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -16,22 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar background on scroll
-    const navbar = document.getElementById('mainNav');
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.style.backgroundColor = 'rgba(13, 17, 23, 0.98)';
-            } else {
-                navbar.style.backgroundColor = 'rgba(13, 17, 23, 0.95)';
-            }
-        });
-    }
-
     // Typing effect for subtitle
     const subtitleElement = document.getElementById('subtitle-typing');
     if (subtitleElement) {
-        const subtitleText = 'Systems & Platform Engineer | Cloud, Data & AI Infrastructure';
+        const subtitleText = 'Systems & Platform Engineer | Cloud, DevOps, and AI Infrastructure';
         let index = 0;
 
         function typeSubtitle() {
@@ -40,8 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 index++;
                 setTimeout(typeSubtitle, 50);
             } else {
-                // Add cursor blink effect at end
-                subtitleElement.innerHTML += '<span class="cursor-blink">|</span>';
+                // Add cursor blink effect at end (removed blue vertical bar after Infrastructure)
             }
         }
 
@@ -49,43 +91,59 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeSubtitle, 500);
     }
 
-    // Typing effect for specialty list items
-    const specialtyList = document.getElementById('specialty-list');
-    if (specialtyList) {
-        const specialties = [
-            '<i class="fas fa-cube specialty-icon"></i> Kubernetes & Cloud-Native Infrastructure',
-            '<i class="fas fa-brain specialty-icon"></i> MLOps & AI Inference Platforms',
-            '<i class="fas fa-cogs specialty-icon"></i> CI/CD Automation & IaC',
-            '<i class="fas fa-microchip specialty-icon"></i> GPU Acceleration & Cost Optimization'
-        ];
+    // Typing effect for specialty list items - character by character
+const specialtyList = document.getElementById('specialty-list');
+console.log('DOM is ready');
+console.log('Specialty list element found:', !!specialtyList);
+const locPin = document.querySelector('.location-pin-container');
+console.log('Location pin container found:', !!locPin);
+if (specialtyList) {
+    const specialties = [
+        '<i class="fas fa-dharmachakra specialty-icon" style="color:#58a6ff"></i> Kubernetes & Cloud-Native Infrastructure',
+        '<i class="fas fa-brain specialty-icon" style="color:#eb4335"></i> MLOps & AI Inference Platforms',
+        '<i class="fas fa-gears specialty-icon" style="color:#ea4335"></i> CI/CD Automation & IaC',
+        '<i class="fas fa-microchip specialty-icon" style="color:#3fb950"></i> GPU Acceleration & Cost Optimization'
+    ];
 
-        let itemIndex = 0;
+    specialties.forEach((html, index) => {
+        const li = document.createElement('li');
+        li.className = 'specialty-item';
+        li.style.opacity = '0';
 
-        function typeSpecialtyItem() {
-            if (itemIndex < specialties.length) {
-                const li = document.createElement('li');
-                li.className = 'specialty-item';
-                li.innerHTML = specialties[itemIndex];
-                specialtyList.appendChild(li);
+        const contentSpan = document.createElement('span');
+        contentSpan.innerHTML = '';
+        li.appendChild(contentSpan);
 
-                // Trigger reflow to restart animation
-                void li.offsetWidth;
-                li.classList.add('visible');
+        specialtyList.appendChild(li);
+        console.log('Added item', index + 1, 'to list');
 
-                itemIndex++;
-                setTimeout(typeSpecialtyItem, 300);
+        let charIndex = 0;
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const fullText = tempDiv.textContent || '';
+
+        function typeCharacter() {
+            if (charIndex < fullText.length) {
+                contentSpan.textContent = fullText.substring(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeCharacter, 25);
             } else {
-                // Add cursor blink effect
-                const finalLi = document.createElement('li');
-                finalLi.className = 'specialty-item visible';
-                finalLi.innerHTML = '<span class="cursor-blink" style="margin-left: 8px; color: var(--tech-blue);">|</span>';
-                specialtyList.appendChild(finalLi);
+                // Finalize with HTML including icons
+                contentSpan.innerHTML = html;
+                li.classList.add('visible');
+                li.style.opacity = '1';
+                console.log('Item', index + 1, 'complete');
+
+                if (index < specialties.length - 1) {
+                    setTimeout(() => {}, 100);
+                }
             }
         }
 
-        // Start typing after subtitle completes
-        setTimeout(typeSpecialtyItem, 1500);
-    }
+        // Staggered start
+        setTimeout(typeCharacter, index * 400);
+    });
+}
 
     // Typing effect for About section text
     const aboutText = document.getElementById('about-text');
@@ -95,7 +153,12 @@ document.addEventListener('DOMContentLoaded', function() {
             "deploying, and operating cloud-native infrastructure for data-intensive",
             "and event-driven systems. Recently focused on enabling AI and ML workloads",
             "through self-hosted inference platforms, GPU acceleration, observability,",
-            "and performance optimization."
+            "and performance optimization.",
+            "",
+            "I'm passionate about self-hosted solutions and building efficient",
+            "infrastructure at home - practicing what I preach. When I'm not working",
+            "on enterprise systems, I'm experimenting with local LLMs and optimizing",
+            "my home lab."
         ];
 
         let lineIndex = 0;
@@ -104,6 +167,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function typeAboutLine() {
             if (lineIndex < aboutContent.length) {
+                // Handle blank lines as paragraph breaks
+                if (aboutContent[lineIndex] === '') {
+                    const pBreak = document.createElement('div');
+                    pBreak.style.marginTop = '1.2rem';
+                    aboutText.appendChild(pBreak);
+                    lineIndex++;
+                    charIndex = 0;
+                    setTimeout(typeAboutLine, 400);
+                    return;
+                }
+
                 if (charIndex === 0) {
                     // Start new line
                     const span = document.createElement('span');
@@ -121,7 +195,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentLine = "";
                     lineIndex++;
                     charIndex = 0;
-                    setTimeout(typeAboutLine, 200); // Pause between lines
+
+                    // Add extra pause for paragraph breaks (after a blank line)
+                    const shouldPauseLonger = aboutContent[lineIndex] === '';
+
+                    setTimeout(typeAboutLine, shouldPauseLonger ? 400 : 200); // Pause between lines/paragraphs
                 }
             } else {
                 // Add final cursor
@@ -137,22 +215,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Skills population and animation
     const skillsData = {
-        infrastructure: ['Kubernetes', 'Docker', 'Terraform', 'Ansible', 'Git'],
-        cloud: ['AWS', 'Azure', 'Proxmox', 'VMware/Hyper-V', 'Hybrid/on-prem'],
+        devops: ['Kubernetes', 'Docker', 'Terraform', 'Ansible', 'Git', 'ZFS', 'Helm', 'Istio', 'Docker Compose'],
+        cloud: ['AWS', 'Azure', 'Proxmox', 'VMware/Hyper-V', 'Hybrid/on-prem', 'AIDX Flight Feeds', 'SAM System'],
         languages: ['Python', 'PowerShell', 'Bash', 'SQL'],
-        security: ['IAM/SSO', 'Keycloak', 'TLS/SSL', 'VPNs', 'VLANs', 'Firewalls', 'Wireshark', 'SIEM'],
-        ai: ['MLOps', 'GPU Acceleration', 'Inference Platforms', 'Model Deployment', 'MLflow', 'Observability'],
-        containers: ['Docker Compose', 'Kubernetes', 'Helm', 'Istio', 'Container Registry']
+        monitoring: ['Zabbix', 'Prometheus', 'Grafana', 'VPC Flow Logs'],
+        security: ['IAM/SSO', 'Keycloak', 'TLS/SSL', 'VPNs', 'VLANs', 'Firewalls', 'Wireshark', 'SIEM', 'Ubiquiti/Unifi'],
+        ai: ['MLOps', 'GPU Acceleration', 'Ollama', 'llama.cpp', 'OpenWebUI', 'MLflow']
     };
 
     // Populate skills with dynamic styling based on category
     const categoryColors = {
-        infrastructure: '#58a6ff',
+        devops: '#58a6ff',
         cloud: '#2f81f7',
         languages: '#3fb950',
+        monitoring: '#ffc646',
         security: '#ffc646',
-        ai: '#eb4470',
-        containers: '#8b98f1'
+        ai: '#eb4470'
     };
 
     for (const [category, skills] of Object.entries(skillsData)) {
@@ -201,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '201, 209, 217';
     }
 
-     // Animate progress bars on scroll
+    // Animate progress bars on scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -212,6 +290,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.skill-progress-item').forEach(item => {
         observer.observe(item);
+    });
+
+   // Animate skills categories on scroll
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('#skills .skills-category').forEach(category => {
+        skillsObserver.observe(category);
     });
 
    // Animate project cards on scroll
@@ -249,22 +340,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('#certifications .cert-card').forEach(card => {
+   document.querySelectorAll('#certifications .cert-card').forEach(card => {
         certObserver.observe(card);
     });
 
-    // Animate contact card on scroll
-    const contactObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-
-    const contactCard = document.querySelector('#contact .contact-card');
-    if (contactCard) {
-        contactObserver.observe(contactCard);
-    }
-
 });
+
