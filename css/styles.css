@@ -1476,26 +1476,140 @@ footer a:hover, .footer-nav-link:hover {
     }
 }
 
-/* Mobile adjustments (below 768px) */
-@media (max-width: 767px) {
-    section {
-        padding: 3rem 0;
+/* ==========================================================================
+   Mobile Optimization Suite - @media (max-width: 768px)
+   Comprehensive mobile responsive adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* HERO SCALING - Adjust masthead typography for mobile */
+    .masthead h1 {
+        font-size: 2.8rem !important;
+        line-height: 1.2 !important;
     }
 
+    .specializing-text {
+        font-size: 0.9rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* ICON TRIAGE - Keep only AWS, Docker, Kubernetes on mobile */
+    /* Hide all floating icons except t1(Docker), t3(K8s), t5(AWS) */
+    .t2, .t4, .t6, .python-under-columbus {
+        display: none !important;
+    }
+
+    /* Style remaining icons - 40px at corners with 0.2 opacity */
+    .t1 { top: 5% !important; left: 3% !important; animation: none !important; }
+    .t3 { top: 5% !important; right: 3% !important; animation: none !important; }
+    .t5 { bottom: 8% !important; left: 50% !important; transform: translateX(-50%) !important; animation: none !important; }
+
+    /* Reduce icon size to 40px on mobile */
+    .floating-tech-icons .icon-container i {
+        font-size: 40px !important;
+    }
+
+    .t1::before, .t3::before, .t5::before {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .t1::after, .t3::after, .t5::after {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    /* Apply reduced opacity to corner icons */
+    .t1 i, .t3 i, .t5 i {
+        opacity: 0.2 !important;
+    }
+
+    /* EXPERIENCE STACKING - Full width with reduced padding */
+    .experience-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 1.5rem !important;
+    }
+
+    .col-md-4.col-sm-6 .experience-card {
+        margin-bottom: 1rem;
+    }
+
+    /* LOCATION PIN & SOCIAL BUTTONS spacing */
+    #specialty-list {
+        margin-top: 2rem !important;
+        padding: 0 1rem !important;
+    }
+
+    .location-pin-container {
+        margin-top: 1.5rem !important;
+        gap: 6px !important;
+    }
+
+    .location-pin {
+        font-size: 1.1rem !important;
+    }
+
+    #specialty-list li span {
+        padding: 4px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* TERMINAL REFINEMENT - Contact section responsive */
+    #contact .terminal-window {
+        width: 95% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #contact .card-body {
+        padding: 1.5rem !important;
+    }
+
+    /* Terminal text scaling and overflow prevention */
+    #contact h2,
+    #contact .terminal-header h3,
+    #contact .terminal-content p,
+    #contact .terminal-content a,
+    #contact .terminal-content strong {
+        font-size: 0.85rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+
+    /* Terminal content padding */
+    #contact .col-md-6 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    /* NAVIGATION CONSISTENCY - Prevent overlap with masthead */
     html {
-        scroll-padding-top: 70px;
+        scroll-padding-top: 90px;
     }
 
     .navbar {
-        padding: 0.5rem 0;
+        z-index: 1050;
+        background-color: rgba(13, 17, 23, 0.98) !important;
     }
 
-    .masthead h1 {
-        font-size: 2rem;
+    /* Ensure hamburger menu opens without overlap */
+    #navbarSupportedContent {
+        padding-top: 1rem !important;
     }
 
-    .masthead p {
-        font-size: 0.95rem;
+    .navbar-brand {
+        margin-right: 1rem !important;
+    }
+}
+
+/* Mobile adjustments (below 768px) - consolidated with above block */
+@media (max-width: 767px) {
+    section {
+        padding: 3rem 0;
     }
 
     /* Stack buttons better on mobile */
