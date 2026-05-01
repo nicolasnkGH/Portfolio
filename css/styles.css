@@ -1383,22 +1383,8 @@ footer a:hover, .footer-nav-link:hover {
 }
 
 /* ==========================================================================
-   Button Variants
+   Button Variants (Consolidated - btn-primary defined in Footer section)
    ========================================================================== */
-
-.btn-primary {
-    background-color: var(--tech-blue);
-    border-color: var(--tech-blue);
-    color: white;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--tech-cyan);
-    border-color: var(--tech-cyan);
-    color: white;
-}
 
 .btn-outline-light {
     border-color: var(--text-white-75);
@@ -1586,6 +1572,11 @@ footer a:hover, .footer-nav-link:hover {
         hyphens: auto !important;
     }
 
+    /* Terminal content styling on mobile */
+    #contact .terminal-content {
+        width: 100%;
+    }
+
     /* Terminal content padding */
     #contact .col-md-6 {
         padding-left: 10px !important;
@@ -1642,8 +1633,9 @@ footer a:hover, .footer-nav-link:hover {
         font-size: 1.75rem;
     }
 
+    /* Masthead h1 mobile override only - desktop uses Bootstrap default */
     .masthead h1 {
-        font-size: 1.75rem;
+        font-size: 2rem !important;
     }
 
     .btn-lg {

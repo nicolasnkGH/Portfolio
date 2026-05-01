@@ -93,10 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Typing effect for specialty list items - character by character
 const specialtyList = document.getElementById('specialty-list');
-console.log('DOM is ready');
-console.log('Specialty list element found:', !!specialtyList);
-const locPin = document.querySelector('.location-pin-container');
-console.log('Location pin container found:', !!locPin);
 if (specialtyList) {
     const specialties = [
         '<i class="fas fa-dharmachakra specialty-icon" style="color:#58a6ff"></i> Kubernetes & Cloud-Native Infrastructure',
@@ -115,7 +111,6 @@ if (specialtyList) {
         li.appendChild(contentSpan);
 
         specialtyList.appendChild(li);
-        console.log('Added item', index + 1, 'to list');
 
         let charIndex = 0;
         const tempDiv = document.createElement('div');
@@ -132,11 +127,6 @@ if (specialtyList) {
                 contentSpan.innerHTML = html;
                 li.classList.add('visible');
                 li.style.opacity = '1';
-                console.log('Item', index + 1, 'complete');
-
-                if (index < specialties.length - 1) {
-                    setTimeout(() => {}, 100);
-                }
             }
         }
 
@@ -211,6 +201,19 @@ if (specialtyList) {
 
         // Start typing after specialties complete
         setTimeout(typeAboutLine, 2500);
+    }
+
+    // Auto-update footer year and last updated date
+    const currentYearEl = document.getElementById('current-year');
+    if (currentYearEl) {
+        currentYearEl.textContent = new Date().getFullYear();
+    }
+
+    const lastUpdatedEl = document.getElementById('last-updated');
+    if (lastUpdatedEl) {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        lastUpdatedEl.textContent = now.toLocaleDateString('en-US', options);
     }
 
     // Skills population and animation
