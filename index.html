@@ -58,8 +58,8 @@
 
  <!-- Masthead Hero Section -->
     <header class="masthead position-relative overflow-hidden" id="masthead">
-        <!-- Floating tech icons container -->
-        <div class="floating-tech-icons" id="floating-tech-icons">
+        <!-- Floating tech icons - extreme viewport edges, behind terminal -->
+        <div class="floating-tech-icons d-none d-xl-block" id="floating-tech-icons">
             <div class="icon-container t1"><i class="fab fa-docker" title="Docker"></i></div>
             <div class="icon-container t2"><i class="fab fa-linux" title="Linux/Proxmox"></i></div>
             <div class="icon-container t3 k8s-icon"><i class='bx bxl-kubernetes' title="Kubernetes"></i></div>
@@ -71,43 +71,75 @@
         <div class="masthead-grid"></div>
         <div class="masthead-orb-secondary"></div>
 
-        <div class="container px-4 px-lg-5 d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 4rem; padding-bottom: 3rem;">
-            <div class="text-center position-relative masthead-content">
-                <h1 class="masthead-name-gradient fw-bold display-3 mb-2">Nicolas Teixeira</h1>
-                <p class="mb-4" id="subtitle-typing" style="max-width: 600px; font-size: 1.3rem; color: var(--text-muted); min-height: 3rem;"></p>
+        <!-- Hero: full-height flex center -->
+        <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 5rem; padding-bottom: 3rem; position: relative; z-index: 5;">
+            <div class="container px-3 px-lg-4">
 
-                <div class="d-flex gap-2 justify-content-center flex-wrap mb-5">
-                    <a class="btn btn-primary" href="#projects">View Projects</a>
-                    <a class="btn btn-outline-light" href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" aria-label="View my LinkedIn profile">
-                        <i class="fab fa-linkedin me-1"></i> LinkedIn
-                    </a>
-                    <a class="btn btn-outline-light" href="https://github.com/nicolasnkGH" target="_blank" aria-label="View my GitHub profile">
-                        <i class="fab fa-github me-1"></i> GitHub
-                    </a>
-                    <a class="btn btn-outline-light" href="#contact">Contact</a>
+                <!-- Unified tmux terminal window -->
+                <div class="hero-tmux-window crt-overlay" id="hero-terminal">
+                    <!-- Single unified window title bar -->
+                    <div class="hero-tmux-titlebar">
+                        <div class="d-flex align-items-center gap-2">
+                            <div style="width:13px;height:13px;border-radius:50%;background:#ff5f56;"></div>
+                            <div style="width:13px;height:13px;border-radius:50%;background:#ffbd2e;"></div>
+                            <div style="width:13px;height:13px;border-radius:50%;background:#27c93f;"></div>
+                        </div>
+                        <span class="hero-tmux-title">nicolas@nick-t.net — tmux: portfolio [2 panes]</span>
+                        <span class="badge font-mono ms-auto" style="font-size:0.62rem; background:rgba(63,185,80,0.15); color:var(--sys-green); border:1px solid rgba(63,185,80,0.3); padding: 3px 8px;">
+                            <i class="fas fa-circle me-1" style="font-size:0.4rem;vertical-align:middle;"></i>LIVE
+                        </span>
+                    </div>
+
+                    <!-- Two-pane tmux body -->
+                    <div class="hero-tmux-body">
+
+                        <!-- LEFT PANE: neofetch-style system info -->
+                        <div class="hero-tmux-pane-left font-mono" id="neofetch-pane">
+                            <!-- Pane label -->
+                            <div class="tmux-pane-label">0: neofetch — zsh</div>
+                            <div class="neofetch-content" id="neofetch-content">
+                                <!-- Filled dynamically by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Pane separator -->
+                        <div class="hero-tmux-separator"></div>
+
+                        <!-- RIGHT PANE: interactive shell -->
+                        <div class="hero-tmux-pane-right font-mono" id="shell-pane" onclick="focusTerminal()">
+                            <div class="tmux-pane-label active">1: ~  — zsh  ★</div>
+                            <div class="hero-terminal-body" id="terminal-body">
+                                <!-- Boot lines appended by JS -->
+                            </div>
+                            <input type="text" class="terminal-input-hidden" id="terminal-input" autocomplete="off" aria-label="Terminal input">
+                        </div>
+
+                    </div>
+
+                    <!-- Status bar (bottom) -->
+                    <div class="hero-tmux-statusbar">
+                        <span class="tmux-status-left">
+                            <span class="tmux-status-session">[portfolio]</span>
+                            <span class="tmux-status-window ms-2">0:neofetch</span>
+                            <span class="tmux-status-window ms-1 active">1:zsh*</span>
+                        </span>
+                        <span class="tmux-status-right font-mono">
+                            <span class="text-sys-green me-3"><i class="fas fa-map-marker-alt me-1"></i>Columbus, OH</span>
+                            <span class="text-sys-cyan me-3" id="subtitle-typing" style="font-size:0.72rem;"></span>
+                            <span class="text-muted" id="tmux-clock" style="font-size:0.7rem;"></span>
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Specializing in section -->
-                <div class="text-white-75 small specialty-section-container" style="max-width: 600px; margin: 0 auto; text-align: center;">
-                    <p class="fw-bold mb-2 text-muted">Specializing in:</p>
-                    <ul id="specialty-list" class="list-unstyled" style="font-size: 0.95rem; display: inline-block; text-align: left;">
-                        <!-- Items will be typed dynamically -->
-                    </ul>
-                </div>
-
-               <!-- Location with animated pin -->
-                <p class="text-white-50 small mt-4 mb-0 location-pin-container" style="display: inline-flex; gap: 8px; align-items: center;">
-                    <i class="fas fa-map-marker-alt location-pin" style="color: #3fb950; animation: pulsePin 2s ease-in-out infinite;"></i>
-                    <span>Columbus, OH</span>
+                <!-- Hint below terminal -->
+                <p class="text-center mt-3 font-mono text-muted" style="font-size:0.7rem; opacity:0.5;">
+                    <i class="fas fa-keyboard me-1"></i>Click right pane &amp; type <code class="text-sys-cyan">help</code> · Ctrl+B arrows to switch panes
                 </p>
 
-                <!-- Python icon positioned under Columbus -->
-                <div class="columbus-icon-container position-absolute" style="top: 110%; left: 50%; transform: translateX(-50%);">
-                    <div class="icon-container t7 python-under-columbus"><i class="fab fa-python" title="Python"></i></div>
-                </div>
             </div>
         </div>
     </header>
+>
 
     <!-- About Section -->
     <section class="py-5 section-id" id="about">
@@ -126,14 +158,7 @@
                                     <span class="text-white-75"></span>
                                 </p>
 
-                                <!-- Education badge -->
-                                <div class="education-badge d-inline-flex align-items-center p-3 rounded" style="background: rgba(63, 185, 80, 0.1); border: 1px solid var(--tech-emerald);">
-                                    <i class="fas fa-graduation-cap me-3" style="color: var(--tech-emerald); font-size: 1.5rem;"></i>
-                                    <div>
-                                        <p class="text-white fw-bold mb-0 fs-6">M.S. in Software Engineering & DevOps</p>
-                                        <small class="text-white-50 mb-0">Western Governors University • Expected June 2026</small>
-                                    </div>
-                                </div>
+
                             </div>
 
                             <!-- Impact highlights column -->
@@ -141,14 +166,14 @@
                                 <div class="row g-3">
                                     <div class="col-12">
                                         <div class="impact-card p-4 h-100" style="background: rgba(88, 166, 255, 0.05); border: 1px solid rgba(88, 166, 255, 0.2);">
-                                            <i class="fas fa-database mb-3" style="color: var(--tech-blue); font-size: 2rem;"></i>
+                                            <i class="fas fa-database mb-3" style="display:block; color: var(--tech-blue); font-size: 2rem;"></i>
                                             <h5 class="text-white fw-bold mb-2 fs-6">Cloud-Native & Event-Driven</h5>
                                             <p class="text-white-75 small mb-0">Designing, deploying, and operating scalable infrastructure for data-intensive systems.</p>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="impact-card p-4 h-100" style="background: rgba(63, 185, 80, 0.05); border: 1px solid rgba(63, 185, 80, 0.2);">
-                                            <i class="fas fa-brain mb-3" style="color: var(--tech-emerald); font-size: 2rem;"></i>
+                                            <i class="fas fa-brain mb-3" style="display:block; color: var(--tech-emerald); font-size: 2rem;"></i>
                                             <h5 class="text-white fw-bold mb-2 fs-6">AI & ML Enablement</h5>
                                             <p class="text-white-75 small mb-0">Self-hosted inference platforms, GPU acceleration, observability, and performance optimization.</p>
                                         </div>
@@ -160,83 +185,81 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Work Experience Section -->
+    </section>    <!-- Work Experience Section -->
     <section class="py-5 section-id" id="experience">
         <div class="container px-4 px-lg-5">
             <h2 class="text-center text-white mb-3 fw-bold display-6">Work Experience</h2>
             <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
-                Professional background in systems engineering, cloud infrastructure, and DevOps automation
+                Diagnostic trace of professional background in systems engineering and DevOps automation
             </p>
 
-            <div class="row g-4">
+            <div class="syslog-timeline">
                 <!-- Job 1 -->
-                <div class="col-12">
-                    <div class="experience-card p-4 h-100" style="background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.15);">
-                        <div class="row align-items-center">
-                            <div class="col-lg-7 mb-3 mb-lg-0">
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-briefcase me-3" style="color: var(--tech-blue); font-size: 1.5rem;"></i>
-                                    <h4 class="text-white fw-bold mb-0 fs-5">Systems Engineer</h4>
-                                </div>
-                                <p class="text-muted mb-2"><strong>ADB Safegate</strong> | Columbus, OH</p>
-                                <p class="text-muted small mb-3">April 2023 — Present</p>
-                                <ul class="list-unstyled text-white-75">
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Designed and deployed secure, scalable infrastructure for mission-critical airport systems</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Built and managed CI/CD pipelines with Azure DevOps, streamlining deployments</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Configured HA clusters for databases and identity management systems (IAM, SSO, SSL)</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Led AWS migration for Delta Airlines, ensuring continuity of a critical on-premise system</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Directed a $30M United Airlines project, managing cross-functional teams end-to-end</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Deployed and maintained Windows, Linux, and Kubernetes environments (bare-metal, VM, cloud)</li>
-                                    <li><i class="fas fa-check-circle me-2" style="color: var(--tech-blue); font-size: 0.8rem;"></i>Developed a new wireless system, saving 1 hour/day in setup time and enabling remote troubleshooting</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="syslog-entry">
+                    <div class="syslog-marker"></div>
+                    <div class="syslog-header-row">
+                        <span class="syslog-stamp">2023-04-20 08:00:00</span>
+                        <span class="text-white">adb-safegate-daemon[1024]:</span>
+                        <span class="syslog-tag-info">[INFO]</span>
+                        <span>Service "Systems Engineer" initialized successfully.</span>
+                    </div>
+                    <div class="syslog-body">
+                        <h4 class="text-white fw-bold mb-1 fs-5">Systems Engineer</h4>
+                        <p class="text-muted mb-2"><strong>ADB Safegate</strong> | Columbus, OH</p>
+                        <p class="small font-mono text-sys-blue mb-3"><i class="fas fa-calendar-alt me-2"></i>April 2023 — Present</p>
+                        <ul class="list-unstyled text-white-75 mb-0">
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Designed and deployed secure, scalable infrastructure for mission-critical airport systems</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Built and managed CI/CD pipelines with Azure DevOps, streamlining deployments</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Configured HA clusters for databases and identity management systems (IAM, SSO, SSL)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Led AWS migration for Delta Airlines, ensuring continuity of a critical on-premise system</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Directed a $30M United Airlines project, managing cross-functional teams end-to-end</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Deployed and maintained Windows, Linux, and Kubernetes environments (bare-metal, VM, cloud)</li>
+                            <li><i class="fas fa-check-circle me-2 text-sys-blue"></i>Developed a new wireless system, saving 1 hour/day in setup time and enabling remote troubleshooting</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Job 2 -->
-                <div class="col-12">
-                    <div class="experience-card p-4 h-100" style="background: rgba(63, 185, 80, 0.03); border: 1px solid rgba(63, 185, 80, 0.15);">
-                        <div class="row align-items-center">
-                            <div class="col-lg-7 mb-3 mb-lg-0">
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-briefcase me-3" style="color: var(--tech-emerald); font-size: 1.5rem;"></i>
-                                    <h4 class="text-white fw-bold mb-0 fs-5">Product Support Specialist</h4>
-                                </div>
-                                <p class="text-muted mb-2"><strong>LPL Financial</strong> | San Diego, CA</p>
-                                <p class="text-muted small mb-3">August 2021 — April 2023</p>
-                                <ul class="list-unstyled text-white-75">
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Supported 4 proprietary financial systems, ensuring high reliability for hundreds of advisors</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Partnered with escalation teams to resolve high-priority issues under tight SLAs</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Maintained service records for compliance and transparency</li>
-                                    <li><i class="fas fa-check-circle me-2" style="color: var(--tech-emerald); font-size: 0.8rem;"></i>Improved advisor experience by reducing recurring support issues through process refinements</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="syslog-entry">
+                    <div class="syslog-marker" style="background: var(--sys-green); box-shadow: 0 0 8px var(--sys-green);"></div>
+                    <div class="syslog-header-row">
+                        <span class="syslog-stamp">2021-08-15 09:00:00</span>
+                        <span class="text-white">lpl-financial-support[2048]:</span>
+                        <span class="syslog-tag-info">[INFO]</span>
+                        <span>Established monitoring module: "Product Support Specialist".</span>
+                    </div>
+                    <div class="syslog-body">
+                        <h4 class="text-white fw-bold mb-1 fs-5">Product Support Specialist</h4>
+                        <p class="text-muted mb-2"><strong>LPL Financial</strong> | San Diego, CA</p>
+                        <p class="small font-mono text-sys-green mb-3"><i class="fas fa-calendar-alt me-2"></i>August 2021 — April 2023</p>
+                        <ul class="list-unstyled text-white-75 mb-0">
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-green"></i>Supported 4 proprietary financial systems, ensuring high reliability for hundreds of advisors</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-green"></i>Partnered with escalation teams to resolve high-priority issues under tight SLAs</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-green"></i>Maintained service records for compliance and transparency</li>
+                            <li><i class="fas fa-check-circle me-2 text-sys-green"></i>Improved advisor experience by reducing recurring support issues through process refinements</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Job 3 -->
-                <div class="col-12">
-                    <div class="experience-card p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
-                        <div class="row align-items-center">
-                            <div class="col-lg-7 mb-3 mb-lg-0">
-                                <div class="d-flex align-items-center mb-2">
-                                    <i class="fas fa-briefcase me-3" style="color: #ffc646; font-size: 1.5rem;"></i>
-                                    <h4 class="text-white fw-bold mb-0 fs-5">Technical Support Specialist II</h4>
-                                </div>
-                                <p class="text-muted mb-2"><strong>Express Hospitality Inc.</strong> | San Diego, CA</p>
-                                <p class="text-muted small mb-3">July 2018 — July 2021</p>
-                                <ul class="list-unstyled text-white-75">
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Managed provisioning, installation, and maintenance of hardware/software systems</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Configured desktops and streamlined onboarding for new hires</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Ensured uptime through proactive system monitoring and LAN/WAN maintenance</li>
-                                    <li><i class="fas fa-check-circle me-2" style="color: #ffc646; font-size: 0.8rem;"></i>Delivered on-site and remote troubleshooting, reducing downtime and support delays</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="syslog-entry">
+                    <div class="syslog-marker" style="background: var(--sys-yellow); box-shadow: 0 0 8px var(--sys-yellow);"></div>
+                    <div class="syslog-header-row">
+                        <span class="syslog-stamp">2018-07-01 08:30:00</span>
+                        <span class="text-white">express-hospitality-agent[4096]:</span>
+                        <span class="syslog-tag-warning">[WARN]</span>
+                        <span>Booting backup system: "Technical Support Specialist II".</span>
+                    </div>
+                    <div class="syslog-body">
+                        <h4 class="text-white fw-bold mb-1 fs-5">Technical Support Specialist II</h4>
+                        <p class="text-muted mb-2"><strong>Express Hospitality Inc.</strong> | San Diego, CA</p>
+                        <p class="small font-mono text-sys-yellow mb-3"><i class="fas fa-calendar-alt me-2"></i>July 2018 — July 2021</p>
+                        <ul class="list-unstyled text-white-75 mb-0">
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-yellow"></i>Managed provisioning, installation, and maintenance of hardware/software systems</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-yellow"></i>Configured desktops and streamlined onboarding for new hires</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-yellow"></i>Ensured uptime through proactive system monitoring and LAN/WAN maintenance</li>
+                            <li><i class="fas fa-check-circle me-2 text-sys-yellow"></i>Delivered on-site and remote troubleshooting, reducing downtime and support delays</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -246,76 +269,163 @@
     <!-- Technical Skills Section -->
     <section class="py-5 section-id" id="skills">
         <div class="container px-4 px-lg-5">
-            <h2 class="text-center text-white mb-3 fw-bold display-6">Technical Skills</h2>
+            <h2 class="text-center text-white mb-3 fw-bold display-6">System Diagnostics & Skills</h2>
             <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
-                Comprehensive expertise across infrastructure, cloud platforms, and modern development practices
+                Live telemetry of infrastructure automation, software platforms, and engineering capabilities
             </p>
 
-            <!-- Skills Grid with Categories -->
+            <!-- Telemetry Diagnostics Panel (Chart.js Radar + Dashboard details) -->
+            <div class="row g-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="telemetry-dashboard-panel h-100 font-mono">
+                        <h4 class="text-white mb-4"><i class="fas fa-satellite-dish me-2 text-sys-cyan"></i>Skills Distribution</h4>
+                        <div style="position: relative; height: 350px; width: 100%;">
+                            <canvas id="skillsRadarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="telemetry-dashboard-panel h-100 font-mono text-start">
+                        <h4 class="text-white mb-4"><i class="fas fa-server me-2 text-sys-green"></i>System Telemetry</h4>
+                        <div class="mb-3">
+                            <span class="text-muted">HOST:</span> <span class="text-white">nicolas-node-01</span><br>
+                            <span class="text-muted">KERNEL:</span> <span class="text-white">v2026.06-devops</span><br>
+                            <span class="text-muted">STATUS:</span> <span class="badge rounded-pill bg-success text-dark fw-bold">ONLINE</span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1 small text-muted">
+                                <span>CPU Usage (Orchestration/IaC)</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress bg-dark" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1 small text-muted">
+                                <span>Memory Allocation (Programming/Databases)</span>
+                                <span>78%</span>
+                            </div>
+                            <div class="progress bg-dark" style="height: 8px;">
+                                <div class="progress-bar bg-info" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1 small text-muted">
+                                <span>Network Load (Cloud/Security)</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="progress bg-dark" style="height: 8px;">
+                                <div class="progress-bar bg-warning" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="border-top border-secondary pt-3 mt-3">
+                            <div class="row g-2 text-center text-md-start">
+                                <div class="col-6 col-md-3">
+                                    <div class="small text-muted">Services</div>
+                                    <div class="fs-5 text-white fw-bold">6 / 6</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="small text-muted">Load Avg</div>
+                                    <div class="fs-5 text-sys-green fw-bold">0.45</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="small text-muted">ZFS Pool</div>
+                                    <div class="fs-5 text-sys-green fw-bold">ONLINE</div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <div class="small text-muted">Failures</div>
+                                    <div class="fs-5 text-danger fw-bold">0</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Grid with systemd-styled Categories -->
             <div class="row g-4">
-                <!-- DevOps & Infrastructure Column -->
+                <!-- DevOps & Infrastructure Service -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="skills-category p-4 h-100" style="background: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.15);">
-                        <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-network-wired me-3" style="color: var(--tech-blue); font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">DevOps & Infrastructure</h4>
+                    <div class="systemd-service-card font-mono h-100">
+                        <div class="systemd-header">
+                            <span class="systemd-name"><i class="fas fa-network-wired me-2 text-sys-blue"></i>devops.service</span>
+                            <span class="systemd-status">running</span>
                         </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-devops"></div>
+                        <div class="skills-list mt-3" id="skills-devops"></div>
+                        <div class="systemd-log-output">
+                            <span>● devops.service - Container and orchestration systems fully operational.</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Cloud & Platforms Column -->
+                <!-- Cloud & Platforms Service -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="skills-category p-4 h-100" style="background: rgba(47, 129, 247, 0.03); border: 1px solid rgba(47, 129, 247, 0.15);">
-                        <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-cloud me-3" style="color: var(--tech-cyan); font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">Cloud & Platforms</h4>
+                    <div class="systemd-service-card font-mono h-100">
+                        <div class="systemd-header">
+                            <span class="systemd-name"><i class="fas fa-cloud me-2 text-sys-cyan"></i>cloud-platforms.service</span>
+                            <span class="systemd-status">running</span>
                         </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-cloud"></div>
+                        <div class="skills-list mt-3" id="skills-cloud"></div>
+                        <div class="systemd-log-output">
+                            <span>● cloud-platforms.service - Multi-cloud connection active.</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Languages Column -->
+                <!-- Languages Service -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="skills-category p-4 h-100" style="background: rgba(63, 185, 80, 0.03); border: 1px solid rgba(63, 185, 80, 0.15);">
-                        <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-code me-3" style="color: var(--tech-emerald); font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">Languages</h4>
+                    <div class="systemd-service-card font-mono h-100">
+                        <div class="systemd-header">
+                            <span class="systemd-name"><i class="fas fa-code me-2 text-sys-green"></i>programming.service</span>
+                            <span class="systemd-status">running</span>
                         </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-languages"></div>
+                        <div class="skills-list mt-3" id="skills-languages"></div>
+                        <div class="systemd-log-output">
+                            <span>● programming.service - Python compilation processes enabled.</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Monitoring & Observability Column -->
+                <!-- Monitoring & Observability Service -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="skills-category p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
-                        <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-chart-line me-3" style="color: #ffc646; font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">Monitoring & Observability</h4>
+                    <div class="systemd-service-card font-mono h-100">
+                        <div class="systemd-header">
+                            <span class="systemd-name"><i class="fas fa-chart-line me-2 text-sys-yellow"></i>monitoring.service</span>
+                            <span class="systemd-status">running</span>
                         </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-monitoring"></div>
+                        <div class="skills-list mt-3" id="skills-monitoring"></div>
+                        <div class="systemd-log-output">
+                            <span>● monitoring.service - Prometheus scraping telemetry metrics.</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Security & Networking Column -->
+                <!-- Security & Networking Service -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="skills-category p-4 h-100" style="background: rgba(255, 198, 70, 0.03); border: 1px solid rgba(255, 198, 70, 0.15);">
-                        <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-shield-alt me-3" style="color: #ffc646; font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">Security & Networking</h4>
+                    <div class="systemd-service-card font-mono h-100">
+                        <div class="systemd-header">
+                            <span class="systemd-name"><i class="fas fa-shield-alt me-2 text-sys-yellow"></i>security.service</span>
+                            <span class="systemd-status">running</span>
                         </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-security"></div>
+                        <div class="skills-list mt-3" id="skills-security"></div>
+                        <div class="systemd-log-output">
+                            <span>● security.service - Firewalls and SSO policies enforced.</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- AI/MLOps Column -->
+                <!-- AI/MLOps Service -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="skills-category p-4 h-100" style="background: rgba(235, 68, 112, 0.03); border: 1px solid rgba(235, 68, 112, 0.15);">
-                        <div class="skills-header mb-4 d-flex align-items-center">
-                            <i class="fas fa-brain me-3" style="color: #eb4470; font-size: 1.75rem;"></i>
-                            <h4 class="text-white mb-0 fs-6 fw-bold">AI / MLOps</h4>
+                    <div class="systemd-service-card font-mono h-100">
+                        <div class="systemd-header">
+                            <span class="systemd-name"><i class="fas fa-brain me-2 text-sys-magenta"></i>mlops-ai.service</span>
+                            <span class="systemd-status">running</span>
                         </div>
-                        <div class="skills-list d-flex flex-wrap gap-2" id="skills-ai"></div>
+                        <div class="skills-list mt-3" id="skills-ai"></div>
+                        <div class="systemd-log-output">
+                            <span>● mlops-ai.service - GPU drivers loaded, inference layers ready.</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -494,75 +604,98 @@
         </div>
     </section>
 
-    <!-- Contact Section - Terminal Window Style -->
+    <!-- Contact Section - Modernized Terminal Window Style -->
     <section class="py-5 section-id" id="contact">
         <div class="container px-4 px-lg-5">
             <h2 class="text-center text-white mb-3 fw-bold display-6">Contact Me</h2>
             <p class="text-center text-muted mb-5" style="max-width: 600px; margin: 0 auto;">
                 Reach out via email or connect on social platforms
             </p>
-            <!-- Terminal Window - single container, no wrapper -->
-            <div class="terminal-window mx-auto terminal-hover-effect" style="background: #0B0E14; border-radius: 12px; padding: 0; margin-bottom: 3rem;">
+
+            <!-- Terminal Window -->
+            <div class="terminal-window mx-auto" style="max-width: 860px; margin-bottom: 3rem;">
                 <!-- Terminal Header with Buttons -->
-                <div class="terminal-header position-relative d-flex align-items-center px-4 py-3" style="background: linear-gradient(180deg, #1a1f29 0%, #141820 100%); border-bottom: 1px solid #444;">
+                <div class="terminal-header position-relative d-flex align-items-center px-4 py-3">
                     <div class="terminal-buttons d-flex gap-2 me-3">
-                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ff5f56 0%, #ff3b30 100%); border: 1px solid #c92a20;"></div>
-                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e 0%, #f7b600 100%); border: 1px solid #d99500;"></div>
-                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #27c93f 0%, #1aab29 100%); border: 1px solid #168a1d;"></div>
+                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ff5f56, #ff3b30); border: 1px solid #c92a20;"></div>
+                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e, #f7b600); border: 1px solid #d99500;"></div>
+                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #27c93f, #1aab29); border: 1px solid #168a1d;"></div>
                     </div>
-                    <span class="terminal-title text-muted small position-absolute top-50 start-50 translate-middle" style="transition: color 0.3s ease, text-shadow 0.3s ease;">nicolas@nt-systems:~</span>
+                    <span class="terminal-title text-muted small position-absolute top-50 start-50 translate-middle font-mono">nicolas@nt-systems: ~</span>
                 </div>
 
                 <!-- Terminal Content -->
-                <div class="terminal-content p-4 p-md-5" style="font-family: 'Courier New', monospace; line-height: 1.9;">
-                    <!-- Information Grid - Two Columns -->
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Email:</span> <a href="mailto:careers@nick-t.net" class="badge rounded-pill" style="background: rgba(47, 129, 247, 0.2); border: 1px solid var(--tech-cyan); color: var(--tech-emerald); font-weight: 600; text-decoration: none; padding: 5px 12px; display: inline-block; transition: all 0.3s ease;" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'">
-                                <i class="fas fa-envelope me-1"></i>careers@nick-t.net
-                            </a></p>
-                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Domain:</span> <span class="text-white">nick-t.net</span></p>
-                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Location:</span> <span class="text-white">Columbus, OH</span></p>
-                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Availability:</span>
-                                <span class="badge rounded-pill" style="background: rgba(47, 129, 247, 0.2); border: 1px solid var(--tech-cyan); color: var(--tech-emerald); font-weight: 600;">
-                                    <i class="fas fa-check-circle me-1"></i>Available for Opportunities
-                                </span>
-                            </p>
+                <div class="terminal-content px-4 px-md-5 py-4" style="line-height: 1.8;">
+
+                    <!-- Command 1: whoami -->
+                    <div class="contact-cmd-line mb-1">
+                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                        <span class="contact-cmd-text">whoami && cat contact.json</span>
+                    </div>
+
+                    <!-- Output block 1: identity -->
+                    <div class="contact-output">
+                        <div><span class="contact-field-label">user:</span> <span class="contact-field-value masthead-name-gradient fw-bold" style="font-size:1rem; background: linear-gradient(90deg, var(--tech-blue), var(--sys-cyan)); -webkit-background-clip:text; background-clip:text; color:transparent;">Nicolas Teixeira</span></div>
+                        <div><span class="contact-field-label">role:</span> <span class="contact-field-value">Systems &amp; Platform Engineer</span></div>
+                        <div><span class="contact-field-label">email:</span> <a href="mailto:careers@nick-t.net" class="contact-field-value" style="color:var(--sys-cyan); text-decoration:none;">careers@nick-t.net</a></div>
+                        <div><span class="contact-field-label">domain:</span> <span class="contact-field-value">nick-t.net</span></div>
+                        <div><span class="contact-field-label">location:</span> <span class="contact-field-value">Columbus, OH (UTC-5)</span></div>
+                    </div>
+
+                    <div class="contact-divider"></div>
+
+                    <!-- Command 2: systemctl status availability -->
+                    <div class="contact-cmd-line mb-1">
+                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                        <span class="contact-cmd-text">systemctl status availability.service</span>
+                    </div>
+
+                    <!-- Output block 2: status -->
+                    <div class="contact-output">
+                        <div class="mb-1">
+                            <span class="contact-field-label">● status:</span>
+                            <span class="contact-status-badge ms-1"><i class="fas fa-circle me-1" style="font-size:0.5rem;vertical-align:middle;"></i>active (running)</span>
                         </div>
-                        <div class="col-md-6">
-                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Status:</span> <span class="text-white">Open to Collaboration</span></p>
-                            <p class="mb-2"><span style="color: var(--tech-cyan); font-weight: 600;">Response Time:</span> <span class="text-white">&lt; 24 hours</span></p>
-                            <p class="mb-0"><span style="color: var(--tech-cyan); font-weight: 600;">Preferred Contact:</span> <span class="text-white">Email / LinkedIn</span></p>
+                        <div><span class="contact-field-label">response:</span> <span class="contact-field-value">&lt; 24 hours</span></div>
+                        <div><span class="contact-field-label">preferred:</span> <span class="contact-field-value">Email / LinkedIn</span></div>
+                        <div><span class="contact-field-label">collab:</span> <span class="contact-field-value">Open to new opportunities &amp; projects</span></div>
+                    </div>
+
+                    <div class="contact-divider"></div>
+
+                    <!-- Command 3: open socials -->
+                    <div class="contact-cmd-line mb-2">
+                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                        <span class="contact-cmd-text">ls -la ./socials/</span>
+                    </div>
+
+                    <div class="contact-output mb-1">
+                        <div class="contact-section-header mb-2">total 2 · drwxr-xr-x  nicolas  nicolas  Jun 2026</div>
+                        <div>
+                            <a href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="LinkedIn Profile">
+                                <i class="fab fa-linkedin"></i>linkedin/nicolasdealmeidateixeira
+                            </a>
+                            <a href="https://github.com/nicolasnkGH" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="GitHub Profile">
+                                <i class="fab fa-github"></i>github/nicolasnkGH
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Connect with Me -->
-                    <div class="terminal-footer mt-4 pt-4 border-top" style="border-color: #1c2128 !important;">
-                        <p class="text-muted small mb-3" style="color: var(--text-muted) !important;">Connect with me:</p>
-                        <div class="d-flex gap-3 flex-wrap">
-                            <a href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" rel="noopener noreferrer" class="terminal-link text-decoration-none d-inline-flex align-items-center gap-2" style="padding: 6px 14px; border-radius: 6px; transition: all 0.3s ease;" aria-label="Connect on LinkedIn">
-                                <i class="fab fa-linkedin" style="color: var(--tech-blue); font-size: 1rem;"></i>
-                                <span class="text-white-75">LinkedIn</span>
-                                <i class="fas fa-arrow-right small" style="color: var(--text-muted); transition: transform 0.3s ease;"></i>
-                            </a>
-                            <a href="https://github.com/nicolasnkGH" target="_blank" rel="noopener noreferrer" class="terminal-link text-decoration-none d-inline-flex align-items-center gap-2" style="padding: 6px 14px; border-radius: 6px; transition: all 0.3s ease;" aria-label="Connect on GitHub">
-                                <i class="fab fa-github" style="color: var(--tech-blue); font-size: 1rem;"></i>
-                                <span class="text-white-75">GitHub</span>
-                                <i class="fas fa-arrow-right small" style="color: var(--text-muted); transition: transform 0.3s ease;"></i>
-                            </a>
-                        </div>
+                    <div class="contact-divider"></div>
+
+                    <!-- Blinking prompt at end -->
+                    <div class="contact-cmd-line">
+                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                        <span class="contact-cursor-blink"></span>
                     </div>
 
-                    <!-- Terminal Prompt -->
-                    <div class="mt-4 pt-3 border-top" style="border-color: #1c2128 !important;">
-                        <p class="mb-0" style="color: var(--tech-emerald); font-weight: 600; font-family: 'Courier New', monospace;">root@nt-systems:~#</p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer - 3 Column Layout with CSS Grid -->
+
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-columns">

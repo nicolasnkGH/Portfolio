@@ -285,10 +285,10 @@ a:hover {
 }
 
 /* Individual specialty icon colors */
-.masthead .specialty-icon:nth-child(1) { color: #58a6ff !important; } /* Kubernetes - blue */
-.masthead .specialty-icon:nth-child(2) { color: #eb4335 !important; } /* MLOps - red */
-.masthead .specialty-icon:nth-child(3) { color: #ea4335 !important; } /* CI/CD - red */
-.masthead .specialty-icon:nth-child(4) { color: #3fb950 !important; } /* GPU - green */
+#specialty-list li:nth-child(1) .specialty-icon { color: #58a6ff !important; } /* Kubernetes - blue */
+#specialty-list li:nth-child(2) .specialty-icon { color: #eb4335 !important; } /* MLOps - red */
+#specialty-list li:nth-child(3) .specialty-icon { color: #ea4335 !important; } /* CI/CD - red */
+#specialty-list li:nth-child(4) .specialty-icon { color: #3fb950 !important; } /* GPU - green */
 
 @keyframes pulseSpecialtyIcon {
     0%, 100% {
@@ -308,7 +308,7 @@ a:hover {
     border-bottom: 1px solid rgba(34, 197, 94, 0.1);
 }
 
-/* Floating tech icons in hero */
+/* Floating tech icons in hero - positioned at extreme edges behind content */
 .floating-tech-icons {
     position: absolute;
     top: 0;
@@ -317,7 +317,8 @@ a:hover {
     height: 100%;
     overflow: visible;
     pointer-events: none;
-    z-index: 3 !important;
+    z-index: 1; /* Behind the panel content */
+    opacity: 0.55;
 }
 
 /* Icon container styling */
@@ -372,56 +373,46 @@ a:hover {
     filter: drop-shadow(0 0 12px currentColor);
 }
 
-/* Icon positions - floating icons in hero */
+/* Icon positions - floating icons at extreme edges of hero */
+/* Docker - top-left corner far edge */
 .t1 {
-    top: 15%;
-    left: 10%;
+    top: 12%;
+    left: 1%;
     animation: floatIcon 14s ease-in-out infinite, ghostPulse 3s ease-in-out infinite;
 }
 
-/* Linux/Proxmox - Green glow (lower) */
+/* Linux/Proxmox - bottom-left far edge */
 .t2 {
-    top: 75%;
-    left: 12%;
+    top: 72%;
+    left: 1.5%;
     animation: floatIcon 17s ease-in-out infinite 3s, ghostPulse 3.5s ease-in-out infinite 0.5s;
 }
 
-/* Kubernetes - Blue glow */
+/* Kubernetes - right side (far right, 2% from edge) */
 .t3 {
-    top: 25%;
-    right: 12%;
+    top: 18%;
+    right: 0.5%;
     animation: floatIcon 16s ease-in-out infinite 1s, ghostPulse 4s ease-in-out infinite 1s;
 }
 
-.k8s-icon i {
-    font-size: 52px !important;
-}
-
-.t7 {
-    display: block !important;
-    top: 110% !important;
-    left: 50% !important;
-    transform: translateX(-50%);
-}
-
-/* Terraform/IaC - Purple/Amber glow */
+/* Terraform/IaC - lower right corner far edge */
 .t4 {
-    top: 70%;
-    right: 8%;
+    top: 65%;
+    right: 1%;
     animation: floatIcon 15s ease-in-out infinite 2s, ghostPulse 3.2s ease-in-out infinite 1.5s;
 }
 
-/* AWS Cloud - Orange glow */
+/* AWS Cloud - mid left far edge */
 .t5 {
-    top: 40%;
-    left: 8%;
+    top: 42%;
+    left: 1%;
     animation: floatIcon 18s ease-in-out infinite 4s, ghostPulse 3.8s ease-in-out infinite 2s;
 }
 
-/* Ansible Automation - Red glow (upper right) */
+/* Ansible Automation - upper right far edge */
 .t6 {
-    top: 8%;
-    right: 18%;
+    top: 5%;
+    right: 2%;
     animation: floatIcon 16s ease-in-out infinite 5s, ghostPulse 4.2s ease-in-out infinite 2.5s;
 }
 
@@ -609,10 +600,17 @@ a:hover {
     color: var(--tech-blue);
 }
 
-/* Impact cards (duplicate blink removed) */
+/* Impact cards */
 .impact-card {
     transition: all 0.3s ease;
     border-radius: 12px;
+}
+
+/* Fix icon display so it sits on its own line above the heading */
+.impact-card > i {
+    display: block;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
 }
 
 .impact-card:hover {
@@ -620,13 +618,13 @@ a:hover {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(88, 166, 255, 0.3), inset 0 0 0 1px rgba(88, 166, 255, 0.4);
 }
 
-.impact-card:hover i {
+.impact-card:hover > i {
     transform: scale(1.2);
     filter: drop-shadow(0 0 12px currentColor);
 }
 
 /* Impact card with emerald icon glow */
-.impact-card:nth-child(2n) i {
+.impact-card:nth-child(2n) > i {
     color: var(--tech-emerald);
 }
 
@@ -634,16 +632,8 @@ a:hover {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(63, 185, 80, 0.3), inset 0 0 0 1px rgba(63, 185, 80, 0.4);
 }
 
-.impact-card:nth-child(2n):hover i {
+.impact-card:nth-child(2n):hover > i {
     filter: drop-shadow(0 0 12px var(--tech-emerald));
-}
-
-.impact-card i {
-    transition: all 0.3s ease;
-}
-
-.impact-card:hover i {
-    transform: scale(1.2);
 }
 
 /* Education badge */
@@ -1715,3 +1705,655 @@ footer a:hover, .footer-nav-link:hover {
         font-size: 1rem;
     }
 }
+
+/* ==========================================================================
+   Systems Engineer Aesthetic & Telemetry Modernization
+   ========================================================================== */
+
+:root {
+    --sys-green: #3fb950;
+    --sys-blue: #58a6ff;
+    --sys-cyan: #00f0ff;
+    --sys-magenta: #eb4470;
+    --sys-yellow: #ffc646;
+    --sys-orange: #ff9f1c;
+    --sys-red: #f85149;
+    --sys-bg: #080b10;
+    --sys-card-bg: #0d1117;
+    --sys-terminal-bg: #05070a;
+    --sys-border: #30363d;
+    --sys-glow-blue: rgba(88, 166, 255, 0.15);
+    --sys-glow-green: rgba(63, 185, 80, 0.15);
+}
+
+/* Monospace fonts globally for CLI sections */
+.font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
+}
+
+/* Glowing text classes */
+.glow-text-green {
+    text-shadow: 0 0 10px rgba(63, 185, 80, 0.5);
+    color: var(--sys-green);
+}
+.glow-text-blue {
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+    color: var(--sys-blue);
+}
+.glow-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    color: var(--sys-cyan);
+}
+
+/* Dynamic CRT Scanlines Overlay (Toggleable / Soft subtle effect) */
+.crt-overlay {
+    position: relative;
+}
+.crt-overlay::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 10;
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+/* Hero Split Layout Custom Styling */
+.hero-dashboard-container {
+    background: radial-gradient(circle at 75% 30%, rgba(88, 166, 255, 0.08) 0%, transparent 60%);
+}
+
+.hero-profile-card {
+    background: rgba(13, 17, 23, 0.75);
+    border: 1px solid var(--sys-border);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+.hero-profile-card:hover {
+    border-color: var(--sys-blue);
+    box-shadow: 0 12px 40px rgba(88, 166, 255, 0.2);
+}
+
+/* =========================================================
+   Hero — Unified tmux-Style Terminal Window
+   ========================================================= */
+
+/* Outer window */
+.hero-tmux-window {
+    background: var(--sys-terminal-bg);
+    border: 1px solid var(--sys-border);
+    border-radius: 12px;
+    box-shadow: 0 20px 70px rgba(0,0,0,0.7), inset 0 0 30px rgba(0,240,255,0.03);
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.hero-tmux-window:hover {
+    border-color: rgba(0,240,255,0.25);
+    box-shadow: 0 25px 80px rgba(0,0,0,0.8), 0 0 40px rgba(0,240,255,0.08);
+}
+
+/* Title bar */
+.hero-tmux-titlebar {
+    background: #1a1f2b;
+    border-bottom: 1px solid var(--sys-border);
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.hero-tmux-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: #8b949e;
+    margin: 0 auto;
+}
+
+/* Two-pane layout */
+.hero-tmux-body {
+    display: flex;
+    height: 520px;
+}
+
+/* Left pane: neofetch info */
+.hero-tmux-pane-left {
+    flex: 0 0 42%;
+    max-width: 42%;
+    padding: 0.5rem 1rem 1rem 1rem;
+    overflow-y: auto;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #c9d1d9;
+    display: flex;
+    flex-direction: column;
+}
+.hero-tmux-pane-left::-webkit-scrollbar { width: 4px; }
+.hero-tmux-pane-left::-webkit-scrollbar-thumb { background: #21262d; border-radius: 2px; }
+
+/* Pane label bar */
+.tmux-pane-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #555d6b;
+    background: #111418;
+    padding: 2px 8px;
+    margin: 0 -1rem 0.75rem -1rem;
+    border-bottom: 1px solid #21262d;
+}
+.tmux-pane-label.active {
+    background: #1c2128;
+    color: var(--sys-green);
+}
+
+/* Vertical separator */
+.hero-tmux-separator {
+    width: 1px;
+    background: var(--sys-border);
+    flex-shrink: 0;
+    position: relative;
+}
+.hero-tmux-separator::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(0,240,255,0.3), transparent);
+}
+
+/* Right pane: interactive shell */
+.hero-tmux-pane-right {
+    flex: 1;
+    padding: 0.5rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: text;
+}
+
+/* tmux status bar */
+.hero-tmux-statusbar {
+    background: var(--sys-green);
+    color: #0d1117;
+    padding: 3px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.tmux-status-session {
+    background: rgba(0,0,0,0.25);
+    padding: 0 6px;
+    border-radius: 3px;
+    color: #fff;
+}
+.tmux-status-window {
+    opacity: 0.7;
+}
+.tmux-status-window.active {
+    opacity: 1;
+    font-weight: 700;
+}
+.tmux-status-right {
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.15);
+    padding: 1px 8px;
+    border-radius: 3px;
+    color: #0d1117;
+}
+
+/* Neofetch content area */
+.neofetch-content {
+    flex: 1;
+    padding-top: 0.5rem;
+}
+.neofetch-ascii {
+    color: var(--sys-blue);
+    white-space: pre;
+    font-size: 0.7rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+}
+.neofetch-info-row {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.15rem;
+    font-size: 0.8rem;
+}
+.neofetch-key {
+    color: var(--sys-blue);
+    font-weight: 700;
+    min-width: 100px;
+    flex-shrink: 0;
+}
+.neofetch-val {
+    color: #c9d1d9;
+}
+.neofetch-divider {
+    border-top: 1px solid #21262d;
+    margin: 0.6rem 0;
+}
+.neofetch-color-pills {
+    display: flex;
+    gap: 4px;
+    margin-top: 0.5rem;
+}
+.neofetch-color-pills span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+}
+.neofetch-cta {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.neofetch-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--sys-cyan);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.neofetch-cta a:hover {
+    color: #fff;
+}
+
+/* Hero split-panel left side text colors */
+.text-sys-cyan { color: var(--sys-cyan) !important; }
+.text-sys-green { color: var(--sys-green) !important; }
+.text-sys-blue  { color: var(--sys-blue) !important; }
+
+/* Legacy hero-terminal-header (keep for contact section compatibility) */
+.hero-terminal-header {
+    background: #161b22;
+    border-bottom: 1px solid var(--sys-border);
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.hero-terminal-body {
+    flex-grow: 1;
+    padding: 1.25rem;
+    overflow-y: auto;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #c9d1d9;
+    text-align: left;
+}
+
+/* Terminal Input Interceptor */
+.terminal-input-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.terminal-prompt {
+    color: var(--sys-green);
+    margin-right: 8px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+.terminal-input-hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.terminal-typing-text {
+    color: var(--sys-cyan);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+.cli-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 17px;
+    background: var(--sys-cyan);
+    margin-left: 2px;
+    animation: cliCursorBlink 1s step-end infinite;
+    vertical-align: middle;
+}
+@keyframes cliCursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Scrollbar customization for Terminal */
+.hero-terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+.hero-terminal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+.hero-terminal-body::-webkit-scrollbar-thumb {
+    background: #21262d;
+    border-radius: 3px;
+}
+.hero-terminal-body::-webkit-scrollbar-thumb:hover {
+    background: #30363d;
+}
+
+/* Systemd Service Blocks (Skills Grid) */
+.systemd-service-card {
+    background: var(--sys-card-bg);
+    border: 1px solid var(--sys-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+.systemd-service-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--sys-green);
+    transition: width 0.2s ease;
+}
+.systemd-service-card.degraded::before {
+    background: var(--sys-orange);
+}
+.systemd-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(63, 185, 80, 0.05);
+    border-color: rgba(63, 185, 80, 0.3);
+}
+.systemd-service-card.degraded:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 159, 28, 0.05);
+    border-color: rgba(255, 159, 28, 0.3);
+}
+
+.systemd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+.systemd-name {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.05rem;
+}
+.systemd-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(63, 185, 80, 0.15);
+    color: var(--sys-green);
+    border: 1px solid rgba(63, 185, 80, 0.3);
+}
+.systemd-status.degraded {
+    background: rgba(255, 159, 28, 0.15);
+    color: var(--sys-orange);
+    border: 1px solid rgba(255, 159, 28, 0.3);
+}
+.systemd-log-output {
+    font-size: 0.8rem;
+    color: #8b949e;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Syslog Work Experience Timeline */
+.syslog-timeline {
+    position: relative;
+    border-left: 2px solid var(--sys-border);
+    margin-left: 20px;
+    padding-left: 30px;
+}
+
+.syslog-marker {
+    position: absolute;
+    left: -7px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--sys-blue);
+    border: 2px solid var(--sys-bg);
+    box-shadow: 0 0 8px var(--sys-blue);
+    transition: all 0.3s ease;
+}
+
+.syslog-entry:hover .syslog-marker {
+    background: var(--sys-cyan);
+    box-shadow: 0 0 12px var(--sys-cyan);
+    transform: scale(1.3);
+}
+
+.syslog-entry {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.syslog-header-row {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    color: var(--sys-cyan);
+}
+
+.syslog-stamp {
+    color: var(--text-muted);
+    margin-right: 10px;
+}
+
+.syslog-tag-info {
+    color: var(--sys-green);
+    font-weight: bold;
+}
+
+.syslog-tag-warning {
+    color: var(--sys-orange);
+    font-weight: bold;
+}
+
+.syslog-body {
+    background: rgba(22, 27, 34, 0.4);
+    border: 1px solid var(--sys-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.syslog-entry:hover .syslog-body {
+    border-color: var(--sys-blue);
+    background: rgba(22, 27, 34, 0.6);
+    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.05);
+}
+
+/* System Diagnostics / Skills Telemetry Layout */
+.telemetry-dashboard-panel {
+    background: rgba(13, 17, 23, 0.6);
+    border: 1px solid var(--sys-border);
+    border-radius: 12px;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+}
+
+/* Mobile optimizations for telemetry and tmux console */
+@media (max-width: 991px) {
+    .hero-tmux-body {
+        flex-direction: column;
+        height: auto;
+    }
+    .hero-tmux-pane-left {
+        flex: none;
+        max-width: 100%;
+        height: 280px;
+        border-bottom: 1px solid var(--sys-border);
+    }
+    .hero-tmux-separator {
+        display: none;
+    }
+    .hero-tmux-pane-right {
+        height: 300px;
+    }
+    .hero-tmux-statusbar {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .tmux-status-right {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .syslog-timeline {
+        margin-left: 10px;
+        padding-left: 15px;
+    }
+    .syslog-marker {
+        left: -6px;
+    }
+    .hero-tmux-pane-left {
+        height: 240px;
+    }
+    .hero-tmux-pane-right {
+        height: 260px;
+    }
+    .syslog-stamp {
+        display: block;
+        margin-bottom: 4px;
+    }
+    .neofetch-ascii {
+        font-size: 0.6rem;
+    }
+}
+
+/* ==========================================================================
+   Modernized Contact Section — Animated Terminal
+   ========================================================================== */
+
+/* Override plain terminal-window with a richer syseng feel */
+#contact .terminal-window {
+    border: 1px solid var(--sys-border) !important;
+    border-radius: 12px !important;
+    background: var(--sys-terminal-bg) !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(63,185,80,0.03) !important;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+#contact .terminal-window:hover {
+    border-color: rgba(63,185,80,0.35) !important;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.7), 0 0 40px rgba(63,185,80,0.08) !important;
+}
+
+/* Contact terminal header */
+#contact .terminal-header {
+    background: #1a1f2b !important;
+    border-bottom: 1px solid var(--sys-border) !important;
+}
+
+/* Contact command lines */
+.contact-cmd-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+.contact-prompt {
+    color: var(--sys-green);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.contact-cmd-text {
+    color: var(--sys-cyan);
+}
+.contact-output {
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+.contact-field-label {
+    color: var(--sys-blue);
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    min-width: 90px;
+    display: inline-block;
+}
+.contact-field-value {
+    color: #c9d1d9;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+}
+.contact-status-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(63,185,80,0.15);
+    color: var(--sys-green);
+    border: 1px solid rgba(63,185,80,0.35);
+}
+.contact-divider {
+    border-top: 1px solid #21262d;
+    margin: 1rem 0;
+}
+.contact-section-header {
+    color: #555d6b;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+/* Social link buttons inside terminal */
+.contact-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--sys-cyan);
+    text-decoration: none;
+    padding: 5px 12px;
+    border: 1px solid rgba(0,240,255,0.2);
+    border-radius: 5px;
+    background: rgba(0,240,255,0.05);
+    transition: all 0.25s ease;
+    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+.contact-social-btn:hover {
+    background: rgba(0,240,255,0.12);
+    border-color: rgba(0,240,255,0.4);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,240,255,0.1);
+}
+.contact-social-btn i {
+    color: var(--sys-blue);
+}
+/* Blinking cursor at prompt end */
+.contact-cursor-blink {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: var(--sys-green);
+    margin-left: 2px;
+    animation: cliCursorBlink 1s step-end infinite;
+    vertical-align: middle;
+}
+

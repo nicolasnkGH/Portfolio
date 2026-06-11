@@ -91,49 +91,57 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeSubtitle, 500);
     }
 
-    // Typing effect for specialty list items - character by character
-const specialtyList = document.getElementById('specialty-list');
-if (specialtyList) {
-    const specialties = [
-        '<i class="fas fa-dharmachakra specialty-icon" style="color:#58a6ff"></i> Kubernetes & Cloud-Native Infrastructure',
-        '<i class="fas fa-brain specialty-icon" style="color:#eb4335"></i> MLOps & AI Inference Platforms',
-        '<i class="fas fa-gears specialty-icon" style="color:#ea4335"></i> CI/CD Automation & IaC',
-        '<i class="fas fa-microchip specialty-icon" style="color:#3fb950"></i> GPU Acceleration & Cost Optimization'
-    ];
+    // Typing effect for specialty list items - character by character (fixed pop-in shift)
+    const specialtyList = document.getElementById('specialty-list');
+    if (specialtyList) {
+        const specialties = [
+            { icon: 'fas fa-dharmachakra', color: '#58a6ff', text: 'Kubernetes & Cloud-Native Infrastructure' },
+            { icon: 'fas fa-brain', color: '#eb4335', text: 'MLOps & AI Inference Platforms' },
+            { icon: 'fas fa-gears', color: '#ea4335', text: 'CI/CD Automation & IaC' },
+            { icon: 'fas fa-microchip', color: '#3fb950', text: 'GPU Acceleration & Cost Optimization' }
+        ];
 
-    specialties.forEach((html, index) => {
-        const li = document.createElement('li');
-        li.className = 'specialty-item';
-        li.style.opacity = '0';
+        specialties.forEach((spec, index) => {
+            const li = document.createElement('li');
+            li.className = 'specialty-item d-flex align-items-center mb-2';
+            li.style.opacity = '0';
+            li.style.transition = 'opacity 0.4s ease';
 
-        const contentSpan = document.createElement('span');
-        contentSpan.innerHTML = '';
-        li.appendChild(contentSpan);
+            // Create icon statically to avoid shift
+            const icon = document.createElement('i');
+            icon.className = `${spec.icon} specialty-icon me-2`;
+            icon.style.color = spec.color;
+            icon.style.fontSize = '1rem';
+            icon.style.minWidth = '20px';
+            li.appendChild(icon);
 
-        specialtyList.appendChild(li);
+            // Create text span
+            const textSpan = document.createElement('span');
+            textSpan.className = 'text-white-75';
+            li.appendChild(textSpan);
 
-        let charIndex = 0;
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        const fullText = tempDiv.textContent || '';
+            specialtyList.appendChild(li);
 
-        function typeCharacter() {
-            if (charIndex < fullText.length) {
-                contentSpan.textContent = fullText.substring(0, charIndex + 1);
-                charIndex++;
-                setTimeout(typeCharacter, 25);
-            } else {
-                // Finalize with HTML including icons
-                contentSpan.innerHTML = html;
-                li.classList.add('visible');
-                li.style.opacity = '1';
+            let charIndex = 0;
+
+            function typeCharacter() {
+                if (charIndex < spec.text.length) {
+                    textSpan.textContent = spec.text.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(typeCharacter, 20);
+                } else {
+                    li.classList.add('visible');
+                    li.style.opacity = '1';
+                }
             }
-        }
 
-        // Staggered start
-        setTimeout(typeCharacter, index * 400);
-    });
-}
+            // Staggered start and show list item immediately with its icon
+            setTimeout(() => {
+                li.style.opacity = '1';
+                typeCharacter();
+            }, index * 300);
+        });
+    }
 
     // Typing effect for About section text
     const aboutText = document.getElementById('about-text');
@@ -214,6 +222,79 @@ if (specialtyList) {
         const now = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         lastUpdatedEl.textContent = now.toLocaleDateString('en-US', options);
+    }
+
+    // Initialize Skills Radar Chart
+    const ctx = document.getElementById('skillsRadarChart');
+    if (ctx) {
+        // Set chart defaults for dark mode readability
+        Chart.defaults.color = '#8b949e';
+        Chart.defaults.font.family = "'Nunito', sans-serif";
+
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['DevOps & IaC', 'Cloud Platforms', 'Programming', 'Monitoring', 'Security & Net', 'AI & MLOps'],
+                datasets: [{
+                    label: 'Capability Depth',
+                    data: [95, 90, 85, 80, 85, 75],
+                    backgroundColor: 'rgba(88, 166, 255, 0.2)',
+                    borderColor: '#58a6ff',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#2f81f7',
+                    pointBorderColor: '#0d1117',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#2f81f7',
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: '#30363d'
+                        },
+                        grid: {
+                            color: '#30363d'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 11,
+                                weight: 'bold'
+                            },
+                            color: '#c9d1d9'
+                        },
+                        ticks: {
+                            display: false,
+                            stepSize: 20
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#161b22',
+                        titleColor: '#fff',
+                        bodyColor: '#c9d1d9',
+                        borderColor: '#30363d',
+                        borderWidth: 1,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return `Depth: ${context.raw}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     // Skills population and animation
@@ -347,5 +428,381 @@ if (specialtyList) {
         certObserver.observe(card);
     });
 
-});
+    // ==========================================================================
+    // Interactive Terminal Logic
+    // ==========================================================================
+    const terminalBody = document.getElementById('terminal-body');
+    const terminalInput = document.getElementById('terminal-input');
+    const heroTerminal = document.getElementById('hero-terminal');
 
+    // Expose focusTerminal globally for inline onclick
+    window.focusTerminal = function() {
+        if (terminalInput) {
+            terminalInput.focus();
+        }
+    };
+
+    // ==========================================================================
+    // Neofetch Left Pane — System Info Panel
+    // ==========================================================================
+    const neofetchContent = document.getElementById('neofetch-content');
+    if (neofetchContent) {
+        const asciiArt = `  .---.  nicolas@nick-t.net
+ /     \\ -------------------
+|  N T  | OS:     Proxmox VE / Ubuntu / Arch
+|       | Kernel: Nicolas Teixeira v2026.06
+ \\     / Uptime:  8 years in Systems Tech
+  '---'  Shell:   zsh 5.9 (Interactive)`;
+
+        const infoRows = [
+            { key: 'Resolution', val: '1920x1080 @ 144Hz' },
+            { key: 'Focus',      val: 'Cloud-Native · IaC · MLOps' },
+            { key: 'Edu',        val: 'M.S. Soft. Eng & DevOps (WGU)' },
+            { key: 'Stack',      val: 'K8s · AWS · Terraform · Python' },
+            { key: 'GPU',        val: 'NVIDIA RTX — Self-hosted AI' },
+            { key: 'Status',     val: '🟢 Available for Opportunities' },
+        ];
+
+        const colorPills = ['#ff5f56','#ffbd2e','#27c93f','#58a6ff','#9d4edd','#00f0ff','#3fb950','#ff6b6b'];
+
+        // Build and reveal neofetch line-by-line
+        function buildNeofetch() {
+            neofetchContent.innerHTML = '';
+
+            // ASCII pre block
+            const pre = document.createElement('pre');
+            pre.className = 'neofetch-ascii mb-3';
+            pre.textContent = '';
+            neofetchContent.appendChild(pre);
+
+            // Info container
+            const infoDiv = document.createElement('div');
+            neofetchContent.appendChild(infoDiv);
+
+            // Color pills
+            const pillsDiv = document.createElement('div');
+            pillsDiv.className = 'neofetch-color-pills';
+            colorPills.forEach(c => {
+                const s = document.createElement('span');
+                s.style.background = c;
+                pillsDiv.appendChild(s);
+            });
+            neofetchContent.appendChild(pillsDiv);
+
+            // CTA links
+            const ctaDiv = document.createElement('div');
+            ctaDiv.className = 'neofetch-cta';
+            ctaDiv.innerHTML = `
+                <a href="#projects"><i class="fas fa-folder-open"></i>$ view projects</a>
+                <a href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank"><i class="fab fa-linkedin"></i>$ open linkedin</a>
+                <a href="https://github.com/nicolasnkGH" target="_blank"><i class="fab fa-github"></i>$ open github</a>
+                <a href="mailto:careers@nick-t.net"><i class="fas fa-envelope"></i>$ mail nicolas</a>
+            `;
+            neofetchContent.appendChild(ctaDiv);
+
+            // Animate ASCII lines
+            const asciiLines = asciiArt.split('\n');
+            let lineIdx = 0;
+            let charIdx = 0;
+            function typeAscii() {
+                if (lineIdx >= asciiLines.length) {
+                    // Then animate info rows
+                    let rowIdx = 0;
+                    function addInfoRow() {
+                        if (rowIdx >= infoRows.length) return;
+                        const row = infoRows[rowIdx++];
+                        const d = document.createElement('div');
+                        d.className = 'neofetch-info-row';
+                        d.innerHTML = `<span class="neofetch-key">${row.key}</span><span class="neofetch-val">${row.val}</span>`;
+                        infoDiv.appendChild(d);
+                        setTimeout(addInfoRow, 80);
+                    }
+                    addInfoRow();
+                    return;
+                }
+                const line = asciiLines[lineIdx];
+                if (charIdx === 0) {
+                    pre.textContent += '\n';
+                }
+                if (charIdx < line.length) {
+                    pre.textContent = pre.textContent.slice(0, -0) + (charIdx === 0 ? pre.textContent + line[charIdx] : pre.textContent.slice(0,-1) + line[charIdx] + (charIdx + 1 < line.length ? '' : ''));
+                    // simpler approach: just set full line at once then next
+                    charIdx++;
+                    setTimeout(typeAscii, 12);
+                } else {
+                    lineIdx++;
+                    charIdx = 0;
+                    setTimeout(typeAscii, 30);
+                }
+            }
+
+            // Simpler: reveal ASCII art line by line with delay
+            pre.textContent = '';
+            asciiLines.forEach((line, i) => {
+                setTimeout(() => {
+                    pre.textContent += (i === 0 ? '' : '\n') + line;
+                }, i * 120);
+            });
+
+            // Reveal info rows after ASCII
+            infoRows.forEach((row, i) => {
+                setTimeout(() => {
+                    const d = document.createElement('div');
+                    d.className = 'neofetch-info-row';
+                    d.innerHTML = `<span class="neofetch-key">${row.key}</span><span class="neofetch-val">${row.val}</span>`;
+                    infoDiv.appendChild(d);
+                }, asciiLines.length * 120 + i * 90 + 200);
+            });
+        }
+
+        buildNeofetch();
+    }
+
+    // ==========================================================================
+    // tmux Status Bar Clock
+    // ==========================================================================
+    const tmuxClock = document.getElementById('tmux-clock');
+    if (tmuxClock) {
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            tmuxClock.textContent = `${h}:${m}:${s}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+
+    if (terminalBody && terminalInput) {
+        let terminalPromptLine = null;
+        let isBooting = true;
+        let sudoMode = false;
+
+        const bootLines = [
+            { text: "[  OK  ] Starting Systems Infrastructure Diagnostic...", type: "info" },
+            { text: "[  OK  ] Initialized AWS, Azure, & Proxmox connection modules.", type: "ok" },
+            { text: "[  OK  ] Loaded Kubernetes orchestration layers.", type: "ok" },
+            { text: "[  OK  ] Mounted Volume: WGU_MS_Software_Engineering_DevOps.", type: "ok" },
+            { text: "[  OK  ] Established secure connection guest@nick-t.net.", type: "ok" },
+            { text: "", type: "plain" },
+            { text: "         .---.         nicolas@nick-t.net", type: "green" },
+            { text: "        /     \\        ------------------", type: "blue" },
+            { text: "        \\.@-@./        OS: Proxmox VE / AWS / Azure / Linux", type: "plain" },
+            { text: "        /`\\_/`\\        Kernel: Nicolas Teixeira v2026.06", type: "plain" },
+            { text: "       //  _  \\\\       Uptime: 8 years in Systems Tech", type: "plain" },
+            { text: "      | \\_|_/ |        Shell: zsh 5.9 (Interactive CLI)", type: "plain" },
+            { text: "     /\\   `-`   /\\     Edu: M.S. Software Eng & DevOps (Expected June 2026)", type: "plain" },
+            { text: "     \\_/=====\\_/       Focus: Cloud-Native, IaC, MLOps, GPUs", type: "plain" },
+            { text: "", type: "plain" },
+            { text: "Welcome to Nicolas' interactive terminal. Type 'help' to start.", type: "info" },
+            { text: "", type: "plain" }
+        ];
+
+        // Custom output writer
+        function printLine(text, type) {
+            const line = document.createElement('div');
+            line.className = 'font-mono mb-1';
+            
+            if (type === 'ok') {
+                line.innerHTML = `<span style="color:var(--sys-green); font-weight:bold;">[  OK  ]</span> ${text.replace('[  OK  ]', '')}`;
+            } else if (type === 'info') {
+                line.innerHTML = `<span style="color:var(--sys-blue); font-weight:bold;">[ INFO ]</span> ${text.replace('[ INFO ]', '')}`;
+            } else if (type === 'green') {
+                line.innerHTML = `<span style="color:var(--sys-green); font-weight:bold;">${text}</span>`;
+            } else if (type === 'blue') {
+                line.innerHTML = `<span style="color:var(--sys-blue); font-weight:bold;">${text}</span>`;
+            } else if (type === 'error') {
+                line.innerHTML = `<span style="color:var(--sys-red); font-weight:bold;">[ERROR]</span> ${text}`;
+            } else {
+                line.textContent = text;
+            }
+            
+            terminalBody.appendChild(line);
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+
+        // Print prompt line
+        function printPrompt() {
+            terminalPromptLine = document.createElement('div');
+            terminalPromptLine.className = 'terminal-input-row font-mono';
+            
+            const promptSpan = document.createElement('span');
+            promptSpan.className = 'terminal-prompt';
+            promptSpan.textContent = sudoMode ? 'root@nick-t.net:~# ' : 'guest@nick-t.net:~$ ';
+            
+            const typingSpan = document.createElement('span');
+            typingSpan.className = 'terminal-typing-text';
+            
+            const cursorSpan = document.createElement('span');
+            cursorSpan.className = 'cli-cursor';
+            
+            terminalPromptLine.appendChild(promptSpan);
+            terminalPromptLine.appendChild(typingSpan);
+            terminalPromptLine.appendChild(cursorSpan);
+            
+            terminalBody.appendChild(terminalPromptLine);
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+            
+            terminalInput.value = '';
+            // Auto focus if element is active
+            if (document.activeElement === terminalInput) {
+                terminalInput.focus();
+            }
+        }
+
+        // Run boot sequence with simulated delay
+        let bootIndex = 0;
+        function runBoot() {
+            if (bootIndex < bootLines.length) {
+                printLine(bootLines[bootIndex].text, bootLines[bootIndex].type);
+                bootIndex++;
+                setTimeout(runBoot, 80);
+            } else {
+                isBooting = false;
+                printPrompt();
+            }
+        }
+        
+        // Start boot sequence
+        setTimeout(runBoot, 500);
+
+        // Typing input handler
+        terminalInput.addEventListener('input', () => {
+            if (terminalPromptLine && !isBooting) {
+                const typingSpan = terminalPromptLine.querySelector('.terminal-typing-text');
+                if (typingSpan) {
+                    typingSpan.textContent = terminalInput.value;
+                }
+            }
+        });
+
+        // Command processing
+        terminalInput.addEventListener('keydown', (e) => {
+            if (isBooting) return;
+            
+            if (e.key === 'Enter') {
+                const cmd = terminalInput.value;
+                
+                // Copy completed prompt to history
+                if (terminalPromptLine) {
+                    // Remove active cursor
+                    const cursor = terminalPromptLine.querySelector('.cli-cursor');
+                    if (cursor) cursor.remove();
+                    
+                    const typingSpan = terminalPromptLine.querySelector('.terminal-typing-text');
+                    if (typingSpan) {
+                        typingSpan.textContent = cmd;
+                        typingSpan.style.color = '#fff';
+                    }
+                }
+                
+                // Process command
+                processCommand(cmd);
+            }
+        });
+
+        function processCommand(rawCmd) {
+            const cleanCmd = rawCmd.toLowerCase().trim();
+            
+            if (sudoMode) {
+                // Sudo password entry simulation
+                sudoMode = false;
+                printLine('guest is not in the sudoers file. This incident will be reported.', 'error');
+                printPrompt();
+                return;
+            }
+
+            if (cleanCmd === '') {
+                printPrompt();
+                return;
+            }
+
+            const parts = cleanCmd.split(' ');
+            const primary = parts[0];
+
+            switch(primary) {
+                case 'help':
+                    printLine('Available CLI Commands:', 'blue');
+                    printLine('  neofetch  - Display system specifications & details', 'plain');
+                    printLine('  about     - Brief summary of Nicolas\' background', 'plain');
+                    printLine('  skills    - List core systems engineering capabilities', 'plain');
+                    printLine('  projects  - List active open-source platforms', 'plain');
+                    printLine('  contact   - Display connection email & networks', 'plain');
+                    printLine('  matrix    - Display a scrolling stream of cyber matrix code', 'plain');
+                    printLine('  clear     - Wipe screen content', 'plain');
+                    printLine('  sudo      - Acquire elevated root status', 'plain');
+                    break;
+                case 'neofetch':
+                    bootLines.slice(5, 14).forEach(l => printLine(l.text, l.type));
+                    break;
+                case 'about':
+                    printLine('SUMMARY:', 'blue');
+                    printLine('Systems & Platform Engineer specializing in high-performance cloud, DevOps automation, and AI infrastructure. Self-hoster at heart and developer of secure enterprise automation.', 'plain');
+                    break;
+                case 'skills':
+                    printLine('SYSTEM CAPABILITIES (Monitored):', 'blue');
+                    printLine('  [CONTAINERS]  Kubernetes (K8s), Docker, Helm, Compose', 'plain');
+                    printLine('  [AUTOMATION]  Terraform, Ansible, CI/CD (Azure DevOps, GitHub Actions)', 'plain');
+                    printLine('  [LANGUAGES]   Python, PowerShell, Bash, SQL', 'plain');
+                    printLine('  [TELEMETRY]   Prometheus, Grafana, Zabbix', 'plain');
+                    printLine('  [PLATFORMS]   AWS, Azure, Proxmox VE, Hyper-V', 'plain');
+                    printLine('  [MLOPS]       Ollama, NVIDIA GPU Drivers, CUDA Acceleration', 'plain');
+                    break;
+                case 'projects':
+                    printLine('ACTIVE PROJECTS:', 'blue');
+                    printLine('  - Private AI Stack (GPU acceleration + LLMs): github.com/nicolasnkGH/ai-stack', 'plain');
+                    printLine('  - Proxmox Automation (VE cluster scripts): github.com/nicolasnkGH/proxmox-automation', 'plain');
+                    printLine('  - Home Lab Networking (pfsense, VLANs, Unifi): github.com/nicolasnkGH/home-networking-setup', 'plain');
+                    printLine('  - Windows Scripting (Active Directory automation): github.com/nicolasnkGH/powershell-Scripting', 'plain');
+                    break;
+                case 'contact':
+                    printLine('COMMUNICATION CHANNELS:', 'blue');
+                    printLine('  Email:      careers@nick-t.net', 'plain');
+                    printLine('  LinkedIn:   linkedin.com/in/nicolasdealmeidateixeira/', 'plain');
+                    printLine('  GitHub:     github.com/nicolasnkGH', 'plain');
+                    break;
+                case 'clear':
+                    terminalBody.innerHTML = '';
+                    break;
+                case 'sudo':
+                    sudoMode = true;
+                    printLine('[sudo] password for guest: ', 'plain');
+                    printPrompt();
+                    return;
+                case 'matrix':
+                    runMatrixAnimation();
+                    return;
+                default:
+                    printLine(`zsh: command not found: ${rawCmd}. Type 'help' for suggestions.`, 'error');
+            }
+
+            printPrompt();
+        }
+
+        function runMatrixAnimation() {
+            isBooting = true; // Lock prompt
+            let rows = 0;
+            const matrixInterval = setInterval(() => {
+                if (rows > 25) {
+                    clearInterval(matrixInterval);
+                    isBooting = false;
+                    printPrompt();
+                } else {
+                    let binaryStr = "";
+                    for (let i = 0; i < 40; i++) {
+                        binaryStr += Math.random() > 0.5 ? "1 " : "0 ";
+                    }
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'font-mono text-success small';
+                    rowDiv.textContent = binaryStr;
+                    terminalBody.appendChild(rowDiv);
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                    rows++;
+                }
+            }, 80);
+        }
+    }
+
+});
