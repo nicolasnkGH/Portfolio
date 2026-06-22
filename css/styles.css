@@ -143,8 +143,14 @@ a:hover {
     transition: width 0.2s ease;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 80%;
+}
+
+.nav-link.active {
+    color: var(--tech-blue) !important;
+    opacity: 1;
 }
 
 /* ==========================================================================
@@ -308,172 +314,176 @@ a:hover {
     border-bottom: 1px solid rgba(34, 197, 94, 0.1);
 }
 
-/* Floating tech icons in hero - positioned at extreme edges behind content */
-.floating-tech-icons {
+/* ==========================================================================
+   MacBook Mockup Hero Section
+   ========================================================================== */
+
+.macbook-mockup {
+    position: relative;
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    perspective: 1500px;
+    z-index: 10;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6));
+}
+
+/* The lid contains the screen, bezel, and brand */
+.macbook-lid {
+    position: relative;
+    width: 100%;
+    /* 16:10 aspect ratio approx for MacBook */
+    padding-top: 60%; 
+    background: #0a0a0a;
+    border-radius: 24px 24px 0 0;
+    border: 1px solid #333;
+    border-bottom: none;
+    box-shadow: 
+        inset 0 0 0 6px #111,
+        0 -10px 20px rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+    transform-origin: bottom center;
+}
+
+/* Inner bezel outline */
+.macbook-lid::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 0;
+    border-radius: 18px 18px 0 0;
+    border: 1px solid #222;
+    border-bottom: none;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* MacBook Notch (Modern M2/M3 style) */
+.macbook-notch {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 18px;
+    background: #0a0a0a;
+    border-radius: 0 0 8px 8px;
+    z-index: 25;
+    border: 1px solid #222;
+    border-top: none;
+}
+
+/* Screen is positioned absolutely inside the lid */
+.macbook-screen {
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 30px; /* 30px for bottom bezel */
+    background: var(--bg-dark);
+    border-radius: 12px 12px 2px 2px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+}
+
+/* Glass reflection over the entire screen */
+.macbook-screen::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+    z-index: 50; /* Above terminal */
+}
+
+.macbook-camera {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #050505;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px #000, 0 0 1px rgba(255,255,255,0.1);
+    z-index: 30;
+}
+
+/* Tiny green indicator light next to camera */
+.macbook-camera::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 2px;
+    width: 3px;
+    height: 3px;
+    background: #3fb950;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #3fb950;
+}
+
+.macbook-brand {
+    position: absolute;
+    bottom: 0.6%;
+    width: 100%;
+    text-align: center;
+    color: #333;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    z-index: 10;
+}
+
+/* The sleek metallic base of the laptop */
+.macbook-base {
+    position: relative;
+    width: 104%;
+    height: 14px;
+    left: -2%;
+    background: linear-gradient(to right, #444 0%, #777 5%, #888 10%, #999 50%, #888 90%, #777 95%, #444 100%);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 
+        inset 0 1px 1px rgba(255,255,255,0.4),
+        0 20px 40px rgba(0,0,0,0.8);
+    z-index: 5;
+}
+
+/* Thumb notch to open lid */
+.macbook-thumb-notch {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    pointer-events: none;
-    z-index: 1; /* Behind the panel content */
-    opacity: 0.55;
-}
-
-/* Icon container styling */
-.icon-container {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon-container i {
-    font-size: 52px !important;
-    color: inherit !important;
-    position: relative;
-    z-index: 3;
-    display: inline-block !important;
-}
-
-/* Icon colors - clean, visible icons floating in the hero */
-.t1 i { color: #2f81f7 !important; }  /* Docker - Blue */
-.t2 i { color: #3fb950 !important; }   /* Linux - Green */
-.t3 i {
-    color: #58a6ff !important;
-    display: inline-block;
-    visibility: visible !important;
-}
-.t4 i { color: #9d4edd !important; }   /* Terraform - Purple */
-.t5 i { color: #e44d27 !important; }   /* AWS - Orange */
-.t6 i { color: #ea4335 !important; }   /* Ansible - Red */
-.t7 i { color: #3776ab !important; }  /* Python - Blue */
-
-.k8s-icon i { color: #58a6ff !important; }  /* Kubernetes - Cyan (Boxicons) */
-
-/* Soft radial glow background instead of solid circle */
-.t1::before, .t2::before, .t4::before, .t5::before, .t6::before {
-    content: '';
-    position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
-    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-/* Glow effect on hover */
-.floating-tech-icons:hover .icon-container i {
-    filter: drop-shadow(0 0 12px currentColor);
-}
-
-/* Icon positions - floating icons at extreme edges of hero */
-/* Docker - top-left corner far edge */
-.t1 {
-    top: 12%;
-    left: 1%;
-    animation: floatIcon 14s ease-in-out infinite, ghostPulse 3s ease-in-out infinite;
-}
-
-/* Linux/Proxmox - bottom-left far edge */
-.t2 {
-    top: 72%;
-    left: 1.5%;
-    animation: floatIcon 17s ease-in-out infinite 3s, ghostPulse 3.5s ease-in-out infinite 0.5s;
-}
-
-/* Kubernetes - right side (far right, 2% from edge) */
-.t3 {
-    top: 18%;
-    right: 0.5%;
-    animation: floatIcon 16s ease-in-out infinite 1s, ghostPulse 4s ease-in-out infinite 1s;
-}
-
-/* Terraform/IaC - lower right corner far edge */
-.t4 {
-    top: 65%;
-    right: 1%;
-    animation: floatIcon 15s ease-in-out infinite 2s, ghostPulse 3.2s ease-in-out infinite 1.5s;
-}
-
-/* AWS Cloud - mid left far edge */
-.t5 {
-    top: 42%;
-    left: 1%;
-    animation: floatIcon 18s ease-in-out infinite 4s, ghostPulse 3.8s ease-in-out infinite 2s;
-}
-
-/* Ansible Automation - upper right far edge */
-.t6 {
-    top: 5%;
-    right: 2%;
-    animation: floatIcon 16s ease-in-out infinite 5s, ghostPulse 4.2s ease-in-out infinite 2.5s;
-}
-
-/* Python under Columbus (positioned separately) */
-.python-under-columbus {
-    top: 110% !important;
-    left: 50% !important;
     transform: translateX(-50%);
-    animation: ghostPulse 3.6s ease-in-out infinite;
+    width: 100px;
+    height: 6px;
+    background: linear-gradient(to bottom, #666 0%, #444 100%);
+    border-radius: 0 0 8px 8px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
 }
 
-/* Base opacity for subtle appearance */
-.t1::after, .t2::after, .t4::after, .t5::after, .t6::after {
+/* Bottom lip / shadow to give it thickness */
+.macbook-base::after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 48px;
-    height: 48px;
-    opacity: 0.3;
-    filter: blur(2px);
-    z-index: 1;
-    pointer-events: none;
+    bottom: -6px; left: 2%; width: 96%; height: 6px;
+    background: linear-gradient(to right, #111 0%, #222 50%, #111 100%);
+    border-radius: 0 0 20px 20px;
+    z-index: -1;
 }
 
-/* Ghost/spirit effect for floating icons */
-@keyframes ghostPulse {
-    0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 8px currentColor);
-    }
-    50% {
-        transform: scale(1.02) translateY(-6px);
-        filter: drop-shadow(0 0 16px currentColor);
-    }
+/* Hide hero terminal standard border and border-radius because it's in the macbook */
+.macbook-screen .hero-tmux-window {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    height: 100% !important;
+    margin: 0;
 }
 
-@keyframes ghostWander {
-    0%, 100% {
-        opacity: 0.25;
-        transform: translate(-50%, -50%) translate(4px, 4px) scale(0.92);
+@media (max-width: 768px) {
+    /* Graceful degradation for mobile */
+    .macbook-lid {
+        padding-top: 80%; /* Adjust aspect ratio for mobile terminal reading */
     }
-    50% {
-        opacity: 0.35;
-        transform: translate(-50%, -50%) translate(-4px, -6px) scale(1.0);
-    }
-}
-
-@keyframes floatIcon {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-        transform: translate(40px, -50px) rotate(-90deg);
-    }
-    50% {
-        transform: translate(-30px, 30px) rotate(180deg);
-    }
-    75% {
-        transform: translate(-40px, -40px) rotate(270deg);
+    .macbook-brand, .macbook-notch {
+        display: none;
     }
 }
 
@@ -588,6 +598,117 @@ a:hover {
 .about-card-modern:hover {
     border-color: var(--tech-blue) !important;
     box-shadow: 0 8px 40px rgba(88, 166, 255, 0.4), 0 0 60px rgba(88, 166, 255, 0.3), inset 0 0 0 1px rgba(88, 166, 255, 0.4) !important;
+}
+
+/* About Section Toggle */
+.about-toggle-container {
+    display: inline-flex;
+    background: rgba(22, 27, 34, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 4px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.about-toggle-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 8px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 26px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.about-toggle-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, var(--tech-blue), var(--tech-cyan));
+    box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+}
+
+.about-toggle-btn:hover:not(.active) {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+}
+
+/* About Modes */
+.about-mode {
+    display: none;
+    opacity: 0;
+}
+
+.about-mode.active {
+    display: block;
+    animation: fadeInMode 0.5s ease forwards;
+}
+
+@keyframes fadeInMode {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Personal Photo Grid */
+.personal-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+    gap: 15px;
+}
+
+.photo-cell {
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.photo-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    z-index: 10;
+    border-color: rgba(255,255,255,0.3);
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5), transparent);
+    color: #fff;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.photo-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.photo-subtitle {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: var(--font-mono);
+}
+
+.photo-cell:hover .photo-overlay {
+    transform: translateY(0);
 }
 
 /* Typing text effect for About paragraph */
@@ -837,124 +958,215 @@ a:hover {
     border-bottom: none;
 }
 
-/* Project Cards - add consistent height and flex layout */
-.project-card {
+/* ==========================================================================
+   Projects Bento Box Grid
+   ========================================================================== */
+
+.project-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense;
+    gap: 1.5rem;
+}
+
+.bento-card {
+    position: relative;
+    background: rgba(22, 27, 34, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    min-height: 340px;
-    transition: all 0.4s ease;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-height: 280px;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
+.bento-featured {
+    grid-column: span 2;
 }
 
-/* Project image/header container */
-.project-image-container {
-    transition: all 0.4s ease;
+/* Glow effects for cards */
+.bento-glow {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+    transition: all 0.5s ease;
+    pointer-events: none;
 }
 
-.project-card:hover .project-image-container {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+.bento-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-/* Project content area */
-.project-content {
-    transition: all 0.3s ease;
+.bento-card:hover .bento-glow {
+    transform: scale(1.5);
 }
 
-.project-card:hover .project-content {
-    border-color: var(--tech-blue);
-    box-shadow: 0 -5px 20px rgba(88, 166, 255, 0.2), inset 0 0 0 1px rgba(88, 166, 255, 0.4);
+/* Specific glows per project */
+.stargaze-card .bento-glow { background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, rgba(0,0,0,0) 70%); }
+.ai-card .bento-glow { background: radial-gradient(circle, rgba(88, 166, 255, 0.15) 0%, rgba(0,0,0,0) 70%); }
+.proxmox-card .bento-glow { background: radial-gradient(circle, rgba(63, 185, 80, 0.15) 0%, rgba(0,0,0,0) 70%); }
+.net-card .bento-glow { background: radial-gradient(circle, rgba(52, 152, 219, 0.15) 0%, rgba(0,0,0,0) 70%); }
+.win-card .bento-glow { background: radial-gradient(circle, rgba(0, 164, 239, 0.15) 0%, rgba(0,0,0,0) 70%); }
+.media-card .bento-glow { background: radial-gradient(circle, rgba(255, 71, 87, 0.15) 0%, rgba(0,0,0,0) 70%); }
+
+.stargaze-card:hover { border-color: rgba(138, 43, 226, 0.4); box-shadow: 0 10px 30px rgba(138, 43, 226, 0.1); }
+.ai-card:hover { border-color: rgba(88, 166, 255, 0.4); box-shadow: 0 10px 30px rgba(88, 166, 255, 0.1); }
+.proxmox-card:hover { border-color: rgba(63, 185, 80, 0.4); box-shadow: 0 10px 30px rgba(63, 185, 80, 0.1); }
+.net-card:hover { border-color: rgba(52, 152, 219, 0.4); box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1); }
+.win-card:hover { border-color: rgba(0, 164, 239, 0.4); box-shadow: 0 10px 30px rgba(0, 164, 239, 0.1); }
+.media-card:hover { border-color: rgba(255, 71, 87, 0.4); box-shadow: 0 10px 30px rgba(255, 71, 87, 0.1); }
+
+/* Card Content Styling */
+.bento-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    opacity: 0.9;
 }
 
-.project-card:hover .project-image-container {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(88, 166, 255, 0.3), inset 0 0 0 1px rgba(88, 166, 255, 0.4);
+.stargaze-card .bento-icon { color: #8a2be2; }
+.ai-card .bento-icon { color: var(--tech-blue); }
+.proxmox-card .bento-icon { color: var(--tech-emerald); }
+.net-card .bento-icon { color: var(--tech-cyan); }
+.win-card .bento-icon { color: #00a4ef; }
+.media-card .bento-icon { color: #ff4757; }
+
+.bento-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.project-card:hover .project-image-container i {
-    filter: drop-shadow(0 0 12px currentColor);
+.bento-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
 }
 
-/* Project badge glow on hover */
-.project-badge:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 15px currentColor;
+.bento-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
-/* Project badges */
-.project-badge {
-    font-weight: 500;
+/* Minimalist Tags */
+.bento-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.bento-tag {
+    display: flex;
+    align-items: center;
     font-size: 0.75rem;
-    transition: all 0.3s ease;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.project-badge:hover {
-    transform: scale(1.08);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+.tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 6px;
 }
 
-/* Project button */
-#projects .btn-primary {
-    background: linear-gradient(135deg, var(--tech-blue), var(--tech-cyan));
-    border: none;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    transition: all 0.3s ease;
-}
-
-#projects .btn-primary:hover {
-    background: linear-gradient(135deg, var(--tech-cyan), var(--tech-emerald));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(88, 166, 255, 0.4);
-}
-
-/* Row equal height helper */
-.row-eq-height > [class*="col-"] {
+/* Action Buttons */
+.bento-actions {
     display: flex;
-    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto; /* Pushes to bottom */
 }
 
-/* Staggered animation for project cards - using class-based targeting */
-.project-card.animate-in {
-    animation: fadeInUp 0.6s ease forwards;
+.bento-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.bento-btn.primary {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.bento-btn.primary:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+.bento-btn.secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.bento-btn.secondary:hover {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+}
+
+/* Responsive Layout */
+@media (max-width: 992px) {
+    .project-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bento-featured {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-bento-grid {
+        grid-template-columns: 1fr;
+    }
+    .bento-featured {
+        grid-column: span 1;
+    }
+}
+
+/* Animations */
+.bento-card.animate-in {
+    animation: fadeInUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
 }
 
-.project-card.animate-in:nth-child(1) { animation-delay: 0.1s; }
-.project-card.animate-in:nth-child(2) { animation-delay: 0.2s; }
-.project-card.animate-in:nth-child(3) { animation-delay: 0.3s; }
-.project-card.animate-in:nth-child(4) { animation-delay: 0.4s; }
-.project-card.animate-in:nth-child(5) { animation-delay: 0.5s; }
-
-/* Responsive adjustments */
-@media (max-width: 991px) {
-    .project-card.animate-in:nth-child(odd) { animation-delay: 0.1s; }
-    .project-card.animate-in:nth-child(even) { animation-delay: 0.2s; }
-    .project-card { margin-bottom: 1rem; }
-}
-
-@media (max-width: 767px) {
-    .project-card.animate-in { animation-delay: 0.15s !important; }
-    .project-card:nth-child(2) { animation-delay: 0.3s !important; }
-    .project-card:nth-child(3) { animation-delay: 0.45s !important; }
-    .project-card:nth-child(4) { animation-delay: 0.6s !important; }
-    .project-card:nth-child(5) { animation-delay: 0.75s !important; }
-
-}
-
-@media (max-width: 767px) {
-    /* Ensure proper column width on mobile - grid layout for 2 columns per row */
-    #projects .col-md-6 { max-width: 50%; }
-}
-
-@media (max-width: 576px) {
-    /* Stack cards vertically on small mobile screens */
-    #projects .col-md-6 { max-width: 100%; }
-}
+.bento-card:nth-child(1) { animation-delay: 0.1s; }
+.bento-card:nth-child(2) { animation-delay: 0.2s; }
+.bento-card:nth-child(3) { animation-delay: 0.3s; }
+.bento-card:nth-child(4) { animation-delay: 0.4s; }
+.bento-card:nth-child(5) { animation-delay: 0.5s; }
+.bento-card:nth-child(6) { animation-delay: 0.6s; }
 
 /* ==========================================================================
    Work Experience Section
@@ -2075,6 +2287,7 @@ footer a:hover, .footer-nav-link:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(63, 185, 80, 0.05);
     border-color: rgba(63, 185, 80, 0.3);
 }
+
 .systemd-service-card.degraded:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 159, 28, 0.05);
     border-color: rgba(255, 159, 28, 0.3);
@@ -2357,3 +2570,26 @@ footer a:hover, .footer-nav-link:hover {
     vertical-align: middle;
 }
 
+/* Contact Form Input Styles */
+.custom-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--tech-blue);
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(10, 105, 236, 0.25);
+}
+
+.custom-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#btn-copy-email:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+}

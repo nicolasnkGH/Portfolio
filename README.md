@@ -6,18 +6,19 @@ This repository hosts the source code for my professional portfolio website at [
 
 The site serves as an interactive resume and technical showcase, designed with a GitHub-inspired dark theme and modern DevOps engineering aesthetics. It demonstrates expertise in Cloud Infrastructure, DevOps Automation, Kubernetes orchestration, and AI/ML infrastructure.
 
-## ✨ Latest Updates (2026-03-20)
+## ✨ Latest Updates (2026-06-21)
+
+### UI/UX Enhancements
+* **Interactive ScrollSpy Navigation:** Dynamic navbar that automatically highlights active sections as users scroll.
+* **Bento Box Project Grid:** Custom asymmetrical CSS grid layout featuring wide featured cards and dense packing algorithms.
+* **Glassmorphic Contact Form:** A sleek, fully functional contact form with real-time email validation and serverless form submission readiness.
+* **Interactive Photo Collage:** A 2x2 CSS photo grid in the About section with hover animations revealing dynamic subtitles.
+* **Copy-to-Clipboard Interactions:** Zero-friction UX additions allowing single-click email copying.
 
 ### Visual Redesign
 * **GitHub Dark Theme:** Complete visual overhaul with GitHub-inspired dark color palette (`#0d1117` background, tech blues/cyan/emerald accents)
-* **Floating Tech Icons:** Animated floating technology icons (Docker, Kubernetes, Linux/Proxmox, Terraform, AWS, Ansible, Python) with ghost/spirit effects and soft radial glows
 * **Modern Card Interactions:** Enhanced hover effects with gradient borders, lift animations, and glow shadows matching the tech theme
-
-### Technical Improvements
-* **Boxicons Integration:** Added Boxicons CDN for official Kubernetes branding (since Font Awesome lacks native k8s icons)
-* **Chart.js Radar Chart:** Interactive skills visualization showing proficiency in Cloud Platforms, Container Orchestration, IaC & Automation, Programming, and Security
-* **Enhanced CLI Terminal:** Larger font size (`1.1rem`), blue glow shadows, and improved mobile responsiveness
-* **Footer Updates:** Updated tech stack to reflect actual deployment (Cloudflare Pages instead of Nginx)
+* **Boxicons & Chart.js:** Integrated Boxicons for precise tech logos and Chart.js for interactive radar charts mapping engineering proficiencies.
 
 ### Repository Links Updated
 All project repository links have been verified and updated:

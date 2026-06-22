@@ -6,7 +6,7 @@ const workExperience = {
         company: 'ADB Safegate',
         title: 'Systems Engineer',
         location: 'Columbus, OH',
-        dates: 'April 2023 — Present',
+        dates: 'April 2023 - Present',
         responsibilities: [
             'Designed and deployed secure, scalable infrastructure for mission-critical airport systems',
             'Built and managed CI/CD pipelines with Azure DevOps, streamlining deployments',
@@ -21,7 +21,7 @@ const workExperience = {
         company: 'LPL Financial',
         title: 'Product Support Specialist',
         location: 'San Diego, CA',
-        dates: 'August 2021 — April 2023',
+        dates: 'August 2021 - April 2023',
         responsibilities: [
             'Supported 4 proprietary financial systems, ensuring high reliability for hundreds of advisors',
             'Partnered with escalation teams to resolve high-priority issues under tight SLAs',
@@ -33,7 +33,7 @@ const workExperience = {
         company: 'Express Hospitality Inc.',
         title: 'Technical Support Specialist II',
         location: 'San Diego, CA',
-        dates: 'July 2018 — July 2021',
+        dates: 'July 2018 - July 2021',
         responsibilities: [
             'Managed provisioning, installation, and maintenance of hardware/software systems',
             'Configured desktops and streamlined onboarding for new hires',
@@ -70,6 +70,31 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // ScrollSpy for Navigation Highlighting
+    const sections = document.querySelectorAll('section.section-id');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    if (sections.length > 0 && navLinks.length > 0) {
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
 
     // Typing effect for subtitle
     const subtitleElement = document.getElementById('subtitle-typing');
@@ -209,6 +234,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Start typing after specialties complete
         setTimeout(typeAboutLine, 2500);
+    }
+
+    // About Section Toggle Logic
+    const btnProfessional = document.getElementById('btn-professional');
+    const btnPersonal = document.getElementById('btn-personal');
+    const modeProfessional = document.getElementById('about-professional');
+    const modePersonal = document.getElementById('about-personal');
+
+    if (btnProfessional && btnPersonal && modeProfessional && modePersonal) {
+        btnProfessional.addEventListener('click', () => {
+            btnProfessional.classList.add('active');
+            btnPersonal.classList.remove('active');
+            modeProfessional.classList.add('active');
+            modePersonal.classList.remove('active');
+        });
+
+        btnPersonal.addEventListener('click', () => {
+            btnPersonal.classList.add('active');
+            btnProfessional.classList.remove('active');
+            modePersonal.classList.add('active');
+            modeProfessional.classList.remove('active');
+        });
     }
 
     // Auto-update footer year and last updated date
@@ -398,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
 
-    document.querySelectorAll('#projects .project-card').forEach(card => {
+    document.querySelectorAll('#projects .bento-card').forEach(card => {
         projectObserver.observe(card);
     });
 
@@ -443,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // ==========================================================================
-    // Neofetch Left Pane — System Info Panel
+    // Neofetch Left Pane - System Info Panel
     // ==========================================================================
     const neofetchContent = document.getElementById('neofetch-content');
     if (neofetchContent) {
@@ -459,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { key: 'Focus',      val: 'Cloud-Native · IaC · MLOps' },
             { key: 'Edu',        val: 'M.S. Soft. Eng & DevOps (WGU)' },
             { key: 'Stack',      val: 'K8s · AWS · Terraform · Python' },
-            { key: 'GPU',        val: 'NVIDIA RTX — Self-hosted AI' },
+            { key: 'GPU',        val: 'NVIDIA RTX - Self-hosted AI' },
             { key: 'Status',     val: '🟢 Available for Opportunities' },
         ];
 
@@ -805,4 +852,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // ==========================================================================
+    // Contact Form & Copy to Clipboard Logic
+    // ==========================================================================
+    const btnCopyEmail = document.getElementById('btn-copy-email');
+    const emailText = document.getElementById('contact-email-text');
+    
+    if (btnCopyEmail && emailText) {
+        btnCopyEmail.addEventListener('click', () => {
+            const emailStr = emailText.innerText;
+            navigator.clipboard.writeText(emailStr).then(() => {
+                const icon = btnCopyEmail.querySelector('i');
+                icon.className = 'fas fa-check text-success';
+                setTimeout(() => {
+                    icon.className = 'fas fa-copy';
+                }, 2000);
+            });
+        });
+    }
+
+    const emailInput = document.getElementById('email');
+    const emailValidIcon = document.getElementById('email-valid-icon');
+
+    if (emailInput && emailValidIcon) {
+        emailInput.addEventListener('input', (e) => {
+            const email = e.target.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(email)) {
+                emailValidIcon.style.display = 'block';
+                emailInput.style.borderColor = 'var(--sys-green)';
+            } else {
+                emailValidIcon.style.display = 'none';
+                if (email.length > 0) {
+                    emailInput.style.borderColor = 'var(--sys-red)';
+                } else {
+                    emailInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                }
+            }
+        });
+    }
 });

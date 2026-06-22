@@ -33,13 +33,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styles.css?v=9" rel="stylesheet">
 </head>
 <body class="bg-dark">
     <!-- Navigation Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="mainNav" aria-label="Main navigation">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">NT</a>
+            <a class="navbar-brand fw-bold font-mono" style="letter-spacing: -0.5px;" href="#!">Nicolas Teixeira</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -58,25 +58,25 @@
 
  <!-- Masthead Hero Section -->
     <header class="masthead position-relative overflow-hidden" id="masthead">
-        <!-- Floating tech icons - extreme viewport edges, behind terminal -->
-        <div class="floating-tech-icons d-none d-xl-block" id="floating-tech-icons">
-            <div class="icon-container t1"><i class="fab fa-docker" title="Docker"></i></div>
-            <div class="icon-container t2"><i class="fab fa-linux" title="Linux/Proxmox"></i></div>
-            <div class="icon-container t3 k8s-icon"><i class='bx bxl-kubernetes' title="Kubernetes"></i></div>
-            <div class="icon-container t4"><i class="fas fa-project-diagram" title="Terraform/IaC"></i></div>
-            <div class="icon-container t5"><i class="fab fa-aws" title="AWS Cloud"></i></div>
-            <div class="icon-container t6"><i class="fas fa-cogs" title="Ansible Automation"></i></div>
-        </div>
+        <!-- Hero: full-height flex center -->
 
         <div class="masthead-grid"></div>
         <div class="masthead-orb-secondary"></div>
 
         <!-- Hero: full-height flex center -->
         <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 5rem; padding-bottom: 3rem; position: relative; z-index: 5;">
-            <div class="container px-3 px-lg-4">
+            <div class="container px-3 px-lg-4 d-flex flex-column align-items-center justify-content-center">
 
-                <!-- Unified tmux terminal window -->
-                <div class="hero-tmux-window crt-overlay" id="hero-terminal">
+                <!-- MacBook Mockup Container -->
+                <div class="macbook-mockup">
+                    <div class="macbook-lid">
+                        <div class="macbook-notch">
+                            <div class="macbook-camera"></div>
+                        </div>
+                        <div class="macbook-screen">
+                            
+                            <!-- Unified tmux terminal window -->
+                            <div class="hero-tmux-window crt-overlay" id="hero-terminal" style="border: none; border-radius: 0;">
                     <!-- Single unified window title bar -->
                     <div class="hero-tmux-titlebar">
                         <div class="d-flex align-items-center gap-2">
@@ -84,7 +84,7 @@
                             <div style="width:13px;height:13px;border-radius:50%;background:#ffbd2e;"></div>
                             <div style="width:13px;height:13px;border-radius:50%;background:#27c93f;"></div>
                         </div>
-                        <span class="hero-tmux-title">nicolas@nick-t.net — tmux: portfolio [2 panes]</span>
+                        <span class="hero-tmux-title">nicolas@nick-t.net - tmux: portfolio [2 panes]</span>
                         <span class="badge font-mono ms-auto" style="font-size:0.62rem; background:rgba(63,185,80,0.15); color:var(--sys-green); border:1px solid rgba(63,185,80,0.3); padding: 3px 8px;">
                             <i class="fas fa-circle me-1" style="font-size:0.4rem;vertical-align:middle;"></i>LIVE
                         </span>
@@ -96,7 +96,7 @@
                         <!-- LEFT PANE: neofetch-style system info -->
                         <div class="hero-tmux-pane-left font-mono" id="neofetch-pane">
                             <!-- Pane label -->
-                            <div class="tmux-pane-label">0: neofetch — zsh</div>
+                            <div class="tmux-pane-label">0: neofetch - zsh</div>
                             <div class="neofetch-content" id="neofetch-content">
                                 <!-- Filled dynamically by JS -->
                             </div>
@@ -107,7 +107,7 @@
 
                         <!-- RIGHT PANE: interactive shell -->
                         <div class="hero-tmux-pane-right font-mono" id="shell-pane" onclick="focusTerminal()">
-                            <div class="tmux-pane-label active">1: ~  — zsh  ★</div>
+                            <div class="tmux-pane-label active">1: ~  - zsh  ★</div>
                             <div class="hero-terminal-body" id="terminal-body">
                                 <!-- Boot lines appended by JS -->
                             </div>
@@ -129,10 +129,19 @@
                             <span class="text-muted" id="tmux-clock" style="font-size:0.7rem;"></span>
                         </span>
                     </div>
-                </div>
+                </div> <!-- /hero-tmux-window -->
+                
+                        </div> <!-- /macbook-screen -->
+                        <div class="macbook-brand"></div>
+                    </div> <!-- /macbook-lid -->
+                    
+                    <div class="macbook-base">
+                        <div class="macbook-thumb-notch"></div>
+                    </div> <!-- /macbook-base -->
+                </div> <!-- /macbook-mockup -->
 
                 <!-- Hint below terminal -->
-                <p class="text-center mt-3 font-mono text-muted" style="font-size:0.7rem; opacity:0.5;">
+                <p class="text-center mt-4 font-mono text-muted" style="font-size:0.7rem; opacity:0.5; z-index: 10;">
                     <i class="fas fa-keyboard me-1"></i>Click right pane &amp; type <code class="text-sys-cyan">help</code> · Ctrl+B arrows to switch panes
                 </p>
 
@@ -145,42 +154,115 @@
     <section class="py-5 section-id" id="about">
         <div class="container px-4 px-lg-5">
             <h2 class="text-center text-white mb-4 fw-bold display-6">About</h2>
+            
+            <!-- About Toggle -->
+            <div class="d-flex justify-content-center mb-4">
+                <div class="about-toggle-container">
+                    <button class="about-toggle-btn active" id="btn-professional">Professional</button>
+                    <button class="about-toggle-btn" id="btn-personal">Personal</button>
+                </div>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="about-card-modern p-5" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px;">
-                        <!-- Two-column layout for desktop -->
-                        <div class="row align-items-center">
-                            <div class="col-lg-7 mb-4 mb-lg-0">
-                                <h3 class="text-white fw-bold mb-4 display-6">Systems & Platform Engineer</h3>
+                    <div class="about-card-modern p-5" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; position: relative; min-height: 450px;">
+                        
+                        <!-- Professional Mode -->
+                        <div id="about-professional" class="about-mode active">
+                            <!-- Two-column layout for desktop -->
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 mb-4 mb-lg-0">
+                                    <h3 class="text-white fw-bold mb-4 display-6">Systems & Platform Engineer</h3>
 
-                                <!-- First paragraph with typing effect -->
-                                <p id="about-text" class="mb-4 lh-lg" style="font-size: 1.05rem; line-height: 1.8;">
-                                    <span class="text-white-75"></span>
-                                </p>
+                                    <!-- First paragraph with typing effect -->
+                                    <p id="about-text" class="mb-4 lh-lg" style="font-size: 1.05rem; line-height: 1.8;">
+                                        <span class="text-white-75"></span>
+                                    </p>
+                                </div>
 
-
-                            </div>
-
-                            <!-- Impact highlights column -->
-                            <div class="col-lg-5">
-                                <div class="row g-3">
-                                    <div class="col-12">
-                                        <div class="impact-card p-4 h-100" style="background: rgba(88, 166, 255, 0.05); border: 1px solid rgba(88, 166, 255, 0.2);">
-                                            <i class="fas fa-database mb-3" style="display:block; color: var(--tech-blue); font-size: 2rem;"></i>
-                                            <h5 class="text-white fw-bold mb-2 fs-6">Cloud-Native & Event-Driven</h5>
-                                            <p class="text-white-75 small mb-0">Designing, deploying, and operating scalable infrastructure for data-intensive systems.</p>
+                                <!-- Impact highlights column -->
+                                <div class="col-lg-5">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <div class="impact-card p-4 h-100" style="background: rgba(88, 166, 255, 0.05); border: 1px solid rgba(88, 166, 255, 0.2);">
+                                                <i class="fas fa-database mb-3" style="display:block; color: var(--tech-blue); font-size: 2rem;"></i>
+                                                <h5 class="text-white fw-bold mb-2 fs-6">Cloud-Native & Event-Driven</h5>
+                                                <p class="text-white-75 small mb-0">Designing, deploying, and operating scalable infrastructure for data-intensive systems.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="impact-card p-4 h-100" style="background: rgba(63, 185, 80, 0.05); border: 1px solid rgba(63, 185, 80, 0.2);">
-                                            <i class="fas fa-brain mb-3" style="display:block; color: var(--tech-emerald); font-size: 2rem;"></i>
-                                            <h5 class="text-white fw-bold mb-2 fs-6">AI & ML Enablement</h5>
-                                            <p class="text-white-75 small mb-0">Self-hosted inference platforms, GPU acceleration, observability, and performance optimization.</p>
+                                        <div class="col-12">
+                                            <div class="impact-card p-4 h-100" style="background: rgba(63, 185, 80, 0.05); border: 1px solid rgba(63, 185, 80, 0.2);">
+                                                <i class="fas fa-brain mb-3" style="display:block; color: var(--tech-emerald); font-size: 2rem;"></i>
+                                                <h5 class="text-white fw-bold mb-2 fs-6">AI & ML Enablement</h5>
+                                                <p class="text-white-75 small mb-0">Self-hosted inference platforms, GPU acceleration, observability, and performance optimization.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Personal Mode -->
+                        <div id="about-personal" class="about-mode">
+                            <div class="row">
+                                <div class="col-lg-7 mb-4 mb-lg-0 pe-lg-4">
+                                    <h3 class="text-white fw-bold mb-3 display-6">Beyond the Terminal</h3>
+                                    <div class="text-white-75 mb-4" style="font-size: 1.05rem; line-height: 1.7;">
+                                        <p>
+                                            I am originally from the most beautiful city in the world: Rio de Janeiro, Brazil - land of churrasco, samba, and the greatest <em>futebol</em> nation on earth.
+                                        </p>
+                                        <p>
+                                            My path to tech has been anything but traditional. I played competitive soccer until I was 21, but when my body started feeling like it was 80, I knew it was time to pivot. Naturally, I joined the <strong>Brazilian Marine Corps</strong> for three years. Even then, I couldn't hide my inner nerd - my squad nicknamed me "Bill Gates" (if only I had his bank account, right?). After the military, I jumped into the oil and gas industry as a Quality Inspector, certifying welding equipment and drill pipes.
+                                        </p>
+                                        <p>
+                                            Still not satisfied, I moved to the USA to pursue my actual dream: mastering the English language and launching my career in tech. The rest is written all over this portfolio!
+                                        </p>
+                                    </div>
+                                    
+                                    <h5 class="text-white fw-bold mb-3">Offline Hobbies</h5>
+                                    <div class="d-flex flex-wrap gap-2 mb-4 font-mono text-white-75 small">
+                                        <span class="badge border border-secondary p-2 d-flex align-items-center" style="background: rgba(255,255,255,0.05);"><span class="me-2" style="font-size: 1.2rem;">🔴⚫</span> Futebol (Flamengo)</span>
+                                        <span class="badge border border-secondary p-2 d-flex align-items-center" style="background: rgba(255,255,255,0.05);"><span class="me-2" style="font-size: 1.2rem;">🏋️</span> Gym</span>
+                                        <span class="badge border border-secondary p-2 d-flex align-items-center" style="background: rgba(255,255,255,0.05);"><span class="me-2" style="font-size: 1.2rem;">🖥️</span> Home Labbing</span>
+                                        <span class="badge border border-secondary p-2 d-flex align-items-center" style="background: rgba(255,255,255,0.05);"><span class="me-2" style="font-size: 1.2rem;">🥩</span> BBQs & Churrasco</span>
+                                        <span class="badge border border-secondary p-2 d-flex align-items-center" style="background: rgba(255,255,255,0.05);"><span class="me-2" style="font-size: 1.2rem;">🔭</span> Astronomy</span>
+                                        <span class="badge border border-secondary p-2 d-flex align-items-center" style="background: rgba(255,255,255,0.05);"><span class="me-2" style="font-size: 1.2rem;">🎬</span> Rewatching Lost & Harry Potter</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-5">
+                                    <!-- Photo Grid -->
+                                    <div class="personal-photo-grid">
+                                        <div class="photo-cell" style="background-image: url('https://placehold.co/400x400/222222/555555?text=Soccer+Era');">
+                                            <div class="photo-overlay">
+                                                <div class="photo-title">Soccer Era</div>
+                                                <div class="photo-subtitle">Competed until 21</div>
+                                            </div>
+                                        </div>
+                                        <div class="photo-cell" style="background-image: url('https://placehold.co/400x400/222222/555555?text=Marine+Corps');">
+                                            <div class="photo-overlay">
+                                                <div class="photo-title">Marine Corps</div>
+                                                <div class="photo-subtitle">Squad Comms & "Bill Gates"</div>
+                                            </div>
+                                        </div>
+                                        <div class="photo-cell" style="background-image: url('https://placehold.co/400x400/222222/555555?text=Oil+and+Gas');">
+                                            <div class="photo-overlay">
+                                                <div class="photo-title">Oil & Gas</div>
+                                                <div class="photo-subtitle">Quality Inspector</div>
+                                            </div>
+                                        </div>
+                                        <div class="photo-cell" style="background-image: url('https://placehold.co/400x400/222222/555555?text=Systems+Eng');">
+                                            <div class="photo-overlay">
+                                                <div class="photo-title">Systems Eng</div>
+                                                <div class="photo-subtitle">Cloud & Infrastructure</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-center text-white-50 small mt-3 font-mono"><i class="fas fa-info-circle me-1"></i> Replace image URLs in index.html</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -206,7 +288,7 @@
                     <div class="syslog-body">
                         <h4 class="text-white fw-bold mb-1 fs-5">Systems Engineer</h4>
                         <p class="text-muted mb-2"><strong>ADB Safegate</strong> | Columbus, OH</p>
-                        <p class="small font-mono text-sys-blue mb-3"><i class="fas fa-calendar-alt me-2"></i>April 2023 — Present</p>
+                        <p class="small font-mono text-sys-blue mb-3"><i class="fas fa-calendar-alt me-2"></i>April 2023 - Present</p>
                         <ul class="list-unstyled text-white-75 mb-0">
                             <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Designed and deployed secure, scalable infrastructure for mission-critical airport systems</li>
                             <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-blue"></i>Built and managed CI/CD pipelines with Azure DevOps, streamlining deployments</li>
@@ -231,7 +313,7 @@
                     <div class="syslog-body">
                         <h4 class="text-white fw-bold mb-1 fs-5">Product Support Specialist</h4>
                         <p class="text-muted mb-2"><strong>LPL Financial</strong> | San Diego, CA</p>
-                        <p class="small font-mono text-sys-green mb-3"><i class="fas fa-calendar-alt me-2"></i>August 2021 — April 2023</p>
+                        <p class="small font-mono text-sys-green mb-3"><i class="fas fa-calendar-alt me-2"></i>August 2021 - April 2023</p>
                         <ul class="list-unstyled text-white-75 mb-0">
                             <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-green"></i>Supported 4 proprietary financial systems, ensuring high reliability for hundreds of advisors</li>
                             <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-green"></i>Partnered with escalation teams to resolve high-priority issues under tight SLAs</li>
@@ -253,7 +335,7 @@
                     <div class="syslog-body">
                         <h4 class="text-white fw-bold mb-1 fs-5">Technical Support Specialist II</h4>
                         <p class="text-muted mb-2"><strong>Express Hospitality Inc.</strong> | San Diego, CA</p>
-                        <p class="small font-mono text-sys-yellow mb-3"><i class="fas fa-calendar-alt me-2"></i>July 2018 — July 2021</p>
+                        <p class="small font-mono text-sys-yellow mb-3"><i class="fas fa-calendar-alt me-2"></i>July 2018 - July 2021</p>
                         <ul class="list-unstyled text-white-75 mb-0">
                             <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-yellow"></i>Managed provisioning, installation, and maintenance of hardware/software systems</li>
                             <li class="mb-2"><i class="fas fa-check-circle me-2 text-sys-yellow"></i>Configured desktops and streamlined onboarding for new hires</li>
@@ -440,138 +522,131 @@
                 A selection of projects showcasing expertise in infrastructure automation, cloud deployment, and systems engineering
             </p>
 
-            <!-- Projects Grid -->
-            <div class="row g-4 row-eq-height">
-                <!-- Project 0: StarGazer -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="project-card h-100">
-                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(47, 129, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-meteor" style="font-size: 4rem; color: #8a2be2; opacity: 0.8;"></i>
+            <!-- Projects Bento Grid -->
+            <div class="project-bento-grid">
+                
+                <!-- Project 0: StarGazer (Featured - Span 2) -->
+                <div class="bento-card bento-featured stargaze-card">
+                    <div class="bento-glow"></div>
+                    <div class="bento-icon"><i class="fas fa-meteor"></i></div>
+                    <div class="bento-content">
+                        <h5 class="bento-title">StarGazer</h5>
+                        <p class="bento-desc">Astronomical dashboard featuring a live night-vision planetarium map, ISS tracking, and an AI-powered seeing forecast.</p>
+                        <div class="bento-tags">
+                            <span class="bento-tag"><span class="tag-dot" style="background:#ffc646;"></span>Python</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:#8a2be2;"></span>FastAPI</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:var(--tech-blue);"></span>JavaScript</span>
                         </div>
-                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
-                            <h5 class="text-white fw-bold mb-2 fs-5">StarGazer</h5>
-                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Astronomical dashboard featuring a live night-vision planetarium map, ISS tracking, and an AI-powered seeing forecast.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Python</span>
-                                <span class="badge project-badge" style="background: rgba(138, 43, 226, 0.15); border: 1px solid #8a2be2; color: #8a2be2;">FastAPI</span>
-                                <span class="badge project-badge" style="background: rgba(88, 166, 255, 0.15); border: 1px solid var(--tech-blue); color: var(--tech-blue);">JavaScript</span>
-                            </div>
-                            <div class="d-flex gap-2 w-100">
-                                <a href="https://stargazer.nick-t.net" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary flex-grow-1 rounded-pill px-0" aria-label="View Live Dashboard">
-                                    <i class="fas fa-external-link-alt"></i> Live
-                                </a>
-                                <a href="https://github.com/nicolasnkGH/stargazer" target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-grow-1 rounded-pill px-0" aria-label="View Repository on GitHub">
-                                    <i class="fab fa-github"></i> Repo
-                                </a>
-                            </div>
+                        <div class="bento-actions">
+                            <a href="https://stargazer.nick-t.net" target="_blank" rel="noopener noreferrer" class="bento-btn primary">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                            <a href="https://github.com/nicolasnkGH/stargazer" target="_blank" rel="noopener noreferrer" class="bento-btn secondary">
+                                <i class="fab fa-github"></i> Repo
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 1: AI Stack -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="project-card h-100">
-                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(47, 129, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-robot" style="font-size: 4rem; color: var(--tech-blue); opacity: 0.8;"></i>
+                <!-- Project 1: AI Stack (Featured - Span 2) -->
+                <div class="bento-card bento-featured ai-card">
+                    <div class="bento-glow"></div>
+                    <div class="bento-icon"><i class="fas fa-robot"></i></div>
+                    <div class="bento-content">
+                        <h5 class="bento-title">Private AI Stack</h5>
+                        <p class="bento-desc">Self-hosted AI inference platform with GPU acceleration, local LLMs, and secure remote access.</p>
+                        <div class="bento-tags">
+                            <span class="bento-tag"><span class="tag-dot" style="background:var(--tech-blue);"></span>Docker</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:var(--tech-emerald);"></span>AI/LLM</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:#ffc646;"></span>GPU</span>
                         </div>
-                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
-                            <h5 class="text-white fw-bold mb-2 fs-5">Private AI Stack</h5>
-                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Self-hosted AI inference platform with GPU acceleration, local LLMs, and secure remote access.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="badge project-badge" style="background: rgba(88, 166, 255, 0.15); border: 1px solid var(--tech-blue); color: var(--tech-blue);">Docker</span>
-                                <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">AI/LLM</span>
-                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">NVIDIA GPU</span>
-                            </div>
-                            <a href="https://github.com/nicolasnkGH/ai-stack" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View AI Stack repository on GitHub">
-                                <i class="fab fa-github me-2"></i>View Repository
+                        <div class="bento-actions mt-auto">
+                            <a href="https://github.com/nicolasnkGH/ai-stack" target="_blank" rel="noopener noreferrer" class="bento-btn secondary w-100 justify-content-center">
+                                <i class="fab fa-github"></i> View Repo
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2: Proxmox Automation -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="project-card h-100">
-                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(63, 185, 80, 0.1), rgba(47, 129, 247, 0.1)); display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-server" style="font-size: 4rem; color: var(--tech-emerald); opacity: 0.8;"></i>
+                <div class="bento-card proxmox-card">
+                    <div class="bento-glow"></div>
+                    <div class="bento-icon"><i class="fas fa-server"></i></div>
+                    <div class="bento-content">
+                        <h5 class="bento-title">Proxmox Automation</h5>
+                        <p class="bento-desc">Automated deployment and maintenance scripts for Proxmox VE environments with cluster provisioning.</p>
+                        <div class="bento-tags">
+                            <span class="bento-tag"><span class="tag-dot" style="background:#ff4757;"></span>Proxmox VE</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:#8b98f1;"></span>Virtualization</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:var(--tech-emerald);"></span>Bash</span>
                         </div>
-                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
-                            <h5 class="text-white fw-bold mb-2 fs-5">Proxmox Automation</h5>
-                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Automated deployment and maintenance scripts for Proxmox VE environments with cluster provisioning.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="badge project-badge" style="background: rgba(255, 71, 87, 0.15); border: 1px solid #ff4757; color: #ff4757;">Proxmox VE</span>
-                                <span class="badge project-badge" style="background: rgba(139, 152, 241, 0.15); border: 1px solid #8b98f1; color: #8b98f1;">Virtualization</span>
-                                <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">Bash</span>
-                            </div>
-                            <a href="https://github.com/nicolasnkGH/proxmox-automation" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View Proxmox Automation repository on GitHub">
-                                <i class="fab fa-github me-2"></i>View Repository
+                        <div class="bento-actions">
+                            <a href="https://github.com/nicolasnkGH/proxmox-automation" target="_blank" rel="noopener noreferrer" class="bento-btn secondary">
+                                <i class="fab fa-github"></i> View Repo
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3: Home Lab Networking -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="project-card h-100">
-                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(47, 129, 247, 0.1), rgba(63, 185, 80, 0.1)); display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-network-wired" style="font-size: 4rem; color: var(--tech-cyan); opacity: 0.8;"></i>
+                <div class="bento-card net-card">
+                    <div class="bento-glow"></div>
+                    <div class="bento-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="bento-content">
+                        <h5 class="bento-title">Lab Networking</h5>
+                        <p class="bento-desc">Custom routing, VLAN segregation, pfSense firewall policies, and monitoring infrastructure.</p>
+                        <div class="bento-tags">
+                            <span class="bento-tag"><span class="tag-dot" style="background:#3498db;"></span>Linux</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:#8b98f1;"></span>VLANs</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:#ffc646;"></span>Security</span>
                         </div>
-                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
-                            <h5 class="text-white fw-bold mb-2 fs-5">Enterprise Lab Networking</h5>
-                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Custom routing, VLAN segregation, pfSense firewall policies, and network monitoring infrastructure.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="badge project-badge" style="background: rgba(52, 152, 219, 0.15); border: 1px solid #3498db; color: #3498db;">Linux</span>
-                                <span class="badge project-badge" style="background: rgba(139, 152, 241, 0.15); border: 1px solid #8b98f1; color: #8b98f1;">VLANs</span>
-                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Security</span>
-                            </div>
-                            <a href="https://github.com/nicolasnkGH/home-networking-setup" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View Home Lab Networking repository on GitHub">
-                                <i class="fab fa-github me-2"></i>View Repository
+                        <div class="bento-actions mt-auto">
+                            <a href="https://github.com/nicolasnkGH/home-networking-setup" target="_blank" rel="noopener noreferrer" class="bento-btn secondary w-100 justify-content-center">
+                                <i class="fab fa-github"></i> View Repo
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 4: Windows Automation Scripts -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="project-card h-100">
-                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(0, 164, 239, 0.1), rgba(63, 185, 80, 0.1)); display: flex; align-items: center; justify-content: center;">
-                            <i class="fab fa-windows" style="font-size: 4rem; color: #00a4ef; opacity: 0.8;"></i>
+                <div class="bento-card win-card">
+                    <div class="bento-glow"></div>
+                    <div class="bento-icon"><i class="fab fa-windows"></i></div>
+                    <div class="bento-content">
+                        <h5 class="bento-title">Windows Scripts</h5>
+                        <p class="bento-desc">PowerShell automation scripts for Windows administration, Active Directory, and system deployment.</p>
+                        <div class="bento-tags">
+                            <span class="bento-tag"><span class="tag-dot" style="background:#00a4ef;"></span>PowerShell</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:var(--tech-emerald);"></span>AD</span>
                         </div>
-                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
-                            <h5 class="text-white fw-bold mb-2 fs-5">Windows Automation Scripts</h5>
-                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">PowerShell automation scripts for Windows administration, Active Directory management, and system deployment.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="badge project-badge" style="background: rgba(0, 164, 239, 0.15); border: 1px solid #00a4ef; color: #00a4ef;">PowerShell</span>
-                                <span class="badge project-badge" style="background: rgba(63, 185, 80, 0.15); border: 1px solid var(--tech-emerald); color: var(--tech-emerald);">AD Management</span>
-                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Automation</span>
-                            </div>
-                            <a href="https://github.com/nicolasnkGH/powershell-Scripting" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View PowerShell Scripting repository on GitHub">
-                                <i class="fab fa-github me-2"></i>View Repository
+                        <div class="bento-actions mt-auto">
+                            <a href="https://github.com/nicolasnkGH/powershell-Scripting" target="_blank" rel="noopener noreferrer" class="bento-btn secondary w-100 justify-content-center">
+                                <i class="fab fa-github"></i> View Repo
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 5: Containerized Media Downloader -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="project-card h-100">
-                        <div class="project-image-container mb-3" style="height: 180px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, rgba(255, 71, 87, 0.1), rgba(255, 198, 70, 0.1)); display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-cloud-download-alt" style="font-size: 4rem; color: #ff4757; opacity: 0.8;"></i>
+                <!-- Project 5: Containerized Media Downloader (Featured - Span 2) -->
+                <div class="bento-card bento-featured media-card">
+                    <div class="bento-glow"></div>
+                    <div class="bento-icon"><i class="fas fa-cloud-download-alt"></i></div>
+                    <div class="bento-content">
+                        <h5 class="bento-title">Containerized Media Downloader</h5>
+                        <p class="bento-desc">Docker-based media download service with yt-dlp, support for 1000+ sites, queue management, and scheduled downloads.</p>
+                        <div class="bento-tags">
+                            <span class="bento-tag"><span class="tag-dot" style="background:var(--tech-blue);"></span>Docker</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:#ff4757;"></span>yt-dlp</span>
+                            <span class="bento-tag"><span class="tag-dot" style="background:#ffc646;"></span>Media</span>
                         </div>
-                        <div class="project-content p-4 h-100" style="border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; background: #161b22;">
-                            <h5 class="text-white fw-bold mb-2 fs-5">Containerized Media Downloader</h5>
-                            <p class="text-white-75 small mb-3" style="line-height: 1.6;">Docker-based media download service with yt-dlp, support for 1000+ sites, queue management, and scheduled downloads.</p>
-                            <div class="d-flex flex-wrap gap-2 mb-4">
-                                <span class="badge project-badge" style="background: rgba(88, 166, 255, 0.15); border: 1px solid var(--tech-blue); color: var(--tech-blue);">Docker</span>
-                                <span class="badge project-badge" style="background: rgba(255, 71, 87, 0.15); border: 1px solid #ff4757; color: #ff4757;">yt-dlp</span>
-                                <span class="badge project-badge" style="background: rgba(255, 198, 70, 0.15); border: 1px solid #ffc646; color: #ffc646;">Media</span>
-                            </div>
-                            <a href="https://github.com/nicolasnkGH/media-download" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100 rounded-pill" aria-label="View Media Download repository on GitHub">
-                                <i class="fab fa-github me-2"></i>View Repository
+                        <div class="bento-actions">
+                            <a href="https://github.com/nicolasnkGH/media-download" target="_blank" rel="noopener noreferrer" class="bento-btn secondary">
+                                <i class="fab fa-github"></i> View Repo
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -638,83 +713,114 @@
                 Reach out via email or connect on social platforms
             </p>
 
-            <!-- Terminal Window -->
-            <div class="terminal-window mx-auto" style="max-width: 860px; margin-bottom: 3rem;">
-                <!-- Terminal Header with Buttons -->
-                <div class="terminal-header position-relative d-flex align-items-center px-4 py-3">
-                    <div class="terminal-buttons d-flex gap-2 me-3">
-                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ff5f56, #ff3b30); border: 1px solid #c92a20;"></div>
-                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e, #f7b600); border: 1px solid #d99500;"></div>
-                        <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #27c93f, #1aab29); border: 1px solid #168a1d;"></div>
+            <!-- 2-Column Contact Layout -->
+            <div class="row align-items-center">
+                <!-- Terminal Window -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="terminal-window mx-auto w-100" style="margin-bottom: 0;">
+                        <!-- Terminal Header with Buttons -->
+                        <div class="terminal-header position-relative d-flex align-items-center px-4 py-3">
+                            <div class="terminal-buttons d-flex gap-2 me-3">
+                                <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ff5f56, #ff3b30); border: 1px solid #c92a20;"></div>
+                                <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #ffbd2e, #f7b600); border: 1px solid #d99500;"></div>
+                                <div class="terminal-btn" style="width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, #27c93f, #1aab29); border: 1px solid #168a1d;"></div>
+                            </div>
+                            <span class="terminal-title text-muted small position-absolute top-50 start-50 translate-middle font-mono">nicolas@nt-systems: ~</span>
+                        </div>
+
+                        <!-- Terminal Content -->
+                        <div class="terminal-content px-4 py-4" style="line-height: 1.8;">
+
+                            <!-- Command 1: whoami -->
+                            <div class="contact-cmd-line mb-1">
+                                <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                                <span class="contact-cmd-text">whoami && cat contact.json</span>
+                            </div>
+
+                            <!-- Output block 1: identity -->
+                            <div class="contact-output">
+                                <div><span class="contact-field-label">user:</span> <span class="contact-field-value masthead-name-gradient fw-bold" style="font-size:1rem; background: linear-gradient(90deg, var(--tech-blue), var(--sys-cyan)); -webkit-background-clip:text; background-clip:text; color:transparent;">Nicolas Teixeira</span></div>
+                                <div><span class="contact-field-label">role:</span> <span class="contact-field-value">Systems &amp; Platform Engineer</span></div>
+                                <div>
+                                    <span class="contact-field-label">email:</span> 
+                                    <a href="mailto:careers@nick-t.net" id="contact-email-text" class="contact-field-value me-2" style="color:var(--sys-cyan); text-decoration:none;">careers@nick-t.net</a>
+                                    <button class="btn btn-sm btn-outline-secondary border-0" id="btn-copy-email" style="padding: 0px 6px; font-size: 0.8rem; vertical-align: middle; color: #8b949e;" title="Copy to clipboard"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div><span class="contact-field-label">location:</span> <span class="contact-field-value">Columbus, OH (UTC-5)</span></div>
+                            </div>
+
+                            <div class="contact-divider"></div>
+
+                            <!-- Command 2: systemctl status availability -->
+                            <div class="contact-cmd-line mb-1">
+                                <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                                <span class="contact-cmd-text">systemctl status availability.service</span>
+                            </div>
+
+                            <!-- Output block 2: status -->
+                            <div class="contact-output">
+                                <div class="mb-1">
+                                    <span class="contact-field-label">● status:</span>
+                                    <span class="contact-status-badge ms-1"><i class="fas fa-circle me-1" style="font-size:0.5rem;vertical-align:middle;"></i>active (running)</span>
+                                </div>
+                                <div><span class="contact-field-label">response:</span> <span class="contact-field-value">&lt; 24 hours</span></div>
+                                <div><span class="contact-field-label">preferred:</span> <span class="contact-field-value">Email / LinkedIn</span></div>
+                            </div>
+
+                            <div class="contact-divider"></div>
+
+                            <!-- Command 3: open socials -->
+                            <div class="contact-cmd-line mb-2">
+                                <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                                <span class="contact-cmd-text">ls -la ./socials/</span>
+                            </div>
+
+                            <div class="contact-output mb-1">
+                                <div>
+                                    <a href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" rel="noopener noreferrer" class="contact-social-btn mb-2" aria-label="LinkedIn Profile">
+                                        <i class="fab fa-linkedin"></i> linkedin/nicolasdealmeidateixeira
+                                    </a>
+                                    <a href="https://github.com/nicolasnkGH" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="GitHub Profile">
+                                        <i class="fab fa-github"></i> github/nicolasnkGH
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-divider"></div>
+
+                            <!-- Blinking prompt at end -->
+                            <div class="contact-cmd-line">
+                                <span class="contact-prompt">nicolas@nt-systems:~$</span>
+                                <span class="contact-cursor-blink"></span>
+                            </div>
+
+                        </div>
                     </div>
-                    <span class="terminal-title text-muted small position-absolute top-50 start-50 translate-middle font-mono">nicolas@nt-systems: ~</span>
                 </div>
 
-                <!-- Terminal Content -->
-                <div class="terminal-content px-4 px-md-5 py-4" style="line-height: 1.8;">
-
-                    <!-- Command 1: whoami -->
-                    <div class="contact-cmd-line mb-1">
-                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
-                        <span class="contact-cmd-text">whoami && cat contact.json</span>
+                <!-- Contact Form Column -->
+                <div class="col-lg-6 px-lg-5">
+                    <div class="contact-form-glass p-4 p-md-5" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; backdrop-filter: blur(10px);">
+                        <h4 class="text-white fw-bold mb-4 font-mono">Send a Message</h4>
+                        <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
+                            <div class="mb-3">
+                                <label for="name" class="form-label text-white-50 small font-mono">Name</label>
+                                <input type="text" class="form-control form-glass custom-input" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="mb-3 position-relative">
+                                <label for="email" class="form-label text-white-50 small font-mono">Email Address</label>
+                                <input type="email" class="form-control form-glass custom-input" id="email" name="email" required placeholder="john@example.com">
+                                <i class="fas fa-check-circle position-absolute text-success" id="email-valid-icon" style="top: 42px; right: 15px; display: none;"></i>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label text-white-50 small font-mono">Message</label>
+                                <textarea class="form-control form-glass custom-input" id="message" name="message" rows="4" required placeholder="Hello Nicolas..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 fw-bold shadow-sm d-flex justify-content-center align-items-center gap-2 py-2" style="background: var(--tech-blue); border: none; transition: transform 0.2s ease;">
+                                <i class="fas fa-paper-plane"></i> Send via Formspree
+                            </button>
+                        </form>
                     </div>
-
-                    <!-- Output block 1: identity -->
-                    <div class="contact-output">
-                        <div><span class="contact-field-label">user:</span> <span class="contact-field-value masthead-name-gradient fw-bold" style="font-size:1rem; background: linear-gradient(90deg, var(--tech-blue), var(--sys-cyan)); -webkit-background-clip:text; background-clip:text; color:transparent;">Nicolas Teixeira</span></div>
-                        <div><span class="contact-field-label">role:</span> <span class="contact-field-value">Systems &amp; Platform Engineer</span></div>
-                        <div><span class="contact-field-label">email:</span> <a href="mailto:careers@nick-t.net" class="contact-field-value" style="color:var(--sys-cyan); text-decoration:none;">careers@nick-t.net</a></div>
-                        <div><span class="contact-field-label">domain:</span> <span class="contact-field-value">nick-t.net</span></div>
-                        <div><span class="contact-field-label">location:</span> <span class="contact-field-value">Columbus, OH (UTC-5)</span></div>
-                    </div>
-
-                    <div class="contact-divider"></div>
-
-                    <!-- Command 2: systemctl status availability -->
-                    <div class="contact-cmd-line mb-1">
-                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
-                        <span class="contact-cmd-text">systemctl status availability.service</span>
-                    </div>
-
-                    <!-- Output block 2: status -->
-                    <div class="contact-output">
-                        <div class="mb-1">
-                            <span class="contact-field-label">● status:</span>
-                            <span class="contact-status-badge ms-1"><i class="fas fa-circle me-1" style="font-size:0.5rem;vertical-align:middle;"></i>active (running)</span>
-                        </div>
-                        <div><span class="contact-field-label">response:</span> <span class="contact-field-value">&lt; 24 hours</span></div>
-                        <div><span class="contact-field-label">preferred:</span> <span class="contact-field-value">Email / LinkedIn</span></div>
-                        <div><span class="contact-field-label">collab:</span> <span class="contact-field-value">Open to new opportunities &amp; projects</span></div>
-                    </div>
-
-                    <div class="contact-divider"></div>
-
-                    <!-- Command 3: open socials -->
-                    <div class="contact-cmd-line mb-2">
-                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
-                        <span class="contact-cmd-text">ls -la ./socials/</span>
-                    </div>
-
-                    <div class="contact-output mb-1">
-                        <div class="contact-section-header mb-2">total 2 · drwxr-xr-x  nicolas  nicolas  Jun 2026</div>
-                        <div>
-                            <a href="https://www.linkedin.com/in/nicolasdealmeidateixeira/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="LinkedIn Profile">
-                                <i class="fab fa-linkedin"></i>linkedin/nicolasdealmeidateixeira
-                            </a>
-                            <a href="https://github.com/nicolasnkGH" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="GitHub Profile">
-                                <i class="fab fa-github"></i>github/nicolasnkGH
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="contact-divider"></div>
-
-                    <!-- Blinking prompt at end -->
-                    <div class="contact-cmd-line">
-                        <span class="contact-prompt">nicolas@nt-systems:~$</span>
-                        <span class="contact-cursor-blink"></span>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -796,7 +902,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <!-- Custom Scripts -->
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js?v=3"></script>
 
     <!-- Back to Top functionality -->
     <script>
