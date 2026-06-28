@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/styles.css?v=9" rel="stylesheet">
+    <link href="css/styles.css?v=14" rel="stylesheet">
 </head>
 <body class="bg-dark">
     <!-- Navigation Navbar -->
@@ -63,6 +63,18 @@
         <div class="masthead-grid"></div>
         <div class="masthead-orb-secondary"></div>
 
+        <!-- Floating particles -->
+        <div class="hero-particles">
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+            <div class="hero-particle"></div>
+        </div>
+
         <!-- Hero: full-height flex center -->
         <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh; padding-top: 5rem; padding-bottom: 3rem; position: relative; z-index: 5;">
             <div class="container px-3 px-lg-4 d-flex flex-column align-items-center justify-content-center">
@@ -74,6 +86,7 @@
                             <div class="macbook-camera"></div>
                         </div>
                         <div class="macbook-screen">
+                            <div class="macbook-screen-glare"></div>
                             
                             <!-- Unified tmux terminal window -->
                             <div class="hero-tmux-window crt-overlay" id="hero-terminal" style="border: none; border-radius: 0;">
@@ -138,17 +151,18 @@
                     <div class="macbook-base">
                         <div class="macbook-thumb-notch"></div>
                     </div> <!-- /macbook-base -->
+                    <div class="macbook-ambient-glow"></div>
                 </div> <!-- /macbook-mockup -->
 
                 <!-- Hint below terminal -->
-                <p class="text-center mt-4 font-mono text-muted" style="font-size:0.7rem; opacity:0.5; z-index: 10;">
+                <p class="text-center mt-4 font-mono text-muted hero-hint-text" style="font-size:0.7rem; opacity:0.5; z-index: 10;">
                     <i class="fas fa-keyboard me-1"></i>Click right pane &amp; type <code class="text-sys-cyan">help</code> · Ctrl+B arrows to switch panes
                 </p>
 
             </div>
         </div>
     </header>
->
+
 
     <!-- About Section -->
     <section class="py-5 section-id" id="about">
@@ -902,7 +916,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
     <!-- Custom Scripts -->
-    <script src="js/scripts.js?v=3"></script>
+    <script src="js/scripts.js?v=9"></script>
 
     <!-- Back to Top functionality -->
     <script>

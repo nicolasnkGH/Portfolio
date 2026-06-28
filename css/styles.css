@@ -315,7 +315,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   MacBook Mockup Hero Section
+   MacBook Mockup Hero Section — Photorealistic
    ========================================================================== */
 
 .macbook-mockup {
@@ -323,9 +323,46 @@ a:hover {
     width: 100%;
     max-width: 1040px;
     margin: 0 auto;
-    perspective: 1500px;
+    perspective: 1800px;
     z-index: 10;
-    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6));
+    /* Start hidden for entrance animation */
+    opacity: 0;
+    transform: translateY(60px) rotateX(8deg);
+    transition: none; /* animation handled by class */
+}
+
+/* Entrance animation trigger */
+.macbook-mockup.macbook-visible {
+    animation: macbookEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes macbookEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(80px) rotateX(12deg) scale(0.92);
+        filter: blur(6px);
+    }
+    40% {
+        opacity: 1;
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(2deg) scale(1);
+        filter: blur(0px);
+    }
+}
+
+/* Subtle 3D tilt at rest */
+.macbook-mockup.macbook-visible:not(.macbook-tilting) {
+    transform: rotateX(2deg);
+    opacity: 1;
+}
+
+/* When JS applies tilt via inline transform */
+.macbook-mockup.macbook-tilting {
+    opacity: 1;
+    transition: transform 0.15s ease-out;
 }
 
 /* The lid contains the screen, bezel, and brand */
@@ -333,25 +370,26 @@ a:hover {
     position: relative;
     width: 100%;
     /* 16:10 aspect ratio approx for MacBook */
-    padding-top: 60%; 
-    background: #0a0a0a;
-    border-radius: 24px 24px 0 0;
-    border: 1px solid #333;
+    padding-top: 60%;
+    background: linear-gradient(180deg, #0c0c0c 0%, #080808 100%);
+    border-radius: 20px 20px 0 0;
+    border: 1px solid rgba(255,255,255,0.08);
     border-bottom: none;
-    box-shadow: 
-        inset 0 0 0 6px #111,
-        0 -10px 20px rgba(255, 255, 255, 0.03);
+    box-shadow:
+        inset 0 0 0 5px #0a0a0a,
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 -2px 15px rgba(255, 255, 255, 0.02);
     overflow: hidden;
     transform-origin: bottom center;
 }
 
-/* Inner bezel outline */
+/* Inner bezel outline — subtle edge glow */
 .macbook-lid::before {
     content: '';
     position: absolute;
-    top: 6px; left: 6px; right: 6px; bottom: 0;
-    border-radius: 18px 18px 0 0;
-    border: 1px solid #222;
+    top: 5px; left: 5px; right: 5px; bottom: 0;
+    border-radius: 16px 16px 0 0;
+    border: 1px solid rgba(255,255,255,0.04);
     border-bottom: none;
     pointer-events: none;
     z-index: 20;
@@ -360,7 +398,7 @@ a:hover {
 /* MacBook Notch (Modern M2/M3 style) */
 .macbook-notch {
     position: absolute;
-    top: 6px;
+    top: 5px;
     left: 50%;
     transform: translateX(-50%);
     width: 120px;
@@ -368,28 +406,73 @@ a:hover {
     background: #0a0a0a;
     border-radius: 0 0 8px 8px;
     z-index: 25;
-    border: 1px solid #222;
+    border: 1px solid rgba(255,255,255,0.06);
     border-top: none;
 }
 
 /* Screen is positioned absolutely inside the lid */
 .macbook-screen {
     position: absolute;
-    top: 6px; left: 6px; right: 6px; bottom: 30px; /* 30px for bottom bezel */
+    top: 5px; left: 5px; right: 5px; bottom: 28px;
     background: var(--bg-dark);
     border-radius: 12px 12px 2px 2px;
     overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,0.95),
+        inset 0 0 80px rgba(88, 166, 255, 0.02);
 }
 
-/* Glass reflection over the entire screen */
+/* Glass reflection — animated diagonal glare sweep */
 .macbook-screen::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+    top: -100%; left: -100%;
+    width: 300%; height: 300%;
+    background: linear-gradient(
+        115deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0) 40%,
+        rgba(255,255,255,0.03) 42%,
+        rgba(255,255,255,0.07) 44%,
+        rgba(255,255,255,0.03) 46%,
+        rgba(255,255,255,0) 48%,
+        rgba(255,255,255,0) 100%
+    );
     pointer-events: none;
-    z-index: 50; /* Above terminal */
+    z-index: 50;
+    animation: screenGlare 8s ease-in-out infinite;
+}
+
+@keyframes screenGlare {
+    0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+    50% { transform: translate(10%, 10%) rotate(0deg); }
+}
+
+/* Additional screen glare element (added via HTML) */
+.macbook-screen-glare {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(255,255,255,0.04) 0%,
+        rgba(255,255,255,0) 30%,
+        rgba(255,255,255,0) 100%
+    );
+    pointer-events: none;
+    z-index: 51;
+}
+
+/* Screen edge backlight bleed */
+.macbook-screen::after {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px; bottom: -1px;
+    border-radius: 13px 13px 3px 3px;
+    box-shadow:
+        inset 0 0 15px rgba(88, 166, 255, 0.04),
+        inset 0 0 40px rgba(0, 240, 255, 0.02);
+    pointer-events: none;
+    z-index: 49;
 }
 
 .macbook-camera {
@@ -399,9 +482,12 @@ a:hover {
     transform: translateX(-50%);
     width: 6px;
     height: 6px;
-    background: #050505;
+    background: radial-gradient(circle, #111 30%, #050505 100%);
     border-radius: 50%;
-    box-shadow: inset 0 0 2px #000, 0 0 1px rgba(255,255,255,0.1);
+    box-shadow:
+        inset 0 0 2px #000,
+        0 0 1px rgba(255,255,255,0.15),
+        0 0 3px rgba(255,255,255,0.05);
     z-index: 30;
 }
 
@@ -415,15 +501,21 @@ a:hover {
     height: 3px;
     background: #3fb950;
     border-radius: 50%;
-    box-shadow: 0 0 4px #3fb950;
+    box-shadow: 0 0 6px #3fb950, 0 0 12px rgba(63, 185, 80, 0.3);
+    animation: cameraLedPulse 3s ease-in-out infinite;
+}
+
+@keyframes cameraLedPulse {
+    0%, 100% { opacity: 0.7; box-shadow: 0 0 4px #3fb950; }
+    50% { opacity: 1; box-shadow: 0 0 8px #3fb950, 0 0 16px rgba(63, 185, 80, 0.4); }
 }
 
 .macbook-brand {
     position: absolute;
-    bottom: 0.6%;
+    bottom: 0.5%;
     width: 100%;
     text-align: center;
-    color: #333;
+    color: rgba(255,255,255,0.12);
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 1.5px;
@@ -431,18 +523,43 @@ a:hover {
     z-index: 10;
 }
 
-/* The sleek metallic base of the laptop */
+/* The sleek metallic base — brushed aluminum */
 .macbook-base {
     position: relative;
     width: 104%;
-    height: 14px;
+    height: 16px;
     left: -2%;
-    background: linear-gradient(to right, #444 0%, #777 5%, #888 10%, #999 50%, #888 90%, #777 95%, #444 100%);
-    border-radius: 0 0 16px 16px;
-    box-shadow: 
-        inset 0 1px 1px rgba(255,255,255,0.4),
-        0 20px 40px rgba(0,0,0,0.8);
+    background: linear-gradient(
+        to bottom,
+        #aaa 0%,
+        #999 2px,
+        #888 3px,
+        linear-gradient(to right, #555 0%, #888 8%, #aaa 15%, #bbb 50%, #aaa 85%, #888 92%, #555 100%) 4px,
+        #666 100%
+    );
+    background: linear-gradient(to right, #444 0%, #777 5%, #999 12%, #aaa 25%, #bbb 50%, #aaa 75%, #999 88%, #777 95%, #444 100%);
+    border-radius: 0 0 14px 14px;
+    box-shadow:
+        inset 0 2px 1px rgba(255,255,255,0.5),
+        inset 0 -1px 2px rgba(0,0,0,0.4),
+        0 4px 8px rgba(0,0,0,0.5),
+        0 20px 50px rgba(0,0,0,0.7);
     z-index: 5;
+    /* Top edge highlight */
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Hinge shadow — where lid meets base */
+.macbook-base::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 5%;
+    width: 90%;
+    height: 4px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
+    border-radius: 0 0 50% 50%;
+    z-index: -1;
 }
 
 /* Thumb notch to open lid */
@@ -451,21 +568,48 @@ a:hover {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 6px;
-    background: linear-gradient(to bottom, #666 0%, #444 100%);
-    border-radius: 0 0 8px 8px;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+    width: 90px;
+    height: 5px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(150,150,150,0.3) 50%, rgba(100,100,100,0.2) 100%);
+    border-radius: 0 0 6px 6px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
 }
 
 /* Bottom lip / shadow to give it thickness */
 .macbook-base::after {
     content: '';
     position: absolute;
-    bottom: -6px; left: 2%; width: 96%; height: 6px;
-    background: linear-gradient(to right, #111 0%, #222 50%, #111 100%);
+    bottom: -8px; left: 3%; width: 94%; height: 8px;
+    background: linear-gradient(to bottom, rgba(30,30,30,0.8), rgba(0,0,0,0));
     border-radius: 0 0 20px 20px;
     z-index: -1;
+    filter: blur(2px);
+}
+
+/* Ambient glow beneath laptop — screen casting light onto surface */
+.macbook-ambient-glow {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 120px;
+    background: radial-gradient(
+        ellipse 60% 100% at 50% 0%,
+        rgba(88, 166, 255, 0.12) 0%,
+        rgba(0, 240, 255, 0.06) 30%,
+        rgba(63, 185, 80, 0.03) 60%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+    animation: ambientPulse 4s ease-in-out infinite;
+    filter: blur(20px);
+}
+
+@keyframes ambientPulse {
+    0%, 100% { opacity: 0.6; transform: translateX(-50%) scaleX(1); }
+    50% { opacity: 1; transform: translateX(-50%) scaleX(1.05); }
 }
 
 /* Hide hero terminal standard border and border-radius because it's in the macbook */
@@ -477,13 +621,212 @@ a:hover {
     margin: 0;
 }
 
-@media (max-width: 768px) {
-    /* Graceful degradation for mobile */
-    .macbook-lid {
-        padding-top: 80%; /* Adjust aspect ratio for mobile terminal reading */
+/* Push title bar below the notch */
+.macbook-screen .hero-tmux-titlebar {
+    padding-top: 1.4rem;
+}
+
+/* ==========================================================================
+   Floating Particles — Hero Background
+   ========================================================================== */
+
+.hero-particles {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(88, 166, 255, 0.4);
+    border-radius: 50%;
+    animation: particleFloat linear infinite;
+}
+
+.hero-particle:nth-child(1) { left: 10%; top: 20%; animation-duration: 12s; animation-delay: 0s; width: 3px; height: 3px; background: rgba(88, 166, 255, 0.3); }
+.hero-particle:nth-child(2) { left: 25%; top: 60%; animation-duration: 15s; animation-delay: -3s; background: rgba(0, 240, 255, 0.25); }
+.hero-particle:nth-child(3) { left: 45%; top: 30%; animation-duration: 18s; animation-delay: -6s; width: 3px; height: 3px; background: rgba(63, 185, 80, 0.2); }
+.hero-particle:nth-child(4) { left: 65%; top: 70%; animation-duration: 13s; animation-delay: -2s; background: rgba(88, 166, 255, 0.2); }
+.hero-particle:nth-child(5) { left: 80%; top: 15%; animation-duration: 16s; animation-delay: -8s; width: 3px; height: 3px; background: rgba(0, 240, 255, 0.3); }
+.hero-particle:nth-child(6) { left: 15%; top: 80%; animation-duration: 20s; animation-delay: -4s; background: rgba(63, 185, 80, 0.15); }
+.hero-particle:nth-child(7) { left: 55%; top: 50%; animation-duration: 14s; animation-delay: -10s; background: rgba(88, 166, 255, 0.2); }
+.hero-particle:nth-child(8) { left: 90%; top: 40%; animation-duration: 17s; animation-delay: -1s; width: 3px; height: 3px; background: rgba(0, 240, 255, 0.2); }
+
+@keyframes particleFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
     }
-    .macbook-brand, .macbook-notch {
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-30px, -60px) scale(1.5);
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        transform: translate(20px, -120px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   MacBook — Tablet Responsive (577px–991px)
+   ========================================================================== */
+
+@media (max-width: 991px) and (min-width: 577px) {
+    .macbook-mockup {
+        max-width: 90vw;
+    }
+    .macbook-lid {
+        padding-top: 65%;
+    }
+    .macbook-notch {
+        width: 90px;
+        height: 14px;
+    }
+    .macbook-screen {
+        bottom: 22px;
+    }
+}
+
+/* ==========================================================================
+   MacBook — Mobile (≤576px): Hide laptop, show terminal card
+   ========================================================================== */
+
+@media (max-width: 576px) {
+    /* Hide the laptop shell entirely */
+    .macbook-lid {
+        padding-top: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .macbook-lid::before {
         display: none;
+    }
+    .macbook-notch,
+    .macbook-camera,
+    .macbook-brand,
+    .macbook-base,
+    .macbook-ambient-glow,
+    .macbook-screen-glare {
+        display: none !important;
+    }
+
+    /* Kill the giant gap — override inline min-height and padding */
+    .masthead {
+        min-height: auto !important;
+    }
+    .masthead .d-flex[style*="min-height"] {
+        padding-top: 6rem !important; /* give enough room for navbar */
+        padding-bottom: 2rem !important;
+        min-height: auto !important;
+        align-items: flex-start !important; /* push to top instead of centering */
+    }
+
+    /* No need for the notch padding on mobile since notch is hidden */
+    .macbook-screen .hero-tmux-titlebar {
+        padding-top: 0.5rem;
+    }
+
+    /* The screen becomes a standalone terminal card */
+    .macbook-screen {
+        position: relative;
+        top: auto; left: auto; right: auto; bottom: auto;
+        border-radius: 12px;
+        border: 1px solid rgba(88, 166, 255, 0.15);
+        box-shadow:
+            0 20px 60px rgba(0,0,0,0.5),
+            0 0 40px rgba(88, 166, 255, 0.06),
+            inset 0 0 30px rgba(0,0,0,0.3);
+        overflow: hidden;
+        margin-top: 1rem;
+    }
+    .macbook-screen::before,
+    .macbook-screen::after {
+        display: none;
+    }
+
+    /* Override the tmux window styling inside */
+    .macbook-screen .hero-tmux-window {
+        border-radius: 12px !important;
+    }
+
+    /* MacBook mockup — disable 3D, simple fade in */
+    .macbook-mockup {
+        perspective: none;
+        filter: none;
+        max-width: 100%;
+    }
+    .macbook-mockup.macbook-visible {
+        animation: mobileTerminalEntrance 0.8s ease forwards;
+    }
+    .macbook-mockup.macbook-visible:not(.macbook-tilting) {
+        transform: none;
+    }
+
+    @keyframes mobileTerminalEntrance {
+        0% {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* Hero hint text */
+    .masthead .hero-hint-text {
+        font-size: 0.65rem;
+    }
+
+    /* Show both panes on mobile stacked */
+    .hero-tmux-pane-left {
+        display: block !important;
+        flex: none;
+        height: auto;
+        border-bottom: 1px solid var(--sys-border);
+    }
+    /* The right pane takes remaining space and scrolls */
+    .hero-tmux-pane-right {
+        flex: none;
+        height: auto;
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+    /* Ensure terminal body scrolls */
+    .hero-terminal-body {
+        overflow-y: auto;
+        max-height: 40vh;
+    }
+    /* Show the pane label */
+    .hero-tmux-pane-right .tmux-pane-label {
+        display: block;
+    }
+}
+
+/* Medium mobile (577px–768px) — keep laptop but simplify */
+@media (max-width: 768px) and (min-width: 577px) {
+    .macbook-lid {
+        padding-top: 70%;
+        border-radius: 16px 16px 0 0;
+    }
+    .macbook-brand {
+        display: none;
+    }
+    .macbook-notch {
+        width: 80px;
+        height: 12px;
     }
 }
 
@@ -2222,8 +2565,15 @@ footer a:hover, .footer-nav-link:hover {
 }
 .terminal-input-hidden {
     position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
     opacity: 0;
-    pointer-events: none;
 }
 .terminal-typing-text {
     color: var(--sys-cyan);
@@ -2412,14 +2762,15 @@ footer a:hover, .footer-nav-link:hover {
     .hero-tmux-pane-left {
         flex: none;
         max-width: 100%;
-        height: 280px;
+        height: 300px;
         border-bottom: 1px solid var(--sys-border);
+        font-size: clamp(0.7rem, 2vw, 0.82rem);
     }
     .hero-tmux-separator {
         display: none;
     }
     .hero-tmux-pane-right {
-        height: 300px;
+        height: 320px;
     }
     .hero-tmux-statusbar {
         flex-wrap: wrap;
@@ -2427,6 +2778,12 @@ footer a:hover, .footer-nav-link:hover {
     }
     .tmux-status-right {
         font-size: 0.65rem;
+    }
+    .hero-tmux-titlebar {
+        padding: 0.5rem 0.75rem;
+    }
+    .hero-tmux-title {
+        font-size: 0.7rem;
     }
 }
 
@@ -2439,17 +2796,39 @@ footer a:hover, .footer-nav-link:hover {
         left: -6px;
     }
     .hero-tmux-pane-left {
-        height: 240px;
+        height: 260px;
+        padding: 0.4rem 0.75rem 0.75rem 0.75rem;
     }
     .hero-tmux-pane-right {
-        height: 260px;
+        height: 280px;
+        padding: 0.4rem 0.75rem 0.75rem 0.75rem;
+    }
+    .hero-tmux-titlebar {
+        padding: 0.4rem 0.6rem;
+    }
+    .hero-tmux-title {
+        font-size: 0.65rem;
+    }
+    .hero-tmux-statusbar {
+        font-size: 0.6rem;
+        padding: 2px 6px;
     }
     .syslog-stamp {
         display: block;
         margin-bottom: 4px;
     }
     .neofetch-ascii {
-        font-size: 0.6rem;
+        font-size: clamp(0.45rem, 1.8vw, 0.6rem);
+    }
+    .neofetch-info-row {
+        font-size: clamp(0.65rem, 2vw, 0.8rem);
+    }
+    .neofetch-key {
+        min-width: 80px;
+    }
+    .hero-terminal-body {
+        font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+        padding: 0.75rem;
     }
 }
 

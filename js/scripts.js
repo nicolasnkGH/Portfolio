@@ -57,6 +57,80 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // =========================================================
+    // MacBook Entrance Animation — IntersectionObserver
+    // =========================================================
+    const macbookMockup = document.querySelector('.macbook-mockup');
+    if (macbookMockup) {
+        const macbookObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    macbookMockup.classList.add('macbook-visible');
+                    macbookObserver.unobserve(macbookMockup);
+                }
+            });
+        }, { threshold: 0.15 });
+        macbookObserver.observe(macbookMockup);
+    }
+
+    // =========================================================
+    // MacBook Mouse-Follow 3D Tilt — Desktop Only
+    // =========================================================
+    if (macbookMockup && window.matchMedia('(min-width: 769px)').matches) {
+        const masthead = document.querySelector('.masthead');
+        let tiltRAF = null;
+        let targetRotateX = 2;
+        let targetRotateY = 0;
+        let currentRotateX = 2;
+        let currentRotateY = 0;
+
+        // Smoothly interpolate towards target rotation
+        function animateTilt() {
+            currentRotateX += (targetRotateX - currentRotateX) * 0.08;
+            currentRotateY += (targetRotateY - currentRotateY) * 0.08;
+            macbookMockup.style.transform = `rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg)`;
+            
+            // Keep animating if not close enough to target
+            if (Math.abs(targetRotateX - currentRotateX) > 0.01 || Math.abs(targetRotateY - currentRotateY) > 0.01) {
+                tiltRAF = requestAnimationFrame(animateTilt);
+            } else {
+                tiltRAF = null;
+            }
+        }
+
+        if (masthead) {
+            masthead.addEventListener('mousemove', function(e) {
+                if (!macbookMockup.classList.contains('macbook-visible')) return;
+                macbookMockup.classList.add('macbook-tilting');
+
+                const rect = masthead.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                // Normalized mouse position (-1 to 1)
+                const normalizedX = (e.clientX - centerX) / (rect.width / 2);
+                const normalizedY = (e.clientY - centerY) / (rect.height / 2);
+
+                // Subtle tilt: max ±4 degrees on Y, ±3 degrees on X
+                targetRotateY = normalizedX * 4;
+                targetRotateX = 2 + (-normalizedY * 3); // 2deg base tilt
+
+                if (!tiltRAF) {
+                    tiltRAF = requestAnimationFrame(animateTilt);
+                }
+            });
+
+            masthead.addEventListener('mouseleave', function() {
+                macbookMockup.classList.remove('macbook-tilting');
+                targetRotateX = 2;
+                targetRotateY = 0;
+                if (!tiltRAF) {
+                    tiltRAF = requestAnimationFrame(animateTilt);
+                }
+            });
+        }
+    }
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -662,6 +736,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 line.innerHTML = `<span style="color:var(--sys-blue); font-weight:bold;">${text}</span>`;
             } else if (type === 'error') {
                 line.innerHTML = `<span style="color:var(--sys-red); font-weight:bold;">[ERROR]</span> ${text}`;
+            } else if (type === 'html') {
+                line.innerHTML = text;
             } else {
                 line.textContent = text;
             }
@@ -681,6 +757,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const typingSpan = document.createElement('span');
             typingSpan.className = 'terminal-typing-text';
+            typingSpan.style.color = '#fff';
+            typingSpan.style.display = 'inline';
+            typingSpan.style.whiteSpace = 'pre-wrap';
             
             const cursorSpan = document.createElement('span');
             cursorSpan.className = 'cli-cursor';
@@ -716,37 +795,60 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(runBoot, 500);
 
         // Typing input handler
-        terminalInput.addEventListener('input', () => {
+        let currentCommand = '';
+
+        const updateTypingDisplay = () => {
             if (terminalPromptLine && !isBooting) {
                 const typingSpan = terminalPromptLine.querySelector('.terminal-typing-text');
                 if (typingSpan) {
-                    typingSpan.textContent = terminalInput.value;
+                    typingSpan.textContent = currentCommand;
+                    typingSpan.style.color = '#fff'; // Force white immediately while typing
+                    typingSpan.style.opacity = '1';
+                    typingSpan.style.visibility = 'visible';
                 }
             }
-        });
+        };
 
-        // Command processing
-        terminalInput.addEventListener('keydown', (e) => {
+        // Command processing via global keydown, bypassing the hidden input entirely for robustness
+        document.addEventListener('keydown', (e) => {
             if (isBooting) return;
             
+            // Allow default browser shortcuts
+            if (e.ctrlKey || e.metaKey || e.altKey) return;
+            
+            // If another input/textarea is focused, let it act normally
+            const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+            if (activeTag === 'input' || activeTag === 'textarea') {
+                 if (document.activeElement !== terminalInput) return;
+            }
+            
             if (e.key === 'Enter') {
-                const cmd = terminalInput.value;
+                e.preventDefault();
+                const cmd = currentCommand.trim();
                 
                 // Copy completed prompt to history
                 if (terminalPromptLine) {
-                    // Remove active cursor
                     const cursor = terminalPromptLine.querySelector('.cli-cursor');
                     if (cursor) cursor.remove();
                     
                     const typingSpan = terminalPromptLine.querySelector('.terminal-typing-text');
                     if (typingSpan) {
-                        typingSpan.textContent = cmd;
+                        typingSpan.textContent = currentCommand; // retain spaces if any before execution
                         typingSpan.style.color = '#fff';
                     }
                 }
                 
-                // Process command
+                currentCommand = '';
                 processCommand(cmd);
+                
+            } else if (e.key === 'Backspace') {
+                e.preventDefault();
+                currentCommand = currentCommand.slice(0, -1);
+                updateTypingDisplay();
+            } else if (e.key.length === 1) { // Printable character
+                e.preventDefault();
+                currentCommand += e.key;
+                updateTypingDisplay();
             }
         });
 
@@ -799,10 +901,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                 case 'projects':
                     printLine('ACTIVE PROJECTS:', 'blue');
-                    printLine('  - Private AI Stack (GPU acceleration + LLMs): github.com/nicolasnkGH/ai-stack', 'plain');
-                    printLine('  - Proxmox Automation (VE cluster scripts): github.com/nicolasnkGH/proxmox-automation', 'plain');
-                    printLine('  - Home Lab Networking (pfsense, VLANs, Unifi): github.com/nicolasnkGH/home-networking-setup', 'plain');
-                    printLine('  - Windows Scripting (Active Directory automation): github.com/nicolasnkGH/powershell-Scripting', 'plain');
+                    const projectCards = document.querySelectorAll('.bento-card');
+                    if (projectCards.length === 0) {
+                        printLine('  No active projects found.', 'plain');
+                    } else {
+                        projectCards.forEach(card => {
+                            const titleEl = card.querySelector('.bento-title');
+                            const linkEl = card.querySelector('a.bento-btn');
+                            
+                            const title = titleEl ? titleEl.textContent.trim() : 'Unknown Project';
+                            let linkStr = '';
+                            if (linkEl && linkEl.getAttribute('href')) {
+                                const rawUrl = linkEl.getAttribute('href');
+                                const displayUrl = rawUrl.replace('https://', '').replace('http://', '');
+                                linkStr = `: <a href="${rawUrl}" target="_blank" style="color:var(--sys-cyan); text-decoration:underline;">${displayUrl}</a>`;
+                            }
+                            
+                            printLine(`  - ${title}${linkStr}`, 'html');
+                        });
+                    }
                     break;
                 case 'contact':
                     printLine('COMMUNICATION CHANNELS:', 'blue');
