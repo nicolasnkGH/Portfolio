@@ -51,15 +51,23 @@ const Window = ({ windowInfo }) => {
         </div>
         
         <div className="os-window-controls">
-          <button onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }} className="btn-minimize">
-            <Minus size={16} />
-          </button>
-          <button onClick={(e) => { e.stopPropagation(); toggleMaximize(id); }} className="btn-maximize">
-            <Square size={14} />
-          </button>
-          <button onClick={(e) => { e.stopPropagation(); closeWindow(id); }} className="btn-close">
-            <X size={16} />
-          </button>
+          {isMobile ? (
+            <button onClick={(e) => { e.stopPropagation(); closeWindow(id); }} className="btn-close" style={{ padding: '8px' }}>
+              <X size={22} strokeWidth={2.5} />
+            </button>
+          ) : (
+            <>
+              <button onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }} className="btn-minimize">
+                <Minus size={16} />
+              </button>
+              <button onClick={(e) => { e.stopPropagation(); toggleMaximize(id); }} className="btn-maximize">
+                <Square size={14} />
+              </button>
+              <button onClick={(e) => { e.stopPropagation(); closeWindow(id); }} className="btn-close">
+                <X size={16} />
+              </button>
+            </>
+          )}
         </div>
       </div>
 

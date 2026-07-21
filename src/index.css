@@ -37,14 +37,20 @@ body {
   background-color: var(--bg-desktop);
   color: var(--text-primary);
   overflow: hidden;
+  /* Prevent mobile scroll bounce and layout shifts */
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
 }
 
 /* ============================================================
    SHELL LAYOUT - The outermost structure
    ============================================================ */
 .os-shell {
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -865,32 +871,57 @@ body.konami-active {
    ============================================================ */
 @media (max-width: 768px) {
   :root {
-    --sidedock-width: 44px;
+    --sidedock-width: 0px; /* Dock is at the bottom now */
   }
 
+  .os-shell-body {
+    flex-direction: column-reverse; /* Desktop on top, Dock on bottom */
+  }
+
+  /* Bottom Dock instead of Side Dock */
   .os-sidedock {
     display: flex !important;
+    width: 100% !important;
+    height: 64px !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    border-right: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 0 10px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-top: 0;
   }
   
   .os-dock-icon-wrapper {
-    width: 36px !important;
-    height: 36px !important;
+    width: 44px !important;
+    height: 44px !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0;
   }
 
   .os-dock-icon {
-    width: 28px !important;
-    height: 28px !important;
+    width: 36px !important;
+    height: 36px !important;
   }
   
-  /* On mobile, desktop shortcuts flow in a flex grid (no absolute positioning) */
+  /* Tooltips on bottom dock go up */
+  .os-dock-tooltip {
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* On mobile, desktop shortcuts flow in a flex grid */
   .os-desktop-icons-container {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    padding: 12px;
-    gap: 15px;
+    padding: 16px;
+    gap: 20px;
     z-index: 1;
   }
 
@@ -898,45 +929,54 @@ body.konami-active {
     position: relative !important;
     left: auto !important;
     top: auto !important;
+    width: 70px;
   }
 
-  /* Maximized windows fill the full shell body (sidedock + topbar already accounted for by flex layout) */
+  /* Mobile fullscreen windows */
   .os-window.is-maximized {
+    position: fixed !important; /* Break out of relative Desktop */
     top: 0 !important;
     left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
+    width: 100vw !important;
+    height: 100dvh !important;
     border-radius: 0 !important;
     resize: none !important;
     border: none !important;
+    z-index: 99999 !important; /* Cover everything (TopBar, Dock) */
   }
 
-  /* Non-maximized windows (rare on mobile — user un-maximized) should be contained */
   .os-window:not(.is-maximized) {
     min-width: unset !important;
-    max-width: calc(100vw - var(--sidedock-width, 44px)) !important;
-    max-height: calc(100dvh - 28px) !important;
+    max-width: 100vw !important;
+    max-height: calc(100dvh - 100px) !important;
     border-radius: 6px;
   }
 
-  /* Titlebar: no grab cursor on mobile */
+  /* Touch-friendly Titlebar */
   .os-window-titlebar {
+    height: 54px !important;
+    padding: 0 16px !important;
     cursor: default !important;
+  }
+
+  .os-window-title {
+    font-size: 1rem !important;
   }
 
   /* Fix TopBar overflow on mobile */
   .os-topbar {
-    padding: 0 8px;
+    padding: 0 12px;
+    height: 36px;
   }
   .os-topbar-btn {
     padding: 0 8px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
   .os-topbar-tray {
     gap: 6px;
   }
   .os-topbar-center {
-    display: none;
+    display: none; /* Hide date/time if too wide */
   }
 
   .os-desktop-footer {
