@@ -398,10 +398,20 @@ const TerminalApp = () => {
         <div style={{
            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
            backgroundColor: '#000', zIndex: 9999,
-           display: 'flex', alignItems: 'center', justifyContent: 'center'
+           display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+           padding: '20px', textAlign: 'center', boxSizing: 'border-box'
         }}>
-           <div style={{ color: 'var(--accent-red)', fontSize: '2rem', fontWeight: 'bold', animation: 'flash 0.15s infinite' }}>
-              CRITICAL KERNEL PANIC
+           <div style={{ 
+             color: '#ff7b72', 
+             fontSize: 'clamp(1.2rem, 5vw, 2rem)', 
+             fontWeight: 'bold', 
+             animation: 'flash 0.2s infinite',
+             border: '2px solid #ff7b72',
+             padding: '16px 24px',
+             borderRadius: '8px',
+             backgroundColor: 'rgba(255, 123, 114, 0.1)'
+           }}>
+              🚨 CRITICAL KERNEL PANIC 🚨
            </div>
         </div>
       )}
