@@ -74,8 +74,12 @@ const WelcomeScreen = ({ onComplete }) => {
       backgroundColor: '#0d1117',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       alignItems: 'center',
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      padding: '40px 16px',
+      boxSizing: 'border-box',
       transition: 'opacity 0.6s ease',
       opacity: fadeOut ? 0 : 1,
     }}>
@@ -139,28 +143,31 @@ const WelcomeScreen = ({ onComplete }) => {
           textAlign: 'center',
           animation: 'welcomeFadeIn 0.8s ease',
           maxWidth: '700px',
-          padding: '40px',
+          width: '100%',
+          margin: 'auto 0',
+          padding: '20px 10px',
+          boxSizing: 'border-box',
         }}>
           {/* Ubuntu-inspired circle logo */}
           <div style={{
-            width: '100px',
-            height: '100px',
+            width: '90px',
+            height: '90px',
             borderRadius: '50%',
             border: '3px solid #58a6ff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: '0 auto 30px',
+            margin: '0 auto 20px',
             background: 'radial-gradient(circle, rgba(88,166,255,0.15) 0%, transparent 70%)',
             animation: 'pulseGlow 2s ease-in-out infinite',
           }}>
-            <span style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#fff' }}>NT</span>
+            <span style={{ fontSize: '2.2rem', fontWeight: 'bold', color: '#fff' }}>NT</span>
           </div>
 
-          <h1 style={{ color: '#fff', fontSize: '2.5rem', fontWeight: '800', marginBottom: '10px', letterSpacing: '-1px' }}>
+          <h1 style={{ color: '#fff', fontSize: '2.2rem', fontWeight: '800', marginBottom: '8px', letterSpacing: '-1px' }}>
             Nicolas Teixeira
           </h1>
-          <p style={{ color: '#58a6ff', fontSize: '1.2rem', marginBottom: '30px', fontWeight: '600' }}>
+          <p style={{ color: '#58a6ff', fontSize: '1.1rem', marginBottom: '24px', fontWeight: '600' }}>
             {t('welcome.role')}
           </p>
 
@@ -168,35 +175,35 @@ const WelcomeScreen = ({ onComplete }) => {
             backgroundColor: '#161b22',
             border: '1px solid #30363d',
             borderRadius: '12px',
-            padding: '24px',
-            marginBottom: '30px',
+            padding: '20px 16px',
+            marginBottom: '24px',
             textAlign: 'left',
           }}>
             <h4 style={{ color: '#fff', marginBottom: '16px', fontSize: '1rem' }}>
               {t('welcome.howToNavigate')}
             </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#c9d1d9', fontSize: '0.9rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: '#c9d1d9', fontSize: '0.88rem' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <span style={{ backgroundColor: 'rgba(88,166,255,0.15)', color: '#58a6ff', padding: '4px 10px', borderRadius: '6px', fontFamily: 'monospace', fontWeight: 'bold', flexShrink: 0, fontSize: '0.8rem' }}>{t('welcome.navDock')}</span>
                 <span>{t('welcome.navDockDesc')}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <span style={{ backgroundColor: 'rgba(63,185,80,0.15)', color: '#3fb950', padding: '4px 10px', borderRadius: '6px', fontFamily: 'monospace', fontWeight: 'bold', flexShrink: 0, fontSize: '0.8rem' }}>{t('welcome.navWindows')}</span>
                 <span>{t('welcome.navWindowsDesc')}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <span style={{ backgroundColor: 'rgba(163,113,247,0.15)', color: '#a371f7', padding: '4px 10px', borderRadius: '6px', fontFamily: 'monospace', fontWeight: 'bold', flexShrink: 0, fontSize: '0.8rem' }}>{t('welcome.navGames')}</span>
                 <span>{t('welcome.navGamesDesc')}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <span style={{ backgroundColor: 'rgba(29,185,84,0.15)', color: '#1DB954', padding: '4px 10px', borderRadius: '6px', fontFamily: 'monospace', fontWeight: 'bold', flexShrink: 0, fontSize: '0.8rem' }}>{t('welcome.navSpotify')}</span>
                 <span>{t('welcome.navSpotifyDesc')}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <span style={{ backgroundColor: 'rgba(255,189,46,0.15)', color: '#ffbd2e', padding: '4px 10px', borderRadius: '6px', fontFamily: 'monospace', fontWeight: 'bold', flexShrink: 0, fontSize: '0.8rem' }}>{t('welcome.navTerminal')}</span>
                 <span>{t('welcome.navTerminalDesc')}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <span style={{ backgroundColor: 'rgba(210,168,255,0.15)', color: '#d2a8ff', padding: '4px 10px', borderRadius: '6px', fontFamily: 'monospace', fontWeight: 'bold', flexShrink: 0, fontSize: '0.8rem' }}>{t('welcome.navSecrets')}</span>
                 <span>{t('welcome.navSecretsDesc')}</span>
               </div>
