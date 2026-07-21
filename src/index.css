@@ -1,0 +1,986 @@
+:root {
+  /* Debian / GitHub Dark Palette */
+  --bg-desktop: #0d1117;
+  --bg-taskbar: #161b22;
+  --bg-window: #161b22;
+  --bg-window-content: #0d1117;
+  --bg-titlebar: #0d1117;
+  --bg-titlebar-active: #1c2128;
+  
+  --text-primary: #c9d1d9;
+  --text-muted: #8b949e;
+  
+  --border-color: #30363d;
+  --border-active: #58a6ff;
+  
+  --accent-blue: #58a6ff;
+  --accent-red: #f85149;
+  --sys-green: #3fb950;
+  --sys-cyan: #39d2c0;
+  --sys-orange: #ff9f1c;
+  
+  --shadow-window: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-window-active: 0 12px 40px rgba(88,166,255,0.2);
+  
+  --topbar-height: 28px;
+  --sidedock-width: 56px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-desktop);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* ============================================================
+   SHELL LAYOUT - The outermost structure
+   ============================================================ */
+.os-shell {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.os-shell-body {
+  flex: 1;
+  display: flex;
+  min-height: 0; /* crucial for flex children to not overflow */
+}
+
+/* ============================================================
+   DESKTOP - The main window container area
+   ============================================================ */
+.os-desktop {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: #0d1117;
+}
+
+.particles-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Desktop Shortcut Icons (individually positioned + draggable) */
+.os-desktop-shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: grab;
+  padding: 6px;
+  border-radius: 8px;
+  width: 80px;
+  transition: background-color 0.15s;
+  user-select: none;
+  z-index: 1;
+}
+
+.os-desktop-shortcut:active {
+  cursor: grabbing;
+}
+
+.os-desktop-shortcut:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.shortcut-icon-box {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+
+.os-desktop-shortcut:hover .shortcut-icon-box {
+  transform: scale(1.08);
+}
+
+.shortcut-label {
+  color: #fff;
+  font-size: 0.72rem;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0,0,0,0.6);
+  line-height: 1.2;
+  word-break: break-word;
+  font-weight: 500;
+}
+
+.shortcut-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: -28px;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #c9d1d9;
+  font-size: 0.65rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  animation: tooltipFadeIn 0.15s ease;
+}
+
+/* ============================================================
+   DESKTOP FOOTER
+   ============================================================ */
+.os-desktop-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.os-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 30px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+}
+
+.os-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.os-footer-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #58a6ff, #2f81f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.os-footer-name {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.os-footer-role {
+  color: #8b949e;
+  font-size: 0.72rem;
+  margin: 2px 0 0;
+}
+
+/* Footer Navigation */
+.os-footer-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.os-footer-nav-link {
+  background: none;
+  border: none;
+  color: #8b949e;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 500;
+}
+
+.os-footer-nav-link:hover {
+  color: #c9d1d9;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Footer External Links */
+.os-footer-external {
+  display: flex;
+  gap: 12px;
+}
+
+.os-footer-link {
+  color: #8b949e;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.os-footer-link:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.os-footer-link::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 15px currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.os-footer-link:hover::after {
+  opacity: 0.4;
+}
+
+/* Specific glowing colors */
+.os-footer-link.github:hover { color: #fff; }
+.os-footer-link.linkedin:hover { color: #0077b5; }
+.os-footer-link.stargazer:hover { color: #ffc646; }
+
+.os-footer-copyright {
+  text-align: center;
+  padding: 8px;
+  color: #484f58;
+  font-size: 0.72rem;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* ============================================================
+   OS WINDOW
+   ============================================================ */
+.os-window {
+  position: absolute;
+  background-color: var(--bg-window);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-window);
+  animation: windowOpen3D 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: both;
+  min-width: 300px;
+  min-height: 200px;
+  transform-origin: center center;
+}
+
+.os-window.is-maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  resize: none !important;
+  animation: windowMaximize 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes windowOpen3D {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) perspective(800px) rotateX(8deg) translateY(30px);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02) perspective(800px) rotateX(-1deg) translateY(-5px);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) perspective(800px) rotateX(0deg) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes windowMaximize {
+  from {
+    opacity: 0.8;
+    transform: scale(0.95);
+    border-radius: 8px;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    border-radius: 0;
+  }
+}
+
+.os-window.is-active {
+  border-color: var(--border-active);
+  box-shadow: var(--shadow-window-active);
+}
+
+.os-window-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: var(--bg-titlebar);
+  user-select: none;
+  cursor: grab;
+  flex-shrink: 0;
+}
+
+.os-window-titlebar:active {
+  cursor: grabbing;
+}
+
+.os-window-titlebar.is-maximized {
+  cursor: default;
+}
+
+.os-window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.os-window-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.os-window-controls button {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.os-window-controls button:hover {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.os-window-controls .btn-close:hover {
+  background-color: rgba(248, 81, 73, 0.3);
+  color: var(--accent-red);
+}
+
+.os-window-content {
+  flex: 1;
+  overflow: auto;
+  background-color: var(--bg-window-content);
+}
+
+/* ============================================================
+   TOP BAR (GNOME-style)
+   ============================================================ */
+.os-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--topbar-height);
+  padding: 0 16px;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  color: #fff;
+  font-size: 0.85rem;
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.os-topbar-left, .os-topbar-right, .os-topbar-center {
+  display: flex;
+  align-items: center;
+}
+
+.os-topbar-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-weight: 500;
+  padding: 0 12px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.os-topbar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.os-topbar-tray {
+  gap: 12px;
+}
+
+/* ============================================================
+   SIDE DOCK
+   ============================================================ */
+.os-sidedock {
+  width: var(--sidedock-width);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+  gap: 12px;
+  z-index: 9999;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+.os-dock-icon-wrapper {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.os-dock-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.os-dock-icon-wrapper:hover .os-dock-icon {
+  transform: scale(1.05);
+  background-color: rgba(255,255,255,0.2) !important;
+}
+
+.os-dock-indicator {
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #58a6ff;
+}
+
+.os-dock-icon-wrapper.is-open .os-dock-icon {
+  background-color: rgba(255,255,255,0.15) !important;
+}
+
+/* Dock Tooltip */
+.shortcut-tooltip {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 15px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.os-desktop-shortcut:hover .shortcut-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(5px);
+}
+
+/* ============================================================
+   KONAMI EASTER EGG (BARREL ROLL)
+   ============================================================ */
+body.konami-active {
+  animation: barrelRoll 3.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  filter: saturate(200%) hue-rotate(180deg) invert(0.2);
+}
+
+@keyframes barrelRoll {
+  0% { transform: perspective(1000px) rotateZ(0deg) rotateY(0deg) scale(1); }
+  50% { transform: perspective(1000px) rotateZ(180deg) rotateY(180deg) scale(0.3); }
+  100% { transform: perspective(1000px) rotateZ(360deg) rotateY(360deg) scale(1); }
+}
+
+.os-dock-tooltip {
+  position: absolute;
+  left: 56px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 8px 14px;
+  white-space: nowrap;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  animation: tooltipFadeIn 0.15s ease;
+  pointer-events: none;
+}
+
+.os-dock-tooltip strong {
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.os-dock-tooltip span {
+  color: #8b949e;
+  font-size: 0.75rem;
+}
+
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(-5px); }
+  to { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+
+/* ============================================================
+   START MENU
+   ============================================================ */
+.os-start-menu {
+  position: fixed;
+  top: var(--topbar-height);
+  left: var(--sidedock-width);
+  width: 320px;
+  background-color: var(--bg-window);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 8px 0;
+  box-shadow: var(--shadow-window-active);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.os-start-menu-header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--bg-titlebar-active);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.os-start-menu-body {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.os-start-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.os-start-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================================
+   ACTIVITIES OVERLAY - Ubuntu-style app launcher
+   ============================================================ */
+.activities-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: activitiesFadeIn 0.25s ease;
+  padding-left: var(--sidedock-width);
+}
+
+@keyframes activitiesFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.activities-content {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  padding: 48px 24px 24px;
+}
+
+.activities-search-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.activities-search {
+  width: 100%;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.activities-search::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.activities-search:focus {
+  border-color: rgba(88, 166, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 24px;
+  width: 100%;
+  justify-items: center;
+}
+
+.activities-app-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  width: 100%;
+}
+
+.activities-app-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: scale(1.05);
+}
+
+.activities-app-btn:active {
+  transform: scale(0.97);
+}
+
+.activities-app-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activities-app-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.activities-app-label {
+  color: #c9d1d9;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.activities-bottom {
+  margin-top: 16px;
+  display: flex;
+  gap: 24px;
+}
+
+.activities-show-all {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #8b949e;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.activities-show-all:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #c9d1d9;
+}
+
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ============================================================
+   BROWSER APP LAYOUT
+   ============================================================ */
+.browser-layout {
+  display: flex;
+  height: 100%;
+  color: #c9d1d9;
+  background-color: #0d1117;
+}
+
+.browser-sidebar {
+  width: 220px;
+  background-color: #161b22;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #30363d;
+  flex-shrink: 0;
+}
+
+.browser-sidebar-tabs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.browser-sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: transparent;
+  color: #8b949e;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: normal;
+  transition: all 0.2s;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.browser-sidebar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.browser-sidebar-btn.active {
+  background: rgba(88, 166, 255, 0.1);
+  color: #58a6ff;
+  border-left-color: #58a6ff;
+  font-weight: 600;
+}
+
+.browser-main {
+  flex: 1;
+  overflow: auto;
+  background-color: #0d1117;
+  padding: 40px;
+}
+
+/* ============================================================
+   CONTACT APP LAYOUT
+   ============================================================ */
+.contact-layout {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  overflow-y: auto;
+}
+
+.contact-pane {
+  flex: 1 1 300px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-pane.right {
+  background-color: #161b22;
+  border-left: 1px solid #30363d;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVENESS
+   ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --sidedock-width: 44px;
+  }
+
+  .os-sidedock {
+    display: flex !important;
+  }
+  
+  .os-dock-icon-wrapper {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .os-dock-icon {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .os-desktop-icons-container {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 12px;
+    gap: 15px;
+    z-index: 1;
+  }
+
+  .os-desktop-shortcut {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  .os-window:not(.is-maximized) {
+    top: 50px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 85vw !important;
+    height: 60vh !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--border-color) !important;
+  }
+  
+  .os-window.is-maximized {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  
+  .os-window-titlebar {
+    cursor: default !important;
+  }
+
+  /* Fix TopBar overflow on mobile */
+  .os-topbar {
+    padding: 0 8px;
+  }
+  .os-topbar-btn {
+    padding: 0 8px;
+    font-size: 0.75rem;
+  }
+  .os-topbar-tray {
+    gap: 6px;
+  }
+  .os-topbar-center {
+    display: none;
+  }
+
+  .os-desktop-footer {
+    display: none !important;
+  }
+  
+  .browser-layout {
+    flex-direction: column;
+  }
+  
+  .browser-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #30363d;
+  }
+  
+  .browser-sidebar-tabs {
+    flex-direction: row;
+    padding: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .browser-sidebar-btn {
+    width: auto;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .browser-sidebar-btn.active {
+    border-left: none;
+    border-left-color: transparent;
+    border-bottom-color: #58a6ff;
+  }
+  
+  .browser-main {
+    padding: 20px;
+  }
+  
+  .contact-pane {
+    flex: 1 1 100%;
+    padding: 20px;
+  }
+  
+  .contact-pane.right {
+    border-left: none;
+    border-top: 1px solid #30363d;
+  }
+}

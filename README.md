@@ -1,101 +1,78 @@
-# 🚀 Nicolas Teixeira | Professional Portfolio
+# 🖥️ NicolasOS — Interactive Ubuntu Portfolio
 
-## Overview
+An interactive, responsive, Ubuntu-inspired desktop environment portfolio web application built with **React**, **Vite**, and **Vanilla CSS**. 
 
-This repository hosts the source code for my professional portfolio website at [nick-t.net](https://nick-t.net/).
-
-The site serves as an interactive resume and technical showcase, designed with a GitHub-inspired dark theme and modern DevOps engineering aesthetics. It demonstrates expertise in Cloud Infrastructure, DevOps Automation, Kubernetes orchestration, and AI/ML infrastructure.
-
-## ✨ Latest Updates (2026-06-21)
-
-### UI/UX Enhancements
-* **Interactive ScrollSpy Navigation:** Dynamic navbar that automatically highlights active sections as users scroll.
-* **Bento Box Project Grid:** Custom asymmetrical CSS grid layout featuring wide featured cards and dense packing algorithms.
-* **Glassmorphic Contact Form:** A sleek, fully functional contact form with real-time email validation and serverless form submission readiness.
-* **Interactive Photo Collage:** A 2x2 CSS photo grid in the About section with hover animations revealing dynamic subtitles.
-* **Copy-to-Clipboard Interactions:** Zero-friction UX additions allowing single-click email copying.
-
-### Visual Redesign
-* **GitHub Dark Theme:** Complete visual overhaul with GitHub-inspired dark color palette (`#0d1117` background, tech blues/cyan/emerald accents)
-* **Modern Card Interactions:** Enhanced hover effects with gradient borders, lift animations, and glow shadows matching the tech theme
-* **Boxicons & Chart.js:** Integrated Boxicons for precise tech logos and Chart.js for interactive radar charts mapping engineering proficiencies.
-
-### Repository Links Updated
-All project repository links have been verified and updated:
-* [ai-stack](https://github.com/nicolasnkGH/ai-stack) – Private AI inference platform with GPU acceleration
-* [proxmox-automation](https://github.com/nicolasnkGH/proxmox-automation) – Proxmox VE automation scripts
-* [powershell-Scripting](https://github.com/nicolasnkGH/powershell-Scripting) – Windows automation and PowerShell scripting
-* [media-download](https://github.com/nicolasnkGH/media-download) – Containerized media downloader
-* [home-networking-setup](https://github.com/nicolasnkGH/home-networking-setup) – Home lab networking configuration
-
-## ✨ Key Technical Highlights
-
-### Frontend Architecture & Interactivity
-
-* **GitHub Dark Theme System:** Comprehensive CSS variable-based theming with custom color tokens (`--tech-blue`, `--tech-cyan`, `--tech-emerald`) for consistent visual identity
-* **Synchronized Typing Effects (Vanilla JS):** Sequential typing animations across multiple sections:
-  * **Masthead:** Professional subtitle typing at optimized speed (30ms/char)
-  * **About Section:** CLI-style terminal typing within a stylized terminal window
-* **Intersection Observer Animations:** Scroll-triggered fade-in/slide-up effects for cards, skills sections, and project showcases
-* **Ghost/Spirit Icon Effects:** Custom CSS animations creating translucent ghost layers on floating tech icons with blur filters and wander animations
-
-### DevOps & Infrastructure Principles
-
-* **Contact Form Security:** Secure contact mechanism using serverless endpoint to eliminate spam and ensure zero email exposure in client-side code
-* **Performance Focus:** Minimal JavaScript, consolidated CSS, and optimized asset loading for fast page load times
-* **Responsive Design:** Mobile-first Bootstrap 5 grid with custom media queries for tablet and desktop breakpoints
-
-## 🛠️ Tech Stack
-
-| Component | Technology/Tool | Purpose |
-| :--- | :--- | :--- |
-| **Framework** | Bootstrap 5 | Responsive grid system, utility classes, and component foundation |
-| **Charts** | Chart.js 4.4.0 | Radar chart visualization for skills proficiency display |
-| **Icons** | Font Awesome 6.5.1 + Boxicons | Brand icons (Docker, Linux, Kubernetes) and UI iconography |
-| **Styling** | Custom CSS3 | GitHub dark theme, animations, hover effects, and modern UI components |
-| **Scripting** | Vanilla JavaScript (ES6) | Typing effects, Intersection Observer animations, smooth scroll |
-| **Deployment** | Cloudflare Pages | Serverless hosting with global CDN distribution |
-
-## 🚀 Viewing the Portfolio
-
-To view the live portfolio, visit [nick-t.net](https://nick-t.net/).
-
-### Local Development
-
-To run the project locally:
-
-1.  Clone this repository:
-    ```bash
-    git clone https://github.com/nicolasnkGH/Portfolio
-    ```
-
-2.  Navigate to the directory:
-    ```bash
-    cd Portfolio
-    ```
-
-3.  Open `index.html` in your web browser, or use a local server:
-    ```bash
-    # Using Python 3
-    python3 -m http.server 8080
-
-    # Then visit http://localhost:8080
-    ```
-
-## 📁 Project Structure
-
-```
-Portfolio/
-├── index.html          # Main HTML file with all sections
-├── css/
-│   └── styles.css      # Complete stylesheet (2500+ lines)
-├── js/
-│   └── scripts.js      # JavaScript for animations and interactivity
-└── README.md           # This documentation file
-```
+Live Demo: [nick-t.net](https://nick-t.net)
 
 ---
 
-**Developed and maintained by Nicolas Teixeira** | Systems & Platform Engineer | Cloud, DevOps, and AI Infrastructure
+## ✨ Features
 
+- **💻 Interactive Desktop & Window Manager**:
+  - Full window control (drag, resize, minimize, maximize, close, z-index layering).
+  - Responsive Side Dock and top-bar **Activities Overlay** for quick app searching and navigation.
+  - Dynamic wallpapers (Particles JS background, DevOps Theme, Solid mode).
 
+- **🎮 Embedded Games App**:
+  - A windowed "Games Folder" containing playable H5 / HTML5 browser games (*Bloxd.io*, *Minecraft Classic*, *Paper.io 2*, *Drift Hunters 2*).
+
+- **🎵 Integrated Spotify Music Player**:
+  - Embedded Spotify player to listen to curated music directly within a desktop window while browsing.
+
+- **🐍 Interactive Python IDE**:
+  - A mini Python environment to run and test Python code snippets directly in the browser.
+
+- **⚡ Interactive Terminal Shell**:
+  - Custom terminal supporting shell commands (`help`, `neofetch`, `skills`, `projects`, `contact`, `python`, `hire`, `hack`, `clear`, etc.).
+
+- **📊 System Diagnostics App**:
+  - Real-time telemetry dashboard visualizing tech stack proficiency across Cloud, DevOps, Containers, CI/CD, and Infrastructure as Code.
+
+- **🌐 Internationalization (i18n)**:
+  - Seamless toggle between **English** and **Portuguese (PT-BR)** with full locale translation coverage across all apps and system dialogues.
+
+- **📱 Responsive & Mobile Optimized**:
+  - Tailored mobile layout with dedicated mobile side menus, touch-friendly interactions, and adaptive window dimensions.
+
+- **🕹️ Easter Eggs**:
+  - Secret Konami Code (`↑ ↑ ↓ ↓ ← → ← → B A`) Matrix achievement mode and terminal secrets!
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18, Vite
+- **Styling**: Modern Vanilla CSS, Glassmorphism, CSS Grid & Flexbox
+- **Icons**: Lucide React, Custom SVG Icons
+- **Deployment**: GitHub Pages / Cloudflare / Static Hosting
+
+---
+
+## 🚀 Local Development
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/nicolasnkGH/Portfolio.git
+   cd Portfolio
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📄 License
+
+MIT © [Nicolas Teixeira](https://github.com/nicolasnkGH)
