@@ -12,18 +12,30 @@ const Window = ({ windowInfo }) => {
   const { closeWindow, minimizeWindow, toggleMaximize, focusWindow, updateWindowPosition, activeWindowId } = useWindowManager();
   
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const dockWidth = 44;
+  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1000;
+  const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
 
   const windowWidth = isMobile 
-    ? Math.min(width || 800, window.innerWidth - 50) 
+    ? Math.min(width || 800, screenWidth - dockWidth - 8) 
     : (width || 800);
     
   const windowHeight = isMobile 
-    ? Math.min(height || 600, window.innerHeight - 50) 
+    ? Math.min(height || 600, screenHeight - 50) 
     : (height || 600);
 
   const { position, handleMouseDown, handleTouchStart } = useDraggable(
     id, windowInfo.x, windowInfo.y, updateWindowPosition, isMaximized, windowWidth
   );
+
+  // Strictly clamp X and Y on mobile so cached state can NEVER overflow!
+  const clampedX = isMobile 
+    ? Math.max(dockWidth + 2, Math.min(position.x, screenWidth - windowWidth - 4))
+    : position.x;
+
+  const clampedY = isMobile
+    ? Math.max(42, Math.min(position.y, screenHeight - 60))
+    : position.y;
 
   if (isMinimized) return null;
 
@@ -32,8 +44,8 @@ const Window = ({ windowInfo }) => {
   const windowStyle = isMaximized ? {
     zIndex,
   } : {
-    top: position.y,
-    left: position.x,
+    top: clampedY,
+    left: clampedX,
     width: windowWidth,
     height: windowHeight,
     zIndex,
