@@ -11,23 +11,31 @@ const Window = ({ windowInfo }) => {
   
   const { closeWindow, minimizeWindow, toggleMaximize, focusWindow, updateWindowPosition, activeWindowId } = useWindowManager();
   
-  const { position, handleMouseDown } = useDraggable(
-    id, windowInfo.x, windowInfo.y, updateWindowPosition, isMaximized
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
+  const windowWidth = isMobile 
+    ? Math.min(width || 800, window.innerWidth - 50) 
+    : (width || 800);
+    
+  const windowHeight = isMobile 
+    ? Math.min(height || 600, window.innerHeight - 50) 
+    : (height || 600);
+
+  const { position, handleMouseDown, handleTouchStart } = useDraggable(
+    id, windowInfo.x, windowInfo.y, updateWindowPosition, isMaximized, windowWidth
   );
 
   if (isMinimized) return null;
 
   const isActive = activeWindowId === id;
 
-  // When maximized, CSS handles sizing via .is-maximized class
-  // When not maximized, use inline styles for position/size
   const windowStyle = isMaximized ? {
     zIndex,
   } : {
     top: position.y,
     left: position.x,
-    width,
-    height,
+    width: windowWidth,
+    height: windowHeight,
     zIndex,
   };
 
@@ -36,11 +44,13 @@ const Window = ({ windowInfo }) => {
       className={`os-window ${isActive ? 'is-active' : ''} ${isMaximized ? 'is-maximized' : ''}`}
       style={windowStyle}
       onMouseDown={() => focusWindow(id)}
+      onTouchStart={() => focusWindow(id)}
     >
       {/* Title Bar */}
       <div 
         className={`os-window-titlebar ${isMaximized ? 'is-maximized' : ''} ${isActive ? 'is-active' : ''}`}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         onDoubleClick={() => toggleMaximize(id)}
       >
         <div className="os-window-title">
