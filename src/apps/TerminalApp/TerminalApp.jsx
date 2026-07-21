@@ -39,6 +39,13 @@ const TerminalApp = () => {
   const [blackout, setBlackout] = useState(false); // triggers self-destruct blackout
   
   const bodyRef = useRef(null);
+  const hiddenInputRef = useRef(null);
+
+  const focusInput = () => {
+    if (hiddenInputRef.current) {
+      hiddenInputRef.current.focus();
+    }
+  };
 
   const openApp = (appId, Component, customTitle) => {
     const existing = windows.find(w => w.id === appId);
@@ -74,75 +81,82 @@ const TerminalApp = () => {
       } else {
         clearInterval(interval);
         setIsBooting(false);
+        setTimeout(() => focusInput(), 150);
       }
     }, 80);
     return () => clearInterval(interval);
   }, []);
 
-  // Global Keydown for typing
+  const handleExecuteCommand = (cmdToExecute) => {
+    const rawVal = cmdToExecute !== undefined ? cmdToExecute : currentCommand;
+    const cmd = rawVal.trim();
+    
+    // Add the prompt line to history
+    let promptText = 'guest@nick-t.net:~$ ';
+    if (terminalState === 'hire_company') promptText = '[System] Enter Company Name: ';
+    if (terminalState === 'hire_role') promptText = '[System] Enter Role: ';
+
+    setHistory(prev => [...prev, { id: Date.now(), text: promptText + rawVal, type: 'prompt' }]);
+    setCurrentCommand('');
+    
+    if (terminalState === 'hire_company') {
+      if (cmd) {
+        setHireData(prev => ({ ...prev, company: cmd }));
+        setTerminalState('hire_role');
+      } else {
+        setTerminalState('normal');
+        setHistory(prev => [...prev, { id: Date.now(), text: 'Hire process aborted.', type: 'error' }]);
+      }
+      return;
+    }
+
+    if (terminalState === 'hire_role') {
+      if (cmd) {
+        setTerminalState('normal');
+        setIsLocked(true);
+        setHistory(prev => [...prev, { id: Date.now(), text: `[System] Processing... Analyzing match for ${cmd} at ${hireData.company}...`, type: 'blue' }]);
+        
+        setTimeout(() => {
+          setHistory(prev => [...prev, { id: Date.now(), text: `[System] Candidate MATCH = 99.99%`, type: 'green' }]);
+        }, 1000);
+        
+        setTimeout(() => {
+          setHistory(prev => [...prev, { id: Date.now(), text: `[System] Thank you ${hireData.company}! Launching contact protocol...`, type: 'green' }]);
+        }, 2000);
+
+        setTimeout(() => {
+          setIsLocked(false);
+          openApp('contact', ContactApp);
+        }, 3000);
+      } else {
+        setTerminalState('normal');
+        setHistory(prev => [...prev, { id: Date.now(), text: 'Hire process aborted.', type: 'error' }]);
+      }
+      return;
+    }
+
+    processCommand(cmd);
+  };
+
+  // Global Keydown for desktop typing
   useEffect(() => {
     if (isBooting || isLocked) return;
 
     const handleKeyDown = (e) => {
-      // Don't intercept if they are typing in another real input
+      // Don't intercept if they are typing in another real input (excluding our hidden input)
       const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
-      if (activeTag === 'input' || activeTag === 'textarea') return;
+      if (activeTag === 'input' && document.activeElement !== hiddenInputRef.current) return;
+      if (activeTag === 'textarea') return;
 
       if (e.ctrlKey || e.metaKey || e.altKey) return;
 
       if (e.key === 'Enter') {
         e.preventDefault();
-        const cmd = currentCommand.trim();
-        
-        // Add the prompt line to history
-        let promptText = 'guest@nick-t.net:~$ ';
-        if (terminalState === 'hire_company') promptText = '[System] Enter Company Name: ';
-        if (terminalState === 'hire_role') promptText = '[System] Enter Role: ';
-
-        setHistory(prev => [...prev, { id: Date.now(), text: promptText + currentCommand, type: 'prompt' }]);
-        setCurrentCommand('');
-        
-        if (terminalState === 'hire_company') {
-          if (cmd) {
-            setHireData(prev => ({ ...prev, company: cmd }));
-            setTerminalState('hire_role');
-          } else {
-            setTerminalState('normal');
-            setHistory(prev => [...prev, { id: Date.now(), text: 'Hire process aborted.', type: 'error' }]);
-          }
-          return;
-        }
-
-        if (terminalState === 'hire_role') {
-          if (cmd) {
-            setTerminalState('normal');
-            setIsLocked(true);
-            setHistory(prev => [...prev, { id: Date.now(), text: `[System] Processing... Analyzing match for ${cmd} at ${hireData.company}...`, type: 'blue' }]);
-            
-            setTimeout(() => {
-              setHistory(prev => [...prev, { id: Date.now(), text: `[System] Candidate MATCH = 99.99%`, type: 'green' }]);
-            }, 1000);
-            
-            setTimeout(() => {
-              setHistory(prev => [...prev, { id: Date.now(), text: `[System] Thank you ${hireData.company}! Launching contact protocol...`, type: 'green' }]);
-            }, 2000);
-
-            setTimeout(() => {
-              setIsLocked(false);
-              openApp('contact', ContactApp);
-            }, 3000);
-          } else {
-            setTerminalState('normal');
-            setHistory(prev => [...prev, { id: Date.now(), text: 'Hire process aborted.', type: 'error' }]);
-          }
-          return;
-        }
-
-        processCommand(cmd);
-      } else if (e.key === 'Backspace') {
+        handleExecuteCommand();
+      } else if (e.key === 'Backspace' && document.activeElement !== hiddenInputRef.current) {
         e.preventDefault();
         setCurrentCommand(prev => prev.slice(0, -1));
-      } else if (e.key.length === 1) {
+      } else if (e.key.length === 1 && document.activeElement !== hiddenInputRef.current) {
         e.preventDefault();
         setCurrentCommand(prev => prev + e.key);
       }
@@ -387,6 +401,8 @@ const TerminalApp = () => {
   return (
     <div 
       className="terminal-app"
+      onClick={focusInput}
+      onTouchStart={focusInput}
       style={{ 
         position: 'relative',
         display: 'flex', 
@@ -396,9 +412,37 @@ const TerminalApp = () => {
         color: '#c9d1d9', 
         fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
         fontSize: '0.85rem',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        cursor: 'text'
       }}
     >
+      {/* Hidden real input for mobile keyboard activation */}
+      <input
+        ref={hiddenInputRef}
+        type="text"
+        value={currentCommand}
+        onChange={(e) => setCurrentCommand(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            handleExecuteCommand(e.target.value);
+          }
+        }}
+        style={{
+          position: 'absolute',
+          opacity: 0,
+          top: 0,
+          left: 0,
+          width: '1px',
+          height: '1px',
+          pointerEvents: 'none'
+        }}
+        autoCapitalize="none"
+        autoCorrect="off"
+        spellCheck="false"
+        autoComplete="off"
+      />
+
       {blackout && (
         <div style={{
            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
