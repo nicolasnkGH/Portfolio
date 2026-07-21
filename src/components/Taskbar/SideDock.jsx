@@ -158,11 +158,11 @@ const SideDock = () => {
       })}
       
       {/* Spacer to push Show Applications to bottom */}
-      <div style={{ flex: 1 }} />
+      <div className="os-dock-spacer" style={{ flex: 1 }} />
       
       {/* Show Applications Button */}
       <div 
-        className="os-dock-icon-wrapper"
+        className="os-dock-icon-wrapper os-dock-show-apps"
         onClick={toggleStartMenu}
         onMouseEnter={() => setHoveredId('show-apps')}
         onMouseLeave={() => setHoveredId(null)}

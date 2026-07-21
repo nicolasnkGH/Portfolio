@@ -648,10 +648,12 @@ body.konami-active {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to allow scrolling down */
   justify-content: center;
   animation: activitiesFadeIn 0.25s ease;
   padding-left: var(--sidedock-width);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes activitiesFadeIn {
@@ -666,7 +668,7 @@ body.konami-active {
   flex-direction: column;
   align-items: center;
   gap: 36px;
-  padding: 48px 24px 24px;
+  padding: 48px 24px 80px; /* More bottom padding for safe area */
 }
 
 .activities-search-container {
@@ -904,6 +906,15 @@ body.konami-active {
     height: 44px !important;
     margin-bottom: 0 !important;
     flex-shrink: 0;
+  }
+
+  .os-dock-show-apps {
+    order: -1;
+    margin-right: 4px;
+  }
+
+  .os-dock-spacer {
+    display: none !important;
   }
 
   .os-dock-icon {
