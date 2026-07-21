@@ -4,10 +4,13 @@ import { useWindowManager } from '../WindowManager/WindowManagerContext';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useWallpaper } from '../../contexts/WallpaperContext';
 import Window from '../Window/Window';
+import { Terminal, Activity, Mail, Code, Settings } from 'lucide-react';
+
 import TerminalApp from '../../apps/TerminalApp/TerminalApp';
 import BrowserApp from '../../apps/BrowserApp/BrowserApp';
 import DiagnosticsApp from '../../apps/DiagnosticsApp/DiagnosticsApp';
 import ContactApp from '../../apps/ContactApp/ContactApp';
+import PythonApp from '../../apps/PythonApp/PythonApp';
 import ResumeApp from '../../apps/ResumeApp/ResumeApp';
 import SettingsApp from '../../apps/SettingsApp/SettingsApp';
 import TrashApp from '../../apps/TrashApp/TrashApp';
@@ -102,14 +105,34 @@ const SpotifyIcon = () => (
   </svg>
 );
 
+const LucideDesktopIcon = ({ Icon, bgColor, iconColor }) => (
+  <div style={{
+    width: 42, height: 42, borderRadius: 12, 
+    background: bgColor, display: 'flex', alignItems: 'center', justifyContent: 'center'
+  }}>
+    <Icon size={24} color={iconColor} />
+  </div>
+);
+
+const TerminalDesktopIcon = () => <LucideDesktopIcon Icon={Terminal} bgColor="#1a1b26" iconColor="#c9d1d9" />;
+const DiagnosticsDesktopIcon = () => <LucideDesktopIcon Icon={Activity} bgColor="#1b2a22" iconColor="#3fb950" />;
+const ContactDesktopIcon = () => <LucideDesktopIcon Icon={Mail} bgColor="#2a221b" iconColor="#ffbd2e" />;
+const PythonDesktopIcon = () => <LucideDesktopIcon Icon={Code} bgColor="#2a251a" iconColor="#ffc646" />;
+const SettingsDesktopIcon = () => <LucideDesktopIcon Icon={Settings} bgColor="#222428" iconColor="#8b949e" />;
+
 const desktopShortcuts = [
+  { id: 'terminal', label: 'Terminal', IconComponent: TerminalDesktopIcon, action: 'app', appId: 'terminal' },
+  { id: 'browser', label: 'Portfolio Browser', IconComponent: ReadmeIcon, action: 'app', appId: 'browser' },
+  { id: 'python', label: 'Python IDE', IconComponent: PythonDesktopIcon, action: 'app', appId: 'python' },
+  { id: 'diagnostics', label: 'Diagnostics', IconComponent: DiagnosticsDesktopIcon, action: 'app', appId: 'diagnostics' },
+  { id: 'contact', label: 'Contact', IconComponent: ContactDesktopIcon, action: 'app', appId: 'contact' },
+  { id: 'resume', label: 'Resume', IconComponent: ResumeIcon, action: 'app', appId: 'resume' },
+  { id: 'settings', label: 'Settings', IconComponent: SettingsDesktopIcon, action: 'app', appId: 'settings' },
+  { id: 'games', label: 'Games', IconComponent: GamesIcon, action: 'app', appId: 'games' },
+  { id: 'spotify', label: 'Spotify', IconComponent: SpotifyIcon, action: 'app', appId: 'spotify' },
   { id: 'github', label: 'GitHub', IconComponent: GithubIcon, action: 'link', url: 'https://github.com/nicolasnkGH' },
   { id: 'linkedin', label: 'LinkedIn', IconComponent: LinkedInIcon, action: 'link', url: 'https://www.linkedin.com/in/nicolasdealmeidateixeira/' },
   { id: 'stargazer', label: 'StarGazer', IconComponent: StarGazerIcon, action: 'link', url: 'https://stargazer.nick-t.net' },
-  { id: 'readme', label: 'README.md', IconComponent: ReadmeIcon, action: 'app', appId: 'browser' },
-  { id: 'resume', label: 'Resume', IconComponent: ResumeIcon, action: 'app', appId: 'resume' },
-  { id: 'games', label: 'Games', IconComponent: GamesIcon, action: 'app', appId: 'games' },
-  { id: 'spotify', label: 'Spotify', IconComponent: SpotifyIcon, action: 'app', appId: 'spotify' },
   { id: 'trash', label: 'Trash', IconComponent: TrashIcon, action: 'app', appId: 'trash' },
 ];
 
@@ -232,8 +255,26 @@ const Desktop = () => {
         const isMobile = window.innerWidth <= 768;
         openWindow({
           id: shortcut.appId,
-          title: shortcut.appId === 'browser' ? t('apps.browser') : shortcut.appId === 'resume' ? t('apps.resume') : shortcut.appId === 'trash' ? t('apps.trash') || 'Trash' : shortcut.appId === 'games' ? t('apps.games') || 'Games' : shortcut.appId === 'spotify' ? t('apps.spotify') || 'Spotify' : shortcut.appId,
-          component: shortcut.appId === 'browser' ? BrowserApp : shortcut.appId === 'resume' ? ResumeApp : shortcut.appId === 'trash' ? TrashApp : shortcut.appId === 'games' ? GamesFolderApp : shortcut.appId === 'spotify' ? SpotifyApp : null,
+          title: shortcut.appId === 'browser' ? t('apps.browser') : 
+                 shortcut.appId === 'resume' ? t('apps.resume') : 
+                 shortcut.appId === 'trash' ? t('apps.trash') || 'Trash' : 
+                 shortcut.appId === 'games' ? t('apps.games') || 'Games' : 
+                 shortcut.appId === 'spotify' ? t('apps.spotify') || 'Spotify' : 
+                 shortcut.appId === 'terminal' ? 'Terminal' :
+                 shortcut.appId === 'python' ? 'Python IDE' :
+                 shortcut.appId === 'diagnostics' ? 'Diagnostics' :
+                 shortcut.appId === 'contact' ? 'Contact' :
+                 shortcut.appId === 'settings' ? 'Settings' : shortcut.appId,
+          component: shortcut.appId === 'browser' ? BrowserApp : 
+                     shortcut.appId === 'resume' ? ResumeApp : 
+                     shortcut.appId === 'trash' ? TrashApp : 
+                     shortcut.appId === 'games' ? GamesFolderApp : 
+                     shortcut.appId === 'spotify' ? SpotifyApp : 
+                     shortcut.appId === 'terminal' ? TerminalApp :
+                     shortcut.appId === 'python' ? PythonApp :
+                     shortcut.appId === 'diagnostics' ? DiagnosticsApp :
+                     shortcut.appId === 'contact' ? ContactApp :
+                     shortcut.appId === 'settings' ? SettingsApp : null,
           x: isMobile ? 0 : 150,
           y: isMobile ? 0 : 60,
           width: 900,
