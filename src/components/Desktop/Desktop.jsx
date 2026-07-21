@@ -229,15 +229,16 @@ const Desktop = () => {
         if (existing.isMinimized) minimizeWindow(shortcut.appId);
         focusWindow(shortcut.appId);
       } else {
-        // Open the app if not already open
+        const isMobile = window.innerWidth <= 768;
         openWindow({
           id: shortcut.appId,
           title: shortcut.appId === 'browser' ? t('apps.browser') : shortcut.appId === 'resume' ? t('apps.resume') : shortcut.appId === 'trash' ? t('apps.trash') || 'Trash' : shortcut.appId === 'games' ? t('apps.games') || 'Games' : shortcut.appId === 'spotify' ? t('apps.spotify') || 'Spotify' : shortcut.appId,
           component: shortcut.appId === 'browser' ? BrowserApp : shortcut.appId === 'resume' ? ResumeApp : shortcut.appId === 'trash' ? TrashApp : shortcut.appId === 'games' ? GamesFolderApp : shortcut.appId === 'spotify' ? SpotifyApp : null,
-          x: 150,
-          y: 60,
+          x: isMobile ? 0 : 150,
+          y: isMobile ? 0 : 60,
           width: 900,
-          height: 600
+          height: 600,
+          defaultMaximized: isMobile,
         });
       }
     }
@@ -249,14 +250,16 @@ const Desktop = () => {
       if (existing.isMinimized) minimizeWindow(appId);
       focusWindow(appId);
     } else {
+      const isMobile = window.innerWidth <= 768;
       openWindow({
         id: appId,
         title,
         component: AppComponent,
-        x: 150,
-        y: 60,
+        x: isMobile ? 0 : 150,
+        y: isMobile ? 0 : 60,
         width: 900,
-        height: 600
+        height: 600,
+        defaultMaximized: isMobile,
       });
     }
   };

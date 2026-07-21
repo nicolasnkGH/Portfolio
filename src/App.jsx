@@ -14,18 +14,20 @@ function AppInner() {
 
   const handleBootComplete = useCallback(() => {
     setBooted(true);
-    // Auto-open terminal centered after a brief delay
+    // Auto-open terminal after a brief delay
     setTimeout(() => {
+      const isMobile = window.innerWidth <= 768;
       const w = 800;
       const h = 480;
       openWindow({
         id: 'terminal',
         title: 'Terminal',
         component: TerminalApp,
-        x: Math.max(80, (window.innerWidth - w) / 2),
-        y: Math.max(40, (window.innerHeight - h) / 2 - 30),
+        x: isMobile ? 0 : Math.max(80, (window.innerWidth - w) / 2),
+        y: isMobile ? 0 : Math.max(40, (window.innerHeight - h) / 2 - 30),
         width: w,
         height: h,
+        defaultMaximized: isMobile,
       });
     }, 2000);
   }, [openWindow]);

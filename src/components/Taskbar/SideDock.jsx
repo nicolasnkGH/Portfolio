@@ -104,17 +104,18 @@ const SideDock = () => {
     const existing = windows.find(w => w.id === appConfig.id);
     if (existing) {
       if (existing.isMinimized) {
-        // Un-minimize it
-        minimizeWindow(appConfig.id); // toggles minimize
+        minimizeWindow(appConfig.id);
       }
       focusWindow(appConfig.id);
     } else {
+      const isMobile = window.innerWidth <= 768;
       openWindow({
         ...appConfig,
-        x: 100 + (Math.random() * 50),
-        y: 50 + (Math.random() * 50),
+        x: isMobile ? 0 : (100 + (Math.random() * 50)),
+        y: isMobile ? 0 : (50 + (Math.random() * 50)),
         width: 900,
-        height: 600
+        height: 600,
+        defaultMaximized: isMobile,
       });
     }
   };

@@ -1,25 +1,13 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export const useDraggable = (id, initialX, initialY, updatePosition, isMaximized, defaultWidth = 800) => {
-  const getInitialPosition = useCallback(() => {
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    if (isMobile) {
-      const dockWidth = 44;
-      const availableWidth = window.innerWidth - dockWidth;
-      const windowWidth = Math.min(defaultWidth, availableWidth - 8);
-      const centeredX = dockWidth + Math.max(2, (availableWidth - windowWidth) / 2);
-      return { x: Math.round(centeredX), y: 42 };
-    }
-    return { x: initialX, y: initialY };
-  }, [initialX, initialY, defaultWidth]);
-
-  const [position, setPosition] = useState(getInitialPosition);
+export const useDraggable = (id, initialX, initialY, updatePosition, isMaximized) => {
+  const [position, setPosition] = useState({ x: initialX, y: initialY });
   const [isDragging, setIsDragging] = useState(false);
   const offset = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    setPosition(getInitialPosition());
-  }, [initialX, initialY, getInitialPosition]);
+    setPosition({ x: initialX, y: initialY });
+  }, [initialX, initialY]);
 
   const startDrag = (clientX, clientY) => {
     if (isMaximized) return;
@@ -37,37 +25,27 @@ export const useDraggable = (id, initialX, initialY, updatePosition, isMaximized
 
   const handleTouchStart = (e) => {
     if (e.touches && e.touches.length > 0) {
-      const touch = e.touches[0];
-      startDrag(touch.clientX, touch.clientY);
+      // Don't prevent default here so buttons still work
+      startDrag(e.touches[0].clientX, e.touches[0].clientY);
     }
   };
 
   useEffect(() => {
-    const updateDragPosition = (clientX, clientY) => {
-      const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-      const minX = isMobile ? 44 : -100;
-      const maxX = Math.max(minX, window.innerWidth - 80);
-      const minY = 36;
-      const maxY = Math.max(minY, window.innerHeight - 60);
-
-      const rawX = clientX - offset.current.x;
-      const rawY = clientY - offset.current.y;
-
-      const clampedX = Math.min(Math.max(rawX, minX), maxX);
-      const clampedY = Math.min(Math.max(rawY, minY), maxY);
-
-      setPosition({ x: clampedX, y: clampedY });
-    };
-
     const handleMouseMove = (e) => {
       if (!isDragging) return;
-      updateDragPosition(e.clientX, e.clientY);
+      setPosition({
+        x: e.clientX - offset.current.x,
+        y: e.clientY - offset.current.y
+      });
     };
 
     const handleTouchMove = (e) => {
       if (!isDragging || !e.touches[0]) return;
       if (e.cancelable) e.preventDefault();
-      updateDragPosition(e.touches[0].clientX, e.touches[0].clientY);
+      setPosition({
+        x: e.touches[0].clientX - offset.current.x,
+        y: e.touches[0].clientY - offset.current.y
+      });
     };
 
     const handleDragEnd = () => {
