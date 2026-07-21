@@ -11,6 +11,8 @@ const Window = ({ windowInfo }) => {
   
   const { closeWindow, minimizeWindow, toggleMaximize, focusWindow, updateWindowPosition, activeWindowId } = useWindowManager();
 
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   const { position, handleMouseDown, handleTouchStart } = useDraggable(
     id, windowInfo.x, windowInfo.y, updateWindowPosition, isMaximized
   );
