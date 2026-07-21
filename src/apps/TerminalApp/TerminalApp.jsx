@@ -39,11 +39,11 @@ const TerminalApp = () => {
   const [blackout, setBlackout] = useState(false); // triggers self-destruct blackout
   
   const bodyRef = useRef(null);
-  const hiddenInputRef = useRef(null);
+  const inputRef = useRef(null);
 
   const focusInput = () => {
-    if (hiddenInputRef.current) {
-      hiddenInputRef.current.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   };
 
@@ -64,10 +64,13 @@ const TerminalApp = () => {
     }
   };
 
-  // Auto-scroll to bottom
+  // Auto-scroll to bottom and keep input in view
   useEffect(() => {
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
+    if (inputRef.current) {
+      inputRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     }
   }, [history, currentCommand, isBooting, isLocked]);
 
@@ -87,8 +90,11 @@ const TerminalApp = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleExecuteCommand = (cmdToExecute) => {
-    const rawVal = cmdToExecute !== undefined ? cmdToExecute : currentCommand;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isBooting || isLocked) return;
+
+    const rawVal = currentCommand;
     const cmd = rawVal.trim();
     
     // Add the prompt line to history
@@ -137,34 +143,6 @@ const TerminalApp = () => {
 
     processCommand(cmd);
   };
-
-  // Global Keydown for desktop typing
-  useEffect(() => {
-    if (isBooting || isLocked) return;
-
-    const handleKeyDown = (e) => {
-      // Don't intercept if they are typing in another real input (excluding our hidden input)
-      const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
-      if (activeTag === 'input' && document.activeElement !== hiddenInputRef.current) return;
-      if (activeTag === 'textarea') return;
-
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleExecuteCommand();
-      } else if (e.key === 'Backspace' && document.activeElement !== hiddenInputRef.current) {
-        e.preventDefault();
-        setCurrentCommand(prev => prev.slice(0, -1));
-      } else if (e.key.length === 1 && document.activeElement !== hiddenInputRef.current) {
-        e.preventDefault();
-        setCurrentCommand(prev => prev + e.key);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [currentCommand, isBooting, terminalState, isLocked, hireData]);
 
   const processCommand = (rawCmd) => {
     const cleanCmd = rawCmd.toLowerCase().trim();
@@ -416,33 +394,6 @@ const TerminalApp = () => {
         cursor: 'text'
       }}
     >
-      {/* Hidden real input for mobile keyboard activation */}
-      <input
-        ref={hiddenInputRef}
-        type="text"
-        value={currentCommand}
-        onChange={(e) => setCurrentCommand(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            handleExecuteCommand(e.target.value);
-          }
-        }}
-        style={{
-          position: 'absolute',
-          opacity: 0,
-          top: 0,
-          left: 0,
-          width: '1px',
-          height: '1px',
-          pointerEvents: 'none'
-        }}
-        autoCapitalize="none"
-        autoCorrect="off"
-        spellCheck="false"
-        autoComplete="off"
-      />
-
       {blackout && (
         <div style={{
            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
@@ -466,34 +417,50 @@ const TerminalApp = () => {
           </div>
         ))}
         
-        {(!isBooting && !isLocked && terminalState === 'normal') && (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ color: 'var(--sys-green)', fontWeight: 'bold', marginRight: '8px', flexShrink: 0 }}>
-              guest@nick-t.net:~$
+        {!isBooting && !isLocked && (
+          <form 
+            onSubmit={handleSubmit} 
+            style={{ display: 'flex', alignItems: 'center', width: '100%', marginTop: '4px' }}
+          >
+            <span style={{ 
+              color: terminalState === 'normal' ? 'var(--sys-green)' : 'var(--accent-blue)', 
+              fontWeight: 'bold', 
+              marginRight: '8px', 
+              flexShrink: 0 
+            }}>
+              {terminalState === 'hire_company' ? '[System] Enter Company Name:' :
+               terminalState === 'hire_role' ? '[System] Enter Role:' :
+               'guest@nick-t.net:~$'}
             </span>
-            <span style={{ color: '#fff', whiteSpace: 'pre-wrap' }}>{currentCommand}</span>
-            <span className="terminal-cursor" />
-          </div>
-        )}
-
-        {(!isBooting && !isLocked && terminalState === 'hire_company') && (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ color: 'var(--accent-blue)', fontWeight: 'bold', marginRight: '8px', flexShrink: 0 }}>
-              [System] Enter Company Name:
-            </span>
-            <span style={{ color: '#fff', whiteSpace: 'pre-wrap' }}>{currentCommand}</span>
-            <span className="terminal-cursor" />
-          </div>
-        )}
-
-        {(!isBooting && !isLocked && terminalState === 'hire_role') && (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ color: 'var(--accent-blue)', fontWeight: 'bold', marginRight: '8px', flexShrink: 0 }}>
-              [System] Enter Role:
-            </span>
-            <span style={{ color: '#fff', whiteSpace: 'pre-wrap' }}>{currentCommand}</span>
-            <span className="terminal-cursor" />
-          </div>
+            <input
+              ref={inputRef}
+              type="text"
+              value={currentCommand}
+              onChange={(e) => setCurrentCommand(e.target.value)}
+              onFocus={() => {
+                setTimeout(() => {
+                  if (inputRef.current) inputRef.current.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                }, 300);
+              }}
+              style={{
+                flex: 1,
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
+                color: '#fff',
+                fontFamily: 'inherit',
+                fontSize: 'inherit',
+                padding: 0,
+                margin: 0,
+                caretColor: 'var(--sys-green)',
+                width: '100%'
+              }}
+              autoCapitalize="none"
+              autoCorrect="off"
+              spellCheck="false"
+              autoComplete="off"
+            />
+          </form>
         )}
       </div>
       
