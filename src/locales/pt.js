@@ -109,7 +109,7 @@ const pt = {
     ],
     eduTitle: 'Educação',
     edu: [
-      { degree: 'Mestrado em Engenharia de Software e DevOps', school: 'Western Governors University', date: 'Previsão de Conclusão: Junho de 2026' },
+      { degree: 'Mestrado em Engenharia de Software e DevOps', school: 'Western Governors University', date: 'Formado em 2026' },
       { degree: 'Bacharelado em Ciência da Computação', school: 'University of the People', date: 'Formado em 2024' },
       { degree: 'CS50: Introdução à Ciência da Computação', school: 'Harvard University (Online)', date: '2022' }
     ],

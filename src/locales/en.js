@@ -109,7 +109,7 @@ const en = {
     ],
     eduTitle: 'Education',
     edu: [
-      { degree: 'Master of Science in Software Engineering & DevOps', school: 'Western Governors University', date: 'Expected June 2026' },
+      { degree: 'Master of Science in Software Engineering & DevOps', school: 'Western Governors University', date: 'Graduated 2026' },
       { degree: 'Bachelor of Science in Computer Science', school: 'University of the People', date: 'Graduated 2024' },
       { degree: 'CS50: Introduction to Computer Science', school: 'Harvard University (Online)', date: '2022' }
     ],
