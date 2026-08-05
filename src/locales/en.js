@@ -109,7 +109,7 @@ const en = {
     ],
     eduTitle: 'Education',
     edu: [
-      { degree: 'Master of Science in Software Engineering & DevOps', school: 'Western Governors University', date: 'Expected June 2026' },
+      { degree: 'Master of Science in Software Engineering & DevOps', school: 'Western Governors University', date: 'Graduated 2026' },
       { degree: 'Bachelor of Science in Computer Science', school: 'University of the People', date: 'Graduated 2024' },
       { degree: 'CS50: Introduction to Computer Science', school: 'Harvard University (Online)', date: '2022' }
     ],
@@ -205,7 +205,7 @@ const en = {
       contact: 'Show contact information', clear: 'Clear terminal screen',
       gui: 'Open the graphical portfolio interface', sudo: 'Execute command with root privileges'
     },
-    about: 'Systems and Platform Engineer with strong experience in cloud-native infrastructure, DevOps automation, and enterprise systems. Currently pursuing an M.S. in Software Engineering & DevOps at WGU.',
+    about: 'Systems and Platform Engineer with strong experience in cloud-native infrastructure, DevOps automation, and enterprise systems. Completed an M.S. in Software Engineering & DevOps at WGU.',
     skills: 'Technical Skills:',
     skillsLists: {
       cloud: 'Cloud & Infrastructure', containers: 'Containers & Orchestration',

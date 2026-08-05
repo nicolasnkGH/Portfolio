@@ -714,7 +714,7 @@ document.addEventListener('DOMContentLoaded', function() {
             { text: "        /`\\_/`\\        Kernel: Nicolas Teixeira v2026.06", type: "plain" },
             { text: "       //  _  \\\\       Uptime: 8 years in Systems Tech", type: "plain" },
             { text: "      | \\_|_/ |        Shell: zsh 5.9 (Interactive CLI)", type: "plain" },
-            { text: "     /\\   `-`   /\\     Edu: M.S. Software Eng & DevOps (Expected June 2026)", type: "plain" },
+            { text: "     /\\   `-`   /\\     Edu: M.S. Software Eng & DevOps (Graduated 2026)", type: "plain" },
             { text: "     \\_/=====\\_/       Focus: Cloud-Native, IaC, MLOps, GPUs", type: "plain" },
             { text: "", type: "plain" },
             { text: "Welcome to Nicolas' interactive terminal. Type 'help' to start.", type: "info" },

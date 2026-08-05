@@ -109,7 +109,7 @@ const pt = {
     ],
     eduTitle: 'Educação',
     edu: [
-      { degree: 'Mestrado em Engenharia de Software e DevOps', school: 'Western Governors University', date: 'Previsão de Conclusão: Junho de 2026' },
+      { degree: 'Mestrado em Engenharia de Software e DevOps', school: 'Western Governors University', date: 'Formado em 2026' },
       { degree: 'Bacharelado em Ciência da Computação', school: 'University of the People', date: 'Formado em 2024' },
       { degree: 'CS50: Introdução à Ciência da Computação', school: 'Harvard University (Online)', date: '2022' }
     ],
@@ -205,7 +205,7 @@ const pt = {
       contact: 'Mostrar informações de contato', clear: 'Limpar a tela do terminal',
       gui: 'Abrir a interface gráfica do portfólio', sudo: 'Executar comando com privilégios de root'
     },
-    about: 'Engenheiro de Sistemas e Plataformas com forte experiência em infraestrutura nativa da nuvem, automação de DevOps e sistemas corporativos. Atualmente cursando um mestrado em Engenharia de Software e DevOps na WGU.',
+    about: 'Engenheiro de Sistemas e Plataformas com forte experiência em infraestrutura nativa da nuvem, automação de DevOps e sistemas corporativos. Completou um mestrado em Engenharia de Software e DevOps na WGU.',
     skills: 'Habilidades Técnicas:',
     skillsLists: {
       cloud: 'Nuvem e Infraestrutura', containers: 'Contêineres e Orquestração',
