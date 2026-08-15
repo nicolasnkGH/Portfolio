@@ -47,7 +47,7 @@ const ResumeApp = () => {
           Nicolas Teixeira
         </h1>
         <p className="contact-line" style={{ fontSize: '10.5pt', color: '#555', marginBottom: '16px' }}>
-          Columbus, OH &nbsp;|&nbsp; nicolas.teixeira@outlook.com &nbsp;|&nbsp; linkedin.com/in/nicolasdealmeidateixeira &nbsp;|&nbsp; github.com/nicolasnkGH &nbsp;|&nbsp; nick-t.net
+          Columbus, OH &nbsp;|&nbsp; careers@nick-t.net &nbsp;|&nbsp; linkedin.com/in/nicolasdealmeidateixeira &nbsp;|&nbsp; github.com/nicolasnkGH &nbsp;|&nbsp; nick-t.net
         </p>
 
         {/* Professional Summary */}
