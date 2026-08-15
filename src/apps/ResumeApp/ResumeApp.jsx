@@ -32,6 +32,20 @@ const ResumeApp = () => {
     <div style={{ height: '100%', overflow: 'auto', background: '#fff', color: '#1a1a1a', fontFamily: "'Segoe UI', Arial, sans-serif" }}>
       {/* Print/Download Bar */}
       <div style={{ position: 'sticky', top: 0, zIndex: 10, background: '#f0f0f0', padding: '8px 24px', display: 'flex', justifyContent: 'flex-end', gap: '10px', borderBottom: '1px solid #ddd' }}>
+        <a
+          href="/Nicolas_Teixeira_Systems_DevOps_Engineer.docx"
+          download
+          style={{ padding: '6px 14px', background: '#2ea44f', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+        >
+          📥 Word (EN)
+        </a>
+        <a
+          href="/Nicolas_Teixeira_Systems_DevOps_Engineer_PT.docx"
+          download
+          style={{ padding: '6px 14px', background: '#2ea44f', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+        >
+          📥 Word (PT)
+        </a>
         <button
           onClick={handlePrint}
           style={{ padding: '6px 18px', background: '#2f81f7', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 600, fontSize: '0.85rem' }}

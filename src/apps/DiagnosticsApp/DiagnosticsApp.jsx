@@ -150,7 +150,7 @@ const DiagnosticsApp = () => {
           icon={Network}
           status="running" 
           log={t('diagnostics.serviceLogs.devops')}
-          skills={['Kubernetes', 'Docker', 'Terraform', 'Ansible', 'Git', 'ZFS', 'Helm', 'Istio', 'Docker Compose']}
+          skills={['Kubernetes (EKS/AKS)', 'Podman', 'Docker', 'Proxmox VE', 'LXC', 'Terraform', 'Ansible', 'Git', 'ArgoCD', 'Trivy', 'Open Policy Agent (OPA)', 'Helm']}
           color="#58a6ff"
         />
         <ServiceCard 
@@ -158,7 +158,7 @@ const DiagnosticsApp = () => {
           icon={Cloud}
           status="running" 
           log={t('diagnostics.serviceLogs.cloud')}
-          skills={['AWS', 'Azure', 'Proxmox', 'VMware/Hyper-V', 'Hybrid/on-prem', 'AIDX Flight Feeds', 'SAM System']}
+          skills={['AWS (EKS, VPC, Route 53)', 'Transit Gateway', 'Direct Connect', 'Azure (VM, VNet, Entra ID)', 'GCP (Cloud Run)', 'VMware', 'FinOps']}
           color="#2f81f7"
         />
         <ServiceCard 
@@ -166,7 +166,7 @@ const DiagnosticsApp = () => {
           icon={Code}
           status="running" 
           log={t('diagnostics.serviceLogs.prog')}
-          skills={['Python', 'PowerShell', 'Bash', 'SQL']}
+          skills={['Python', 'Java', 'JavaScript', 'React', 'HTML/CSS', 'PowerShell', 'Bash', 'SQL', 'MySQL', 'PostgreSQL', 'Redis', 'Amazon Aurora', 'MQTT']}
           color="#3fb950"
         />
         <ServiceCard 
@@ -174,7 +174,7 @@ const DiagnosticsApp = () => {
           icon={LineChart}
           status="running" 
           log={t('diagnostics.serviceLogs.mon')}
-          skills={['Zabbix', 'Prometheus', 'Grafana', 'VPC Flow Logs']}
+          skills={['Prometheus', 'Grafana', 'Loki', 'Zabbix', 'AWS CloudWatch']}
           color="#ffc646"
         />
         <ServiceCard 
@@ -182,7 +182,7 @@ const DiagnosticsApp = () => {
           icon={Shield}
           status="running" 
           log={t('diagnostics.serviceLogs.sec')}
-          skills={['IAM/SSO', 'Keycloak', 'TLS/SSL', 'VPNs', 'VLANs', 'Firewalls', 'Wireshark', 'SIEM', 'Ubiquiti/Unifi']}
+          skills={['Keycloak', 'SAML/LDAP/AD', 'IAM (RBAC, Least Privilege)', 'SSSD / Kerberos', 'TLS', 'Cloudflare Zero-Trust (Tunnels, mTLS)', 'Secrets Management', 'UniFi', 'Technitium DNS', 'Apache Guacamole', 'Nginx Proxy Manager']}
           color="#ffc646"
         />
         <ServiceCard 
@@ -190,7 +190,7 @@ const DiagnosticsApp = () => {
           icon={Brain}
           status="running" 
           log={t('diagnostics.serviceLogs.ml')}
-          skills={['MLOps', 'GPU Acceleration', 'Ollama', 'llama.cpp', 'OpenWebUI', 'MLflow']}
+          skills={['NVIDIA CUDA/vGPU', 'LXC GPU Sharing', 'vLLM', 'sglang', 'LM Studio', 'LiteLLM', 'llama.cpp', 'MLX', 'Google Gemini API', 'Custom LLM Agents']}
           color="#eb4470"
         />
 
