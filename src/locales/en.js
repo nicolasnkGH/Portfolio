@@ -23,7 +23,7 @@ const en = {
       'guest@nick-t.net:~$ startx'
     ],
     bootComplete: '[  OK  ] Loading desktop environment...',
-    role: 'Systems & Platform Engineer',
+    role: 'Systems & DevOps Engineer',
     howToNavigate: '🖥️ How to Navigate This Portfolio',
     navDock: 'Navigation',
     navDockDesc: 'Launch apps via desktop icons, top-left Activities menu, or the responsive side dock',
@@ -41,7 +41,7 @@ const en = {
   },
   topbar: { activities: 'Activities' },
   desktop: {
-    footerRole: 'Systems & Platform Engineer — Cloud · DevOps · AI Infrastructure',
+    footerRole: 'Systems & DevOps Engineer — Cloud · DevOps · ML Platform Infrastructure',
     about: 'About', experience: 'Experience', skills: 'Skills', terminal: 'Terminal', contact: 'Contact',
     copyright: '© 2026 Nicolas Teixeira — nick-t.net',
     tooltipLink: 'Click to open · Drag to move', tooltipApp: 'Click to launch · Drag to move'
@@ -61,56 +61,65 @@ const en = {
   resume: {
     print: '🖨️ Print / Save as PDF',
     profSummaryTitle: 'Professional Summary',
-    profSummary: 'Systems & Platform Engineer with 8+ years of experience in cloud infrastructure, DevOps automation, and enterprise systems administration. Proven track record of designing scalable infrastructure for mission-critical environments, managing $30M+ projects, and leading AWS cloud migrations. Expertise in CI/CD pipeline development, Kubernetes orchestration, infrastructure as code (IaC), and cross-functional team leadership. Adept at bridging the gap between development and operations to deliver reliable, secure, and cost-effective solutions.',
+    profSummary: 'Systems & DevOps Engineer with 5+ years designing enterprise-grade, cloud-native infrastructure and GPU-accelerated environments for aviation and financial services. Orchestrates multi-million dollar infrastructure programs ($30M+) supporting global airlines (Delta, United) and airports. Highly skilled in Kubernetes orchestration, hybrid cloud migrations, high-efficiency AI/ML inference serving, zero-trust security, and infrastructure-as-code automation. Built for remote autonomy and cross-functional leadership.',
     skillsTitle: 'Technical Skills',
     skills: {
-      cloud: 'Cloud & Infrastructure', cloudDesc: 'AWS (EC2, S3, IAM, CloudFormation), Azure, Proxmox VE, VMware, Hyper-V',
-      containers: 'Containers & Orchestration', containersDesc: 'Docker, Kubernetes, Helm, Container Registry Management',
-      cicd: 'CI/CD & Automation', cicdDesc: 'Azure DevOps, GitHub Actions, Jenkins, Terraform, Ansible, PowerShell, Bash',
-      os: 'Operating Systems', osDesc: 'Linux (RHEL, Ubuntu, Debian), Windows Server 2016–2022',
-      net: 'Networking & Security', netDesc: 'DNS, DHCP, VPN, SSL/TLS, IAM, SSO, Firewall Configuration, TCP/IP',
-      mon: 'Monitoring & Observability', monDesc: 'Grafana, Prometheus, ELK Stack, Nagios',
-      db: 'Databases', dbDesc: 'PostgreSQL, MySQL, MongoDB, SQL Server, High-Availability Clustering',
-      prog: 'Programming', progDesc: 'Python, JavaScript/TypeScript, React, Node.js, Go, Java, C',
+      cloud: 'Cloud & Platform', cloudDesc: 'AWS (EKS, VPC, Route 53, Transit Gateway, Direct Connect), Azure (VM, VNet, NSG, Entra ID), Google Cloud (GCP), VMware, Terraform, Ansible, FinOps',
+      containers: 'Containers, OS & Virt', containersDesc: 'Kubernetes (EKS, AKS, Helm, kubectl, k9s, Lens IDE, Traefik, NGINX Ingress, MetalLB), Podman, Docker, Proxmox VE, LXC, Linux (RHEL, Ubuntu), Systemd, ZFS, PCIe GPU Passthrough',
+      cicd: 'CI/CD & Tools', cicdDesc: 'Git, GitHub Actions, GitLab CI, Jenkins, Azure DevOps, ArgoCD, Trivy, Open Policy Agent (OPA), Terraform, Ansible',
+      os: 'Operating Systems', osDesc: 'Linux (RHEL, Ubuntu), Systemd, ZFS, PCIe GPU Passthrough, Windows Server',
+      net: 'Security & Net', netDesc: 'Keycloak, SAML/LDAP/AD, IAM (RBAC, Least Privilege), SSSD / Kerberos, TLS, Cloudflare Zero-Trust (Tunnels, mTLS), Secrets Management (AWS/Azure/GitHub Secrets, HashiCorp Vault), UniFi, Technitium DNS, Apache Guacamole, Nginx Proxy Manager, network segmentation',
+      mon: 'Observability & Monitoring', monDesc: 'Prometheus, Grafana, Loki, Zabbix, AWS CloudWatch',
+      db: 'Languages, DBs & APIs', dbDesc: 'Python, Java, JavaScript, React, HTML/CSS, PowerShell, Bash, SQL, MySQL, PostgreSQL, Redis, Amazon Aurora, MQTT, API Design & Integration',
+      prog: 'Programming & Logic', progDesc: 'Python, Java, JavaScript, React, HTML/CSS, Bash, PowerShell, SQL',
       tools: 'Collaboration & Tools', toolsDesc: 'Git, Jira, Confluence, ServiceNow, Agile/Scrum'
     },
     expTitle: 'Professional Experience',
     jobs: [
       {
-        title: 'Systems Engineer', company: 'ADB Safegate', location: 'Columbus, OH', date: 'April 2023 – Present',
+        title: 'System Engineer', company: 'ADB Safegate', location: 'Columbus, OH', date: 'April 2023 – Present',
         bullets: [
-          'Designed and deployed secure, scalable infrastructure for mission-critical airport operations systems across multiple international airports',
-          'Built and managed CI/CD pipelines with Azure DevOps, streamlining deployment cadence and reducing release cycle time by 40%',
-          'Configured high-availability clusters for databases and identity management systems (IAM, SSO, SSL), achieving 99.9% uptime',
-          'Led AWS cloud migration for Delta Airlines, ensuring zero-downtime transition of a critical on-premise system to cloud infrastructure',
-          'Directed a $30M United Airlines infrastructure project, managing cross-functional engineering teams through full project lifecycle',
-          'Deployed and maintained Windows Server, Linux, and Kubernetes environments across bare-metal, VM, and cloud platforms',
-          'Developed a new wireless system architecture, saving 1 hour/day in field setup time and enabling remote diagnostics capabilities'
+          'Directed technical execution of a $30M+ infrastructure program for United Airlines, architecting resilient real-time solutions supporting flight operations and turnaround optimization across major international hubs.',
+          'Led migrations from on-premises systems to AWS using Terraform; architected custom VPC topologies, Transit Gateway, Route 53 routing, and hybrid connectivity (Direct Connect) applying Least Privilege/RBAC access principles and IAM roles to ensure compliance, high availability, and FinOps cost allocation.',
+          'Architected and packaged a containerized Kubernetes-based testing environment (WSL, Podman, Ansible) to enable standardized local deployments for distributed customer teams, reducing configuration drift.',
+          'Designed Keycloak identity layer with SAML/LDAP protocols and SSSD/Kerberos integration to connect Active Directory instances, securing enterprise single sign-on (SSO).',
+          'Delivered advanced technical training and system handovers to airport operators and air traffic control staff for SmartDock automated parking systems.',
+          'Mentored and trained internal engineering teams on Kubernetes administration, deep observability stacks (Prometheus, Grafana, Loki), and structured incident response playbooks.',
+          'Architected and deployed a ruggedized, edge-computing 5G remote monitoring solution at Nice Airport, utilizing mini-PCs and Tailscale reverse proxies to achieve 99.9% uptime over a 12-month pilot.',
+          'Automated Azure virtual infrastructure provisioning via GitHub Actions and PowerShell, implementing schedule-based teardowns and FinOps practices that reduced non-production cloud spend by 30%.',
+          'Built automated integration testing frameworks (using Postman/Newman) for real-time Airport Operational Database (AODB) feeds, validating mission-critical integrations (FAT/SAT) for Delta and United.'
         ]
       },
       {
-        title: 'Product Support Specialist', company: 'LPL Financial', location: 'San Diego, CA', date: 'August 2021 – April 2023',
+        title: 'Product Support Specialist & Senior Tech Support Representative', company: 'LPL Financial', location: 'San Diego, CA', date: 'August 2021 – April 2023',
         bullets: [
-          'Provided Tier 2/3 support for 4 proprietary financial trading platforms, maintaining high reliability for 500+ financial advisors',
-          'Partnered with escalation engineering teams to resolve high-priority incidents under strict SLA timelines (95%+ SLA adherence)',
-          'Maintained comprehensive service records for regulatory compliance, audit readiness, and knowledge base documentation',
-          'Reduced recurring support issues by 25% through process refinement initiatives and root cause analysis workflows'
+          'Supported high-availability financial trading platforms under strict SLA and regulatory compliance requirements.',
+          'Partnered with engineering teams to resolve complex production incidents; implemented preventive measures and root-cause workflows reducing recurring issues by 25%.'
         ]
       },
       {
-        title: 'Technical Support Specialist II', company: 'Express Hospitality Inc.', location: 'San Diego, CA', date: 'July 2018 – July 2021',
+        title: 'Technical Support Specialist II (Contract)', company: 'Express Hospitality', location: 'San Diego, CA', date: 'October 2020 – July 2021',
         bullets: [
-          'Managed provisioning, installation, and maintenance of enterprise hardware and software systems across multiple locations',
-          'Configured workstations and streamlined IT onboarding process, reducing new hire setup time by 30%',
-          'Ensured infrastructure uptime through proactive system monitoring, LAN/WAN maintenance, and preventive maintenance schedules',
-          'Delivered on-site and remote troubleshooting for 200+ users, reducing average ticket resolution time by 20%'
+          'Provisioned and maintained enterprise IT hardware/software; streamlined onboarding workflows to reduce setup times by 30%.'
+        ]
+      },
+      {
+        title: 'Technical Support Specialist', company: 'The Wood Group SD', location: 'San Diego, CA', date: 'May 2020 – October 2020',
+        bullets: [
+          'Led comprehensive IT infrastructure overhauls during operational shutdowns, installing surveillance networks and remote printer environments.'
+        ]
+      },
+      {
+        title: 'Technical Support Specialist', company: 'Express Hospitality', location: 'San Diego, CA', date: 'July 2018 – March 2020',
+        bullets: [
+          'Configured workstations and managed LAN/WAN network health to support remote and on-site productivity for 200+ users.'
         ]
       }
     ],
     eduTitle: 'Education',
     edu: [
-      { degree: 'Master of Science in Software Engineering & DevOps', school: 'Western Governors University', date: 'Graduated 2026' },
-      { degree: 'Bachelor of Science in Computer Science', school: 'University of the People', date: 'Graduated 2024' },
+      { degree: 'Master of Science in Software Engineering & DevOps', school: 'Western Governors University', date: 'Graduated June 2026' },
+      { degree: 'Bachelor of Science in Computer Science', school: 'University of the People', date: 'Graduated August 2024' },
       { degree: 'CS50: Introduction to Computer Science', school: 'Harvard University (Online)', date: '2022' }
     ],
     projTitle: 'Key Projects',
@@ -128,8 +137,8 @@ const en = {
     projectsDesc: 'A selection of projects showcasing expertise in infrastructure automation, cloud deployment, and systems engineering',
     about: {
       profMode: 'Professional', persMode: 'Personal',
-      profTitle: 'Systems & Platform Engineer',
-      profDesc1: 'Systems and Platform Engineer with strong experience designing, deploying, and operating cloud-native infrastructure for data-intensive and event-driven systems. Recently focused on enabling AI and ML workloads through self-hosted inference platforms, GPU acceleration, observability, and performance optimization.',
+      profTitle: 'Systems & DevOps Engineer',
+      profDesc1: 'Systems and DevOps Engineer with strong experience designing, deploying, and operating cloud-native infrastructure for data-intensive and event-driven systems. Recently focused on enabling AI and ML workloads through self-hosted inference platforms, GPU acceleration, observability, and performance optimization.',
       profDesc2: "I'm passionate about self-hosted solutions and building efficient infrastructure at home – practicing what I preach. When I'm not working on enterprise systems, I'm experimenting with local LLMs and optimizing my home lab.",
       cloudNative: 'Cloud-Native & Event-Driven',
       cloudNativeDesc: 'Designing, deploying, and operating scalable infrastructure for data-intensive systems.',
@@ -137,8 +146,8 @@ const en = {
       aiMlDesc: 'Self-hosted inference platforms, GPU acceleration, observability, and performance optimization.',
       persTitle: 'Beyond the Terminal',
       persDesc1: 'I am originally from the most beautiful city in the world: Rio de Janeiro, Brazil - land of churrasco, samba, and the greatest futebol nation on earth.',
-      persDesc2: 'My path to tech has been anything but traditional. I played competitive soccer until I was 21, but when my body started feeling like it was 80, I knew it was time to pivot. Naturally, I joined the Brazilian Marine Corps for three years. Even then, I couldn\'t hide my inner nerd - my squad nicknamed me "Bill Gates". After the military, I jumped into the oil and gas industry as a Quality Inspector.',
-      persDesc3: 'Still not satisfied, I moved to the USA to pursue my actual dream: mastering the English language and launching my career in tech.',
+      persDesc2: "My path to tech has been anything but traditional. I played competitive soccer until I was 21, but when my body started feeling like it was 80, I knew it was time to pivot. Naturally, I joined the Brazilian Marine Corps for three years. Even then, I couldn't hide my inner nerd - my squad nicknamed me \"Bill Gates\". After the military, I jumped into the oil and gas industry as a Quality Inspector.",
+      persDesc3: "Still not satisfied, I moved to the USA to pursue my actual dream: mastering the English language and launching my career in tech.",
       hobbiesTitle: 'Offline Hobbies',
       hobbies: [ 'Futebol (Flamengo)', 'Gym', 'Home Labbing', 'Churrasco', 'Astronomy' ]
     },
@@ -154,7 +163,7 @@ const en = {
       viewMore: 'View More Projects on GitHub',
       stargazerDesc: 'Astronomical dashboard featuring a live night-vision planetarium map, ISS tracking, and an AI-powered seeing forecast.',
       aiStackTitle: 'Private AI Stack',
-      aiStackDesc: 'Self-hosted AI inference platform with GPU acceleration, local LLMs, and secure remote access.',
+      aiStackDesc: 'To review system architectures, Proxmox VE & LXC deployments (ZFS storage pools, PCIe GPU passthrough), Terraform modules, and machine learning platform configurations (vLLM, LiteLLM, Redis, and Open Policy Agent), please visit: github.com/nicolasnkGH',
       proxmoxTitle: 'Proxmox Automation',
       proxmoxDesc: 'Automated deployment and maintenance scripts for Proxmox VE environments with cluster provisioning.',
       labNetTitle: 'Lab Networking',
@@ -197,7 +206,7 @@ const en = {
     }
   },
   terminal: {
-    welcome: 'Welcome to Nicolas\' interactive terminal. Type \'help\' to start.',
+    welcome: "Welcome to Nicolas' interactive terminal. Type 'help' to start.",
     help: {
       desc: 'Available commands:',
       help: 'Show this help message', about: 'Display information about me',
@@ -205,7 +214,7 @@ const en = {
       contact: 'Show contact information', clear: 'Clear terminal screen',
       gui: 'Open the graphical portfolio interface', sudo: 'Execute command with root privileges'
     },
-    about: 'Systems and Platform Engineer with strong experience in cloud-native infrastructure, DevOps automation, and enterprise systems. Completed an M.S. in Software Engineering & DevOps at WGU.',
+    about: "Systems and DevOps Engineer with strong experience in cloud-native infrastructure, DevOps automation, and enterprise systems. Graduated WGU M.S. in Software Engineering & DevOps.",
     skills: 'Technical Skills:',
     skillsLists: {
       cloud: 'Cloud & Infrastructure', containers: 'Containers & Orchestration',

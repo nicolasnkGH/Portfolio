@@ -23,7 +23,7 @@ const pt = {
       'guest@nick-t.net:~$ startx'
     ],
     bootComplete: '[  OK  ] Carregando ambiente de desktop...',
-    role: 'Engenheiro de Sistemas & Plataformas',
+    role: 'Engenheiro de Sistemas & DevOps',
     howToNavigate: '🖥️ Como Navegar Neste Portfólio',
     navDock: 'Navegação',
     navDockDesc: 'Abra os apps usando os ícones do desktop, menu Atividades ou a barra lateral responsiva',
@@ -41,7 +41,7 @@ const pt = {
   },
   topbar: { activities: 'Atividades' },
   desktop: {
-    footerRole: 'Engenheiro de Sistemas & Plataformas — Cloud · DevOps · Infraestrutura de IA',
+    footerRole: 'Engenheiro de Sistemas & DevOps — Nuvem · DevOps · Infraestrutura de Plataforma de ML',
     about: 'Sobre', experience: 'Experiência', skills: 'Habilidades', terminal: 'Terminal', contact: 'Contato',
     copyright: '© 2026 Nicolas Teixeira — nick-t.net',
     tooltipLink: 'Clique para abrir · Arraste para mover', tooltipApp: 'Clique para iniciar · Arraste para mover'
@@ -61,17 +61,17 @@ const pt = {
   resume: {
     print: '🖨️ Imprimir / Salvar como PDF',
     profSummaryTitle: 'Resumo Profissional',
-    profSummary: 'Engenheiro de Sistemas e Plataformas com mais de 8 anos de experiência em infraestrutura de nuvem, automação DevOps e administração de sistemas corporativos. Histórico comprovado no design de infraestrutura escalável para ambientes de missão crítica, gerenciamento de projetos de mais de US$ 30 milhões e liderança de migrações para a nuvem da AWS. Especialista no desenvolvimento de pipelines CI/CD, orquestração de Kubernetes, infraestrutura como código (IaC) e liderança de equipes multifuncionais. Habilidoso em conectar as áreas de desenvolvimento e operações para entregar soluções confiáveis, seguras e econômicas.',
+    profSummary: 'Engenheiro de Sistemas e DevOps com mais de 5 anos de experiência no design de infraestrutura corporativa nativa de nuvem e ambientes acelerados por GPU para aviação e serviços financeiros. Orquestra programas de infraestrutura multimilionários (mais de US$ 30 milhões) para companhias aéreas globais (Delta, United) e aeroportos. Altamente qualificado em orquestração de Kubernetes, migrações de nuvem híbrida, inferência de IA/ML de alta eficiência, segurança de confiança zero e automação de infraestrutura como código. Preparado para autonomia remota e liderança multifuncional.',
     skillsTitle: 'Habilidades Técnicas',
     skills: {
-      cloud: 'Nuvem & Infraestrutura', cloudDesc: 'AWS (EC2, S3, IAM, CloudFormation), Azure, Proxmox VE, VMware, Hyper-V',
-      containers: 'Contêineres & Orquestração', containersDesc: 'Docker, Kubernetes, Helm, Gerenciamento de Registry de Contêineres',
-      cicd: 'CI/CD & Automação', cicdDesc: 'Azure DevOps, GitHub Actions, Jenkins, Terraform, Ansible, PowerShell, Bash',
-      os: 'Sistemas Operacionais', osDesc: 'Linux (RHEL, Ubuntu, Debian), Windows Server 2016–2022',
-      net: 'Redes & Segurança', netDesc: 'DNS, DHCP, VPN, SSL/TLS, IAM, SSO, Configuração de Firewall, TCP/IP',
-      mon: 'Monitoramento & Observabilidade', monDesc: 'Grafana, Prometheus, Stack ELK, Nagios',
-      db: 'Bancos de Dados', dbDesc: 'PostgreSQL, MySQL, MongoDB, SQL Server, Clusterização de Alta Disponibilidade',
-      prog: 'Programação', progDesc: 'Python, JavaScript/TypeScript, React, Node.js, Go, Java, C',
+      cloud: 'Nuvem & Plataforma', cloudDesc: 'AWS (EKS, VPC, Route 53, Transit Gateway, Direct Connect), Azure (VM, VNet, NSG, Entra ID), Google Cloud (GCP), VMware, Terraform, Ansible, FinOps',
+      containers: 'Contêineres, OS & Virt', containersDesc: 'Kubernetes (EKS, AKS, Helm, kubectl, k9s, Lens IDE, Traefik, NGINX Ingress, MetalLB), Podman, Docker, Proxmox VE, LXC, Linux (RHEL, Ubuntu), Systemd, ZFS, PCIe GPU Passthrough',
+      cicd: 'CI/CD & Ferramentas', cicdDesc: 'Git, GitHub Actions, GitLab CI, Jenkins, Azure DevOps, ArgoCD, Trivy, Open Policy Agent (OPA), Terraform, Ansible',
+      os: 'Sistemas Operacionais', osDesc: 'Linux (RHEL, Ubuntu), Systemd, ZFS, PCIe GPU Passthrough, Windows Server',
+      net: 'Redes & Segurança', netDesc: 'Keycloak, SAML/LDAP/AD, IAM (RBAC, Least Privilege), SSSD / Kerberos, TLS, Cloudflare Zero-Trust (Tunnels, mTLS), Secrets Management (AWS/Azure/GitHub Secrets, HashiCorp Vault), UniFi, Technitium DNS, Apache Guacamole, Nginx Proxy Manager, segmentação de rede',
+      mon: 'Monitoramento & Observabilidade', monDesc: 'Prometheus, Grafana, Loki, Zabbix, AWS CloudWatch',
+      db: 'Linguagens, Bancos de Dados & APIs', dbDesc: 'Python, Java, JavaScript, React, HTML/CSS, PowerShell, Bash, SQL, MySQL, PostgreSQL, Redis, Amazon Aurora, MQTT, Design & Integração de APIs',
+      prog: 'Programação', progDesc: 'Python, Java, JavaScript, React, HTML/CSS, Bash, PowerShell, SQL',
       tools: 'Colaboração & Ferramentas', toolsDesc: 'Git, Jira, Confluence, ServiceNow, Agile/Scrum'
     },
     expTitle: 'Experiência Profissional',
@@ -79,38 +79,47 @@ const pt = {
       {
         title: 'Engenheiro de Sistemas', company: 'ADB Safegate', location: 'Columbus, OH', date: 'Abril de 2023 – Presente',
         bullets: [
-          'Projetou e implantou infraestrutura segura e escalável para sistemas de operações aeroportuárias de missão crítica em vários aeroportos internacionais',
-          'Criou e gerenciou pipelines CI/CD com Azure DevOps, simplificando a cadência de implantação e reduzindo o tempo do ciclo de lançamento em 40%',
-          'Configurou clusters de alta disponibilidade para bancos de dados e sistemas de gerenciamento de identidade (IAM, SSO, SSL), alcançando 99,9% de tempo de atividade',
-          'Liderou a migração para a nuvem da AWS da Delta Airlines, garantindo a transição sem tempo de inatividade de um sistema local crítico para a infraestrutura em nuvem',
-          'Dirigiu um projeto de infraestrutura de US$ 30 milhões da United Airlines, gerenciando equipes de engenharia multifuncionais em todo o ciclo de vida do projeto',
-          'Implantou e manteve ambientes Windows Server, Linux e Kubernetes em plataformas bare-metal, VM e nuvem',
-          'Desenvolveu uma nova arquitetura de sistema sem fio, economizando 1 hora/dia em tempo de configuração em campo e permitindo recursos de diagnóstico remoto'
+          'Dirigiu a execução técnica de um programa de infraestrutura de mais de US$ 30 milhões da United Airlines, projetando soluções resilientes em tempo real para operações de voo e otimização de turnaround em hubs internacionais.',
+          'Liderou migrações de sistemas locais para a AWS usando Terraform; projetou topologias VPC personalizadas, Transit Gateway, roteamento Route 53 e conectividade híbrida (Direct Connect) aplicando princípios de privilégio mínimo/RBAC e funções IAM para garantir conformidade, alta disponibilidade e alocação de custos FinOps.',
+          'Projetou e empacotou um ambiente de teste conteinerizado baseado em Kubernetes (WSL, Podman, Ansible) para permitir implantações locais padronizadas para equipes de clientes distribuídas, reduzindo o desvio de configuração.',
+          'Projetou a camada de identidade do Keycloak com protocolos SAML/LDAP e integração SSSD/Kerberos para conectar instâncias do Active Directory, garantindo single sign-on (SSO) corporativo.',
+          'Entregou treinamento técnico avançado e passagens de sistema para operadores de aeroportos e equipes de controle de tráfego aéreo para sistemas automatizados de estacionamento SmartDock.',
+          'Treinou e mentoreou equipes internas de engenharia em administração de Kubernetes, pilhas de observabilidade profunda (Prometheus, Grafana, Loki) e guias de resposta a incidentes.',
+          'Projetou e implantou uma solução robusta de monitoramento remoto 5G em Nice Airport usando mini-PCs e proxies reversos Tailscale, alcançando 99,9% de tempo de atividade em um piloto de 12 meses.',
+          'Automatizou o provisionamento de infraestrutura virtual do Azure via GitHub Actions e PowerShell, implementando rotinas de exclusão programada e práticas de FinOps que reduziram os gastos em nuvem não produtivos em 30%.',
+          'Construiu frameworks automatizados de teste de integração (Postman/Newman) para feeds em tempo real do Banco de Dados Operacional do Aeroporto (AODB), validando integrações críticas para Delta e United.'
         ]
       },
       {
         title: 'Especialista em Suporte a Produtos', company: 'LPL Financial', location: 'San Diego, CA', date: 'Agosto de 2021 – Abril de 2023',
         bullets: [
-          'Forneceu suporte Nível 2/3 para 4 plataformas proprietárias de negociação financeira, mantendo alta confiabilidade para mais de 500 consultores financeiros',
-          'Atuou em parceria com equipes de engenharia para resolver incidentes de alta prioridade sob rígidos prazos de SLA (mais de 95% de adesão aos SLAs)',
-          'Manteve registros de serviço abrangentes para conformidade regulatória, preparação para auditorias e documentação da base de conhecimento',
-          'Reduziu problemas de suporte recorrentes em 25% por meio de iniciativas de refinamento de processos e fluxos de análise de causa raiz'
+          'Prestou suporte a plataformas de negociação financeira de alta disponibilidade sob rígidos SLAs e requisitos de conformidade regulatória.',
+          'Atuou em parceria com equipes de engenharia para resolver incidentes de produção complexos; implementou medidas preventivas e fluxos de causa raiz, reduzindo incidentes recorrentes em 25%.'
         ]
       },
       {
-        title: 'Especialista em Suporte Técnico II', company: 'Express Hospitality Inc.', location: 'San Diego, CA', date: 'Julho de 2018 – Julho de 2021',
+        title: 'Especialista em Suporte Técnico II (Contrato)', company: 'Express Hospitality', location: 'San Diego, CA', date: 'Outubro de 2020 – Julho de 2021',
         bullets: [
-          'Gerenciou provisionamento, instalação e manutenção de sistemas corporativos de hardware e software em diversas localidades',
-          'Configurou estações de trabalho e simplificou o processo de integração de TI, reduzindo o tempo de configuração de novas contratações em 30%',
-          'Garantiu o tempo de atividade da infraestrutura por meio do monitoramento proativo de sistemas, manutenção de LAN/WAN e rotinas de manutenção preventiva',
-          'Forneceu solução de problemas no local e remotamente para mais de 200 usuários, reduzindo o tempo médio de resolução de tickets em 20%'
+          'Provisionou e manteve hardware/software de TI corporativo; simplificou fluxos de trabalho de integração para reduzir o tempo de configuração em 30%.'
+        ]
+      },
+      {
+        title: 'Especialista em Suporte Técnico', company: 'The Wood Group SD', location: 'San Diego, CA', date: 'Maio de 2020 – Outubro de 2020',
+        bullets: [
+          'Liderou reformas abrangentes de infraestrutura de TI durante paralisações operacionais, instalando redes de câmeras de segurança e ambientes de impressão remota.'
+        ]
+      },
+      {
+        title: 'Especialista em Suporte Técnico', company: 'Express Hospitality', location: 'San Diego, CA', date: 'Julho de 2018 – Março de 2020',
+        bullets: [
+          'Configurou estações de trabalho e gerenciou a integridade da rede LAN/WAN para apoiar a produtividade remota e local de mais de 200 usuários.'
         ]
       }
     ],
     eduTitle: 'Educação',
     edu: [
-      { degree: 'Mestrado em Engenharia de Software e DevOps', school: 'Western Governors University', date: 'Formado em 2026' },
-      { degree: 'Bacharelado em Ciência da Computação', school: 'University of the People', date: 'Formado em 2024' },
+      { degree: 'Mestrado em Engenharia de Software e DevOps', school: 'Western Governors University', date: 'Formado em Junho de 2026' },
+      { degree: 'Bacharelado em Ciência da Computação', school: 'University of the People', date: 'Formado em Agosto de 2024' },
       { degree: 'CS50: Introdução à Ciência da Computação', school: 'Harvard University (Online)', date: '2022' }
     ],
     projTitle: 'Principais Projetos',
@@ -122,82 +131,82 @@ const pt = {
   },
   browser: {
     tabs: {
-      about: 'Sobre Mim', education: 'Educação', skills: 'Habilidades', projects: 'Projetos', resume: 'Currículo'
+      about: 'Sobre', education: 'Educação', skills: 'Habilidades', projects: 'Projetos', resume: 'Currículo'
     },
     projectsTitle: 'Projetos em Destaque',
-    projectsDesc: 'Uma seleção de projetos demonstrando expertise em automação de infraestrutura, implantação em nuvem e engenharia de sistemas',
+    projectsDesc: 'Uma seleção de projetos que demonstram experiência em automação de infraestrutura, implantação em nuvem e engenharia de sistemas',
     about: {
       profMode: 'Profissional', persMode: 'Pessoal',
-      profTitle: 'Engenheiro de Sistemas & Plataformas',
-      profDesc1: 'Engenheiro de Sistemas e Plataformas com forte experiência em projetar, implantar e operar infraestrutura nativa em nuvem para sistemas com uso intenso de dados e orientados a eventos. Recentemente focado em habilitar cargas de trabalho de IA e ML por meio de plataformas de inferência auto-hospedadas, aceleração de GPU, observabilidade e otimização de desempenho.',
-      profDesc2: 'Sou apaixonado por soluções auto-hospedadas e por construir infraestrutura eficiente em casa – praticando o que prego. Quando não estou trabalhando em sistemas corporativos, estou experimentando LLMs locais e otimizando meu home lab.',
-      cloudNative: 'Nativo em Nuvem & Orientado a Eventos',
-      cloudNativeDesc: 'Projetando, implantando e operando infraestrutura escalável para sistemas com uso intenso de dados.',
+      profTitle: 'Engenheiro de Sistemas & DevOps',
+      profDesc1: 'Engenheiro de Sistemas e DevOps com forte experiência no design, implantação e operação de infraestrutura nativa de nuvem para sistemas intensivos de dados e orientados a eventos. Recentemente focado em habilitar cargas de trabalho de IA e ML por meio de plataformas de inferência auto-hospedadas, aceleração de GPU, observabilidade e otimização de desempenho.',
+      profDesc2: 'Sou apaixonado por soluções auto-hospedadas e por construir uma infraestrutura eficiente em casa – praticando o que prego. Quando não estou trabalhando em sistemas corporativos, estou experimentando LLMs locais e otimizando meu laboratório doméstico.',
+      cloudNative: 'Nativo de Nuvem & Orientado a Eventos',
+      cloudNativeDesc: 'Projetando, implantando e operando infraestrutura escalável para sistemas com uso intensivo de dados.',
       aiMl: 'Habilitação de IA & ML',
       aiMlDesc: 'Plataformas de inferência auto-hospedadas, aceleração de GPU, observabilidade e otimização de desempenho.',
       persTitle: 'Além do Terminal',
-      persDesc1: 'Sou originalmente da cidade mais linda do mundo: Rio de Janeiro, Brasil - terra do churrasco, do samba e da maior nação de futebol da terra.',
-      persDesc2: 'Meu caminho para a tecnologia foi tudo menos tradicional. Joguei futebol profissionalmente até os 21 anos, mas quando meu corpo começou a parecer ter 80 anos, percebi que era hora de mudar. Naturalmente, me juntei ao Corpo de Fuzileiros Navais do Brasil por três anos. Mesmo lá, eu não conseguia esconder meu lado nerd - meu esquadrão me chamava de "Bill Gates". Depois do serviço militar, pulei para a indústria de óleo e gás como Inspetor de Qualidade.',
-      persDesc3: 'Ainda não satisfeito, me mudei para os EUA para buscar meu verdadeiro sonho: dominar a língua inglesa e lançar minha carreira em tecnologia.',
+      persDesc1: 'Sou originalmente da cidade mais bonita do mundo: Rio de Janeiro, Brasil - terra do churrasco, do samba e da maior nação de futebol da terra.',
+      persDesc2: "Minha trajetória para a tecnologia foi tudo menos tradicional. Joguei futebol competitivo até os 21 anos, mas quando meu corpo começou a parecer que tinha 80, soube que era hora de mudar. Naturalmente, me juntei ao Corpo de Fuzileiros Navais do Brasil por três anos. Mesmo assim, não conseguia esconder meu nerd interior - meu esquadrão me apelidou de \"Bill Gates\". Depois do exército, entrei na indústria de petróleo e gás como Inspetor de Qualidade.",
+      persDesc3: 'Ainda não satisfeito, mudei-me para os EUA para perseguir meu sonho real: dominar a língua inglesa e lançar minha carreira na tecnologia.',
       hobbiesTitle: 'Hobbies Offline',
       hobbies: [ 'Futebol (Flamengo)', 'Academia', 'Home Labbing', 'Churrasco', 'Astronomia' ]
     },
     skills: {
-      devopsDesc: 'devops.service - Sistemas de contêineres e orquestração totalmente operacionais.',
+      devopsDesc: 'devops.service - Sistemas de contêiner e orquestração totalmente operacionais.',
       cloudDesc: 'cloud-platforms.service - Conexão multi-nuvem ativa.',
-      progDesc: 'programming.service - Processos de compilação Python ativados.',
-      monDesc: 'monitoring.service - Prometheus coletando métricas de telemetria.',
+      progDesc: 'programming.service - Processos de compilação de Python ativados.',
+      monDesc: 'monitoring.service - Raspagem de métricas de telemetria pelo Prometheus.',
       running: 'em execução'
     },
     projects: {
-      live: 'Ao Vivo', repo: 'Repositório', viewRepo: 'Ver Repositório',
-      viewMore: 'Ver Mais Projetos no GitHub',
-      stargazerDesc: 'Painel astronômico com mapa do planetário de visão noturna ao vivo, rastreamento da ISS e uma previsão orientada por IA.',
-      aiStackTitle: 'Stack Privada de IA',
-      aiStackDesc: 'Plataforma de inferência de IA auto-hospedada com aceleração de GPU, LLMs locais e acesso remoto seguro.',
+      live: 'Live', repo: 'Repo', viewRepo: 'Ver Repo',
+      viewMore: 'Ver mais projetos no GitHub',
+      stargazerDesc: 'Dashboard astronômico com mapa planetário de visão noturna ao vivo, rastreamento de ISS e previsão meteorológica por IA.',
+      aiStackTitle: 'Infr. de IA Privada',
+      aiStackDesc: 'Para revisar arquiteturas de sistema, implantações de Proxmox VE & LXC (pools de armazenamento ZFS, passthrough de GPU PCIe), módulos do Terraform e configurações de plataforma de aprendizado de máquina (vLLM, LiteLLM, Redis e Open Policy Agent), visite: github.com/nicolasnkGH',
       proxmoxTitle: 'Automação Proxmox',
       proxmoxDesc: 'Scripts de implantação e manutenção automatizados para ambientes Proxmox VE com provisionamento de cluster.',
-      labNetTitle: 'Redes de Laboratório',
+      labNetTitle: 'Rede do Laboratório',
       labNetDesc: 'Roteamento personalizado, segregação de VLAN, políticas de firewall pfSense e infraestrutura de monitoramento.'
     }
   },
   contact: {
     title: 'Contate-me',
-    desc: 'Entre em contato por e-mail ou conecte-se nas plataformas sociais.',
+    desc: 'Entre em contato por e-mail ou conecte-se em plataformas sociais.',
     email: 'careers@nick-t.net',
     copy: 'Copiar',
     copied: 'Copiado!',
-    emailLabel: 'Email',
-    hire: 'Disponível para contratação | Responsivo em até 24 horas',
-    sendMsg: 'Enviar uma Mensagem',
+    emailLabel: 'E-mail',
+    hire: 'Disponível para contratação | Resposta em até 24 horas',
+    sendMsg: 'Enviar Mensagem',
     name: 'Nome',
     namePlaceholder: 'João Silva',
-    emailAddr: 'Endereço de Email',
+    emailAddr: 'Endereço de E-mail',
     emailPlaceholder: 'joao@exemplo.com',
-    message: 'Mensagem',
+    message: 'Message',
     msgPlaceholder: 'Olá Nicolas...',
     sendBtn: 'Enviar via Formspree'
   },
   diagnostics: {
     skillsDist: 'Distribuição de Habilidades',
     systemTelemetry: 'Telemetria do Sistema',
-    cpu: 'Uso da CPU (Orquestração/IaC)',
+    cpu: 'Uso de CPU (Orchestração/IaC)',
     mem: 'Alocação de Memória (Programação/Bancos de Dados)',
     net: 'Carga de Rede (Nuvem/Segurança)',
     services: 'Serviços',
     loadAvg: 'Média de Carga',
     failures: 'Falhas',
     serviceLogs: {
-      devops: '● devops.service - Sistemas de contêineres e orquestração operacionais.',
+      devops: '● devops.service - Sistemas de contêiner e orquestração totalmente operacionais.',
       cloud: '● cloud-platforms.service - Conexão multi-nuvem ativa.',
-      prog: '● programming.service - Processos de compilação Python ativados.',
-      mon: '● monitoring.service - Prometheus coletando métricas de telemetria.',
-      sec: '● security.service - Firewalls e políticas de SSO aplicadas.',
+      prog: '● programming.service - Processos de compilação de Python ativados.',
+      mon: '● monitoring.service - Raspagem de métricas de telemetria pelo Prometheus.',
+      sec: '● security.service - Regras de firewall e políticas SSO aplicadas.',
       ml: '● mlops-ai.service - Drivers de GPU carregados, camadas de inferência prontas.'
     }
   },
   terminal: {
-    welcome: 'Bem-vindo ao terminal interativo de Nicolas. Digite \'help\' para começar.',
+    welcome: "Bem-vindo ao terminal interativo do Nicolas. Digite 'help' para começar.",
     help: {
       desc: 'Comandos disponíveis:',
       help: 'Mostrar esta mensagem de ajuda', about: 'Exibir informações sobre mim',
@@ -205,17 +214,17 @@ const pt = {
       contact: 'Mostrar informações de contato', clear: 'Limpar a tela do terminal',
       gui: 'Abrir a interface gráfica do portfólio', sudo: 'Executar comando com privilégios de root'
     },
-    about: 'Engenheiro de Sistemas e Plataformas com forte experiência em infraestrutura nativa da nuvem, automação de DevOps e sistemas corporativos. Completou um mestrado em Engenharia de Software e DevOps na WGU.',
+    about: 'Engenheiro de Sistemas e DevOps com forte experiência em infraestrutura nativa de nuvem, automação DevOps e sistemas corporativos. Formado em Mestrado (M.S.) em Engenharia de Software & DevOps na WGU.',
     skills: 'Habilidades Técnicas:',
     skillsLists: {
-      cloud: 'Nuvem e Infraestrutura', containers: 'Contêineres e Orquestração',
-      cicd: 'CI/CD e Automação', db: 'Bancos de Dados e Ferramentas', prog: 'Programação'
+      cloud: 'Nuvem & Infraestrutura', containers: 'Contêineres & Orquestração',
+      cicd: 'CI/CD & Automação', db: 'Bancos de Dados & Ferramentas', prog: 'Programação'
     },
     projects: 'Projetos em Destaque:',
     contactTitle: 'Informações de Contato:',
-    contactFields: { email: 'Email', linkedin: 'LinkedIn', github: 'GitHub', loc: 'Localização' },
-    guiOpen: 'Abrindo o Navegador do Portfólio...',
-    sudoMsg: 'Boa tentativa! Este incidente será relatado.',
+    contactFields: { email: 'E-mail', linkedin: 'LinkedIn', github: 'GitHub', loc: 'Localização' },
+    guiOpen: 'Abrindo Navegador do Portfólio...',
+    sudoMsg: 'Boa tentativa! Este incidente será reportado.',
     commandNotFound: 'comando não encontrado'
   }
 };
